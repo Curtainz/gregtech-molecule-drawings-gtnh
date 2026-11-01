@@ -68,6 +68,12 @@ public class NEITooltipHelper {
                             int y = (Integer) args[1];
                             renderWithGL(renderer, null, font, x, y);
                             return null;
+                        } else if (mName.equals("hashCode")) {
+                            return System.identityHashCode(proxy);
+                        } else if (mName.equals("equals")) {
+                            return args != null && args.length > 0 && args[0] == proxy;
+                        } else if (mName.equals("toString")) {
+                            return "MolDrawTooltipHandler@" + Integer.toHexString(System.identityHashCode(proxy));
                         }
                         return null;
                     }
@@ -101,6 +107,12 @@ public class NEITooltipHelper {
                             int y = (Integer) args[1];
                             renderWithGL(null, renderer, font, x, y);
                             return null;
+                        } else if (mName.equals("hashCode")) {
+                            return System.identityHashCode(proxy);
+                        } else if (mName.equals("equals")) {
+                            return args != null && args.length > 0 && args[0] == proxy;
+                        } else if (mName.equals("toString")) {
+                            return "MolDrawAlloyTooltipHandler@" + Integer.toHexString(System.identityHashCode(proxy));
                         }
                         return null;
                     }

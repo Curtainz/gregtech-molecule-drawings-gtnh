@@ -20,8 +20,11 @@ import com.rubenverg.moldraw.GT5MaterialLookup;
 import com.rubenverg.moldraw.MolDraw;
 import com.rubenverg.moldraw.MolDrawConfig;
 import com.rubenverg.moldraw.MoleculeManager;
+import com.rubenverg.moldraw.NEITooltipHelper;
+import com.rubenverg.moldraw.TooltipEventHandler;
 import com.rubenverg.moldraw.component.AlloyRenderer;
 import com.rubenverg.moldraw.component.MoleculeRenderer;
+import com.rubenverg.moldraw.component.TooltipRenderContext;
 import com.rubenverg.moldraw.molecule.Molecule;
 import com.rubenverg.moldraw.util.FormulaParser;
 
@@ -43,20 +46,8 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
     @Override
     public List<String> handleItemTooltip(GuiContainer gui, ItemStack stack, int mousex, int mousey,
         List<String> currenttip) {
-        if (!MolDrawConfig.INSTANCE.enabled || currenttip == null || stack == null) {
-            return currenttip;
-        }
-
-        // 避免重复注入（如果 Forge 的 ItemTooltipEvent 已经处理过此 Tooltip）
-        if (hasExistingTokenOrHint(currenttip)) {
-            return currenttip;
-        }
-
-        Materials mat = GT5MaterialLookup.getMaterial(stack);
-        if (mat != null) {
-            return processTooltipWithMaterial(mat, currenttip);
-        }
-
+        // 核心架构原则：所有的 ItemStack 均由 Forge 的原生 ItemTooltipEvent (TooltipEventHandler) 统一处理。
+        // 此处绝不处理 ItemStack，彻底消除双重注册导致的重复两行 Shift 提示与分子图双重绘制！
         return currenttip;
     }
 
@@ -66,12 +57,21 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
             return currenttip;
         }
 
+        // 如果鼠标当前悬停在某个真实的物品 Slot 上，跳过处理（物品已由 ItemTooltipEvent 统一处理）
+        if (gui != null) {
+            try {
+                if (GuiContainerManager.getStackMouseOver(gui) != null) {
+                    return currenttip;
+                }
+            } catch (Throwable ignored) {}
+        }
+
         // 避免重复注入
-        if (hasExistingTokenOrHint(currenttip)) {
+        if (TooltipEventHandler.hasMolDrawTokenOrHint(currenttip)) {
             return currenttip;
         }
 
-        // 尝试从纯流体槽位或文本 Tooltip 中提取材料
+        // 尝试从流体槽位或文本 Tooltip 中提取材料
         Materials mat = resolveMaterialFromTooltip(currenttip);
         if (mat != null) {
             return processTooltipWithMaterial(mat, currenttip);
@@ -97,66 +97,80 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
         return currentkeys;
     }
 
-    private static boolean hasExistingTokenOrHint(List<String> tip) {
-        for (String line : tip) {
-            if (line == null) continue;
-            if (line.startsWith("\u00a7x") || line.contains("Shift")
-                || line.startsWith(com.rubenverg.moldraw.TooltipEventHandler.PLACEHOLDER_PREFIX)) {
-                return true;
-            }
+    private static String cleanFluidName(String raw) {
+        if (raw == null) return "";
+        String s = EnumChatFormatting.getTextWithoutFormattingCodes(raw)
+            .trim();
+        // 去除开头数量，如 "1,000 L ", "1000mB ", "1000L "
+        s = s.replaceAll("^[0-9,]+(\\.[0-9]+)?\\s*(mB|mb|MB|L|l)?\\s*", "");
+        // 去除结尾数量，如 " (1,000 L)", " 1000mB"
+        s = s.replaceAll("\\s*\\(?[0-9,]+(\\.[0-9]+)?\\s*(mB|mb|MB|L|l)?\\)?$", "");
+        // 去除冒号前缀如 "Fluid: "
+        if (s.toLowerCase(Locale.ROOT)
+            .startsWith("fluid:")) {
+            s = s.substring(6)
+                .trim();
         }
-        return false;
+        return s.trim();
     }
 
     private Materials resolveMaterialFromTooltip(List<String> tip) {
         if (tip.isEmpty()) return null;
 
-        String firstLine = EnumChatFormatting.getTextWithoutFormattingCodes(tip.get(0))
+        String rawFirst = EnumChatFormatting.getTextWithoutFormattingCodes(tip.get(0))
             .trim();
-        if (firstLine.isEmpty()) return null;
+        String cleanedFirst = cleanFluidName(tip.get(0));
+
+        String[] candidates = new String[] { rawFirst, cleanedFirst };
 
         // 1. 尝试匹配 FluidRegistry
         Map<String, Fluid> fluids = FluidRegistry.getRegisteredFluids();
         if (fluids != null) {
-            for (Fluid f : fluids.values()) {
-                if (f == null) continue;
-                String fName = f.getName();
-                if (firstLine.equalsIgnoreCase(fName)) {
-                    Materials mat = GT5MaterialLookup.getMaterialFromFluid(f);
-                    if (mat != null) return mat;
-                }
-                try {
-                    String loc = f.getLocalizedName(new FluidStack(f, 1000));
-                    if (loc != null && firstLine.equalsIgnoreCase(
-                        EnumChatFormatting.getTextWithoutFormattingCodes(loc)
-                            .trim())) {
+            for (String cand : candidates) {
+                if (cand.isEmpty()) continue;
+                for (Fluid f : fluids.values()) {
+                    if (f == null) continue;
+                    String fName = f.getName();
+                    if (cand.equalsIgnoreCase(fName)) {
                         Materials mat = GT5MaterialLookup.getMaterialFromFluid(f);
                         if (mat != null) return mat;
                     }
-                } catch (Throwable ignored) {}
+                    try {
+                        String loc = f.getLocalizedName(new FluidStack(f, 1000));
+                        if (loc != null && cand.equalsIgnoreCase(
+                            EnumChatFormatting.getTextWithoutFormattingCodes(loc)
+                                .trim())) {
+                            Materials mat = GT5MaterialLookup.getMaterialFromFluid(f);
+                            if (mat != null) return mat;
+                        }
+                    } catch (Throwable ignored) {}
+                }
             }
         }
 
         // 2. 尝试匹配 GT Materials
-        Materials byName = Materials.get(firstLine);
-        if (GT5MaterialLookup.isMaterialValid(byName)) {
-            return byName;
-        }
+        for (String cand : candidates) {
+            if (cand.isEmpty()) continue;
+            Materials byName = Materials.get(cand);
+            if (GT5MaterialLookup.isMaterialValid(byName)) {
+                return byName;
+            }
 
-        for (Materials m : Materials.getAll()) {
-            if (!GT5MaterialLookup.isMaterialValid(m)) continue;
-            if (firstLine.equalsIgnoreCase(m.mName) || firstLine.equalsIgnoreCase(m.name())) {
-                return m;
-            }
-            if (m.mDefaultLocalName != null && firstLine.equalsIgnoreCase(m.mDefaultLocalName)) {
-                return m;
-            }
-            try {
-                String loc = m.getDefaultLocalizedNameForItem("");
-                if (loc != null && firstLine.equalsIgnoreCase(loc)) {
+            for (Materials m : Materials.getAll()) {
+                if (!GT5MaterialLookup.isMaterialValid(m)) continue;
+                if (cand.equalsIgnoreCase(m.mName) || cand.equalsIgnoreCase(m.name())) {
                     return m;
                 }
-            } catch (Throwable ignored) {}
+                if (m.mDefaultLocalName != null && cand.equalsIgnoreCase(m.mDefaultLocalName)) {
+                    return m;
+                }
+                try {
+                    String loc = m.getDefaultLocalizedNameForItem("");
+                    if (loc != null && cand.equalsIgnoreCase(loc)) {
+                        return m;
+                    }
+                } catch (Throwable ignored) {}
+            }
         }
 
         return null;
@@ -165,10 +179,15 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
     private Molecule resolveMoleculeFromTooltip(List<String> tip) {
         if (tip.isEmpty()) return null;
 
-        String firstLine = EnumChatFormatting.getTextWithoutFormattingCodes(tip.get(0))
+        String rawFirst = EnumChatFormatting.getTextWithoutFormattingCodes(tip.get(0))
             .trim();
-        Molecule byName = MoleculeManager.getMoleculeByName(firstLine);
-        if (byName != null) return byName;
+        String cleanedFirst = cleanFluidName(tip.get(0));
+
+        for (String cand : new String[] { rawFirst, cleanedFirst }) {
+            if (cand.isEmpty()) continue;
+            Molecule byName = MoleculeManager.getMoleculeByName(cand);
+            if (byName != null) return byName;
+        }
 
         // 遍历每行寻找化学式（例如 "Formula: CH4" 或 "§7CH4"）
         for (String line : tip) {
@@ -227,7 +246,24 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
             return currenttip;
         }
 
-        return applyRenderPlaceholders(currenttip, molRenderer, alloyRenderer, font, mat.getChemicalFormula());
+        // 在 NEI 环境下，统一注册为 ITooltipLineHandler 原生行指令
+        // 由 NEI 的 GuiDraw.drawMultilineTip 负责计算精确高度并原位绘制，绝对杜绝错位和侵占空间！
+        if (NEITooltipHelper.isNEIAvailable()) {
+            String token = null;
+            if (molRenderer != null) {
+                token = NEITooltipHelper.registerMoleculeHandler(molRenderer, font);
+            } else {
+                token = NEITooltipHelper.registerAlloyHandler(alloyRenderer, font);
+            }
+
+            if (token != null) {
+                TooltipRenderContext.clear();
+                insertToken(currenttip, token, mat.getChemicalFormula());
+                return currenttip;
+            }
+        }
+
+        return currenttip;
     }
 
     private List<String> processTooltipWithMolecule(Molecule mol, List<String> currenttip) {
@@ -240,51 +276,20 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
 
         FontRenderer font = Minecraft.getMinecraft().fontRenderer;
         MoleculeRenderer molRenderer = new MoleculeRenderer(mol);
-        return applyRenderPlaceholders(currenttip, molRenderer, null, font, null);
-    }
 
-    private static List<String> applyRenderPlaceholders(List<String> currenttip, MoleculeRenderer molRenderer,
-        AlloyRenderer alloyRenderer, FontRenderer font, String formula) {
-        int renderWidth = molRenderer != null ? molRenderer.getWidth(font) : alloyRenderer.getWidth(font);
-        int renderHeight = molRenderer != null ? molRenderer.getHeight(font) : alloyRenderer.getHeight(font);
-
-        int targetIdx = getTargetInsertIndex(currenttip, formula);
-
-        // 撑开宽度
-        StringBuilder widthPad = new StringBuilder(com.rubenverg.moldraw.TooltipEventHandler.PLACEHOLDER_PREFIX);
-        while (font.getStringWidth(widthPad.toString()) < renderWidth) {
-            widthPad.append(" ");
-        }
-        currenttip.add(targetIdx, widthPad.toString());
-
-        // 撑开高度 (每行 10px)
-        int linesToInsert = (renderHeight + 9) / 10;
-        for (int i = 1; i < linesToInsert; i++) {
-            currenttip.add(targetIdx + i, com.rubenverg.moldraw.TooltipEventHandler.PLACEHOLDER_PREFIX);
-        }
-
-        int maxTooltipWidth = 0;
-        for (String line : currenttip) {
-            if (line != null) {
-                int w = font.getStringWidth(line);
-                if (w > maxTooltipWidth) maxTooltipWidth = w;
+        if (NEITooltipHelper.isNEIAvailable()) {
+            String token = NEITooltipHelper.registerMoleculeHandler(molRenderer, font);
+            if (token != null) {
+                TooltipRenderContext.clear();
+                insertToken(currenttip, token, null);
+                return currenttip;
             }
-        }
-
-        int totalLines = currenttip.size();
-
-        if (molRenderer != null) {
-            com.rubenverg.moldraw.component.TooltipRenderContext
-                .setPendingMolecule(molRenderer, renderWidth, renderHeight, targetIdx, totalLines, maxTooltipWidth);
-        } else {
-            com.rubenverg.moldraw.component.TooltipRenderContext
-                .setPendingAlloy(alloyRenderer, renderWidth, renderHeight, targetIdx, totalLines, maxTooltipWidth);
         }
 
         return currenttip;
     }
 
-    private static int getTargetInsertIndex(List<String> tip, String formula) {
+    private static void insertToken(List<String> tip, String token, String formula) {
         int targetIdx = -1;
         if (formula != null && !formula.isEmpty()) {
             String cleanFormula = FormulaParser.normalizeFormula(formula)
@@ -299,8 +304,9 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
             }
         }
         if (targetIdx >= 0 && targetIdx <= tip.size()) {
-            return targetIdx;
+            tip.add(targetIdx, token);
+        } else {
+            tip.add(token);
         }
-        return tip.size();
     }
 }

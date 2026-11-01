@@ -1,5 +1,8 @@
 package com.rubenverg.moldraw;
 
+import java.util.List;
+import java.util.Locale;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.item.ItemStack;
@@ -11,6 +14,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import com.rubenverg.moldraw.component.*;
+import com.rubenverg.moldraw.util.FormulaParser;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import gregtech.api.enums.Materials;
@@ -19,6 +23,25 @@ public class TooltipEventHandler {
 
     public static final String PLACEHOLDER_PREFIX = "§m§o§l§d";
 
+    public static boolean hasMolDrawTokenOrHint(List<?> tip) {
+        if (tip == null || tip.isEmpty()) return false;
+        for (Object lineObj : tip) {
+            if (lineObj == null) continue;
+            String line = lineObj.toString();
+            if (line.contains("\u00a7x") || line.contains(PLACEHOLDER_PREFIX)) {
+                return true;
+            }
+            String clean = EnumChatFormatting.getTextWithoutFormattingCodes(line)
+                .toLowerCase(Locale.ROOT);
+            if (clean.contains("shift") || clean.contains("查看分子结构")
+                || clean.contains("查看成分分析")
+                || clean.contains("展开分子式")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @SubscribeEvent
     public void onItemTooltip(ItemTooltipEvent event) {
         if (!MolDrawConfig.INSTANCE.enabled) return;
@@ -26,12 +49,8 @@ public class TooltipEventHandler {
         if (stack == null || event.toolTip == null) return;
 
         // 避免重复检测与提示叠加：如果已有 Shift 提示或 MolDraw 标记，直接返回
-        for (Object lineObj : event.toolTip) {
-            if (lineObj == null) continue;
-            String line = lineObj.toString();
-            if (line.startsWith("\u00a7x") || line.contains("Shift") || line.startsWith(PLACEHOLDER_PREFIX)) {
-                return;
-            }
+        if (hasMolDrawTokenOrHint(event.toolTip)) {
+            return;
         }
 
         Materials mat = GT5MaterialLookup.getMaterial(stack);
@@ -86,13 +105,13 @@ public class TooltipEventHandler {
                 String formula = mat.getChemicalFormula();
                 int targetIdx = -1;
                 if (formula != null && !formula.isEmpty()) {
-                    String cleanFormula = com.rubenverg.moldraw.util.FormulaParser.normalizeFormula(formula)
-                        .toLowerCase();
+                    String cleanFormula = FormulaParser.normalizeFormula(formula)
+                        .toLowerCase(Locale.ROOT);
                     for (int i = 0; i < event.toolTip.size(); i++) {
-                        String line = com.rubenverg.moldraw.util.FormulaParser.normalizeFormula(
+                        String line = FormulaParser.normalizeFormula(
                             event.toolTip.get(i)
                                 .toString())
-                            .toLowerCase();
+                            .toLowerCase(Locale.ROOT);
                         if (line.contains(cleanFormula)) {
                             targetIdx = i + 1;
                             break;
@@ -148,9 +167,17 @@ public class TooltipEventHandler {
 
     @SubscribeEvent
     public void onDrawScreenPost(GuiScreenEvent.DrawScreenEvent.Post event) {
+        if (NEITooltipHelper.isNEIAvailable()) {
+            // 如果 NEI 可用，所有的绘制都在 NEI 的 GuiDraw.drawMultilineTip 中完成，
+            // 绝不在此处执行后处理二次绘制，彻底杜绝任何重影或错位！
+            TooltipRenderContext.clear();
+            return;
+        }
+
         if (!TooltipRenderContext.isStillActive(event.mouseX, event.mouseY)) return;
 
         renderPendingTooltipGraphics(event.mouseX, event.mouseY);
+        TooltipRenderContext.clear();
     }
 
     public static void renderPendingTooltipGraphics(int mouseX, int mouseY) {
