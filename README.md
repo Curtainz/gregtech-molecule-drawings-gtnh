@@ -4,7 +4,7 @@
 
 [![GitHub](https://img.shields.io/badge/Forked%20From-RubenVerg%2Fgregtech--molecule--drawings-blue.svg)](https://github.com/RubenVerg/gregtech-molecule-drawings)
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.7.10-green.svg)](https://minecraft.net/)
-[![GTNH](https://img.shields.io/badge/GregTech-New%20Horizons%202.9.x-orange.svg)](https://gtnewhorizons.com/)
+[![GTNH](https://img.shields.io/badge/GTNH-2.9.0-orange.svg)](https://gtnewhorizons.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Vibe Coded](https://img.shields.io/badge/Vibe%20Coded%20with-Google%20Antigravity-8A2BE2.svg)](#-vibe-coding--ai-attribution--vibe-coding-%E8%AF%B4%E6%98%8E)
 
@@ -19,35 +19,35 @@
 
 An interactive molecular structure diagram and dynamic alloy/compound composition chart mod for **Minecraft 1.7.10** and **GregTech: New Horizons (GTNH)**.
 
-This repository is a backport and substantial architectural overhaul of [RubenVerg/gregtech-molecule-drawings](https://github.com/RubenVerg/gregtech-molecule-drawings) for 1.7.10 Forge, GregTech 5 Unofficial, and NotEnoughItems (NEI).
+This repository is a backport and adaptation of [RubenVerg/gregtech-molecule-drawings](https://github.com/RubenVerg/gregtech-molecule-drawings) for 1.7.10 Forge, GregTech 5 Unofficial, and NotEnoughItems (NEI).
 
 ### 🔮 Vibe Coding & AI Attribution
 
 > [!NOTE]
 > **Vibe Coding Notice**
 > 
-> This Minecraft 1.7.10 GTNH port was developed and debugged in **Vibe Coding** mode using **Google Antigravity** (powered by Gemini).
+> This Minecraft 1.7.10 GTNH port was developed and refined in **Vibe Coding** mode using **Google Antigravity** (powered by Gemini).
 > 
 > * **Original Mod Author & Concept**: [RubenVerg](https://github.com/RubenVerg) — Creator of the modern GregTech Molecule Drawings mod.
-> * **1.7.10 GTNH Port & AI Pair Programming**: Ported, diagnosed, and repaired from initial crash logs to a stable release through human-AI collaborative vibe coding.
-> * **Major AI-driven Fixes & Additions**:
->   1. Completely eliminated crashing Mixins/ASM in favor of clean Forge event hooks and CodeChickenLib `GuiDraw$ITooltipLineHandler` reflection hooks.
->   2. Built a powerful chemical formula parser (`FormulaParser`) with support for GTNH fictional, magical elements, and Greek-letter unknown phases.
->   3. Re-engineered double bond and aromatic ring geometry math to eliminate line overlapping and disappearing bonds.
->   4. Solved NEI tooltip flickering and edge collision de-synchronization.
->   5. Synthesized missing JSON models for the entire silane family.
+> * **1.7.10 GTNH Port & AI Pair Programming**: Ported, diagnosed, and repaired from initial crash logs to a playable state through human-AI collaborative vibe coding.
+> * **Key Modifications & Additions**:
+>   1. Replaced crashing Mixins/ASM in favor of Forge event hooks and CodeChickenLib `GuiDraw$ITooltipLineHandler` reflection hooks.
+>   2. Implemented a chemical formula parser (`FormulaParser`) supporting GTNH fictional elements, magical elements, and Greek-letter unknown phases.
+>   3. Adjusted double bond and aromatic ring geometry math to resolve line overlapping.
+>   4. Addressed NEI tooltip edge collision de-synchronization and flickering.
+>   5. Added JSON molecular models for the silane family.
 
 ### ✨ Features in 1.7.10 GTNH
 
 * **Molecular Structure Diagrams**: Renders structural chemical formulas and molecular bond diagrams directly inside item tooltips. Includes built-in models for Silanes ($\text{SiH}_4$, $\text{Si}_2\text{H}_6$, $\text{SiCl}_4$, $\text{SiF}_4$, $\text{SiHCl}_3$, $\text{SiO}_2$), ice, polymers, etc.
-* **Precise Chemical Rendering**:
-  * Double bonds maintain a constant 2.4px offset with 2px corner indentation, preventing lines from merging.
-  * Polymer brackets have safe margins ($\pm 6\text{px}$ horizontal, $\pm 4\text{px}$ vertical) with statically anchored subscript $n$ that never drifts.
+* **Chemical Rendering Improvements**:
+  * Double bonds maintain a constant 2.4px offset with 2px corner indentation to prevent lines from merging.
+  * Polymer brackets feature safe margins ($\pm 6\text{px}$ horizontal, $\pm 4\text{px}$ vertical) with anchored subscript $n$ that stays in place.
 * **Dynamic Alloy & Compound Pie Charts**:
   * Automatically calculates mass-weighted or atom-count component breakdowns.
-  * Full support for GTNH mythical elements (`D*` Awakened Draconium, `If*` Infinity, `Nq*` Naquadah, `Nt` Neutronium, `Sh` Shadow Metal, `Ma` Magic, etc.), restoring charts for **Void Metal** and **UEV Superconductor Base**.
+  * Supports GTNH mythical elements (`D*` Awakened Draconium, `If*` Infinity, `Nq*` Naquadah, `Nt` Neutronium, `Sh` Shadow Metal, `Ma` Magic, etc.), restoring charts for **Void Metal** and **UEV Superconductor Base**.
   * Configurable folding thresholds to collapse minor elements into an "Other" category.
-* **Non-Invasive Architecture**: Zero bytecode modifications, 100% crash-free, full compatibility with NEI and Chromatic Tooltips.
+* **Non-Invasive Implementation**: Minimal bytecode interaction, designed for stability and compatibility with NEI and tooltip mods.
 
 ### ⚙️ Configuration (`config/moldraw.cfg`)
 
@@ -80,36 +80,36 @@ Compiled jar will be located at `build/libs/`.
 
 为 **Minecraft 1.7.10** 与 **GregTech: New Horizons (GTNH)** 提供的物品提示框交互式分子结构式与合金/化合物成分图表展示模组。
 
-本项目是 [RubenVerg/gregtech-molecule-drawings](https://github.com/RubenVerg/gregtech-molecule-drawings) 面向 1.7.10 Forge、GT5-Unofficial 与 NEI 的深度重构与移植版本。
+本项目是 [RubenVerg/gregtech-molecule-drawings](https://github.com/RubenVerg/gregtech-molecule-drawings) 面向 1.7.10 Forge、GT5-Unofficial 与 NEI 的移植与适配版本。
 
 ### 🔮 Vibe Coding 说明与致谢
 
 > [!NOTE]
 > **Vibe Coding 说明**
 > 
-> 本项目的 1.7.10 GTNH 移植与全面修复工作全程基于 **Google Antigravity**（Gemini 驱动）以 **Vibe Coding**（结对编程 / 人机协同）模式完成。
+> 本项目的 1.7.10 GTNH 移植与修复适配工作基于 **Google Antigravity**（Gemini 驱动）以 **Vibe Coding**（结对编程 / 人机协同）模式进行。
 > 
 > * **原模组作者与构想**：[RubenVerg](https://github.com/RubenVerg) — 现代版本 GregTech Molecule Drawings 模组的创造者。
-> * **1.7.10 GTNH 移植与 AI 协同开发**：从最初的启动崩溃分析，到全功能无侵入式移植与渲染算法重构，均由人机协同以 Vibe Coding 模式快速迭代排查完成。
-> * **主要 AI 攻坚与重构点**：
->   1. 彻底移除会导致崩溃的 Mixin/ASM 字节码注入，改用 Forge 原生事件与 CodeChickenLib `GuiDraw$ITooltipLineHandler` 动态反射接口。
+> * **1.7.10 GTNH 移植与 AI 协同开发**：从最初的启动日志分析，到各功能移植与渲染算法调整，均由人机协同以 Vibe Coding 模式迭代排查完成。
+> * **主要改进与适配点**：
+>   1. 移除引发崩溃的 Mixin/ASM 注入，改用 Forge 事件与 CodeChickenLib `GuiDraw$ITooltipLineHandler` 反射接口。
 >   2. 构建了支持 GTNH 虚构元素、魔法元素及特殊希腊字母的化学式解析引擎（`FormulaParser`）。
->   3. 重写多重键与芳香环的法向量平移算法，彻底解决双键与主键重叠合并不显示的数学缺陷。
->   4. 攻克 NEI 提示框屏幕防遮挡位移不同步及图表高频闪烁问题。
->   5. 为硅烷全族分子补齐并建立了原生的分子结构 JSON。
+>   3. 调整多重键与芳香环的法向量平移计算，改善双键与主键重叠合并不显示的问题。
+>   4. 缓解并修正 NEI 提示框屏幕防遮挡位移不同步及图表闪烁问题。
+>   5. 为硅烷全族分子补齐并建立了分子结构 JSON。
 
 ### ✨ 1.7.10 GTNH 版本特性
 
 * **分子结构式与化学键图表展示**：在物品提示框（Tooltip）内直观展示分子结构式与化学键连接。
   * **硅烷族模型补齐**：为甲硅烷（$\text{SiH}_4$）、乙硅烷（$\text{Si}_2\text{H}_6$）、四氯化硅（$\text{SiCl}_4$）、四氟化硅（$\text{SiF}_4$）、三氯硅烷（$\text{SiHCl}_3$）及二氧化硅（$\text{SiO}_2$）建立了专属分子结构模型。
-* **精准化学结构渲染**：
-  * **碳碳双键及芳香环修补**：采用双线恒定 2.4px 法向平移与拐角 2px 缩进，彻底杜绝双键重合失效。
-  * **高分子方括号与下标固定**：设置了安全的包围盒留白（水平 $\pm 6\text{px}$，垂直 $\pm 4\text{px}$），下标 $n$ 采用静态包围盒绝对锚定在右括号 `]` 底部，绝不发生位移与晃动。
+* **化学结构渲染优化**：
+  * **碳碳双键及芳香环修补**：采用双线恒定 2.4px 法向平移与拐角 2px 缩进，减少双键重合遮挡现象。
+  * **高分子方括号与下标固定**：设置了适宜的包围盒留白（水平 $\pm 6\text{px}$，垂直 $\pm 4\text{px}$），下标 $n$ 锚定在右括号 `]` 底部，保持稳定不漂移。
 * **动态合金与化合物饼状图**：
   * 支持质量占比（Mass）与原子数占比（Count）两种计算模式。
-  * **完美兼容 GTNH 虚构与魔法元素**：完整解析并高亮展示 `D*`（觉醒龙）、`If*`（无尽）、`Nq*`（超能硅岩）、`Nt`（中子素）、`Sh`（暗影金属）、`Ma`（魔法组分）等，**虚空金属**与 **UEV 超导粗胚**等终极材料饼图全面恢复。
-  * **智能折叠与阈值过滤**：成分过多或占比微小的稀有元素自动折叠并入“其他”，避免图表错位臃肿。
-* **纯净非侵入式架构**：不侵入游戏底层渲染循环，杜绝崩溃风险，完美兼容 NEI 与各类提示框美化模组。
+  * **支持 GTNH 虚构与魔法元素**：解析并高亮展示 `D*`（觉醒龙）、`If*`（无尽）、`Nq*`（超能硅岩）、`Nt`（中子素）、`Sh`（暗影金属）、`Ma`（魔法组分）等，恢复**虚空金属**与 **UEV 超导粗胚**等材料的饼图展示。
+  * **折叠与阈值过滤**：成分较多或占比微小的元素可折叠并入“其他”，使图表更整洁。
+* **非侵入式实现**：减少底层渲染侵入，提升运行稳定性，兼容 NEI 与常见提示框模组。
 
 ### ⚙️ 配置文件说明 (`config/moldraw.cfg`)
 
