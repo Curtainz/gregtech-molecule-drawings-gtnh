@@ -15,13 +15,14 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 @Mod(
     modid = MolDraw.MOD_ID,
     name = "GregTech Molecule Drawings",
-    version = "1.0.0",
+    version = MolDraw.VERSION,
     guiFactory = "com.rubenverg.moldraw.gui.MolDrawGuiFactory",
     acceptableRemoteVersions = "*")
 public class MolDraw {
 
     public static final String MOD_ID = "moldraw";
     public static final String MODID = MOD_ID;
+    public static final String VERSION = "0.1.0-beta.1";
     public static final Logger LOGGER = LogManager.getLogger("MolDraw");
 
     @Mod.Instance(MOD_ID)
