@@ -1,0 +1,45 @@
+{
+  "contents": [
+    {
+      "index": 0,
+      "element": "S",
+      "x": 0.0,
+      "y": 0.3,
+      "type": "atom"
+    },
+    {
+      "index": 1,
+      "element": "O",
+      "x": -1.1,
+      "y": -0.3,
+      "type": "atom"
+    },
+    {
+      "index": 2,
+      "element": "O",
+      "x": 1.1,
+      "y": -0.3,
+      "type": "atom"
+    },
+    {
+      "a": 0,
+      "b": 1,
+      "lines": [
+        "solid",
+        "solid"
+      ],
+      "centered": true,
+      "type": "bond"
+    },
+    {
+      "a": 0,
+      "b": 2,
+      "lines": [
+        "solid",
+        "solid"
+      ],
+      "centered": true,
+      "type": "bond"
+    }
+  ]
+}

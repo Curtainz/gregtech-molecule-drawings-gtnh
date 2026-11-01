@@ -69,7 +69,8 @@ public final class AlloyManager {
             || name.contains("solder")
             || name.contains("cuprate")
             || name.contains("superalloy")
-            || name.contains("cupronickel")) {
+            || name.contains("cupronickel")
+            || name.contains("superconductor")) {
             return true;
         }
 

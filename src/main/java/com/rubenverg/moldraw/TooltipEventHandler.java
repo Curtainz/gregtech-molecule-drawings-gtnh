@@ -30,18 +30,17 @@ public class TooltipEventHandler {
 
         // 优先寻找 3D 分子结构
         var mol = MoleculeManager.getMolecule(mat);
-        // 只有当没有分子结构，且为合金或含有可解析成分的化合物时，才展示成分饼图
-        boolean isAlloyOrCompound = (mol == null)
-            && (AlloyManager.isAlloy(mat) || AlloyRenderer.hasValidComponents(mat));
+        // 只有当没有分子结构，且为明确定义的真正合金时，才展示成分饼图（杜绝将化合物误认为合金）
+        boolean isAlloy = (mol == null) && AlloyManager.isAlloy(mat) && AlloyRenderer.hasValidComponents(mat);
 
-        if (mol == null && !isAlloyOrCompound) return;
+        if (mol == null && !isAlloy) return;
 
         boolean shiftDown = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
 
         if (MolDrawConfig.INSTANCE.onlyShowOnShift && !shiftDown) {
             if (mol != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
                 event.toolTip.add(EnumChatFormatting.DARK_GRAY + "[按住 Shift 查看分子结构]");
-            } else if (isAlloyOrCompound && MolDrawConfig.INSTANCE.alloy.showAlloys) {
+            } else if (isAlloy && MolDrawConfig.INSTANCE.alloy.showAlloys) {
                 event.toolTip.add(EnumChatFormatting.DARK_GRAY + "[按住 Shift 查看成分分析]");
             }
             return;
@@ -54,7 +53,7 @@ public class TooltipEventHandler {
 
         if (mol != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
             molRenderer = new MoleculeRenderer(mol);
-        } else if (isAlloyOrCompound && MolDrawConfig.INSTANCE.alloy.showAlloys) {
+        } else if (isAlloy && MolDrawConfig.INSTANCE.alloy.showAlloys) {
             alloyRenderer = new AlloyRenderer(mat, font);
         }
 

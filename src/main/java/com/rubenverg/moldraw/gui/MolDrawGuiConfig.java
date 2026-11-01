@@ -22,7 +22,10 @@ public class MolDrawGuiConfig extends GuiConfig {
             MolDraw.MODID,
             false,
             false,
-            GuiConfig.getAbridgedConfigPath(MolDrawConfig.config.toString()));
+            MolDrawConfig.config != null ? GuiConfig.getAbridgedConfigPath(
+                MolDrawConfig.config.getConfigFile()
+                    .getAbsolutePath())
+                : "MolDraw Configuration");
     }
 
     private static List<IConfigElement> getConfigElements() {

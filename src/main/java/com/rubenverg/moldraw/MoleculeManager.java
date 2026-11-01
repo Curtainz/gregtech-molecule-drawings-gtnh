@@ -57,6 +57,35 @@ public final class MoleculeManager {
         ALIASES.put("silicon_tetrachloride", "silicon_tetrachloride");
         ALIASES.put("silicon_tetrafluoride", "silicon_tetrafluoride");
         ALIASES.put("trichlorosilane", "trichlorosilane");
+        ALIASES.put("aluminiumoxide", "aluminiumoxide");
+        ALIASES.put("aluminium_oxide", "aluminiumoxide");
+        ALIASES.put("aluminum_oxide", "aluminiumoxide");
+        ALIASES.put("alumina", "aluminiumoxide");
+        ALIASES.put("cryolite", "cryolite");
+        ALIASES.put("silicon_dioxide", "silicon_dioxide");
+        ALIASES.put("silicondioxide", "silicon_dioxide");
+        ALIASES.put("silica", "silicon_dioxide");
+        ALIASES.put("quartz", "silicon_dioxide");
+        ALIASES.put("quartzite", "silicon_dioxide");
+        ALIASES.put("quartz_sand", "silicon_dioxide");
+        ALIASES.put("oxygen", "oxygen");
+        ALIASES.put("hydrogen", "hydrogen");
+        ALIASES.put("nitrogen", "nitrogen");
+        ALIASES.put("chlorine", "chlorine");
+        ALIASES.put("fluorine", "fluorine");
+        ALIASES.put("carbon_dioxide", "carbon_dioxide");
+        ALIASES.put("carbon_monoxide", "carbon_monoxide");
+        ALIASES.put("ammonia", "ammonia");
+        ALIASES.put("water", "water");
+        ALIASES.put("hydrogen_sulfide", "hydrogen_sulfide");
+        ALIASES.put("sulfur_dioxide", "sulfur_dioxide");
+        ALIASES.put("sulfur_trioxide", "sulfur_trioxide");
+        ALIASES.put("hydrogen_chloride", "hydrogen_chloride");
+        ALIASES.put("hydrogen_fluoride", "hydrogen_fluoride");
+        ALIASES.put("hydrochloric_acid", "hydrogen_chloride");
+        ALIASES.put("hydrofluoric_acid", "hydrogen_fluoride");
+        ALIASES.put("nitric_oxide", "nitric_oxide");
+        ALIASES.put("nitrogen_dioxide", "nitrogen_dioxide");
 
         // 化学式反查分子结构
         FORMULA_MAP.put("h2o", "water");
@@ -69,6 +98,16 @@ public final class MoleculeManager {
         FORMULA_MAP.put("h2", "hydrogen");
         FORMULA_MAP.put("cl2", "chlorine");
         FORMULA_MAP.put("f2", "fluorine");
+        FORMULA_MAP.put("h2s", "hydrogen_sulfide");
+        FORMULA_MAP.put("so2", "sulfur_dioxide");
+        FORMULA_MAP.put("so3", "sulfur_trioxide");
+        FORMULA_MAP.put("hcl", "hydrogen_chloride");
+        FORMULA_MAP.put("hf", "hydrogen_fluoride");
+        FORMULA_MAP.put("no", "nitric_oxide");
+        FORMULA_MAP.put("no2", "nitrogen_dioxide");
+        FORMULA_MAP.put("al2o3", "aluminiumoxide");
+        FORMULA_MAP.put("na3alf6", "cryolite");
+        FORMULA_MAP.put("sio2", "silicon_dioxide");
         FORMULA_MAP.put("c2h6osi", "polydimethylsiloxane");
         FORMULA_MAP.put("c20n4h12", "polybenzimidazole");
         FORMULA_MAP.put("c8h8c4h63", "styrene_butadiene_rubber");
@@ -182,6 +221,32 @@ public final class MoleculeManager {
                 if (MolDrawConfig.INSTANCE.debugMode) {
                     MolDraw.LOGGER.warn("Failed to load molecule " + path, e);
                 }
+            }
+        }
+        return null;
+    }
+
+    public static Molecule getMoleculeByFormula(String formula) {
+        if (formula == null || formula.isEmpty()) return null;
+        String clean = formula.toLowerCase(Locale.ROOT)
+            .replaceAll("[^a-z0-9]", "");
+        String mapped = FORMULA_MAP.get(clean);
+        if (mapped != null) {
+            return loadMoleculeFromJson(mapped);
+        }
+        return null;
+    }
+
+    public static Molecule getMoleculeByName(String rawName) {
+        if (rawName == null || rawName.isEmpty()) return null;
+        String name = ALIASES.getOrDefault(toSnakeCase(rawName), toSnakeCase(rawName));
+        Molecule loaded = loadMoleculeFromJson(name);
+        if (loaded != null) return loaded;
+        for (String prefix : PREFIXES_TO_STRIP) {
+            if (name.startsWith(prefix)) {
+                String stripped = name.substring(prefix.length());
+                loaded = loadMoleculeFromJson(stripped);
+                if (loaded != null) return loaded;
             }
         }
         return null;

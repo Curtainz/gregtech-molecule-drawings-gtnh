@@ -39,6 +39,11 @@ public class MolDraw {
         FMLCommonHandler.instance()
             .bus()
             .register(this);
+
+        if (cpw.mods.fml.common.Loader.isModLoaded("NotEnoughItems")) {
+            com.rubenverg.moldraw.nei.NEIRecipeTooltipHandler.register();
+        }
+
         LOGGER.info("GregTech Molecule Drawings for 1.7.10 GTNH initialized successfully!");
     }
 
