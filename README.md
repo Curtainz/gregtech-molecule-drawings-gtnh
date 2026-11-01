@@ -39,10 +39,10 @@ This repository is a backport and adaptation of [RubenVerg/gregtech-molecule-dra
 
 ### ✨ Features in 1.7.10 GTNH
 
-* **Molecular Structure Diagrams**: Renders structural chemical formulas and molecular bond diagrams directly inside item tooltips. Includes built-in models for Silanes ($\text{SiH}_4$, $\text{Si}_2\text{H}_6$, $\text{SiCl}_4$, $\text{SiF}_4$, $\text{SiHCl}_3$, $\text{SiO}_2$), ice, polymers, etc.
+* **Molecular Structure Diagrams**: Renders structural chemical formulas and molecular bond diagrams directly inside item tooltips. Includes built-in models for Silanes (SiH₄, Si₂H₆, SiCl₄, SiF₄, SiHCl₃, SiO₂), ice, polymers, etc.
 * **Chemical Rendering Improvements**:
   * Double bonds maintain a constant 2.4px offset with 2px corner indentation to prevent lines from merging.
-  * Polymer brackets feature safe margins ($\pm 6\text{px}$ horizontal, $\pm 4\text{px}$ vertical) with anchored subscript $n$ that stays in place.
+  * Polymer brackets feature safe margins (±6px horizontal, ±4px vertical) with anchored subscript *n* that stays in place.
 * **Dynamic Alloy & Compound Pie Charts**:
   * Automatically calculates mass-weighted or atom-count component breakdowns.
   * Supports GTNH mythical elements (`D*` Awakened Draconium, `If*` Infinity, `Nq*` Naquadah, `Nt` Neutronium, `Sh` Shadow Metal, `Ma` Magic, etc.), restoring charts for **Void Metal** and **UEV Superconductor Base**.
@@ -101,10 +101,10 @@ Compiled jar will be located at `build/libs/`.
 ### ✨ 1.7.10 GTNH 版本特性
 
 * **分子结构式与化学键图表展示**：在物品提示框（Tooltip）内直观展示分子结构式与化学键连接。
-  * **硅烷族模型补齐**：为甲硅烷（$\text{SiH}_4$）、乙硅烷（$\text{Si}_2\text{H}_6$）、四氯化硅（$\text{SiCl}_4$）、四氟化硅（$\text{SiF}_4$）、三氯硅烷（$\text{SiHCl}_3$）及二氧化硅（$\text{SiO}_2$）建立了专属分子结构模型。
+  * **硅烷族模型补齐**：为甲硅烷（SiH₄）、乙硅烷（Si₂H₆）、四氯化硅（SiCl₄）、四氟化硅（SiF₄）、三氯硅烷（SiHCl₃）及二氧化硅（SiO₂）建立了专属分子结构模型。
 * **化学结构渲染优化**：
   * **碳碳双键及芳香环修补**：采用双线恒定 2.4px 法向平移与拐角 2px 缩进，减少双键重合遮挡现象。
-  * **高分子方括号与下标固定**：设置了适宜的包围盒留白（水平 $\pm 6\text{px}$，垂直 $\pm 4\text{px}$），下标 $n$ 锚定在右括号 `]` 底部，保持稳定不漂移。
+  * **高分子方括号与下标固定**：设置了适宜的包围盒留白（水平 ±6px，垂直 ±4px），下标 *n* 锚定在右括号 `]` 底部，保持稳定不漂移。
 * **动态合金与化合物饼状图**：
   * 支持质量占比（Mass）与原子数占比（Count）两种计算模式。
   * **支持 GTNH 虚构与魔法元素**：解析并高亮展示 `D*`（觉醒龙）、`If*`（无尽）、`Nq*`（超能硅岩）、`Nt`（中子素）、`Sh`（暗影金属）、`Ma`（魔法组分）等，恢复**虚空金属**与 **UEV 超导粗胚**等材料的饼图展示。
