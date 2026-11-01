@@ -52,6 +52,20 @@ public final class MoleculeManager {
         ALIASES.put("pps", "polyphenylene_sulfide");
         ALIASES.put("pvb", "polyvinyl_butyral");
         ALIASES.put("pva", "polyvinyl_acetate");
+        ALIASES.put("aluminiumhydroxide", "aluminium_hydroxide");
+        ALIASES.put("aluminium_hydroxide", "aluminium_hydroxide");
+        ALIASES.put("aluminum_hydroxide", "aluminium_hydroxide");
+        ALIASES.put("sodium_hydroxide", "sodium_hydroxide");
+        ALIASES.put("sodiumhydroxide", "sodium_hydroxide");
+        ALIASES.put("potassium_hydroxide", "potassium_hydroxide");
+        ALIASES.put("potassiumhydroxide", "potassium_hydroxide");
+        ALIASES.put("sulfuric_acid", "sulfuric_acid");
+        ALIASES.put("sulfuricacid", "sulfuric_acid");
+        ALIASES.put("diluted_sulfuric_acid", "sulfuric_acid");
+        ALIASES.put("nitric_acid", "nitric_acid");
+        ALIASES.put("nitricacid", "nitric_acid");
+        ALIASES.put("phosphoric_acid", "phosphoric_acid");
+        ALIASES.put("phosphoricacid", "phosphoric_acid");
         ALIASES.put("silane", "silane");
         ALIASES.put("disilane", "disilane");
         ALIASES.put("silicon_tetrachloride", "silicon_tetrachloride");
@@ -88,6 +102,13 @@ public final class MoleculeManager {
         ALIASES.put("nitrogen_dioxide", "nitrogen_dioxide");
 
         // 化学式反查分子结构
+        FORMULA_MAP.put("aloh3", "aluminium_hydroxide");
+        FORMULA_MAP.put("alo3h3", "aluminium_hydroxide");
+        FORMULA_MAP.put("naoh", "sodium_hydroxide");
+        FORMULA_MAP.put("koh", "potassium_hydroxide");
+        FORMULA_MAP.put("h2so4", "sulfuric_acid");
+        FORMULA_MAP.put("hno3", "nitric_acid");
+        FORMULA_MAP.put("h3po4", "phosphoric_acid");
         FORMULA_MAP.put("h2o", "water");
         FORMULA_MAP.put("ch4", "methane");
         FORMULA_MAP.put("co2", "carbon_dioxide");

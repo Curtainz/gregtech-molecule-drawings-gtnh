@@ -1,5 +1,7 @@
 package com.rubenverg.moldraw;
 
+import java.util.Locale;
+
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
@@ -28,10 +30,18 @@ public final class GT5MaterialLookup {
             return null;
         }
 
+        // 预检：排除模具、工具、机械外壳等非基础材料物品
+        if (isNonMaterialItem(stack, null)) {
+            return null;
+        }
+
         // 1. 检查 OreDict 数据 (覆盖大部分 GT 原生材料物品，如锭、粉、板、棒、导线等)
         try {
             ItemData data = GTOreDictUnificator.getItemData(stack);
             if (data != null && data.mMaterial != null && isMaterialValid(data.mMaterial.mMaterial)) {
+                if (isNonMaterialItem(stack, data)) {
+                    return null;
+                }
                 return data.mMaterial.mMaterial;
             }
         } catch (Throwable ignored) {}
@@ -64,6 +74,12 @@ public final class GT5MaterialLookup {
             for (int id : oreIDs) {
                 String oreName = OreDictionary.getOreName(id);
                 if (oreName != null && !oreName.isEmpty()) {
+                    String oLower = oreName.toLowerCase(Locale.ROOT);
+                    if (oLower.contains("shape") || oLower.contains("mold")
+                        || oLower.contains("tool")
+                        || oLower.contains("casing")) {
+                        continue;
+                    }
                     Materials mat = resolveOreName(oreName);
                     if (isMaterialValid(mat)) {
                         return mat;
@@ -84,6 +100,57 @@ public final class GT5MaterialLookup {
         } catch (Throwable ignored) {}
 
         return null;
+    }
+
+    public static boolean isNonMaterialItem(ItemStack stack, ItemData data) {
+        if (stack == null) return true;
+
+        if (data != null && data.mPrefix != null) {
+            String pName = data.mPrefix.name()
+                .toLowerCase(Locale.ROOT);
+            if (pName.contains("shape") || pName.contains("mold")
+                || pName.contains("tool")
+                || pName.contains("crafting")
+                || pName.contains("casing")
+                || pName.contains("circuit")
+                || pName.contains("machine")) {
+                return true;
+            }
+        }
+
+        String unloc = stack.getUnlocalizedName();
+        if (unloc != null) {
+            String u = unloc.toLowerCase(Locale.ROOT);
+            if (u.contains("shape") || u.contains("mold")
+                || u.contains(".tool.")
+                || u.contains("toolhead")
+                || u.contains("wrench")
+                || u.contains("hammer")
+                || u.contains("crowbar")
+                || u.contains("file")
+                || u.contains("screwdriver")
+                || u.contains("cutter")
+                || u.contains("saw")
+                || u.contains("slicer")) {
+                return true;
+            }
+        }
+
+        try {
+            String disp = stack.getDisplayName();
+            if (disp != null) {
+                String d = disp.toLowerCase(Locale.ROOT);
+                if (d.contains("mold") || d.contains("模具")
+                    || d.contains("shape")
+                    || d.contains("extruder shape")
+                    || d.contains("挤压模具")
+                    || d.contains("切片")) {
+                    return true;
+                }
+            }
+        } catch (Throwable ignored) {}
+
+        return false;
     }
 
     public static Materials getMaterialFromFluid(Fluid fluid) {

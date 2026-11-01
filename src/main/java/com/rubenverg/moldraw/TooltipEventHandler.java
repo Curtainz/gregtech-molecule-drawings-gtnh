@@ -23,7 +23,16 @@ public class TooltipEventHandler {
     public void onItemTooltip(ItemTooltipEvent event) {
         if (!MolDrawConfig.INSTANCE.enabled) return;
         ItemStack stack = event.itemStack;
-        if (stack == null) return;
+        if (stack == null || event.toolTip == null) return;
+
+        // 避免重复检测与提示叠加：如果已有 Shift 提示或 MolDraw 标记，直接返回
+        for (Object lineObj : event.toolTip) {
+            if (lineObj == null) continue;
+            String line = lineObj.toString();
+            if (line.startsWith("\u00a7x") || line.contains("Shift") || line.startsWith(PLACEHOLDER_PREFIX)) {
+                return;
+            }
+        }
 
         Materials mat = GT5MaterialLookup.getMaterial(stack);
         if (mat == null) return;

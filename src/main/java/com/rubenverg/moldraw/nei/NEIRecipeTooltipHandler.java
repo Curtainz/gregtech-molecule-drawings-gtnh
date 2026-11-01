@@ -20,7 +20,6 @@ import com.rubenverg.moldraw.GT5MaterialLookup;
 import com.rubenverg.moldraw.MolDraw;
 import com.rubenverg.moldraw.MolDrawConfig;
 import com.rubenverg.moldraw.MoleculeManager;
-import com.rubenverg.moldraw.NEITooltipHelper;
 import com.rubenverg.moldraw.component.AlloyRenderer;
 import com.rubenverg.moldraw.component.MoleculeRenderer;
 import com.rubenverg.moldraw.molecule.Molecule;
@@ -101,7 +100,8 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
     private static boolean hasExistingTokenOrHint(List<String> tip) {
         for (String line : tip) {
             if (line == null) continue;
-            if (line.startsWith("\u00a7x") || line.contains("[按住 Shift 查看")) {
+            if (line.startsWith("\u00a7x") || line.contains("Shift")
+                || line.startsWith(com.rubenverg.moldraw.TooltipEventHandler.PLACEHOLDER_PREFIX)) {
                 return true;
             }
         }
@@ -227,18 +227,7 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
             return currenttip;
         }
 
-        String token = null;
-        if (molRenderer != null) {
-            token = NEITooltipHelper.registerMoleculeHandler(molRenderer, font);
-        } else {
-            token = NEITooltipHelper.registerAlloyHandler(alloyRenderer, font);
-        }
-
-        if (token != null) {
-            insertToken(currenttip, token, mat.getChemicalFormula());
-        }
-
-        return currenttip;
+        return applyRenderPlaceholders(currenttip, molRenderer, alloyRenderer, font, mat.getChemicalFormula());
     }
 
     private List<String> processTooltipWithMolecule(Molecule mol, List<String> currenttip) {
@@ -251,14 +240,51 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
 
         FontRenderer font = Minecraft.getMinecraft().fontRenderer;
         MoleculeRenderer molRenderer = new MoleculeRenderer(mol);
-        String token = NEITooltipHelper.registerMoleculeHandler(molRenderer, font);
-        if (token != null) {
-            insertToken(currenttip, token, null);
+        return applyRenderPlaceholders(currenttip, molRenderer, null, font, null);
+    }
+
+    private static List<String> applyRenderPlaceholders(List<String> currenttip, MoleculeRenderer molRenderer,
+        AlloyRenderer alloyRenderer, FontRenderer font, String formula) {
+        int renderWidth = molRenderer != null ? molRenderer.getWidth(font) : alloyRenderer.getWidth(font);
+        int renderHeight = molRenderer != null ? molRenderer.getHeight(font) : alloyRenderer.getHeight(font);
+
+        int targetIdx = getTargetInsertIndex(currenttip, formula);
+
+        // 撑开宽度
+        StringBuilder widthPad = new StringBuilder(com.rubenverg.moldraw.TooltipEventHandler.PLACEHOLDER_PREFIX);
+        while (font.getStringWidth(widthPad.toString()) < renderWidth) {
+            widthPad.append(" ");
         }
+        currenttip.add(targetIdx, widthPad.toString());
+
+        // 撑开高度 (每行 10px)
+        int linesToInsert = (renderHeight + 9) / 10;
+        for (int i = 1; i < linesToInsert; i++) {
+            currenttip.add(targetIdx + i, com.rubenverg.moldraw.TooltipEventHandler.PLACEHOLDER_PREFIX);
+        }
+
+        int maxTooltipWidth = 0;
+        for (String line : currenttip) {
+            if (line != null) {
+                int w = font.getStringWidth(line);
+                if (w > maxTooltipWidth) maxTooltipWidth = w;
+            }
+        }
+
+        int totalLines = currenttip.size();
+
+        if (molRenderer != null) {
+            com.rubenverg.moldraw.component.TooltipRenderContext
+                .setPendingMolecule(molRenderer, renderWidth, renderHeight, targetIdx, totalLines, maxTooltipWidth);
+        } else {
+            com.rubenverg.moldraw.component.TooltipRenderContext
+                .setPendingAlloy(alloyRenderer, renderWidth, renderHeight, targetIdx, totalLines, maxTooltipWidth);
+        }
+
         return currenttip;
     }
 
-    private static void insertToken(List<String> tip, String token, String formula) {
+    private static int getTargetInsertIndex(List<String> tip, String formula) {
         int targetIdx = -1;
         if (formula != null && !formula.isEmpty()) {
             String cleanFormula = FormulaParser.normalizeFormula(formula)
@@ -273,9 +299,8 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
             }
         }
         if (targetIdx >= 0 && targetIdx <= tip.size()) {
-            tip.add(targetIdx, token);
-        } else {
-            tip.add(token);
+            return targetIdx;
         }
+        return tip.size();
     }
 }
