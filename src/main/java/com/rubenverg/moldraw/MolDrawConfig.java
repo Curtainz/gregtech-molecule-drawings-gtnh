@@ -7,6 +7,7 @@ import net.minecraftforge.common.config.Configuration;
 public class MolDrawConfig {
 
     public static MolDrawConfig INSTANCE = new MolDrawConfig();
+    public static Configuration config;
 
     public boolean enabled = true;
     public boolean onlyShowOnShift = true;
@@ -50,7 +51,14 @@ public class MolDrawConfig {
     }
 
     public static void load(File configFile) {
-        Configuration config = new Configuration(configFile);
+        if (config == null) {
+            config = new Configuration(configFile);
+        }
+        syncConfig();
+    }
+
+    public static void syncConfig() {
+        if (config == null) return;
         try {
             config.load();
 
@@ -86,7 +94,7 @@ public class MolDrawConfig {
                 .getDouble();
 
             String modeStr = config
-                .getString("benzeneCircle", "molecule", "CIRCLE", "Benzene display mode: CIRCLE or KEKULE");
+                .getString("benzeneCircle", "molecule", "CIRCLE", "Benzene display mode: CIRCLE or DOUBLE_BONDS");
             try {
                 INSTANCE.molecule.benzeneCircle = MoleculeConfig.AromaticMode.valueOf(modeStr.toUpperCase());
             } catch (Exception e) {
@@ -120,9 +128,8 @@ public class MolDrawConfig {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (config.hasChanged()) {
-                config.save();
-            }
+            // 无条件强制保存配置文件，确保首次运行即在 config 目录下生成实体 .cfg 文件
+            config.save();
         }
     }
 }

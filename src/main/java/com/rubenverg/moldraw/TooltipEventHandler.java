@@ -78,10 +78,14 @@ public class TooltipEventHandler {
                 String formula = mat.getChemicalFormula();
                 int targetIdx = -1;
                 if (formula != null && !formula.isEmpty()) {
+                    String cleanFormula = com.rubenverg.moldraw.util.FormulaParser.normalizeFormula(formula)
+                        .toLowerCase();
                     for (int i = 0; i < event.toolTip.size(); i++) {
-                        String line = event.toolTip.get(i)
-                            .toString();
-                        if (line.contains(formula)) {
+                        String line = com.rubenverg.moldraw.util.FormulaParser.normalizeFormula(
+                            event.toolTip.get(i)
+                                .toString())
+                            .toLowerCase();
+                        if (line.contains(cleanFormula)) {
                             targetIdx = i + 1;
                             break;
                         }
@@ -151,21 +155,50 @@ public class TooltipEventHandler {
         int totalLines = TooltipRenderContext.getTotalTooltipLines();
         int maxTooltipWidth = TooltipRenderContext.getMaxTooltipWidth();
 
-        int tooltipX = mouseX + 12;
-        int tooltipY = mouseY - 12;
-        int totalHeight = 8;
-        if (totalLines > 1) {
-            totalHeight += 2 + (totalLines - 1) * 10;
-        }
+        // 尝试从 GTNHLib / NEI 的 RenderTooltipEvent 抓取真实的 X 和 Y 坐标！
+        int realX = -1;
+        int realY = -1;
+        try {
+            Class<?> helperCls = Class.forName("codechicken.nei.util.RenderTooltipEventHelper");
+            java.lang.reflect.Method getX = helperCls.getMethod("getX");
+            java.lang.reflect.Method getY = helperCls.getMethod("getY");
+            Object ox = getX.invoke(null);
+            Object oy = getY.invoke(null);
+            if (ox instanceof Integer && oy instanceof Integer) {
+                realX = (Integer) ox;
+                realY = (Integer) oy;
+            }
+        } catch (Throwable ignored) {}
 
-        int screenWidth = mc.currentScreen != null ? mc.currentScreen.width : mc.displayWidth;
-        int screenHeight = mc.currentScreen != null ? mc.currentScreen.height : mc.displayHeight;
+        int tooltipX;
+        int tooltipY;
 
-        if (tooltipX + maxTooltipWidth > screenWidth) {
-            tooltipX -= 28 + maxTooltipWidth;
-        }
-        if (tooltipY + totalHeight + 6 > screenHeight) {
-            tooltipY = screenHeight - totalHeight - 6;
+        if (realX >= 0 && realY >= 0) {
+            tooltipX = realX;
+            tooltipY = realY;
+        } else {
+            tooltipX = mouseX + 12;
+            tooltipY = mouseY - 12;
+            int totalHeight = 8;
+            if (totalLines > 1) {
+                totalHeight += 2 + (totalLines - 1) * 10;
+            }
+
+            int screenWidth = mc.currentScreen != null ? mc.currentScreen.width : mc.displayWidth;
+            int screenHeight = mc.currentScreen != null ? mc.currentScreen.height : mc.displayHeight;
+
+            // 智能防遮挡：如果超出屏幕右边界，或者鼠标在右半屏，切换到鼠标左侧！
+            if (tooltipX + maxTooltipWidth > screenWidth
+                || (mc.currentScreen instanceof net.minecraft.client.gui.inventory.GuiContainer
+                    && mouseX > screenWidth / 2)) {
+                tooltipX = mouseX - 16 - maxTooltipWidth;
+            }
+            if (tooltipY + totalHeight + 6 > screenHeight) {
+                tooltipY = screenHeight - totalHeight - 6;
+            }
+            if (tooltipY < 6) {
+                tooltipY = 6;
+            }
         }
 
         int drawX = tooltipX;

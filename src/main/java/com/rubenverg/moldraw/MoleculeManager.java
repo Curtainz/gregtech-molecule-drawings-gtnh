@@ -57,9 +57,6 @@ public final class MoleculeManager {
         ALIASES.put("silicon_tetrachloride", "silicon_tetrachloride");
         ALIASES.put("silicon_tetrafluoride", "silicon_tetrafluoride");
         ALIASES.put("trichlorosilane", "trichlorosilane");
-        ALIASES.put("silicon_dioxide", "silicon_dioxide");
-        ALIASES.put("silica", "silicon_dioxide");
-        ALIASES.put("quartz", "silicon_dioxide");
 
         // 化学式反查分子结构
         FORMULA_MAP.put("h2o", "water");
@@ -100,7 +97,6 @@ public final class MoleculeManager {
         FORMULA_MAP.put("sicl4", "silicon_tetrachloride");
         FORMULA_MAP.put("sif4", "silicon_tetrafluoride");
         FORMULA_MAP.put("sihcl3", "trichlorosilane");
-        FORMULA_MAP.put("sio2", "silicon_dioxide");
     }
 
     public static Molecule getMolecule(Materials material) {

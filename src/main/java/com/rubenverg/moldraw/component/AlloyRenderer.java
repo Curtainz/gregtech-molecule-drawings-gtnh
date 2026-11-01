@@ -51,51 +51,92 @@ public class AlloyRenderer {
     public static List<Pair<Materials, Long>> deriveComponents(Materials material) {
         if (material == null || material == Materials._NULL) return Collections.emptyList();
 
-        List<Pair<Materials, Long>> override = AlloyManager.getAlloyComponents(material);
-        if (override != null && !override.isEmpty()) {
-            return override;
-        }
-
-        List<Pair<Materials, Long>> result = new ArrayList<>();
-        if (material.mMaterialList == null || material.mMaterialList.isEmpty()) {
-            // 没有材料配方列表时，尝试通过化学式解析
-            String formula = material.getChemicalFormula();
-            if (formula != null && !formula.isEmpty()) {
-                List<Pair<Materials, Long>> parsed = FormulaParser.parseToWeightedComponents(formula);
-                if (parsed.size() > 1) {
-                    return parsed;
-                }
-            }
-            result.add(new Pair<>(material, 1L));
-            return result;
-        }
-
-        for (MaterialStack ms : material.mMaterialList) {
-            if (ms.mMaterial != null && ms.mMaterial != Materials._NULL) {
-                if (MolDrawConfig.INSTANCE.alloy.recursive && ms.mMaterial.mMaterialList != null
-                    && !ms.mMaterial.mMaterialList.isEmpty()) {
-                    List<Pair<Materials, Long>> sub = deriveComponents(ms.mMaterial);
-                    for (Pair<Materials, Long> p : sub) {
-                        result.add(new Pair<>(p.getA(), p.getB() * ms.mAmount));
-                    }
-                } else {
-                    result.add(new Pair<>(ms.mMaterial, ms.mAmount));
-                }
-            }
+        List<Pair<Materials, Long>> raw = decomposeRecursive(material, new HashSet<>());
+        if (raw == null || raw.isEmpty()) {
+            return Collections.emptyList();
         }
 
         // 合并相同材料
         Map<Materials, Long> merged = new LinkedHashMap<>();
-        for (Pair<Materials, Long> p : result) {
-            merged.put(p.getA(), merged.getOrDefault(p.getA(), 0L) + p.getB());
+        for (Pair<Materials, Long> p : raw) {
+            if (p != null && p.getA() != null && p.getB() != null && p.getB() > 0) {
+                merged.put(p.getA(), merged.getOrDefault(p.getA(), 0L) + p.getB());
+            }
         }
+
         List<Pair<Materials, Long>> finalComponents = new ArrayList<>();
         for (Map.Entry<Materials, Long> entry : merged.entrySet()) {
             finalComponents.add(new Pair<>(entry.getKey(), entry.getValue()));
         }
+
         finalComponents.sort(
             (a, b) -> Long.compare(maybeMultiplyByMass(b.getA(), b.getB()), maybeMultiplyByMass(a.getA(), a.getB())));
         return finalComponents;
+    }
+
+    private static List<Pair<Materials, Long>> decomposeRecursive(Materials material, Set<Materials> visited) {
+        if (material == null || material == Materials._NULL) return Collections.emptyList();
+        if (visited.contains(material)) {
+            return Collections.singletonList(new Pair<>(material, 1L));
+        }
+        visited.add(material);
+
+        // 1. 优先检查外部覆写配置
+        List<Pair<Materials, Long>> override = AlloyManager.getAlloyComponents(material);
+        if (override != null && !override.isEmpty()) {
+            if (!MolDrawConfig.INSTANCE.alloy.recursive) {
+                return override;
+            }
+            List<Pair<Materials, Long>> result = new ArrayList<>();
+            for (Pair<Materials, Long> p : override) {
+                if (p.getA() != null && p.getA().mElement == null && p.getA() != material) {
+                    List<Pair<Materials, Long>> sub = decomposeRecursive(p.getA(), new HashSet<>(visited));
+                    for (Pair<Materials, Long> sp : sub) {
+                        result.add(new Pair<>(sp.getA(), sp.getB() * p.getB()));
+                    }
+                } else {
+                    result.add(p);
+                }
+            }
+            return result;
+        }
+
+        // 2. 如果本身就是不可再分的基础单质元素，直接返回
+        if (material.mElement != null) {
+            return Collections.singletonList(new Pair<>(material, 1L));
+        }
+
+        List<Pair<Materials, Long>> result = new ArrayList<>();
+
+        // 3. 检查是否有配方材料列表 mMaterialList
+        if (material.mMaterialList != null && !material.mMaterialList.isEmpty()) {
+            for (MaterialStack ms : material.mMaterialList) {
+                if (ms.mMaterial != null && ms.mMaterial != Materials._NULL) {
+                    if (MolDrawConfig.INSTANCE.alloy.recursive && ms.mMaterial != material) {
+                        List<Pair<Materials, Long>> sub = decomposeRecursive(ms.mMaterial, new HashSet<>(visited));
+                        for (Pair<Materials, Long> p : sub) {
+                            result.add(new Pair<>(p.getA(), p.getB() * ms.mAmount));
+                        }
+                    } else {
+                        result.add(new Pair<>(ms.mMaterial, ms.mAmount));
+                    }
+                }
+            }
+            if (!result.isEmpty()) {
+                return result;
+            }
+        }
+
+        // 4. 若无 mMaterialList 或为空，但存在复合化学式（如红石、二氧化硅、脉冲混合物等），通过化学式解析为基础元素
+        String formula = material.getChemicalFormula();
+        if (formula != null && !formula.isEmpty()) {
+            List<Pair<Materials, Long>> parsed = FormulaParser.parseToWeightedComponents(formula);
+            if (parsed != null && !parsed.isEmpty()) {
+                return parsed;
+            }
+        }
+
+        return Collections.singletonList(new Pair<>(material, 1L));
     }
 
     public AlloyRenderer(Materials material, FontRenderer font) {

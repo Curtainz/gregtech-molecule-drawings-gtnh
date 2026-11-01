@@ -115,13 +115,13 @@ public class MoleculeRenderer {
     }
 
     private UnaryOperator<Vector2f> toScaledFactory(int lineHeight) {
+        final int topPad = 12 + (atomAtTopTop ? lineHeight * 2 + 6 : atomAtTop ? lineHeight + 4 : 4);
+        final int leftPad = 12 + (atomAtLefLef ? 14 : 0) + (parenAtLef ? 8 : 0);
         return xy -> {
             var result = new Vector2f();
             new Vector2f(xy.x, xy.y).sub(xyStart, result);
             result.mul(MolDrawConfig.INSTANCE.molecule.moleculeScale);
-            return new Vector2f(
-                result.x + 8 + (atomAtLefLef ? 12 : 0) + (parenAtLef ? 6 : 0),
-                -result.y + (atomAtTopTop ? lineHeight * 2 + 4 : atomAtTop ? lineHeight + 2 : 4));
+            return new Vector2f(result.x + leftPad, -result.y + topPad);
         };
     }
 
@@ -141,11 +141,11 @@ public class MoleculeRenderer {
     }
 
     public int getWidth(FontRenderer font) {
-        return xySize.x + 32 + (atomAtLefLef ? 12 : 0) + (parenAtLef ? 6 : 0);
+        return xySize.x + 36 + (atomAtLefLef ? 14 : 0) + (parenAtLef ? 10 : 0);
     }
 
     public int getHeight(FontRenderer font) {
-        return xySize.y + 24 + (atomAtBotBot ? 14 : 0) + (atomAtTopTop ? 18 : atomAtTop ? 8 : 0);
+        return xySize.y + 32 + (atomAtBotBot ? 16 : 0) + (atomAtTopTop ? 22 : atomAtTop ? 14 : 6);
     }
 
     public void render(FontRenderer font, int x, int y) {
@@ -352,7 +352,7 @@ public class MoleculeRenderer {
             final float uy = dy / length;
 
             final int lineCount = bond.lines().length;
-            final float separation = 2.4f;
+            final float separation = 3.6f;
 
             for (int i = 0; i < lineCount; i++) {
                 float offset;
@@ -363,16 +363,17 @@ public class MoleculeRenderer {
                     if (bond.centered()) {
                         offset = (i == 0 ? -1.0f : 1.0f) * (separation / 2.0f);
                     } else {
-                        // 环内双键或不对称双键：第一条为骨架主键(0偏移)，第二条为内侧副键(偏移+两端微缩进2px以防与拐角重叠)
+                        // 环内双键或不对称双键：第一条为骨架主键(0偏移)，第二条为内侧副键(偏移+两端微缩进2.5px以防与拐角重叠)
                         if (i == 0) {
                             offset = 0.0f;
                         } else {
                             offset = separation;
-                            shorten = 2.0f;
+                            shorten = 2.5f;
                         }
                     }
                 } else if (lineCount == 3) {
                     offset = (i - 1) * separation;
+                    shorten = (i == 1) ? 0.0f : 2.5f;
                 } else {
                     offset = (i - (lineCount - 1) / 2.0f) * separation;
                 }
@@ -407,26 +408,21 @@ public class MoleculeRenderer {
             // 使用静态无自转投影 project(xyz, -1)，确保外括号与原点严格锁定，不随旋转晃动！
             final var bounds = this.molecule.subset(pp.atoms())
                 .boundsWithSize(xyz -> toScaled.apply(project(xyz, -1)), sizeOfAtomFactory(font.FONT_HEIGHT));
-            final int minX = MathHelper.floor_float(bounds.getFirst().x) + x - 6;
+            final int minX = MathHelper.floor_float(bounds.getFirst().x) + x - 8;
             final int minY = MathHelper.floor_float(bounds.getFirst().y) + y - 4;
-            final int maxX = MathHelper.floor_float(bounds.getSecond().x) + x + 6;
+            final int maxX = MathHelper.floor_float(bounds.getSecond().x) + x + 8;
             final int maxY = MathHelper.floor_float(bounds.getSecond().y) + y + 4;
+            final int arm = 6; // 方括号横线向内伸展臂长
 
-            // 左方括号 [
-            GraphicalUtils
-                .plotLine(minX - 2, minY, minX + 2, minY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
-            GraphicalUtils
-                .plotLine(minX - 2, maxY, minX + 2, maxY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
-            GraphicalUtils
-                .plotLine(minX - 2, minY, minX - 2, maxY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
+            // 左方括号 [ ：竖线在 minX，上下横线向内(右)伸展
+            GraphicalUtils.plotLine(minX, minY, minX + arm, minY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
+            GraphicalUtils.plotLine(minX, maxY, minX + arm, maxY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
+            GraphicalUtils.plotLine(minX, minY, minX, maxY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
 
-            // 右方括号 ]
-            GraphicalUtils
-                .plotLine(maxX - 2, minY, maxX + 2, minY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
-            GraphicalUtils
-                .plotLine(maxX - 2, maxY, maxX + 2, maxY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
-            GraphicalUtils
-                .plotLine(maxX + 2, minY, maxX + 2, maxY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
+            // 右方括号 ] ：竖线在 maxX，上下横线向内(左)伸展
+            GraphicalUtils.plotLine(maxX - arm, minY, maxX, minY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
+            GraphicalUtils.plotLine(maxX - arm, maxY, maxX, maxY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
+            GraphicalUtils.plotLine(maxX, minY, maxX, maxY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
         } else if (elem instanceof CircleTransformation ct) {
             for (int atomIdx : ct.atoms()) {
                 final var atom = this.molecule.getAtom(atomIdx)
@@ -460,6 +456,12 @@ public class MoleculeRenderer {
                 int color = MoleculeColorize.getColorForElement(
                     atom.element()
                         .element());
+                GraphicalUtils.fill(
+                    px - width / 2 - 1,
+                    py - font.FONT_HEIGHT / 2,
+                    px + width / 2 + 1,
+                    py + font.FONT_HEIGHT / 2,
+                    0xDD100010);
                 font.drawStringWithShadow(symbol, px - width / 2, py - font.FONT_HEIGHT / 2, color);
             }
 
@@ -476,6 +478,13 @@ public class MoleculeRenderer {
                         .get()
                         .element());
                 int mainW = elementWidths.getOrDefault(atom.element(), 0);
+                int w = font.getStringWidth(str);
+                GraphicalUtils.fill(
+                    px + mainW / 2,
+                    py - font.FONT_HEIGHT / 2,
+                    px + mainW / 2 + w + 2,
+                    py + font.FONT_HEIGHT / 2,
+                    0xDD100010);
                 font.drawStringWithShadow(str, px + mainW / 2 + 1, py - font.FONT_HEIGHT / 2, color);
             }
             if (atom.left()
@@ -492,6 +501,12 @@ public class MoleculeRenderer {
                         .element());
                 int w = font.getStringWidth(str);
                 int mainW = elementWidths.getOrDefault(atom.element(), 0);
+                GraphicalUtils.fill(
+                    px - mainW / 2 - w - 2,
+                    py - font.FONT_HEIGHT / 2,
+                    px - mainW / 2,
+                    py + font.FONT_HEIGHT / 2,
+                    0xDD100010);
                 font.drawStringWithShadow(str, px - mainW / 2 - w - 1, py - font.FONT_HEIGHT / 2, color);
             }
             if (atom.above()
@@ -507,6 +522,12 @@ public class MoleculeRenderer {
                         .get()
                         .element());
                 int w = font.getStringWidth(str);
+                GraphicalUtils.fill(
+                    px - w / 2 - 1,
+                    py - font.FONT_HEIGHT * 3 / 2,
+                    px + w / 2 + 1,
+                    py - font.FONT_HEIGHT / 2,
+                    0xDD100010);
                 font.drawStringWithShadow(str, px - w / 2, py - font.FONT_HEIGHT * 3 / 2, color);
             }
             if (atom.below()
@@ -522,25 +543,31 @@ public class MoleculeRenderer {
                         .get()
                         .element());
                 int w = font.getStringWidth(str);
+                GraphicalUtils.fill(
+                    px - w / 2 - 1,
+                    py + font.FONT_HEIGHT / 2,
+                    px + w / 2 + 1,
+                    py + font.FONT_HEIGHT * 3 / 2,
+                    0xDD100010);
                 font.drawStringWithShadow(str, px - w / 2, py + font.FONT_HEIGHT / 2 + 1, color);
             }
         } else if (elem instanceof Parens pp) {
             // 使用静态包围盒计算下标与上标位置，严格锁定在右方括号 ] 右侧，纹丝不动！
             final var bounds = this.molecule.subset(pp.atoms())
                 .boundsWithSize(xyz -> toScaled.apply(project(xyz, -1)), sizeOfAtomFactory(font.FONT_HEIGHT));
-            final int maxX = MathHelper.floor_float(bounds.getSecond().x) + x + 6;
+            final int maxX = MathHelper.floor_float(bounds.getSecond().x) + x + 8;
             final int maxY = MathHelper.floor_float(bounds.getSecond().y) + y + 4;
             final int minY = MathHelper.floor_float(bounds.getFirst().y) + y - 4;
             if (!pp.sub()
                 .isEmpty()) {
                 final int subX = maxX + 4;
-                final int subY = maxY - font.FONT_HEIGHT / 2;
+                final int subY = maxY - font.FONT_HEIGHT + 2;
                 font.drawStringWithShadow(pp.sub(), subX, subY, defaultColor);
             }
             if (!pp.sup()
                 .isEmpty()) {
                 final int supX = maxX + 4;
-                final int supY = minY - font.FONT_HEIGHT / 2;
+                final int supY = minY - 2;
                 font.drawStringWithShadow(pp.sup(), supX, supY, defaultColor);
             }
         } else if (elem instanceof CompositeElement<?>composite) {

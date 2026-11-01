@@ -24,23 +24,27 @@ public class NEITooltipHelper {
             checked = true;
             try {
                 guiDrawClass = Class.forName("codechicken.lib.gui.GuiDraw");
-                for (Class<?> inner : guiDrawClass.getDeclaredClasses()) {
-                    if (inner.getSimpleName()
-                        .equals("ITooltipLineHandler")) {
-                        tooltipLineHandlerClass = inner;
-                        break;
-                    }
-                }
-                if (tooltipLineHandlerClass != null) {
+                tooltipLineHandlerClass = Class.forName("codechicken.lib.gui.GuiDraw$ITooltipLineHandler");
+                if (tooltipLineHandlerClass != null && guiDrawClass != null) {
                     getTipLineIdMethod = guiDrawClass.getMethod("getTipLineId", tooltipLineHandlerClass);
                 }
-            } catch (Throwable t) {
-                guiDrawClass = null;
-                tooltipLineHandlerClass = null;
-                getTipLineIdMethod = null;
+            } catch (Throwable t1) {
+                // 回退尝试寻找可能存在的不同路径或类名
+                try {
+                    if (guiDrawClass != null) {
+                        for (Class<?> inner : guiDrawClass.getDeclaredClasses()) {
+                            if (inner.getSimpleName()
+                                .equals("ITooltipLineHandler")) {
+                                tooltipLineHandlerClass = inner;
+                                getTipLineIdMethod = guiDrawClass.getMethod("getTipLineId", inner);
+                                break;
+                            }
+                        }
+                    }
+                } catch (Throwable ignored) {}
             }
         }
-        return getTipLineIdMethod != null;
+        return getTipLineIdMethod != null && tooltipLineHandlerClass != null;
     }
 
     public static String registerMoleculeHandler(MoleculeRenderer renderer, FontRenderer font) {
@@ -48,27 +52,27 @@ public class NEITooltipHelper {
         final int w = renderer.getWidth(font);
         final int h = renderer.getHeight(font);
 
-        Object proxy = Proxy.newProxyInstance(
-            tooltipLineHandlerClass.getClassLoader(),
-            new Class<?>[] { tooltipLineHandlerClass },
-            new InvocationHandler() {
+        try {
+            Object proxy = Proxy.newProxyInstance(
+                tooltipLineHandlerClass.getClassLoader(),
+                new Class<?>[] { tooltipLineHandlerClass },
+                new InvocationHandler() {
 
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    String mName = method.getName();
-                    if (mName.equals("getSize")) {
-                        return new Dimension(w, h);
-                    } else if (mName.equals("draw")) {
-                        int x = (Integer) args[0];
-                        int y = (Integer) args[1];
-                        renderWithGL(renderer, null, font, x, y);
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                        String mName = method.getName();
+                        if (mName.equals("getSize")) {
+                            return new Dimension(w, h);
+                        } else if (mName.equals("draw")) {
+                            int x = (Integer) args[0];
+                            int y = (Integer) args[1];
+                            renderWithGL(renderer, null, font, x, y);
+                            return null;
+                        }
                         return null;
                     }
-                    return null;
-                }
-            });
+                });
 
-        try {
             int id = (Integer) getTipLineIdMethod.invoke(null, proxy);
             return "\u00a7x" + id;
         } catch (Throwable t) {
@@ -81,27 +85,27 @@ public class NEITooltipHelper {
         final int w = renderer.getWidth(font);
         final int h = renderer.getHeight(font);
 
-        Object proxy = Proxy.newProxyInstance(
-            tooltipLineHandlerClass.getClassLoader(),
-            new Class<?>[] { tooltipLineHandlerClass },
-            new InvocationHandler() {
+        try {
+            Object proxy = Proxy.newProxyInstance(
+                tooltipLineHandlerClass.getClassLoader(),
+                new Class<?>[] { tooltipLineHandlerClass },
+                new InvocationHandler() {
 
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    String mName = method.getName();
-                    if (mName.equals("getSize")) {
-                        return new Dimension(w, h);
-                    } else if (mName.equals("draw")) {
-                        int x = (Integer) args[0];
-                        int y = (Integer) args[1];
-                        renderWithGL(null, renderer, font, x, y);
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                        String mName = method.getName();
+                        if (mName.equals("getSize")) {
+                            return new Dimension(w, h);
+                        } else if (mName.equals("draw")) {
+                            int x = (Integer) args[0];
+                            int y = (Integer) args[1];
+                            renderWithGL(null, renderer, font, x, y);
+                            return null;
+                        }
                         return null;
                     }
-                    return null;
-                }
-            });
+                });
 
-        try {
             int id = (Integer) getTipLineIdMethod.invoke(null, proxy);
             return "\u00a7x" + id;
         } catch (Throwable t) {

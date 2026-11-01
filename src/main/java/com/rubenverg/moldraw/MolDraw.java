@@ -5,14 +5,23 @@ import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import cpw.mods.fml.client.event.ConfigChangedEvent;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = MolDraw.MOD_ID, name = "GregTech Molecule Drawings", version = "1.0.0", acceptableRemoteVersions = "*")
+@Mod(
+    modid = MolDraw.MOD_ID,
+    name = "GregTech Molecule Drawings",
+    version = "1.0.0",
+    guiFactory = "com.rubenverg.moldraw.gui.MolDrawGuiFactory",
+    acceptableRemoteVersions = "*")
 public class MolDraw {
 
     public static final String MOD_ID = "moldraw";
+    public static final String MODID = MOD_ID;
     public static final Logger LOGGER = LogManager.getLogger("MolDraw");
 
     @Mod.Instance(MOD_ID)
@@ -26,6 +35,16 @@ public class MolDraw {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(new TooltipEventHandler());
+        FMLCommonHandler.instance()
+            .bus()
+            .register(this);
         LOGGER.info("GregTech Molecule Drawings for 1.7.10 GTNH initialized successfully!");
+    }
+
+    @SubscribeEvent
+    public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
+        if (event.modID != null && event.modID.equals(MOD_ID)) {
+            MolDrawConfig.syncConfig();
+        }
     }
 }

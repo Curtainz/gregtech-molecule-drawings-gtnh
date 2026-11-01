@@ -39,14 +39,16 @@ This repository is a backport and adaptation of [RubenVerg/gregtech-molecule-dra
 
 ### ✨ Features in 1.7.10 GTNH
 
-* **Molecular Structure Diagrams**: Renders structural chemical formulas and molecular bond diagrams directly inside item tooltips. Includes built-in models for Silanes (SiH₄, Si₂H₆, SiCl₄, SiF₄, SiHCl₃, SiO₂), ice, polymers, etc.
+* **Molecular Structure Diagrams**: Renders structural chemical formulas and molecular bond diagrams directly inside item tooltips. Includes built-in models for Silanes (SiH₄, Si₂H₆, SiCl₄, SiF₄, SiHCl₃), ice, polymers, etc.
+* **Full Fluid & Container Support**: Automatically identifies GT fluids, fluid display items, IC2 universal fluid cells, Forestry capsules, and tanks via GT internal fluid registry and OreDictionary (`cell...`, `fluid...`, `liquid...`, `gas...`).
+* **Unified Classification**: Strictly displays 3D/2D structural formulas for organic/covalent molecules and polymers, while inorganic mineral networks (Al₂O₃, SiO₂) and alloys are uniformly represented with elemental composition pie charts.
+* **Recursive Elemental Decomposition**: Recursively breaks down sub-compounds (e.g. Redstone in Red Alloy, complex components in Pulsating Alloy) to pure elemental slices.
 * **Chemical Rendering Improvements**:
-  * Double bonds maintain a constant 2.4px offset with 2px corner indentation to prevent lines from merging.
-  * Polymer brackets feature safe margins (±6px horizontal, ±4px vertical) with anchored subscript *n* that stays in place.
-* **Dynamic Alloy & Compound Pie Charts**:
-  * Automatically calculates mass-weighted or atom-count component breakdowns.
-  * Supports GTNH mythical elements (`D*` Awakened Draconium, `If*` Infinity, `Nq*` Naquadah, `Nt` Neutronium, `Sh` Shadow Metal, `Ma` Magic, etc.), restoring charts for **Void Metal** and **UEV Superconductor Base**.
-  * Configurable folding thresholds to collapse minor elements into an "Other" category.
+  * Double bonds feature an expanded 3.6px parallel separation with 2.5px corner indentation for distinct visual clarity.
+  * Standard inward brackets `[` and `]` for polymers with safely anchored subscript *n*.
+  * Text layers rendered with background masking above bond lines, preventing structural overlaps.
+  * Generous top margins prevent diagrams from intruding into preceding text lines.
+* **In-Game Configuration GUI & Config Generation**: Full Forge In-Game Config GUI support with automatic `moldraw.cfg` generation on first launch and live reloading.
 * **Non-Invasive Implementation**: Minimal bytecode interaction, designed for stability and compatibility with NEI and tooltip mods.
 
 ### ⚙️ Configuration (`config/moldraw.cfg`)
@@ -101,15 +103,17 @@ Compiled jar will be located at `build/libs/`.
 ### ✨ 1.7.10 GTNH 版本特性
 
 * **分子结构式与化学键图表展示**：在物品提示框（Tooltip）内直观展示分子结构式与化学键连接。
-  * **硅烷族模型补齐**：为甲硅烷（SiH₄）、乙硅烷（Si₂H₆）、四氯化硅（SiCl₄）、四氟化硅（SiF₄）、三氯硅烷（SiHCl₃）及二氧化硅（SiO₂）建立了专属分子结构模型。
-* **化学结构渲染优化**：
-  * **碳碳双键及芳香环修补**：采用双线恒定 2.4px 法向平移与拐角 2px 缩进，减少双键重合遮挡现象。
-  * **高分子方括号与下标固定**：设置了适宜的包围盒留白（水平 ±6px，垂直 ±4px），下标 *n* 锚定在右括号 `]` 底部，保持稳定不漂移。
-* **动态合金与化合物饼状图**：
-  * 支持质量占比（Mass）与原子数占比（Count）两种计算模式。
-  * **支持 GTNH 虚构与魔法元素**：解析并高亮展示 `D*`（觉醒龙）、`If*`（无尽）、`Nq*`（超能硅岩）、`Nt`（中子素）、`Sh`（暗影金属）、`Ma`（魔法组分）等，恢复**虚空金属**与 **UEV 超导粗胚**等材料的饼图展示。
-  * **折叠与阈值过滤**：成分较多或占比微小的元素可折叠并入“其他”，使图表更整洁。
-* **非侵入式实现**：减少底层渲染侵入，提升运行稳定性，兼容 NEI 与常见提示框模组。
+  * **硅烷族模型补齐**：为甲硅烷（SiH₄）、乙硅烷（Si₂H₆）、四氯化硅（SiCl₄）、四氟化硅（SiF₄）、三氯硅烷（SiHCl₃）建立了专属分子结构模型。
+* **全面流体与容器支持**：无缝支持 GT 原生流体、流体显示槽、IC2 通用流体单元、Forestry 胶囊与储罐，通过 GT 原生流体映射及矿物词典（`cell...`, `fluid...`, `liquid...`, `gas...`）批量识别流体材料。
+* **分类标准统一**：有机小分子与聚合物展示结构式；无机矿物网络晶体（Al₂O₃、SiO₂）、离子化合物与合金统一以成分饼图规范呈现。
+* **递归元素深度解离**：将合金与复合化合物中的子材料（如红色合金中的红石、脉冲合金中的复杂基团）彻底递归拆解为纯元素单质，绝不残留长串复合化学式色块。
+* **高精度化学式渲染**：
+  * 双键间距扩增至 3.6px，副键端点微缩进 2.5px，斜向与横纵双轨清晰分明；
+  * 标准内折方括号 `[` 与 `]`，聚合度下标 *n* 坐落于右下角安全区，绝不被横线穿透；
+  * 原子文字位于顶层并具备底色遮罩，彻底杜绝底层骨架连线覆盖文字；
+  * 顶部预留安全留白，彻底避免图表侵略上方文本。
+* **游戏内配置界面与配置生成**：首次启动即在 `config/` 目录生成 `moldraw.cfg` 实体文件；Forge Mods 界面提供完整的游戏内配置 GUI（In-game Config），支持修改后即时热重载。
+* **高兼容性与非侵入式架构**：杜绝核心字节码篡改，与 NEI 提示框防遮挡位移保持严密同步。
 
 ### ⚙️ 配置文件说明 (`config/moldraw.cfg`)
 
