@@ -21,11 +21,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Test Network and IPv4
-        run: |
-          echo "Testing curl to services.gradle.org..."
-          curl -I -4 https://services.gradle.org/distributions/gradle-9.7.1-bin.zip || true
-
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
@@ -33,7 +28,4 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        env:
-          JAVA_OPTS: "-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true"
-          GRADLE_OPTS: "-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true -Dorg.gradle.internal.http.connectionTimeout=60000 -Dorg.gradle.internal.http.socketTimeout=60000"
         run: ./gradlew build --no-daemon
