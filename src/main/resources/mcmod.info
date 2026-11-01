@@ -1,0 +1,21 @@
+{
+	"modListVersion": 2,
+	"modList": [{
+		"modid": "${modId}",
+		"name": "${modName}",
+		"description": "Displays molecular structures and alloy compositions on tooltips for GregTech 5 Unofficial in GTNH.",
+		"version": "${modVersion}",
+		"mcversion": "${minecraftVersion}",
+		"url": "",
+		"updateUrl": "",
+		"authorList": ["RubenVerg", "Ported for GTNH"],
+		"credits": "Originally by RubenVerg; 1.7.10 GTNH port vibe-coded with Google Antigravity",
+		"logoFile": "",
+		"screenshots": [],
+		"parent": "",
+		"requiredMods": [],
+		"dependencies": [],
+		"dependants": [],
+		"useDependencyInformation": false
+	}]
+}

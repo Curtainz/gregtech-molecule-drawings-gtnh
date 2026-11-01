@@ -1,0 +1,43 @@
+{
+  "contents": [
+    {
+      "index": 0,
+      "element": "Si",
+      "x": 0.0,
+      "y": 0.0,
+      "type": "atom"
+    },
+    {
+      "index": 1,
+      "element": "O",
+      "x": -1.2,
+      "y": 0.0,
+      "type": "atom"
+    },
+    {
+      "index": 2,
+      "element": "O",
+      "x": 1.2,
+      "y": 0.0,
+      "type": "atom"
+    },
+    {
+      "a": 1,
+      "b": 0,
+      "lines": [
+        "solid",
+        "solid"
+      ],
+      "type": "bond"
+    },
+    {
+      "a": 0,
+      "b": 2,
+      "lines": [
+        "solid",
+        "solid"
+      ],
+      "type": "bond"
+    }
+  ]
+}
