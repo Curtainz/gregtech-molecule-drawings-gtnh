@@ -29,12 +29,6 @@ jobs:
           unzip -q -o "$DIST_DIR/gradle-9.7.1-bin.zip" -d "$DIST_DIR"
           touch "$DIST_DIR/gradle-9.7.1-bin.zip.ok"
 
-      - name: Test Nexus connectivity
-        run: |
-          echo "Testing curl to GTNH Nexus..."
-          curl -I -sS -v "https://nexus.gtnewhorizons.com/repository/public/" || true
-          curl -I -sS -v "https://nexus.gtnewhorizons.com/repository/public/com/gtnewhorizons/gtnhsettingsconvention/com.gtnewhorizons.gtnhsettingsconvention.gradle.plugin/2.0.33/com.gtnewhorizons.gtnhsettingsconvention.gradle.plugin-2.0.33.pom" || true
-
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
@@ -42,4 +36,4 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build --info --stacktrace --no-daemon
+        run: ./gradlew build --no-daemon
