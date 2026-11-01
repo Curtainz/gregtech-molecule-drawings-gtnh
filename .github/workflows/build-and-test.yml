@@ -29,7 +29,6 @@ jobs:
           curl -L -sS "https://github.com/gradle/gradle-distributions/releases/download/v9.7.1/gradle-9.7.1-bin.zip" -o "$DIST_DIR/gradle-9.7.1-bin.zip"
           unzip -q -o "$DIST_DIR/gradle-9.7.1-bin.zip" -d "$DIST_DIR"
           touch "$DIST_DIR/gradle-9.7.1-bin.zip.ok"
-          ls -la "$DIST_DIR"
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -38,7 +37,4 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        env:
-          JAVA_OPTS: "-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true"
-          GRADLE_OPTS: "-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true"
-        run: ./gradlew build --no-daemon
+        run: ./gradlew build --stacktrace --no-daemon
