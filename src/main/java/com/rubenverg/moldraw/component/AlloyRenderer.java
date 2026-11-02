@@ -298,7 +298,8 @@ public class AlloyRenderer implements ITooltipDrawable {
         final int ym = baseHeight / 2 + addTop + y;
         final int radius = MolDrawConfig.INSTANCE.alloy.pieChartRadius;
 
-        // 1. 绘制各成分扇区 (OpenGL GL_TRIANGLE_FAN)
+        // 1. 绘制各成分扇区 (OpenGL GL_TRIANGLE_FAN)，严格受 glPushAttrib 保护
+        GL11.glPushAttrib(GL11.GL_ENABLE_BIT | GL11.GL_COLOR_BUFFER_BIT);
         GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -377,9 +378,10 @@ public class AlloyRenderer implements ITooltipDrawable {
             GL11.glVertex2f(lx1, ly1);
         }
         GL11.glEnd();
+        GL11.glPopAttrib();
+        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 
         // 5. 文字渲染
-        GL11.glEnable(GL11.GL_TEXTURE_2D);
         for (int i = 0; i < components.size(); i++) {
             final var textStart = textStarts.get(i)
                 .getFirst();
