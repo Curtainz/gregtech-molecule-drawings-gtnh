@@ -22,11 +22,17 @@ public class MolDraw {
 
     public static final String MOD_ID = "moldraw";
     public static final String MODID = MOD_ID;
-    public static final String VERSION = "0.2.0-beta.3";
+    public static final String VERSION = "0.2.0-beta.4";
     public static final Logger LOGGER = LogManager.getLogger("MolDraw");
+
+    private static volatile Thread clientThread = null;
 
     @Mod.Instance(MOD_ID)
     public static MolDraw INSTANCE;
+
+    public static boolean isClientThread() {
+        return clientThread == null || Thread.currentThread() == clientThread;
+    }
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -35,6 +41,8 @@ public class MolDraw {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        clientThread = Thread.currentThread();
+
         MinecraftForge.EVENT_BUS.register(new TooltipEventHandler());
         FMLCommonHandler.instance()
             .bus()
@@ -52,6 +60,7 @@ public class MolDraw {
     public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
         if (event.modID != null && event.modID.equals(MOD_ID)) {
             MolDrawConfig.syncConfig();
+            RendererCache.clear();
         }
     }
 }

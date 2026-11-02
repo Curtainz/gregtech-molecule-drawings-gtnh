@@ -1,12 +1,12 @@
 package com.rubenverg.moldraw.component;
 
 import java.util.*;
-import java.util.function.IntBinaryOperator;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.StatCollector;
 
 import org.joml.Vector2i;
+import org.lwjgl.opengl.GL11;
 
 import com.rubenverg.moldraw.AlloyManager;
 import com.rubenverg.moldraw.MolDrawConfig;
@@ -290,6 +290,7 @@ public class AlloyRenderer implements ITooltipDrawable {
         return MoleculeColorize.getColorForMaterial(mat);
     }
 
+    @Override
     public void render(FontRenderer font, int x, int y) {
         if (total <= 0 || components.isEmpty()) return;
 
@@ -297,47 +298,93 @@ public class AlloyRenderer implements ITooltipDrawable {
         final int ym = baseHeight / 2 + addTop + y;
         final int radius = MolDrawConfig.INSTANCE.alloy.pieChartRadius;
 
-        final IntBinaryOperator sc = (xp, yp) -> {
-            final int rx = xp - xm, ry = yp - ym;
-            final double ng = Math.atan2(rx, -ry);
-            final double angle = ng < 0 ? ng + 2 * Math.PI : ng;
-            for (int si = 1; si < stops.size(); si++) {
-                if (angle < stops.get(si)
-                    .getA()) {
-                    return getColor(
-                        stops.get(si - 1)
-                            .getB());
-                }
-            }
-            return getColor(
-                stops.get(stops.size() - 1)
-                    .getB());
-        };
+        // 1. 绘制各成分扇区 (OpenGL GL_TRIANGLE_FAN)
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
-        // 1. 绘制饼图圆盘
-        GraphicalUtils.plotCircle(xm, ym, radius, GraphicalUtils::alwaysDraw, sc);
-
-        // 2. 绘制每个成分的引出线与文字
-        for (int i = 0; i < components.size(); i++) {
-            final var mat = components.get(i)
+        for (int i = 0; i < stops.size(); i++) {
+            double angleStart = stops.get(i)
                 .getA();
-            final var center = centers.get(i)
+            double angleEnd = (i + 1 < stops.size()) ? stops.get(i + 1)
+                .getA() : (2.0 * Math.PI);
+            int color = getColor(
+                stops.get(i)
+                    .getB());
+
+            float r = ((color >> 16) & 0xFF) / 255.0f;
+            float g = ((color >> 8) & 0xFF) / 255.0f;
+            float b = (color & 0xFF) / 255.0f;
+            float a = ((color >> 24) & 0xFF) / 255.0f;
+            if (a <= 0.0f) a = 1.0f;
+
+            GL11.glColor4f(r, g, b, a);
+            GL11.glBegin(GL11.GL_TRIANGLE_FAN);
+            GL11.glVertex2f(xm, ym);
+            int segments = Math.max(3, (int) Math.ceil((angleEnd - angleStart) / (Math.PI / 18.0)));
+            for (int s = 0; s <= segments; s++) {
+                double theta = angleStart + (angleEnd - angleStart) * s / segments;
+                float vx = (float) (xm + Math.sin(theta) * radius);
+                float vy = (float) (ym - Math.cos(theta) * radius);
+                GL11.glVertex2f(vx, vy);
+            }
+            GL11.glEnd();
+        }
+
+        // 2. 扇区分割线（仅当成分多于1个时）
+        if (stops.size() > 1) {
+            GL11.glColor4f(0.15f, 0.15f, 0.15f, 0.6f);
+            GL11.glLineWidth(1.0f);
+            GL11.glBegin(GL11.GL_LINES);
+            for (int i = 0; i < stops.size(); i++) {
+                double theta = stops.get(i)
+                    .getA();
+                GL11.glVertex2f(xm, ym);
+                GL11.glVertex2f((float) (xm + Math.sin(theta) * radius), (float) (ym - Math.cos(theta) * radius));
+            }
+            GL11.glEnd();
+        }
+
+        // 3. 饼图外边框圆形 (GL_LINE_LOOP)
+        GL11.glColor4f(0.1f, 0.1f, 0.1f, 0.85f);
+        GL11.glLineWidth(1.5f);
+        GL11.glBegin(GL11.GL_LINE_LOOP);
+        int borderSegments = 48;
+        for (int i = 0; i < borderSegments; i++) {
+            double theta = i * (2.0 * Math.PI / borderSegments);
+            GL11.glVertex2f((float) (xm + Math.sin(theta) * radius), (float) (ym - Math.cos(theta) * radius));
+        }
+        GL11.glEnd();
+
+        // 4. 引出线 (GL_LINES)
+        GL11.glColor4f(0.66f, 0.66f, 0.66f, 0.8f);
+        GL11.glLineWidth(1.2f);
+        GL11.glBegin(GL11.GL_LINES);
+        for (int i = 0; i < components.size(); i++) {
+            final double center = centers.get(i)
                 .getA();
             final var textStart = textStarts.get(i)
                 .getFirst();
             final String text = textLines.get(i);
-            final int color = textColors.get(i);
             final boolean left = center > Math.PI;
 
-            // 引出线
-            final int lx0 = xm + (int) (Math.sin(center) * 0.9 * radius);
-            final int ly0 = ym - (int) (Math.cos(center) * 0.9 * radius);
-            final int lx1 = xm + textStart.x + (left ? font.getStringWidth(text) + 2 : -2);
-            final int ly1 = ym + textStart.y + font.FONT_HEIGHT / 2;
+            final float lx0 = xm + (float) (Math.sin(center) * 0.9 * radius);
+            final float ly0 = ym - (float) (Math.cos(center) * 0.9 * radius);
+            final float lx1 = xm + textStart.x + (left ? font.getStringWidth(text) + 2 : -2);
+            final float ly1 = ym + textStart.y + font.FONT_HEIGHT / 2.0f;
 
-            GraphicalUtils.plotLine(lx0, ly0, lx1, ly1, GraphicalUtils::alwaysDraw, (_x, _y) -> 0xFFAAAAAA);
+            GL11.glVertex2f(lx0, ly0);
+            GL11.glVertex2f(lx1, ly1);
+        }
+        GL11.glEnd();
 
-            // 文字
+        // 5. 文字渲染
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        for (int i = 0; i < components.size(); i++) {
+            final var textStart = textStarts.get(i)
+                .getFirst();
+            final String text = textLines.get(i);
+            final int color = textColors.get(i);
             font.drawStringWithShadow(text, xm + textStart.x, ym + textStart.y, color);
         }
     }

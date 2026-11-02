@@ -3,6 +3,7 @@ package com.rubenverg.moldraw.component;
 import java.util.function.IntBinaryOperator;
 
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.renderer.Tessellator;
 
 public class GraphicalUtils {
 
@@ -72,13 +73,22 @@ public class GraphicalUtils {
     }
 
     public static void plotLine(int x0, int y0, int x1, int y1, PixelPredicate shouldDraw, IntBinaryOperator color) {
-        plotLine(
-            x0,
-            y0,
-            x1,
-            y1,
-            shouldDraw,
-            (DrawPixel) (xp, yp) -> fill(xp, yp, xp + 1, yp + 1, color.applyAsInt(xp, yp)));
+        Tessellator tess = Tessellator.instance;
+        tess.startDrawingQuads();
+        plotLine(x0, y0, x1, y1, shouldDraw, (DrawPixel) (xp, yp) -> {
+            int c = color.applyAsInt(xp, yp);
+            float a = (float) (c >> 24 & 255) / 255.0F;
+            float r = (float) (c >> 16 & 255) / 255.0F;
+            float g = (float) (c >> 8 & 255) / 255.0F;
+            float b = (float) (c & 255) / 255.0F;
+            if (a <= 0.0f) a = 1.0f;
+            tess.setColorRGBA_F(r, g, b, a);
+            tess.addVertex(xp, yp + 1, 0.0);
+            tess.addVertex(xp + 1, yp + 1, 0.0);
+            tess.addVertex(xp + 1, yp, 0.0);
+            tess.addVertex(xp, yp, 0.0);
+        });
+        tess.draw();
     }
 
     public static void plotCircle(int xm, int ym, int r, PixelPredicate shouldDraw, DrawPixel doDraw) {
@@ -98,11 +108,21 @@ public class GraphicalUtils {
     }
 
     public static void plotCircle(int xm, int ym, int r, PixelPredicate shouldDraw, IntBinaryOperator color) {
-        plotCircle(
-            xm,
-            ym,
-            r,
-            shouldDraw,
-            (DrawPixel) (xp, yp) -> fill(xp, yp, xp + 1, yp + 1, color.applyAsInt(xp, yp)));
+        Tessellator tess = Tessellator.instance;
+        tess.startDrawingQuads();
+        plotCircle(xm, ym, r, shouldDraw, (DrawPixel) (xp, yp) -> {
+            int c = color.applyAsInt(xp, yp);
+            float a = (float) (c >> 24 & 255) / 255.0F;
+            float rCol = (float) (c >> 16 & 255) / 255.0F;
+            float g = (float) (c >> 8 & 255) / 255.0F;
+            float b = (float) (c & 255) / 255.0F;
+            if (a <= 0.0f) a = 1.0f;
+            tess.setColorRGBA_F(rCol, g, b, a);
+            tess.addVertex(xp, yp + 1, 0.0);
+            tess.addVertex(xp + 1, yp + 1, 0.0);
+            tess.addVertex(xp + 1, yp, 0.0);
+            tess.addVertex(xp, yp, 0.0);
+        });
+        tess.draw();
     }
 }

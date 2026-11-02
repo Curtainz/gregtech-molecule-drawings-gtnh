@@ -5,7 +5,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 import net.minecraft.client.gui.FontRenderer;
 
@@ -19,11 +22,12 @@ public class NEITooltipHelper {
     private static boolean neiAvailable = false;
     private static Method getTipLineIdMethod = null;
     private static Field tipLineHandlersField = null;
-    private static Object singletonProxy = null;
+    private static Class<?> tooltipLineHandlerClass = null;
 
-    private static ITooltipDrawable currentDrawable = null;
-    private static FontRenderer currentFont = null;
-    private static boolean renderedByNEI = false;
+    // 针对每个具体的 ITooltipDrawable 实例独立缓存其代理 Handler，
+    // 彻底解耦全局共享状态，杜绝由于帧交替清空与状态覆盖导致的闪烁与组件塌陷！
+    private static final Map<ITooltipDrawable, Object> handlerProxyCache = Collections
+        .synchronizedMap(new WeakHashMap<>());
 
     public static synchronized void init() {
         if (initialized) return;
@@ -31,7 +35,6 @@ public class NEITooltipHelper {
 
         try {
             Class<?> guiDrawClass = Class.forName("codechicken.lib.gui.GuiDraw");
-            Class<?> tooltipLineHandlerClass = null;
 
             for (Class<?> inner : guiDrawClass.getDeclaredClasses()) {
                 if ("ITooltipLineHandler".equals(inner.getSimpleName())) {
@@ -54,107 +57,97 @@ public class NEITooltipHelper {
             } catch (Throwable ignored) {}
 
             if (getTipLineIdMethod != null && tooltipLineHandlerClass != null) {
-                singletonProxy = Proxy.newProxyInstance(
-                    tooltipLineHandlerClass.getClassLoader(),
-                    new Class<?>[] { tooltipLineHandlerClass },
-                    new InvocationHandler() {
-
-                        @Override
-                        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                            String mName = method.getName();
-                            if ("getSize".equals(mName)) {
-                                if (currentDrawable != null && currentFont != null) {
-                                    return new Dimension(
-                                        currentDrawable.getWidth(currentFont),
-                                        currentDrawable.getHeight(currentFont));
-                                }
-                                return new Dimension(0, 0);
-                            } else if ("draw".equals(mName)) {
-                                if (currentDrawable != null && currentFont != null) {
-                                    int x = (Integer) args[0];
-                                    int y = (Integer) args[1];
-                                    renderWithGL(currentDrawable, currentFont, x, y);
-                                    renderedByNEI = true;
-                                }
-                                return null;
-                            } else if ("hashCode".equals(mName)) {
-                                return System.identityHashCode(proxy);
-                            } else if ("equals".equals(mName)) {
-                                return args != null && args.length > 0 && args[0] == proxy;
-                            } else if ("toString".equals(mName)) {
-                                return "MolDrawSingletonLineHandler";
-                            }
-                            return null;
-                        }
-                    });
-
                 neiAvailable = true;
-                MolDraw.LOGGER.info("Initialized NEITooltipHelper with singleton line handler proxy.");
+                MolDraw.LOGGER.info("Initialized NEITooltipHelper with dynamic per-drawable line handler proxy.");
             }
         } catch (Throwable t) {
             neiAvailable = false;
-            singletonProxy = null;
             MolDraw.LOGGER.info("NEI ITooltipLineHandler not available: " + t.getMessage());
         }
     }
 
     public static boolean isNEIAvailable() {
         if (!initialized) init();
-        return neiAvailable && singletonProxy != null;
+        return neiAvailable && tooltipLineHandlerClass != null;
+    }
+
+    private static Object createProxy(final ITooltipDrawable drawable, final FontRenderer font) {
+        return Proxy.newProxyInstance(
+            tooltipLineHandlerClass.getClassLoader(),
+            new Class<?>[] { tooltipLineHandlerClass },
+            new InvocationHandler() {
+
+                @Override
+                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                    String mName = method.getName();
+                    if ("getSize".equals(mName)) {
+                        return new Dimension(drawable.getWidth(font), drawable.getHeight(font));
+                    } else if ("draw".equals(mName)) {
+                        int x = (Integer) args[0];
+                        int y = (Integer) args[1];
+                        renderWithGL(drawable, font, x, y);
+                        return null;
+                    } else if ("hashCode".equals(mName)) {
+                        return System.identityHashCode(proxy);
+                    } else if ("equals".equals(mName)) {
+                        return args != null && args.length > 0 && args[0] == proxy;
+                    } else if ("toString".equals(mName)) {
+                        return "MolDrawLineHandler[" + drawable.getClass()
+                            .getSimpleName() + "]";
+                    }
+                    return null;
+                }
+            });
     }
 
     @SuppressWarnings("unchecked")
     public static synchronized String obtainLineToken(ITooltipDrawable drawable, FontRenderer font) {
-        if (!isNEIAvailable() || drawable == null) return null;
+        if (!isNEIAvailable() || drawable == null || font == null) return null;
 
-        currentDrawable = drawable;
-        currentFont = font;
-        renderedByNEI = false;
+        Object proxy = handlerProxyCache.get(drawable);
+        if (proxy == null) {
+            proxy = createProxy(drawable, font);
+            handlerProxyCache.put(drawable, proxy);
+        }
 
-        int id = 0;
+        // 优先直接同步到 tipLineHandlers 列表
         if (tipLineHandlersField != null) {
             try {
                 List<Object> list = (List<Object>) tipLineHandlersField.get(null);
                 if (list != null) {
-                    int existing = list.indexOf(singletonProxy);
+                    int existing = list.indexOf(proxy);
                     if (existing >= 0) {
-                        id = existing;
+                        return "\u00a7x" + existing;
                     } else {
-                        list.add(singletonProxy);
-                        id = list.size() - 1;
+                        list.add(proxy);
+                        return "\u00a7x" + (list.size() - 1);
                     }
-                    return "\u00a7x" + id;
                 }
             } catch (Throwable ignored) {}
         }
 
-        // 回退逻辑
+        // 回退逻辑：调用 GuiDraw.getTipLineId
         try {
-            id = (Integer) getTipLineIdMethod.invoke(null, singletonProxy);
+            int id = (Integer) getTipLineIdMethod.invoke(null, proxy);
             return "\u00a7x" + id;
         } catch (Throwable t) {
             return null;
         }
     }
 
-    public static boolean wasRenderedByNEI() {
-        return renderedByNEI;
-    }
-
     public static void clear() {
-        currentDrawable = null;
-        currentFont = null;
-        renderedByNEI = false;
+        // 无需清除持久的 handlerProxyCache，避免破坏正在被 ChromaticTooltips 缓存重用的渲染周期
     }
 
     private static void renderWithGL(ITooltipDrawable drawable, FontRenderer font, int x, int y) {
-        if (drawable == null) return;
+        if (drawable == null || font == null) return;
         GL11.glPushMatrix();
         GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
         GL11.glDisable(GL11.GL_LIGHTING);
         GL11.glDisable(GL11.GL_DEPTH_TEST);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 
         drawable.render(font, x, y);
 

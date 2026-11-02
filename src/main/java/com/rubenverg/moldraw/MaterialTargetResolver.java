@@ -13,7 +13,6 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
 import com.rubenverg.moldraw.component.AlloyRenderer;
-import com.rubenverg.moldraw.component.MoleculeRenderer;
 import com.rubenverg.moldraw.molecule.Molecule;
 
 import codechicken.nei.guihook.GuiContainerManager;
@@ -49,13 +48,21 @@ public final class MaterialTargetResolver {
         // 2. 优先检查 3D 分子结构
         Molecule mol = MoleculeManager.getMolecule(mat);
         if (mol != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
-            return new DisplayPlan(DisplayPlan.Type.MOLECULE, new MoleculeRenderer(mol), mat.getChemicalFormula(), mat);
+            return new DisplayPlan(
+                DisplayPlan.Type.MOLECULE,
+                RendererCache.getMoleculeRenderer(mol),
+                mat.getChemicalFormula(),
+                mat);
         }
 
         // 3. 只有当没有分子结构，且为明确定义的真正多元合金时，才展示成分分析饼图
         if (AlloyManager.isAlloy(mat) && AlloyRenderer.hasValidComponents(mat)
             && MolDrawConfig.INSTANCE.alloy.showAlloys) {
-            return new DisplayPlan(DisplayPlan.Type.ALLOY, new AlloyRenderer(mat, font), mat.getChemicalFormula(), mat);
+            return new DisplayPlan(
+                DisplayPlan.Type.ALLOY,
+                RendererCache.getAlloyRenderer(mat, font),
+                mat.getChemicalFormula(),
+                mat);
         }
 
         return DisplayPlan.EMPTY;
@@ -74,7 +81,7 @@ public final class MaterialTargetResolver {
         // 回退检查：流体名是否直接对应某种分子模型
         Molecule mol = MoleculeManager.getMoleculeByName(fluid.getName());
         if (mol != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
-            return new DisplayPlan(DisplayPlan.Type.MOLECULE, new MoleculeRenderer(mol), null, null);
+            return new DisplayPlan(DisplayPlan.Type.MOLECULE, RendererCache.getMoleculeRenderer(mol), null, null);
         }
 
         return DisplayPlan.EMPTY;
@@ -103,7 +110,7 @@ public final class MaterialTargetResolver {
         // 2. 尝试从 Tooltip 中的化学式或名称反查分子模型
         Molecule mol = resolveMoleculeFromTooltipText(tip);
         if (mol != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
-            return new DisplayPlan(DisplayPlan.Type.MOLECULE, new MoleculeRenderer(mol), null, null);
+            return new DisplayPlan(DisplayPlan.Type.MOLECULE, RendererCache.getMoleculeRenderer(mol), null, null);
         }
 
         return DisplayPlan.EMPTY;

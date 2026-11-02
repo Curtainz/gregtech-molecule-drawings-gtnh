@@ -21,6 +21,10 @@ public class TooltipEventHandler {
 
     @SubscribeEvent
     public void onItemTooltip(ItemTooltipEvent event) {
+        if (!MolDraw.isClientThread()) {
+            return;
+        }
+
         if (!MolDrawConfig.INSTANCE.enabled || event.itemStack == null || event.toolTip == null) {
             return;
         }
@@ -32,9 +36,12 @@ public class TooltipEventHandler {
 
     @SubscribeEvent
     public void onDrawScreenPost(GuiScreenEvent.DrawScreenEvent.Post event) {
-        if (NEITooltipHelper.isNEIAvailable() && NEITooltipHelper.wasRenderedByNEI()) {
-            NEITooltipHelper.clear();
-            TooltipRenderContext.clear();
+        if (!MolDraw.isClientThread()) {
+            return;
+        }
+
+        // 当由 NEI / ChromaticTooltips 托管渲染时，绝不在后处理事件中重复渲染或干扰状态
+        if (NEITooltipHelper.isNEIAvailable()) {
             return;
         }
 
