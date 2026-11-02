@@ -23,14 +23,10 @@ public final class TooltipPipeline {
 
     public static boolean hasMolDrawTokenOrHint(List<?> tip) {
         if (tip == null || tip.isEmpty()) return false;
-        String neiToken = NEITooltipHelper.getLineToken();
         for (Object lineObj : tip) {
             if (lineObj == null) continue;
             String line = lineObj.toString();
-            if (neiToken != null && line.equals(neiToken)) {
-                return true;
-            }
-            if (line.contains(PLACEHOLDER_PREFIX) || line.startsWith("\u00a7x")) {
+            if (line.startsWith("\u00a7x") || line.contains(PLACEHOLDER_PREFIX)) {
                 return true;
             }
             String clean = EnumChatFormatting.getTextWithoutFormattingCodes(line)
@@ -69,11 +65,10 @@ public final class TooltipPipeline {
             return false;
         }
 
-        // 1. NEI 环境：优先通过单例 ITooltipLineHandler 原生内联渲染
+        // 1. NEI 环境：优先通过动态行指令注入
         if (NEITooltipHelper.isNEIAvailable()) {
-            String token = NEITooltipHelper.getLineToken();
+            String token = NEITooltipHelper.obtainLineToken(drawable, font);
             if (token != null) {
-                NEITooltipHelper.setCurrentDrawable(drawable, font);
                 TooltipRenderContext.clear();
                 insertToken(tip, token, plan.getFormula());
                 return true;

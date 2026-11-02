@@ -1,9 +1,11 @@
 package com.rubenverg.moldraw;
 
 import java.awt.Dimension;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.List;
 
 import net.minecraft.client.gui.FontRenderer;
 
@@ -15,8 +17,9 @@ public class NEITooltipHelper {
 
     private static boolean initialized = false;
     private static boolean neiAvailable = false;
-    private static int lineId = -1;
-    private static String lineToken = null;
+    private static Method getTipLineIdMethod = null;
+    private static Field tipLineHandlersField = null;
+    private static Object singletonProxy = null;
 
     private static ITooltipDrawable currentDrawable = null;
     private static FontRenderer currentFont = null;
@@ -29,7 +32,6 @@ public class NEITooltipHelper {
         try {
             Class<?> guiDrawClass = Class.forName("codechicken.lib.gui.GuiDraw");
             Class<?> tooltipLineHandlerClass = null;
-            Method getTipLineIdMethod = null;
 
             for (Class<?> inner : guiDrawClass.getDeclaredClasses()) {
                 if ("ITooltipLineHandler".equals(inner.getSimpleName())) {
@@ -46,8 +48,13 @@ public class NEITooltipHelper {
                 getTipLineIdMethod = guiDrawClass.getMethod("getTipLineId", tooltipLineHandlerClass);
             }
 
+            try {
+                tipLineHandlersField = guiDrawClass.getDeclaredField("tipLineHandlers");
+                tipLineHandlersField.setAccessible(true);
+            } catch (Throwable ignored) {}
+
             if (getTipLineIdMethod != null && tooltipLineHandlerClass != null) {
-                Object proxy = Proxy.newProxyInstance(
+                singletonProxy = Proxy.newProxyInstance(
                     tooltipLineHandlerClass.getClassLoader(),
                     new Class<?>[] { tooltipLineHandlerClass },
                     new InvocationHandler() {
@@ -81,33 +88,53 @@ public class NEITooltipHelper {
                         }
                     });
 
-                lineId = (Integer) getTipLineIdMethod.invoke(null, proxy);
-                lineToken = "\u00a7x" + lineId;
                 neiAvailable = true;
-                MolDraw.LOGGER.info("Registered singleton NEI ITooltipLineHandler with token: \\u00a7x" + lineId);
+                MolDraw.LOGGER.info("Initialized NEITooltipHelper with singleton line handler proxy.");
             }
         } catch (Throwable t) {
             neiAvailable = false;
-            lineId = -1;
-            lineToken = null;
+            singletonProxy = null;
             MolDraw.LOGGER.info("NEI ITooltipLineHandler not available: " + t.getMessage());
         }
     }
 
     public static boolean isNEIAvailable() {
         if (!initialized) init();
-        return neiAvailable;
+        return neiAvailable && singletonProxy != null;
     }
 
-    public static String getLineToken() {
-        if (!initialized) init();
-        return lineToken;
-    }
+    @SuppressWarnings("unchecked")
+    public static synchronized String obtainLineToken(ITooltipDrawable drawable, FontRenderer font) {
+        if (!isNEIAvailable() || drawable == null) return null;
 
-    public static void setCurrentDrawable(ITooltipDrawable drawable, FontRenderer font) {
         currentDrawable = drawable;
         currentFont = font;
         renderedByNEI = false;
+
+        int id = 0;
+        if (tipLineHandlersField != null) {
+            try {
+                List<Object> list = (List<Object>) tipLineHandlersField.get(null);
+                if (list != null) {
+                    int existing = list.indexOf(singletonProxy);
+                    if (existing >= 0) {
+                        id = existing;
+                    } else {
+                        list.add(singletonProxy);
+                        id = list.size() - 1;
+                    }
+                    return "\u00a7x" + id;
+                }
+            } catch (Throwable ignored) {}
+        }
+
+        // 回退逻辑
+        try {
+            id = (Integer) getTipLineIdMethod.invoke(null, singletonProxy);
+            return "\u00a7x" + id;
+        } catch (Throwable t) {
+            return null;
+        }
     }
 
     public static boolean wasRenderedByNEI() {
