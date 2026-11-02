@@ -22,7 +22,7 @@ public class MolDraw {
 
     public static final String MOD_ID = "moldraw";
     public static final String MODID = MOD_ID;
-    public static final String VERSION = "0.2.0-beta.4";
+    public static final String VERSION = "0.3.0";
     public static final Logger LOGGER = LogManager.getLogger("MolDraw");
 
     private static volatile Thread clientThread = null;
