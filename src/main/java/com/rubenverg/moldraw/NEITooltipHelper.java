@@ -9,89 +9,115 @@ import net.minecraft.client.gui.FontRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import com.rubenverg.moldraw.component.AlloyRenderer;
 import com.rubenverg.moldraw.component.ITooltipDrawable;
-import com.rubenverg.moldraw.component.MoleculeRenderer;
 
 public class NEITooltipHelper {
 
-    private static boolean checked = false;
-    private static Class<?> guiDrawClass = null;
-    private static Class<?> tooltipLineHandlerClass = null;
-    private static Method getTipLineIdMethod = null;
+    private static boolean initialized = false;
+    private static boolean neiAvailable = false;
+    private static int lineId = -1;
+    private static String lineToken = null;
 
-    public static boolean isNEIAvailable() {
-        if (!checked) {
-            checked = true;
-            try {
-                guiDrawClass = Class.forName("codechicken.lib.gui.GuiDraw");
-                tooltipLineHandlerClass = Class.forName("codechicken.lib.gui.GuiDraw$ITooltipLineHandler");
-                if (tooltipLineHandlerClass != null && guiDrawClass != null) {
-                    getTipLineIdMethod = guiDrawClass.getMethod("getTipLineId", tooltipLineHandlerClass);
-                }
-            } catch (Throwable t1) {
-                try {
-                    if (guiDrawClass != null) {
-                        for (Class<?> inner : guiDrawClass.getDeclaredClasses()) {
-                            if (inner.getSimpleName()
-                                .equals("ITooltipLineHandler")) {
-                                tooltipLineHandlerClass = inner;
-                                getTipLineIdMethod = guiDrawClass.getMethod("getTipLineId", inner);
-                                break;
-                            }
-                        }
-                    }
-                } catch (Throwable ignored) {}
-            }
-        }
-        return getTipLineIdMethod != null && tooltipLineHandlerClass != null;
-    }
+    private static ITooltipDrawable currentDrawable = null;
+    private static FontRenderer currentFont = null;
+    private static boolean renderedByNEI = false;
 
-    public static String registerDrawable(final ITooltipDrawable drawable, final FontRenderer font) {
-        if (!isNEIAvailable() || drawable == null) return null;
-        final int w = drawable.getWidth(font);
-        final int h = drawable.getHeight(font);
+    public static synchronized void init() {
+        if (initialized) return;
+        initialized = true;
 
         try {
-            Object proxy = Proxy.newProxyInstance(
-                tooltipLineHandlerClass.getClassLoader(),
-                new Class<?>[] { tooltipLineHandlerClass },
-                new InvocationHandler() {
+            Class<?> guiDrawClass = Class.forName("codechicken.lib.gui.GuiDraw");
+            Class<?> tooltipLineHandlerClass = null;
+            Method getTipLineIdMethod = null;
 
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                        String mName = method.getName();
-                        if (mName.equals("getSize")) {
-                            return new Dimension(w, h);
-                        } else if (mName.equals("draw")) {
-                            int x = (Integer) args[0];
-                            int y = (Integer) args[1];
-                            renderWithGL(drawable, font, x, y);
+            for (Class<?> inner : guiDrawClass.getDeclaredClasses()) {
+                if ("ITooltipLineHandler".equals(inner.getSimpleName())) {
+                    tooltipLineHandlerClass = inner;
+                    break;
+                }
+            }
+
+            if (tooltipLineHandlerClass == null) {
+                tooltipLineHandlerClass = Class.forName("codechicken.lib.gui.GuiDraw$ITooltipLineHandler");
+            }
+
+            if (tooltipLineHandlerClass != null) {
+                getTipLineIdMethod = guiDrawClass.getMethod("getTipLineId", tooltipLineHandlerClass);
+            }
+
+            if (getTipLineIdMethod != null && tooltipLineHandlerClass != null) {
+                Object proxy = Proxy.newProxyInstance(
+                    tooltipLineHandlerClass.getClassLoader(),
+                    new Class<?>[] { tooltipLineHandlerClass },
+                    new InvocationHandler() {
+
+                        @Override
+                        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                            String mName = method.getName();
+                            if ("getSize".equals(mName)) {
+                                if (currentDrawable != null && currentFont != null) {
+                                    return new Dimension(
+                                        currentDrawable.getWidth(currentFont),
+                                        currentDrawable.getHeight(currentFont));
+                                }
+                                return new Dimension(0, 0);
+                            } else if ("draw".equals(mName)) {
+                                if (currentDrawable != null && currentFont != null) {
+                                    int x = (Integer) args[0];
+                                    int y = (Integer) args[1];
+                                    renderWithGL(currentDrawable, currentFont, x, y);
+                                    renderedByNEI = true;
+                                }
+                                return null;
+                            } else if ("hashCode".equals(mName)) {
+                                return System.identityHashCode(proxy);
+                            } else if ("equals".equals(mName)) {
+                                return args != null && args.length > 0 && args[0] == proxy;
+                            } else if ("toString".equals(mName)) {
+                                return "MolDrawSingletonLineHandler";
+                            }
                             return null;
-                        } else if (mName.equals("hashCode")) {
-                            return System.identityHashCode(proxy);
-                        } else if (mName.equals("equals")) {
-                            return args != null && args.length > 0 && args[0] == proxy;
-                        } else if (mName.equals("toString")) {
-                            return "MolDrawTooltipHandler@" + Integer.toHexString(System.identityHashCode(proxy));
                         }
-                        return null;
-                    }
-                });
+                    });
 
-            int id = (Integer) getTipLineIdMethod.invoke(null, proxy);
-            return "\u00a7x" + id;
+                lineId = (Integer) getTipLineIdMethod.invoke(null, proxy);
+                lineToken = "\u00a7x" + lineId;
+                neiAvailable = true;
+                MolDraw.LOGGER.info("Registered singleton NEI ITooltipLineHandler with token: \\u00a7x" + lineId);
+            }
         } catch (Throwable t) {
-            return null;
+            neiAvailable = false;
+            lineId = -1;
+            lineToken = null;
+            MolDraw.LOGGER.info("NEI ITooltipLineHandler not available: " + t.getMessage());
         }
     }
 
-    public static String registerMoleculeHandler(MoleculeRenderer renderer, FontRenderer font) {
-        return registerDrawable(renderer, font);
+    public static boolean isNEIAvailable() {
+        if (!initialized) init();
+        return neiAvailable;
     }
 
-    public static String registerAlloyHandler(AlloyRenderer renderer, FontRenderer font) {
-        return registerDrawable(renderer, font);
+    public static String getLineToken() {
+        if (!initialized) init();
+        return lineToken;
+    }
+
+    public static void setCurrentDrawable(ITooltipDrawable drawable, FontRenderer font) {
+        currentDrawable = drawable;
+        currentFont = font;
+        renderedByNEI = false;
+    }
+
+    public static boolean wasRenderedByNEI() {
+        return renderedByNEI;
+    }
+
+    public static void clear() {
+        currentDrawable = null;
+        currentFont = null;
+        renderedByNEI = false;
     }
 
     private static void renderWithGL(ITooltipDrawable drawable, FontRenderer font, int x, int y) {

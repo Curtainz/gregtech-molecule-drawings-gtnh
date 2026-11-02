@@ -17,24 +17,26 @@ import com.rubenverg.moldraw.util.FormulaParser;
 
 public final class TooltipPipeline {
 
-    public static final String MOLDRAW_MARKER = "§m§o§l§d§r";
     public static final String PLACEHOLDER_PREFIX = "§m§o§l§d";
 
     private TooltipPipeline() {}
 
     public static boolean hasMolDrawTokenOrHint(List<?> tip) {
         if (tip == null || tip.isEmpty()) return false;
+        String neiToken = NEITooltipHelper.getLineToken();
         for (Object lineObj : tip) {
             if (lineObj == null) continue;
             String line = lineObj.toString();
-            if (line.contains("\u00a7x") || line.contains(MOLDRAW_MARKER) || line.contains(PLACEHOLDER_PREFIX)) {
+            if (neiToken != null && line.equals(neiToken)) {
+                return true;
+            }
+            if (line.contains(PLACEHOLDER_PREFIX) || line.startsWith("\u00a7x")) {
                 return true;
             }
             String clean = EnumChatFormatting.getTextWithoutFormattingCodes(line)
                 .toLowerCase(Locale.ROOT);
             if (clean.contains("shift") || clean.contains("查看分子结构")
                 || clean.contains("查看成分分析")
-                || clean.contains("展开分子式")
                 || clean.contains("view the structure")
                 || clean.contains("view the composition")) {
                 return true;
@@ -57,10 +59,7 @@ public final class TooltipPipeline {
         if (MolDrawConfig.INSTANCE.onlyShowOnShift && !shiftDown) {
             String hintKey = plan.getType() == DisplayPlan.Type.MOLECULE ? "tooltip.moldraw.shift_view_molecule"
                 : "tooltip.moldraw.shift_view_alloy";
-            String hint = EnumChatFormatting.DARK_GRAY + "["
-                + StatCollector.translateToLocal(hintKey)
-                + "]"
-                + MOLDRAW_MARKER;
+            String hint = EnumChatFormatting.DARK_GRAY + "[" + StatCollector.translateToLocal(hintKey) + "]";
             tip.add(hint);
             return true;
         }
@@ -70,12 +69,13 @@ public final class TooltipPipeline {
             return false;
         }
 
-        // 1. NEI 环境：优先通过 ITooltipLineHandler 原生内联渲染
+        // 1. NEI 环境：优先通过单例 ITooltipLineHandler 原生内联渲染
         if (NEITooltipHelper.isNEIAvailable()) {
-            String token = NEITooltipHelper.registerDrawable(drawable, font);
+            String token = NEITooltipHelper.getLineToken();
             if (token != null) {
+                NEITooltipHelper.setCurrentDrawable(drawable, font);
                 TooltipRenderContext.clear();
-                insertToken(tip, token + MOLDRAW_MARKER, plan.getFormula());
+                insertToken(tip, token, plan.getFormula());
                 return true;
             }
         }
@@ -85,7 +85,7 @@ public final class TooltipPipeline {
         int renderHeight = drawable.getHeight(font);
         int startLine = tip.size();
 
-        StringBuilder widthPad = new StringBuilder(PLACEHOLDER_PREFIX).append(MOLDRAW_MARKER);
+        StringBuilder widthPad = new StringBuilder(PLACEHOLDER_PREFIX);
         while (font.getStringWidth(widthPad.toString()) < renderWidth) {
             widthPad.append(" ");
         }

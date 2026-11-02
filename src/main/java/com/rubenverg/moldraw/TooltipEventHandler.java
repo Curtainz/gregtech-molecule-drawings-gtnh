@@ -32,7 +32,8 @@ public class TooltipEventHandler {
 
     @SubscribeEvent
     public void onDrawScreenPost(GuiScreenEvent.DrawScreenEvent.Post event) {
-        if (NEITooltipHelper.isNEIAvailable()) {
+        if (NEITooltipHelper.isNEIAvailable() && NEITooltipHelper.wasRenderedByNEI()) {
+            NEITooltipHelper.clear();
             TooltipRenderContext.clear();
             return;
         }
