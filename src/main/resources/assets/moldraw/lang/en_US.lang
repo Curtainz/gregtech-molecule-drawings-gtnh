@@ -1,0 +1,30 @@
+tooltip.moldraw.shift_view_molecule=Press Shift to view the structure
+tooltip.moldraw.shift_view_alloy=Press Shift to view the composition
+tooltip.moldraw.other=Other
+tooltip.moldraw.unknown=Unknown/Mysterious Component
+
+config.moldraw.option.enabled=Enable mod
+config.moldraw.option.onlyShowOnShift=Only show drawings when pressing Shift
+config.moldraw.option.debugMode=Debug mode
+
+config.moldraw.option.color=Colors
+config.moldraw.option.colors=Color element symbols
+config.moldraw.option.useMaterialColors=Use material colors for elements
+config.moldraw.option.defaultColor=Default element color
+config.moldraw.option.minimumBrightness=Minimum brightness for colored elements
+
+config.moldraw.option.molecule=Molecules
+config.moldraw.option.showMolecules=Show molecule drawings
+config.moldraw.option.moleculeScale=Molecule scale
+config.moldraw.option.benzeneCircle=Benzene render mode
+config.moldraw.option.spinMolecules=Allow molecules to spin
+config.moldraw.option.spinSpeedMultiplier=Spin speed multiplier
+
+config.moldraw.option.alloy=Alloys
+config.moldraw.option.showAlloys=Show alloy composition charts
+config.moldraw.option.pieChartRadius=Radius of the alloy composition pie chart
+config.moldraw.option.pieChartComplexity=Segments count of alloy pie chart
+config.moldraw.option.maxComponentsDisplayed=Max components displayed in pie chart
+config.moldraw.option.minPercentageThreshold=Minimum percentage threshold for components
+config.moldraw.option.recursive=Recursively decompose alloys into their constituent elements
+config.moldraw.option.partsByMass=Show percentages of alloy components by mass

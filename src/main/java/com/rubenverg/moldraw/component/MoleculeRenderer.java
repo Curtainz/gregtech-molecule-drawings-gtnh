@@ -24,7 +24,7 @@ import com.rubenverg.moldraw.util.Pair;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 
-public class MoleculeRenderer {
+public class MoleculeRenderer implements ITooltipDrawable {
 
     private final Molecule molecule;
     private final Vector2i xySize;

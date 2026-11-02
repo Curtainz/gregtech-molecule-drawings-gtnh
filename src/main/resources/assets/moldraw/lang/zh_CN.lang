@@ -1,0 +1,30 @@
+tooltip.moldraw.shift_view_molecule=按住 Shift 查看分子结构
+tooltip.moldraw.shift_view_alloy=按住 Shift 查看成分分析
+tooltip.moldraw.other=其他
+tooltip.moldraw.unknown=神秘/未知成分
+
+config.moldraw.option.enabled=启用模组
+config.moldraw.option.onlyShowOnShift=仅在按住 Shift 时显示图表
+config.moldraw.option.debugMode=调试模式
+
+config.moldraw.option.color=颜色设置
+config.moldraw.option.colors=为元素符号着色
+config.moldraw.option.useMaterialColors=使用格雷科技材质颜色
+config.moldraw.option.defaultColor=默认元素颜色代码
+config.moldraw.option.minimumBrightness=彩色元素的最低亮度
+
+config.moldraw.option.molecule=分子模型
+config.moldraw.option.showMolecules=显示分子结构图
+config.moldraw.option.moleculeScale=分子缩放倍数
+config.moldraw.option.benzeneCircle=苯环渲染模式
+config.moldraw.option.spinMolecules=启用分子 3D 旋转动画
+config.moldraw.option.spinSpeedMultiplier=旋转速度倍率
+
+config.moldraw.option.alloy=合金成分分析
+config.moldraw.option.showAlloys=显示合金成分饼图
+config.moldraw.option.pieChartRadius=成分饼图半径
+config.moldraw.option.pieChartComplexity=成分饼图圆弧细分精度
+config.moldraw.option.maxComponentsDisplayed=最大显式成分数量
+config.moldraw.option.minPercentageThreshold=独立显示的成分最小百分比阈值
+config.moldraw.option.recursive=递归分解子合金为基础单质元素
+config.moldraw.option.partsByMass=按质量计算百分比(替代摩尔比例)

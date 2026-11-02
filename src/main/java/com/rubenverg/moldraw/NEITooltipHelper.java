@@ -10,6 +10,7 @@ import net.minecraft.client.gui.FontRenderer;
 import org.lwjgl.opengl.GL11;
 
 import com.rubenverg.moldraw.component.AlloyRenderer;
+import com.rubenverg.moldraw.component.ITooltipDrawable;
 import com.rubenverg.moldraw.component.MoleculeRenderer;
 
 public class NEITooltipHelper {
@@ -29,7 +30,6 @@ public class NEITooltipHelper {
                     getTipLineIdMethod = guiDrawClass.getMethod("getTipLineId", tooltipLineHandlerClass);
                 }
             } catch (Throwable t1) {
-                // 回退尝试寻找可能存在的不同路径或类名
                 try {
                     if (guiDrawClass != null) {
                         for (Class<?> inner : guiDrawClass.getDeclaredClasses()) {
@@ -47,10 +47,10 @@ public class NEITooltipHelper {
         return getTipLineIdMethod != null && tooltipLineHandlerClass != null;
     }
 
-    public static String registerMoleculeHandler(MoleculeRenderer renderer, FontRenderer font) {
-        if (!isNEIAvailable()) return null;
-        final int w = renderer.getWidth(font);
-        final int h = renderer.getHeight(font);
+    public static String registerDrawable(final ITooltipDrawable drawable, final FontRenderer font) {
+        if (!isNEIAvailable() || drawable == null) return null;
+        final int w = drawable.getWidth(font);
+        final int h = drawable.getHeight(font);
 
         try {
             Object proxy = Proxy.newProxyInstance(
@@ -66,7 +66,7 @@ public class NEITooltipHelper {
                         } else if (mName.equals("draw")) {
                             int x = (Integer) args[0];
                             int y = (Integer) args[1];
-                            renderWithGL(renderer, null, font, x, y);
+                            renderWithGL(drawable, font, x, y);
                             return null;
                         } else if (mName.equals("hashCode")) {
                             return System.identityHashCode(proxy);
@@ -86,46 +86,16 @@ public class NEITooltipHelper {
         }
     }
 
-    public static String registerAlloyHandler(AlloyRenderer renderer, FontRenderer font) {
-        if (!isNEIAvailable()) return null;
-        final int w = renderer.getWidth(font);
-        final int h = renderer.getHeight(font);
-
-        try {
-            Object proxy = Proxy.newProxyInstance(
-                tooltipLineHandlerClass.getClassLoader(),
-                new Class<?>[] { tooltipLineHandlerClass },
-                new InvocationHandler() {
-
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                        String mName = method.getName();
-                        if (mName.equals("getSize")) {
-                            return new Dimension(w, h);
-                        } else if (mName.equals("draw")) {
-                            int x = (Integer) args[0];
-                            int y = (Integer) args[1];
-                            renderWithGL(null, renderer, font, x, y);
-                            return null;
-                        } else if (mName.equals("hashCode")) {
-                            return System.identityHashCode(proxy);
-                        } else if (mName.equals("equals")) {
-                            return args != null && args.length > 0 && args[0] == proxy;
-                        } else if (mName.equals("toString")) {
-                            return "MolDrawAlloyTooltipHandler@" + Integer.toHexString(System.identityHashCode(proxy));
-                        }
-                        return null;
-                    }
-                });
-
-            int id = (Integer) getTipLineIdMethod.invoke(null, proxy);
-            return "\u00a7x" + id;
-        } catch (Throwable t) {
-            return null;
-        }
+    public static String registerMoleculeHandler(MoleculeRenderer renderer, FontRenderer font) {
+        return registerDrawable(renderer, font);
     }
 
-    private static void renderWithGL(MoleculeRenderer mol, AlloyRenderer alloy, FontRenderer font, int x, int y) {
+    public static String registerAlloyHandler(AlloyRenderer renderer, FontRenderer font) {
+        return registerDrawable(renderer, font);
+    }
+
+    private static void renderWithGL(ITooltipDrawable drawable, FontRenderer font, int x, int y) {
+        if (drawable == null) return;
         GL11.glPushMatrix();
         GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
         GL11.glDisable(GL11.GL_LIGHTING);
@@ -133,11 +103,7 @@ public class NEITooltipHelper {
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
-        if (mol != null) {
-            mol.render(font, x, y);
-        } else if (alloy != null) {
-            alloy.render(font, x, y);
-        }
+        drawable.render(font, x, y);
 
         GL11.glPopAttrib();
         GL11.glPopMatrix();

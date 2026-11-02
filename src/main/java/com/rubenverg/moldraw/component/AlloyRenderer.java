@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.function.IntBinaryOperator;
 
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.util.StatCollector;
 
 import org.joml.Vector2i;
 
@@ -16,7 +17,7 @@ import com.rubenverg.moldraw.util.Pair;
 import gregtech.api.enums.Materials;
 import gregtech.api.objects.MaterialStack;
 
-public class AlloyRenderer {
+public class AlloyRenderer implements ITooltipDrawable {
 
     public static final int BASE_WIDTH = 190;
     private final int baseHeight;
@@ -235,10 +236,10 @@ public class AlloyRenderer {
             String formula;
             int textColor;
             if (mat == null) {
-                formula = "其他";
+                formula = StatCollector.translateToLocal("tooltip.moldraw.other");
                 textColor = 0xFFAAAAAA;
             } else if (mat == Materials._NULL) {
-                formula = "神秘/未知成分";
+                formula = StatCollector.translateToLocal("tooltip.moldraw.unknown");
                 textColor = 0xFFBB66FF;
             } else {
                 formula = mat.getChemicalFormula();

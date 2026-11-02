@@ -2,8 +2,7 @@ package com.rubenverg.moldraw.component;
 
 public final class TooltipRenderContext {
 
-    private static MoleculeRenderer pendingMolecule;
-    private static AlloyRenderer pendingAlloy;
+    private static ITooltipDrawable pendingDrawable;
     private static int renderWidth;
     private static int renderHeight;
     private static int targetLineIndex;
@@ -16,22 +15,8 @@ public final class TooltipRenderContext {
 
     private TooltipRenderContext() {}
 
-    public static void setPendingMolecule(MoleculeRenderer renderer, int w, int h, int lineIdx, int totalLines,
-        int maxWidth) {
-        pendingMolecule = renderer;
-        pendingAlloy = null;
-        renderWidth = w;
-        renderHeight = h;
-        targetLineIndex = lineIdx;
-        totalTooltipLines = totalLines;
-        maxTooltipWidth = maxWidth;
-        lastActiveTime = System.currentTimeMillis();
-    }
-
-    public static void setPendingAlloy(AlloyRenderer renderer, int w, int h, int lineIdx, int totalLines,
-        int maxWidth) {
-        pendingAlloy = renderer;
-        pendingMolecule = null;
+    public static void setPending(ITooltipDrawable drawable, int w, int h, int lineIdx, int totalLines, int maxWidth) {
+        pendingDrawable = drawable;
         renderWidth = w;
         renderHeight = h;
         targetLineIndex = lineIdx;
@@ -64,15 +49,11 @@ public final class TooltipRenderContext {
     }
 
     public static boolean hasPending() {
-        return pendingMolecule != null || pendingAlloy != null;
+        return pendingDrawable != null;
     }
 
-    public static MoleculeRenderer getPendingMolecule() {
-        return pendingMolecule;
-    }
-
-    public static AlloyRenderer getPendingAlloy() {
-        return pendingAlloy;
+    public static ITooltipDrawable getPendingDrawable() {
+        return pendingDrawable;
     }
 
     public static int getRenderWidth() {
@@ -96,8 +77,7 @@ public final class TooltipRenderContext {
     }
 
     public static void clear() {
-        pendingMolecule = null;
-        pendingAlloy = null;
+        pendingDrawable = null;
         renderWidth = 0;
         renderHeight = 0;
         targetLineIndex = 0;
