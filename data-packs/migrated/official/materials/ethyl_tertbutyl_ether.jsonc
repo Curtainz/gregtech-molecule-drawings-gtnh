@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethyl_tertbutyl_ether",
+  "type": "material",
+  "bindings": [
+    "name:ethyl_tertbutyl_ether"
+  ],
+  "structure": "official:gtceu/ethyl_tertbutyl_ether_structure"
+}

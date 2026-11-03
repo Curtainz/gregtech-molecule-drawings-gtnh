@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/hexabenzylhexaazaisowurtzitane_dust",
+  "type": "material",
+  "bindings": [
+    "name:hexabenzylhexaazaisowurtzitane_dust"
+  ],
+  "structure": "official:gtocore/hexabenzylhexaazaisowurtzitane_dust_structure"
+}

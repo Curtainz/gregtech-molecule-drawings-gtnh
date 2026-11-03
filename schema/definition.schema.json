@@ -124,6 +124,9 @@
         "color": {
           "$ref": "#/$defs/color"
         },
+        "optionalColor": {
+          "type": "boolean"
+        },
         "labels": {
           "type": "object",
           "properties": {
@@ -141,12 +144,34 @@
                 },
                 "color": {
                   "$ref": "#/$defs/color"
+                },
+                "optionalColor": {
+                  "type": "boolean"
                 }
               },
               "required": [
                 "text"
               ],
-              "additionalProperties": false
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "optionalColor": {
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "optionalColor"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "color"
+                    ]
+                  }
+                }
+              ]
             },
             "right": {
               "type": "object",
@@ -162,12 +187,34 @@
                 },
                 "color": {
                   "$ref": "#/$defs/color"
+                },
+                "optionalColor": {
+                  "type": "boolean"
                 }
               },
               "required": [
                 "text"
               ],
-              "additionalProperties": false
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "optionalColor": {
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "optionalColor"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "color"
+                    ]
+                  }
+                }
+              ]
             },
             "below": {
               "type": "object",
@@ -183,12 +230,34 @@
                 },
                 "color": {
                   "$ref": "#/$defs/color"
+                },
+                "optionalColor": {
+                  "type": "boolean"
                 }
               },
               "required": [
                 "text"
               ],
-              "additionalProperties": false
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "optionalColor": {
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "optionalColor"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "color"
+                    ]
+                  }
+                }
+              ]
             },
             "left": {
               "type": "object",
@@ -204,12 +273,34 @@
                 },
                 "color": {
                   "$ref": "#/$defs/color"
+                },
+                "optionalColor": {
+                  "type": "boolean"
                 }
               },
               "required": [
                 "text"
               ],
-              "additionalProperties": false
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "optionalColor": {
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "optionalColor"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "color"
+                    ]
+                  }
+                }
+              ]
             }
           },
           "required": [],
@@ -221,7 +312,26 @@
         "position",
         "element"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "optionalColor": {
+                "const": true
+              }
+            },
+            "required": [
+              "optionalColor"
+            ]
+          },
+          "then": {
+            "required": [
+              "color"
+            ]
+          }
+        }
+      ]
     },
     "bond": {
       "type": "object",
@@ -1087,6 +1197,17 @@
                     "maxItems": 4096,
                     "uniqueItems": true
                   },
+                  "names": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256
+                    },
+                    "minItems": 0,
+                    "maxItems": 4096,
+                    "uniqueItems": true
+                  },
                   "containsAny": {
                     "type": "array",
                     "items": {
@@ -1110,6 +1231,16 @@
                     ],
                     "properties": {
                       "materials": {
+                        "minItems": 1
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "names"
+                    ],
+                    "properties": {
+                      "names": {
                         "minItems": 1
                       }
                     }

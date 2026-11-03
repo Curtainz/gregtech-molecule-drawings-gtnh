@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ka_oil",
+  "type": "material",
+  "bindings": [
+    "name:ka_oil"
+  ],
+  "structure": "official:gtceu/ka_oil_structure"
+}

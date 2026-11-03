@@ -1,0 +1,211 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.3222735,
+        1.2135255
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.1043113,
+        0.75
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.1043113,
+        -0.75
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.3222735,
+        -1.2135255
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a4",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -1.785799,
+        -2.6401103
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a5",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -2.2039514,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.4033494,
+        -1.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.7023876,
+        -0.75
+      ]
+    },
+    {
+      "element": null,
+      "id": "a8",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.7023876,
+        0.75
+      ]
+    },
+    {
+      "element": null,
+      "id": "a9",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.4033494,
+        1.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a10",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -1.785799,
+        2.6401103
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a10"
+    }
+  ],
+  "id": "official:gtocore/phthalic_anhydride_dust_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

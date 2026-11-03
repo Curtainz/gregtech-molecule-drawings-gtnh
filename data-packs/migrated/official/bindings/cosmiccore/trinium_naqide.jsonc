@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:cosmiccore/trinium_naqide_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "trinium_naqide"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

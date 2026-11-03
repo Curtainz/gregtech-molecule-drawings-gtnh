@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/fluorine",
+  "type": "material",
+  "bindings": [
+    "name:fluorine"
+  ],
+  "structure": "official:gtceu/fluorine_structure"
+}

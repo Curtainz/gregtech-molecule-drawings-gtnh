@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/void_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "void"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

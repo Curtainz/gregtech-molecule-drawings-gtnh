@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethanolamine",
+  "type": "material",
+  "bindings": [
+    "name:ethanolamine"
+  ],
+  "structure": "official:gtocore/ethanolamine_structure"
+}

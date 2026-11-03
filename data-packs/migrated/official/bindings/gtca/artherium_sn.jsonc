@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/artherium_sn_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "artherium_sn"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

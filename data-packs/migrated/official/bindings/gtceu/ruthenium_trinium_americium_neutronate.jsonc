@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/ruthenium_trinium_americium_neutronate_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "ruthenium_trinium_americium_neutronate"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

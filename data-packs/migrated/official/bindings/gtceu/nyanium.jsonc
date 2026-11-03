@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/nyanium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "nyanium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tempo",
+  "type": "material",
+  "bindings": [
+    "name:tempo"
+  ],
+  "structure": "official:gtocore/tempo_structure"
+}

@@ -1,0 +1,152 @@
+{
+  "atoms": [
+    {
+      "element": "O",
+      "id": "a0",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -3.0851004,
+        0.4695068
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.6044553,
+        -0.3027624
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.1585855,
+        1.1294388
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.4129324,
+        -1.4049975
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.304672,
+        1.4594047
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.87619,
+        -1.0750316
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.3220596,
+        0.3571696
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -2.0677128,
+        -0.6327284
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a6"
+    }
+  ],
+  "id": "official:gtocore/benzaldehyde_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

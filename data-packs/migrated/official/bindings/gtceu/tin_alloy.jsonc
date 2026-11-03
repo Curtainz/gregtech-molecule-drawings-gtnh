@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/tin_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "tin_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

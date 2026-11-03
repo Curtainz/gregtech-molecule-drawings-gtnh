@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethylbenzene",
+  "type": "material",
+  "bindings": [
+    "name:ethylbenzene"
+  ],
+  "structure": "official:gtceu/ethylbenzene_structure"
+}

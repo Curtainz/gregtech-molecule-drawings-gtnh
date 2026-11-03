@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/poly_34_ethylenedioxythiophene",
+  "type": "material",
+  "bindings": [
+    "name:poly_34_ethylenedioxythiophene"
+  ],
+  "structure": "official:gtceu/poly_34_ethylenedioxythiophene_structure"
+}

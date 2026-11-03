@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethyleneglycol",
+  "type": "material",
+  "bindings": [
+    "name:ethyleneglycol"
+  ],
+  "structure": "official:gtocore/ethyleneglycol_structure"
+}

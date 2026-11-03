@@ -1,0 +1,165 @@
+{
+  "atoms": [
+    {
+      "element": "Br",
+      "id": "a0",
+      "label": "Br",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        2.4689085
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a1",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0.4082483
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.0606602,
+        1.4689085
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -2.509549,
+        1.0806799
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.0606602,
+        -0.6524119
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.6724316,
+        -2.1013007
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.0606602,
+        1.4689085
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.509549,
+        1.0806799
+      ]
+    },
+    {
+      "element": null,
+      "id": "a8",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.0606602,
+        -0.6524119
+      ]
+    },
+    {
+      "element": null,
+      "id": "a9",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.6724316,
+        -2.1013007
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a9"
+    }
+  ],
+  "id": "official:gtocore/tetraethylammonium_bromide_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

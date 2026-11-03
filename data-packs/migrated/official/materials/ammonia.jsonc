@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ammonia",
+  "type": "material",
+  "bindings": [
+    "name:ammonia"
+  ],
+  "structure": "official:gtceu/ammonia_structure"
+}

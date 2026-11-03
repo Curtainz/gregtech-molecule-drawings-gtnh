@@ -1,0 +1,231 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -3.6380694,
+        -0.1734233
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -2.187417,
+        0.2081624
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.131628,
+        -0.8573466
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.3190244,
+        -0.4757609
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.3748136,
+        -1.5412699
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.825466,
+        -1.1596842
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        3.2203293,
+        0.2874105
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.16454,
+        1.3529195
+      ]
+    },
+    {
+      "element": null,
+      "id": "a8",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.7138877,
+        0.9713338
+      ]
+    },
+    {
+      "element": null,
+      "id": "a9",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.3419014,
+        2.0368428
+      ]
+    },
+    {
+      "element": null,
+      "id": "a10",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.7925538,
+        1.6552571
+      ]
+    },
+    {
+      "element": null,
+      "id": "a11",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.5264913,
+        -2.3044412
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a9",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a11"
+    }
+  ],
+  "id": "official:gtocore/dimethylnaphthalene_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

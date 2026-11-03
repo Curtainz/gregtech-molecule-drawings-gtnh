@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dimethyl_succinate",
+  "type": "material",
+  "bindings": [
+    "name:dimethyl_succinate"
+  ],
+  "structure": "official:gtceu/dimethyl_succinate_structure"
+}

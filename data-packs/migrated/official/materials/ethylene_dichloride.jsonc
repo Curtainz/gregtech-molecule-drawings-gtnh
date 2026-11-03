@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethylene_dichloride",
+  "type": "material",
+  "bindings": [
+    "name:ethylene_dichloride"
+  ],
+  "structure": "official:gtceu/ethylene_dichloride_structure"
+}

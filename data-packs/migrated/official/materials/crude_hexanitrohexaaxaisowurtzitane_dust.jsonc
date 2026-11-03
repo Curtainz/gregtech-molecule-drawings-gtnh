@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/crude_hexanitrohexaaxaisowurtzitane_dust",
+  "type": "material",
+  "bindings": [
+    "name:crude_hexanitrohexaaxaisowurtzitane_dust"
+  ],
+  "structure": "official:gtocore/crude_hexanitrohexaaxaisowurtzitane_dust_structure"
+}

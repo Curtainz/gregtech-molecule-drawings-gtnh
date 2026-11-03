@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/fluoro_benzene",
+  "type": "material",
+  "bindings": [
+    "name:fluoro_benzene"
+  ],
+  "structure": "official:gtocore/fluoro_benzene_structure"
+}

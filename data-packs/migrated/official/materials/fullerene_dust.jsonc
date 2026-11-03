@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/fullerene_dust",
+  "type": "material",
+  "bindings": [
+    "name:fullerene_dust"
+  ],
+  "structure": "official:gtocore/fullerene_dust_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethylenediamine",
+  "type": "material",
+  "bindings": [
+    "name:ethylenediamine"
+  ],
+  "structure": "official:gtceu/ethylenediamine_structure"
+}

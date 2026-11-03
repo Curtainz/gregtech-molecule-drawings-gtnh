@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/oxylene",
+  "type": "material",
+  "bindings": [
+    "name:oxylene"
+  ],
+  "structure": "official:gtca/oxylene_structure"
+}

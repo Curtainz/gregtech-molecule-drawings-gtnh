@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/raw_perfluoroelastomer_rubber",
+  "type": "material",
+  "bindings": [
+    "name:raw_perfluoroelastomer_rubber"
+  ],
+  "structure": "official:gtceu/raw_perfluoroelastomer_rubber_structure"
+}

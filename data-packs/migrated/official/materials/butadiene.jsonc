@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/butadiene",
+  "type": "material",
+  "bindings": [
+    "name:butadiene"
+  ],
+  "structure": "official:gtceu/butadiene_structure"
+}

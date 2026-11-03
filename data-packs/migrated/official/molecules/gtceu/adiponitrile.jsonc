@@ -1,0 +1,142 @@
+{
+  "atoms": [
+    {
+      "element": "N",
+      "id": "a0",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        -0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        -0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7320508,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        -0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        3.4641016,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        4.3301272,
+        -0.5
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a7",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        5.196152,
+        -1
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid",
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid",
+        "solid"
+      ],
+      "to": "a7"
+    }
+  ],
+  "id": "official:gtceu/adiponitrile_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

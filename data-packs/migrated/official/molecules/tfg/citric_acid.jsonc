@@ -1,0 +1,253 @@
+{
+  "atoms": [
+    {
+      "element": "O",
+      "id": "a0",
+      "label": "O",
+      "labelMode": "symbol",
+      "labels": {
+        "left": {
+          "element": "H",
+          "text": "H"
+        }
+      },
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a2",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0.8660254,
+        1.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7320508,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        3.4641016,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        4.3301272,
+        0.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a7",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        4.3301272,
+        1.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a8",
+      "label": "O",
+      "labelMode": "symbol",
+      "labels": {
+        "right": {
+          "element": "H",
+          "text": "H"
+        }
+      },
+      "position": [
+        5.196152,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a9",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        1.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a10",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        1.7320508,
+        2
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a11",
+      "label": "O",
+      "labelMode": "symbol",
+      "labels": {
+        "right": {
+          "element": "H",
+          "text": "H"
+        }
+      },
+      "position": [
+        3.4641016,
+        2
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a12",
+      "label": "O",
+      "labelMode": "symbol",
+      "labels": {
+        "right": {
+          "element": "H",
+          "text": "H"
+        }
+      },
+      "position": [
+        2.598076,
+        -0.5
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "centered": true,
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "centered": true,
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "centered": true,
+      "from": "a9",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a9",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a12"
+    }
+  ],
+  "id": "official:tfg/citric_acid_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

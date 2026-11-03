@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/enriched_holmium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "enriched_holmium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

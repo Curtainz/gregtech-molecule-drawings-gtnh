@@ -1,6 +1,6 @@
-# JSONC 数据包格式 v1 — 第①阶段冻结候选
+# JSONC 数据包格式 v1
 
-状态：第②阶段已实现离线校验、组装、格式化及可视预览。0.6.0-stage.2 **不在游戏中加载本格式**，仍沿用已验证的加载路径。JSONC样例在独立ZIP中交付；游戏不创建数据目录、不解包、不热重载、不导入MOL、不迁移旧资源。用法见[第②阶段交付](STAGE-2-TESTING.md)。
+状态：第③阶段完成全量旧资源及专用映射迁移，提供离线校验、组装、格式化及全量图册。0.6.0-stage.3 **不在游戏中加载本格式**，仍沿用已验证的加载路径。游戏不创建数据目录、不解包、不热重载、不导入MOL。用法及兼容记录见[第③阶段交付](STAGE-3-TESTING.md)。
 
 ## 1. 文件与基础语法
 
@@ -22,7 +22,7 @@
 
 覆盖是**整条定义替换，不是字段合并**。例如material覆盖者必须重新声明bindings；未带入的旧字段不会继承。指向原始ID的引用解析到最终覆盖结果。每个ID的覆盖链必须为单链；两个独立扩展同时覆盖同一提供者属于歧义，即使文件排序能决定先后，也必须报错。后续包可显式依赖并覆盖上一扩展，形成单链。
 
-重复绑定、冲突别名、重复元素映射也必须显式解决，不允许“最后加载者获胜”。新定义抢占已有绑定时应覆盖其持有定义，不提供隐式抢占开关。禁用material使用disabled=true并保留bindings，禁止同时声明formula/structure/composition/display。
+重复绑定、冲突别名、重复元素映射也必须显式解决，不允许“最后加载者获胜”。新定义抢占已有绑定时应覆盖其持有定义，不提供隐式抢占开关。禁用material使用disabled=true并保留bindings，禁止同时声明formula/structure/composition/display。官方迁移包在生成时按旧命名空间顺序显式选择唯一名称绑定，并保留其他结构及来源报告；运行时不重新用文件顺序决定优先级。
 
 GT适配器是动态数据来源；数据包定义覆盖对应身份的显示与组成。未知外部GT绑定保留为未解析诊断，不导致无关材料失效；本次环境实际激活的定义若缺少必需GT组成引用，则作为校验错误。包内ID引用缺失始终报错。
 
@@ -42,7 +42,7 @@ amount为正JSON整数或正整数字符串/整数比字符串，例如3、"9999
 
 ### 绑定规则
 
-bindings定义的rules只允许alias、strip_prefix、composition_candidate、element_binding。alias从规范化名称指向明确的molecule ID；strip_prefix只剥离一次，并在已有名称绑定/别名中寻找候选，不从文件名猜测ID、不递归删除前缀。composition_candidate为GT材料白名单或规范化名称containsAny词项的并集，不构造组成比例。element_binding把符号映射到明确GT身份，不提供伪造质量。
+bindings定义的rules只允许alias、strip_prefix、composition_candidate、element_binding。alias从规范化名称指向明确的molecule ID；strip_prefix只剥离一次，并在已有名称绑定/别名中寻找候选，不从文件名猜测ID、不递归删除前缀。composition_candidate为GT材料白名单、精确规范化名称names及规范化名称containsAny词项的并集，不构造组成比例。names自第③阶段补充，用于无须猜测GT身份地保留旧derive及白名单行为；只影响候选资格，不强制显示。element_binding把符号映射到明确GT身份，不提供伪造质量。
 
 GT身份区分大小写，fluid使用注册名精确匹配；name绑定先去Minecraft格式码/首尾空白，再按Locale.ROOT不区分大小写比较。兼容alias/prefix/candidate规则使用现有MaterialNames.normalize的蛇形名称约定。精确材料/流体绑定优先于名称回退；回退得到多个不同定义时不显示图形，记录AMBIGUOUS_BINDING，不选择第一个。重复alias键或element_binding符号必须覆盖其持有定义解决；布尔composition_candidate选择器可以合并为集合，不赋予绑定优先权。
 
@@ -55,7 +55,7 @@ GT身份区分大小写，fluid使用注册名精确匹配；name绑定先去Min
 - atom：id、element、position必填。element可为null（仅视觉锚点）；普通符号及幻想元素通过数据绑定识别。label可覆盖可见文本；labelMode默认symbol，skeletal仅隐藏碳符号，hidden隐藏中心符号。hydrogens省略表示未声明；显式值0..32，在symbol模式合并显示H计数，skeletal/hidden模式不自动显示。不会根据价态推算或补写隐式氢。isotope、charge默认无同位素/0电荷。labels.above/right/below/left保留旧图的周围文本表达；非零hydrogens与显式right标签同时出现时报错，避免双重氢标注。
 - 键：from/to为原子或端口引用。order=1/2/3；style默认solid，可dotted/thick/inward/outward，楔形仅允许单键。或者使用strokes数组精确保留旧特殊线型，不能同时声明order/style。centered默认false。自连接、非法端点和冲突重复键报错。
 - 注解：bracket引用原子集合，sub/sup默认空；text使用位置与文字；ellipse用引用原子集合的质心及2×2矩阵保留旧CircleTransformation。后者是兼容显示操作，不改变苯环默认画法。
-- 颜色为#RRGGBB或#AARRGGBB，缺省使用既有配置/元素配色；标签覆盖不更改化学身份。
+- 颜色为#RRGGBB或#AARRGGBB，缺省使用既有配置/元素配色；标签覆盖不更改化学身份。原子及附属标签可带optionalColor布尔值，默认false；true时必须提供color，仅在启用可选配色时使用该颜色，否则回到元素颜色适配器。此字段自第③阶段补充，用于保留旧资源的可选配色；同样参与共享原子冲突检查。含新增字段的包应声明modVersion.min至少0.6.0-stage.3。
 
 实例只允许core:benzene、core:ring或外部fragment引用。id是实例前缀；每层用点连接，如ring.a0、group.ring.a0。ports把公开端口名映射到实际原子，成键时可用instance.attach；端口不是新原子。
 
@@ -83,7 +83,7 @@ atomMap的键必须是实例内部真实原子ID（可嵌套），值必须是�
 
 第②阶段还提供preview，输出HTML/SVG图册与精确份额报告。JSON Schema校验器只支持随工具发布的已审核Schema子集，不接受外部Schema或网络引用；词法与语义校验另行执行。完整源文件均校验Schema，跨引用、组装及组成语义校验应用于覆盖后的有效定义。GT绑定只做身份格式检查，实际存在性和质量需游戏适配器验证。
 
-工具额外限制：数字文本最多4096字符、总源文本64MiB、扫描65536项、目录树深度64、总展开几何100万项、精确组成中间数131072bit。preview单次最多512张卡片，输出预算32MiB（UTF-8字节）；超限可用--id缩小范围。单文件2MiB、JSON嵌套64、片段递归32及其他既定限制仍适用。限制报错不进行截断或近似换算。
+工具额外限制：数字文本最多4096字符、总源文本64MiB、扫描65536项、目录树深度64、总展开几何100万项、精确组成中间数131072bit。preview单页最多512张卡片，输出预算32MiB（UTF-8字节）；全量超过512项时按类别每96项分页，整代输出上限256MiB；超限可用--id缩小范围。分页先写新一代目录，全部成功后替换入口页；失败可能保留未发布的目录。单文件2MiB、JSON嵌套64、片段递归32及其他既定限制仍适用。限制报错不进行截断或近似换算。
 
 文字label显式提供时取代自动生成的同位素/元素/氢/电荷标签；化学元数据仍保留。ellipse的matrix为列优先[a00,a01,a10,a11]，在实例变换后仍按同一约定存储。注释未指定颜色时继承布局默认色。
 
@@ -91,6 +91,6 @@ MOL首版严格为单个V2000二维结构，支持普通原子、1/2/3键及可�
 
 ## 7. 本阶段审阅文件
 
-`data-packs/review`有2份清单和15份定义：水、苯、羟基片段/苯酚、共享稠环、聚乙烯、普通/嵌套合金、绑定规则，以及user显式覆盖water为文本模式。它们是小型样例，不是完整官方数据包；不要用它们替换现有0.5资源。
+`data-packs/review`保留2份清单和15份小型样例。第③阶段完整迁移结果位于 `data-packs/migrated`，包含official包的1,039条定义及逐来源HTML/CSV/JSON报告。报告文件位于包目录之外，不参与定义加载。不要用小型样例替换完整包；当前游戏也尚未挂载此完整包。
 
 审阅重点：GT身份与定义ID分离、整条覆盖、实例/端口/atomMap写法及显式二维坐标。游戏中的format-info命令仅展示版本/格式/路径，**不会加载或验证外部包**；离线工具负责本阶段的校验和预览。

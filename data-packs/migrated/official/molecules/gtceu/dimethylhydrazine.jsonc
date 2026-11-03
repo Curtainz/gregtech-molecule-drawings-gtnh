@@ -1,0 +1,82 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a1",
+      "label": "N",
+      "labelMode": "symbol",
+      "labels": {
+        "above": {
+          "element": "H",
+          "text": "H"
+        }
+      },
+      "position": [
+        0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a3",
+      "label": "N",
+      "labelMode": "symbol",
+      "labels": {
+        "below": {
+          "element": "H",
+          "text": "H"
+        }
+      },
+      "position": [
+        1.7320508,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        0.5
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    }
+  ],
+  "id": "official:gtceu/dimethylhydrazine_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

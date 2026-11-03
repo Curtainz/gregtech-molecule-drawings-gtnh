@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/duranium_x_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "duranium_x"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

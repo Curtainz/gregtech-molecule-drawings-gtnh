@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/polonium_bismide_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "polonium_bismide"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

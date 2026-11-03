@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/birmabright_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "birmabright"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

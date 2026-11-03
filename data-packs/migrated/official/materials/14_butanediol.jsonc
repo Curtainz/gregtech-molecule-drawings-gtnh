@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/14_butanediol",
+  "type": "material",
+  "bindings": [
+    "name:14_butanediol"
+  ],
+  "structure": "official:gtceu/14_butanediol_structure"
+}

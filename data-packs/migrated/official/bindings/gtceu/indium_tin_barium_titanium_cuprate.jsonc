@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/indium_tin_barium_titanium_cuprate_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "indium_tin_barium_titanium_cuprate"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dihydroiodotetracene",
+  "type": "material",
+  "bindings": [
+    "name:dihydroiodotetracene"
+  ],
+  "structure": "official:gtocore/dihydroiodotetracene_structure"
+}

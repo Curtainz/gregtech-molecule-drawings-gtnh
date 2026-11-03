@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/hg_1223_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "hg_1223"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

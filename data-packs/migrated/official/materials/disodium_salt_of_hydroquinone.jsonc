@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/disodium_salt_of_hydroquinone",
+  "type": "material",
+  "bindings": [
+    "name:disodium_salt_of_hydroquinone"
+  ],
+  "structure": "official:gtceu/disodium_salt_of_hydroquinone_structure"
+}

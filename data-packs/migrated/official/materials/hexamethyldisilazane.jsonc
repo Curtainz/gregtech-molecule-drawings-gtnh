@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/hexamethyldisilazane",
+  "type": "material",
+  "bindings": [
+    "name:hexamethyldisilazane"
+  ],
+  "structure": "official:gtocore/hexamethyldisilazane_structure"
+}

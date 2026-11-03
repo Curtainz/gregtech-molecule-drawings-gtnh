@@ -1,0 +1,121 @@
+{
+  "atoms": [
+    {
+      "element": "O",
+      "id": "a0",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0.4285714
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a1",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        3.8971143,
+        -0.3214286
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a2",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -3.8971143,
+        -0.3214286
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.299038,
+        -0.3214286
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.299038,
+        -0.3214286
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        0.4285714
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -2.598076,
+        0.4285714
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    }
+  ],
+  "id": "official:gtocore/diethyleneglycol_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

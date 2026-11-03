@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/disilane",
+  "type": "material",
+  "bindings": [
+    "name:disilane"
+  ],
+  "structure": "official:gtceu/disilane_structure"
+}

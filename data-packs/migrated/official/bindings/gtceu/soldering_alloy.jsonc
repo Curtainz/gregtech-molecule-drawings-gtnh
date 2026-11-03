@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/soldering_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "soldering_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

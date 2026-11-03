@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/thionyl_chloride",
+  "type": "material",
+  "bindings": [
+    "name:thionyl_chloride"
+  ],
+  "structure": "official:gtocore/thionyl_chloride_structure"
+}

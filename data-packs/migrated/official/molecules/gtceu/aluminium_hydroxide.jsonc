@@ -1,0 +1,121 @@
+{
+  "atoms": [
+    {
+      "element": "Al",
+      "id": "a0",
+      "label": "Al",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a1",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -1.2,
+        0
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a2",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        -1.8,
+        0.4
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a3",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0.6,
+        1
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a4",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        1.2,
+        1.2
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a5",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0.6,
+        -1
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a6",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        1.2,
+        -1.2
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    }
+  ],
+  "id": "official:gtceu/aluminium_hydroxide_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

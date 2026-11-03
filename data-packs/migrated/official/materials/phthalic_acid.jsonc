@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/phthalic_acid",
+  "type": "material",
+  "bindings": [
+    "name:phthalic_acid"
+  ],
+  "structure": "official:gtceu/phthalic_acid_structure"
+}

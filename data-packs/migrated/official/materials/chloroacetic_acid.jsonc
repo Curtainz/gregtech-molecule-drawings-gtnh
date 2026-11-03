@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/chloroacetic_acid",
+  "type": "material",
+  "bindings": [
+    "name:chloroacetic_acid"
+  ],
+  "structure": "official:gtocore/chloroacetic_acid_structure"
+}

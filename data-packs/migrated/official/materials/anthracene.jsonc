@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/anthracene",
+  "type": "material",
+  "bindings": [
+    "name:anthracene"
+  ],
+  "structure": "official:gtceu/anthracene_structure"
+}

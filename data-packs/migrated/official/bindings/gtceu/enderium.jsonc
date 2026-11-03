@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/enderium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "enderium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

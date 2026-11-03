@@ -1,0 +1,140 @@
+{
+  "atoms": [
+    {
+      "element": "Cl",
+      "id": "a0",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        -0.75,
+        -1.5
+      ]
+    },
+    {
+      "element": "S",
+      "id": "a1",
+      "label": "S",
+      "labelMode": "symbol",
+      "position": [
+        -0.75,
+        0
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a2",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        0.75,
+        -1.5
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a3",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        0.75,
+        1.5
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a4",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        2.25,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a5",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -2.25,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a6",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -0.75,
+        1.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.75,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    }
+  ],
+  "id": "official:gtocore/trifluoromethanesulfonyl_chloride_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/trimethylsilane",
+  "type": "material",
+  "bindings": [
+    "name:trimethylsilane"
+  ],
+  "structure": "official:gtocore/trimethylsilane_structure"
+}

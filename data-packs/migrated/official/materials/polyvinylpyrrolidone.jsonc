@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polyvinylpyrrolidone",
+  "type": "material",
+  "bindings": [
+    "name:polyvinylpyrrolidone"
+  ],
+  "structure": "official:gtocore/polyvinylpyrrolidone_structure"
+}

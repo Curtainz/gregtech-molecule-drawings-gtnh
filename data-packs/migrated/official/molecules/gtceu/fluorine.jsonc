@@ -1,0 +1,36 @@
+{
+  "atoms": [
+    {
+      "element": "F",
+      "id": "a0",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        -0.7,
+        0
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a1",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        0.7,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    }
+  ],
+  "id": "official:gtceu/fluorine_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/manganese_phosphide_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "manganese_phosphide"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

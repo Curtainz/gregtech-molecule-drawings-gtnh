@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/glutamine_dust",
+  "type": "material",
+  "bindings": [
+    "name:glutamine_dust"
+  ],
+  "structure": "official:gtocore/glutamine_dust_structure"
+}

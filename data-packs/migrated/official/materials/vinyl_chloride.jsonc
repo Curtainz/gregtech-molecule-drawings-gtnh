@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/vinyl_chloride",
+  "type": "material",
+  "bindings": [
+    "name:vinyl_chloride"
+  ],
+  "structure": "official:gtceu/vinyl_chloride_structure"
+}

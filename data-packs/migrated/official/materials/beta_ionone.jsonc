@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/beta_ionone",
+  "type": "material",
+  "bindings": [
+    "name:beta_ionone"
+  ],
+  "structure": "official:gtocore/beta_ionone_structure"
+}

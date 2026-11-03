@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/15_crown_5_na",
+  "type": "material",
+  "bindings": [
+    "name:15_crown_5_na"
+  ],
+  "structure": "official:gtceu/15_crown_5_na_structure"
+}

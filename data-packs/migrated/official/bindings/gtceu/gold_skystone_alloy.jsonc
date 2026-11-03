@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/gold_skystone_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "gold_skystone_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

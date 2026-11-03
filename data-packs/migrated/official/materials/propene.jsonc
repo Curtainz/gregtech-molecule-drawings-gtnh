@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/propene",
+  "type": "material",
+  "bindings": [
+    "name:propene"
+  ],
+  "structure": "official:gtceu/propene_structure"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/stainless_steel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "stainless_steel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

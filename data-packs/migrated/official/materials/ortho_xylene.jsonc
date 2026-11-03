@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ortho_xylene",
+  "type": "material",
+  "bindings": [
+    "name:ortho_xylene"
+  ],
+  "structure": "official:gtceu/ortho_xylene_structure"
+}

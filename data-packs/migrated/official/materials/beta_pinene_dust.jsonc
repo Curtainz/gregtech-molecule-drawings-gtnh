@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/beta_pinene_dust",
+  "type": "material",
+  "bindings": [
+    "name:beta_pinene_dust"
+  ],
+  "structure": "official:gtocore/beta_pinene_dust_structure"
+}

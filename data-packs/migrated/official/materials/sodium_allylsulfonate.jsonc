@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/sodium_allylsulfonate",
+  "type": "material",
+  "bindings": [
+    "name:sodium_allylsulfonate"
+  ],
+  "structure": "official:gtocore/sodium_allylsulfonate_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/chlorine",
+  "type": "material",
+  "bindings": [
+    "name:chlorine"
+  ],
+  "structure": "official:gtceu/chlorine_structure"
+}

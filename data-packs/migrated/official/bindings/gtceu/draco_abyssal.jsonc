@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/draco_abyssal_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "draco_abyssal"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

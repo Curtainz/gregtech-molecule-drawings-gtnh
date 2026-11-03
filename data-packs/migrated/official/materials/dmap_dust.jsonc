@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dmap_dust",
+  "type": "material",
+  "bindings": [
+    "name:dmap_dust"
+  ],
+  "structure": "official:gtocore/dmap_dust_structure"
+}

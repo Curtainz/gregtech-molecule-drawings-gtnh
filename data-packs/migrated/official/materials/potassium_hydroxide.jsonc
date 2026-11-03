@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/potassium_hydroxide",
+  "type": "material",
+  "bindings": [
+    "name:potassium_hydroxide"
+  ],
+  "structure": "official:gtceu/potassium_hydroxide_structure"
+}

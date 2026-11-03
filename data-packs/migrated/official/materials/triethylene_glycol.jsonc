@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/triethylene_glycol",
+  "type": "material",
+  "bindings": [
+    "name:triethylene_glycol"
+  ],
+  "structure": "official:gtceu/triethylene_glycol_structure"
+}

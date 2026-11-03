@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/blue_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "blue_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/cast_iron_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "cast_iron"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

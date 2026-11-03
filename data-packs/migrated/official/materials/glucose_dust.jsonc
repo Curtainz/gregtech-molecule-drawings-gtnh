@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/glucose_dust",
+  "type": "material",
+  "bindings": [
+    "name:glucose_dust"
+  ],
+  "structure": "official:gtocore/glucose_dust_structure"
+}

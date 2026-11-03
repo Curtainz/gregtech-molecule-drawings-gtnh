@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/austenitic_stainless_steel_304_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "austenitic_stainless_steel_304"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

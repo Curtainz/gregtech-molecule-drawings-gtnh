@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/maleic_anhydride",
+  "type": "material",
+  "bindings": [
+    "name:maleic_anhydride"
+  ],
+  "structure": "official:gtceu/maleic_anhydride_structure"
+}

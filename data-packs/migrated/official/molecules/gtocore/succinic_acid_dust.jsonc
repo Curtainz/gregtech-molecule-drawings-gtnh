@@ -1,0 +1,140 @@
+{
+  "atoms": [
+    {
+      "element": "O",
+      "id": "a0",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        3.118207,
+        0.9819805
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a1",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -3.118207,
+        -0.9819805
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a2",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        2.2677867,
+        -1.4729708
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a3",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -2.2677867,
+        1.4729708
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.5669467,
+        0.4909903
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.5669467,
+        -0.4909903
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.9843135,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.9843135,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    }
+  ],
+  "id": "official:gtocore/succinic_acid_dust_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

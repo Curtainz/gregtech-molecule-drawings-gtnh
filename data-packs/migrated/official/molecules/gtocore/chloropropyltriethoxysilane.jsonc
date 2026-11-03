@@ -1,0 +1,240 @@
+{
+  "atoms": [
+    {
+      "element": "Cl",
+      "id": "a0",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        4.3099546,
+        0.2963286
+      ]
+    },
+    {
+      "element": "Si",
+      "id": "a1",
+      "label": "Si",
+      "labelMode": "symbol",
+      "position": [
+        -0.8601877,
+        -0.2229268
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a2",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -2.2276714,
+        0.3935052
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a3",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -0.2437558,
+        1.1445569
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a4",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -1.4766197,
+        -1.5904105
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.507296,
+        -0.8393587
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7248836,
+        0.0367009
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        3.0923674,
+        -0.5797311
+      ]
+    },
+    {
+      "element": null,
+      "id": "a8",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -2.3775675,
+        1.8859968
+      ]
+    },
+    {
+      "element": null,
+      "id": "a9",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.2487358,
+        1.294453
+      ]
+    },
+    {
+      "element": null,
+      "id": "a10",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.60056,
+        -2.807998
+      ]
+    },
+    {
+      "element": null,
+      "id": "a11",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -3.7450511,
+        2.5024288
+      ]
+    },
+    {
+      "element": null,
+      "id": "a12",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.8651679,
+        2.6619368
+      ]
+    },
+    {
+      "element": null,
+      "id": "a13",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.216992,
+        -4.175482
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a9",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a10",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a13"
+    }
+  ],
+  "id": "official:gtocore/chloropropyltriethoxysilane_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

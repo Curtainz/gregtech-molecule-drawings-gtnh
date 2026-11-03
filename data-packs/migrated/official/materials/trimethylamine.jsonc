@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/trimethylamine",
+  "type": "material",
+  "bindings": [
+    "name:trimethylamine"
+  ],
+  "structure": "official:gtocore/trimethylamine_structure"
+}

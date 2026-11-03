@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dichloromethane",
+  "type": "material",
+  "bindings": [
+    "name:dichloromethane"
+  ],
+  "structure": "official:gtocore/dichloromethane_structure"
+}

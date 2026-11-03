@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/benzoic_anhydride",
+  "type": "material",
+  "bindings": [
+    "name:benzoic_anhydride"
+  ],
+  "structure": "official:gtocore/benzoic_anhydride_structure"
+}

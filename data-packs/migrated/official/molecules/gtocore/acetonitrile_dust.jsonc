@@ -1,0 +1,55 @@
+{
+  "atoms": [
+    {
+      "element": "N",
+      "id": "a0",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        1.5,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.5,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid",
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    }
+  ],
+  "id": "official:gtocore/acetonitrile_dust_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

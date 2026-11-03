@@ -9,10 +9,20 @@ import com.rubenverg.moldraw.core.MoleculeScene;
 public record CompiledMolecule(String id, List<Atom> atoms, List<Bond> bonds, List<Annotation> annotations,
     Map<String, String> ports) {
 
-    public record Decoration(String text, String element, String color) {}
+    public record Decoration(String text, String element, String color, boolean optionalColor) {
+
+        public Decoration(String text, String element, String color) {
+            this(text, element, color, false);
+        }
+    }
 
     public record Style(String element, String label, String mode, Integer hydrogens, Integer isotope, int charge,
-        String color, Map<String, Decoration> labels) {
+        String color, Map<String, Decoration> labels, boolean optionalColor) {
+
+        public Style(String element, String label, String mode, Integer hydrogens, Integer isotope, int charge,
+            String color, Map<String, Decoration> labels) {
+            this(element, label, mode, hydrogens, isotope, charge, color, labels, false);
+        }
 
         public Style {
             labels = Map.copyOf(labels);
@@ -45,13 +55,17 @@ public record CompiledMolecule(String id, List<Atom> atoms, List<Bond> bonds, Li
     }
 
     public MoleculeScene scene(Function<String, Integer> colors) {
+        return scene(colors, true);
+    }
+
+    public MoleculeScene scene(Function<String, Integer> colors, boolean useOptionalColors) {
         List<MoleculeScene.Shape> shapes = new ArrayList<>();
         Map<String, Integer> indices = new HashMap<>();
         int i = 0;
         for (var atom : atoms) {
             indices.put(atom.id, i);
             Style s = atom.style;
-            int color = color(s.color, s.element, colors);
+            int color = color(s.optionalColor && !useOptionalColors ? null : s.color, s.element, colors);
             String text = s.label != null ? s.label : s.element == null ? "" : s.element;
             if (s.label == null) {
                 if (s.isotope != null) text = superscript(s.isotope.toString()) + text;
@@ -68,10 +82,10 @@ public record CompiledMolecule(String id, List<Atom> atoms, List<Bond> bonds, Li
                 new MoleculeScene.Atom(
                     i++,
                     new MoleculeScene.Label(text, hidden, color),
-                    decoration(s, "above", color, colors),
-                    decoration(s, "right", color, colors),
-                    decoration(s, "below", color, colors),
-                    decoration(s, "left", color, colors),
+                    decoration(s, "above", color, colors, useOptionalColors),
+                    decoration(s, "right", color, colors, useOptionalColors),
+                    decoration(s, "below", color, colors, useOptionalColors),
+                    decoration(s, "left", color, colors, useOptionalColors),
                     (float) atom.x,
                     (float) atom.y,
                     0));
@@ -107,14 +121,15 @@ public record CompiledMolecule(String id, List<Atom> atoms, List<Bond> bonds, Li
     }
 
     private static Optional<MoleculeScene.Label> decoration(Style style, String side, int inherited,
-        Function<String, Integer> colors) {
+        Function<String, Integer> colors, boolean useOptionalColors) {
         Decoration d = style.labels.get(side);
         return d == null ? Optional.empty()
             : Optional.of(
                 new MoleculeScene.Label(
                     d.text,
                     false,
-                    d.color == null && d.element == null ? inherited : color(d.color, d.element, colors)));
+                    d.color == null && d.element == null ? inherited
+                        : color(d.optionalColor && !useOptionalColors ? null : d.color, d.element, colors)));
     }
 
     private static int color(String literal, String element, Function<String, Integer> colors) {

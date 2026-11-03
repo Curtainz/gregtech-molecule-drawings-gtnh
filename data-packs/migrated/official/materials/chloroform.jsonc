@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/chloroform",
+  "type": "material",
+  "bindings": [
+    "name:chloroform"
+  ],
+  "structure": "official:gtceu/chloroform_structure"
+}

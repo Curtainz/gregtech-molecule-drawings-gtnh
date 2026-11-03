@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/urea",
+  "type": "material",
+  "bindings": [
+    "name:urea"
+  ],
+  "structure": "official:tfg/urea_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dimethylbenzene",
+  "type": "material",
+  "bindings": [
+    "name:dimethylbenzene"
+  ],
+  "structure": "official:gtceu/dimethylbenzene_structure"
+}

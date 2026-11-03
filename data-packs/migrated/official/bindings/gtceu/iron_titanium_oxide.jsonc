@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/iron_titanium_oxide_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "iron_titanium_oxide"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

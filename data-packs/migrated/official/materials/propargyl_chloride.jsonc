@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/propargyl_chloride",
+  "type": "material",
+  "bindings": [
+    "name:propargyl_chloride"
+  ],
+  "structure": "official:gtocore/propargyl_chloride_structure"
+}

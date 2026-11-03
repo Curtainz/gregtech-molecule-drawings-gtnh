@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/fluorinated_ethylene_propylene",
+  "type": "material",
+  "bindings": [
+    "name:fluorinated_ethylene_propylene"
+  ],
+  "structure": "official:gtceu/fluorinated_ethylene_propylene_structure"
+}

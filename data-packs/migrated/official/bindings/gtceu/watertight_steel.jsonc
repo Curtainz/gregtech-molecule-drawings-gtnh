@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/watertight_steel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "watertight_steel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

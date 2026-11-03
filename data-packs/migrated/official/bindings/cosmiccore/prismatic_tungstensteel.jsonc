@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:cosmiccore/prismatic_tungstensteel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "prismatic_tungstensteel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

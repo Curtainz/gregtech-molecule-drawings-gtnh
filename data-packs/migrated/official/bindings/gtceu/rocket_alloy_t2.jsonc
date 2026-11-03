@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/rocket_alloy_t2_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "rocket_alloy_t2"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

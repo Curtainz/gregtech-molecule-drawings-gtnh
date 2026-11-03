@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/para_aramid",
+  "type": "material",
+  "bindings": [
+    "name:para_aramid"
+  ],
+  "structure": "official:gcyr/para_aramid_structure"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/weapon_grade_naquadah_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "weapon_grade_naquadah"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/stearic_acid",
+  "type": "material",
+  "bindings": [
+    "name:stearic_acid"
+  ],
+  "structure": "official:gtocore/stearic_acid_structure"
+}

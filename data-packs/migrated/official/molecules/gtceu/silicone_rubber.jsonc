@@ -1,0 +1,116 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a1",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0.8660254,
+        -0.5
+      ]
+    },
+    {
+      "element": "Si",
+      "id": "a2",
+      "label": "Si",
+      "labelMode": "symbol",
+      "position": [
+        1.7320508,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7320508,
+        1
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7320508,
+        -1
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        -0.5
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "atoms": [
+        "a1",
+        "a2",
+        "a3",
+        "a4"
+      ],
+      "sub": "n",
+      "type": "bracket"
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    }
+  ],
+  "id": "official:gtceu/silicone_rubber_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/linoleic_acid",
+  "type": "material",
+  "bindings": [
+    "name:linoleic_acid"
+  ],
+  "structure": "official:gtocore/linoleic_acid_structure"
+}

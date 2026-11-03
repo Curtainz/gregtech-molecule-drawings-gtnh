@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/octane",
+  "type": "material",
+  "bindings": [
+    "name:octane"
+  ],
+  "structure": "official:gtceu/octane_structure"
+}

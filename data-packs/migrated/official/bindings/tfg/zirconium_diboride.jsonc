@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:tfg/zirconium_diboride_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "zirconium_diboride"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

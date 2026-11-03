@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dichlorodicyanobenzoquinone",
+  "type": "material",
+  "bindings": [
+    "name:dichlorodicyanobenzoquinone"
+  ],
+  "structure": "official:gtocore/dichlorodicyanobenzoquinone_structure"
+}

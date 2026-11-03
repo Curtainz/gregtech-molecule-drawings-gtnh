@@ -1,0 +1,173 @@
+{
+  "atoms": [
+    {
+      "element": "N",
+      "id": "a0",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a1",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        1
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a2",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        -1
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a3",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        1,
+        0
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a4",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        -1,
+        0
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a5",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        2.5,
+        0
+      ]
+    },
+    {
+      "element": "C",
+      "id": "a6",
+      "label": "C",
+      "labelMode": "symbol",
+      "position": [
+        3.5,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a7",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        4,
+        0.8660254
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a8",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        4,
+        -0.8660254
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "atoms": [
+        "a0",
+        "a1",
+        "a2",
+        "a3",
+        "a4"
+      ],
+      "sup": "+",
+      "type": "bracket"
+    },
+    {
+      "atoms": [
+        "a5",
+        "a6",
+        "a7",
+        "a8"
+      ],
+      "sup": "-",
+      "type": "bracket"
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid",
+        "dotted"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "dotted"
+      ],
+      "to": "a8"
+    }
+  ],
+  "id": "official:gtceu/ammonium_formate_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

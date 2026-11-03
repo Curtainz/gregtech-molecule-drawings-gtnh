@@ -1,0 +1,71 @@
+{
+  "atoms": [
+    {
+      "element": "Cl",
+      "id": "a0",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        1.299038,
+        -0.75
+      ]
+    },
+    {
+      "element": "Cl",
+      "id": "a1",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        1.5
+      ]
+    },
+    {
+      "element": "S",
+      "id": "a2",
+      "label": "S",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a3",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -1.299038,
+        -0.75
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a3"
+    }
+  ],
+  "id": "official:gtocore/thionyl_chloride_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

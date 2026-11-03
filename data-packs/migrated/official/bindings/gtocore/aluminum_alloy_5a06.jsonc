@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/aluminum_alloy_5a06_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "aluminum_alloy_5a06"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

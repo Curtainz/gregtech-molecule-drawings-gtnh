@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/iodomethane",
+  "type": "material",
+  "bindings": [
+    "name:iodomethane"
+  ],
+  "structure": "official:tfg/iodomethane_structure"
+}

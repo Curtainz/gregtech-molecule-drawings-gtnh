@@ -1,0 +1,46 @@
+{
+  "atoms": [
+    {
+      "element": "Cl",
+      "id": "a0",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        1
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a1",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0.75,
+        0
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a2",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        -0.75,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    }
+  ],
+  "id": "official:gtocore/hydroxylamine_hydrochloride_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

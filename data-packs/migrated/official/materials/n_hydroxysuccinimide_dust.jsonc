@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/n_hydroxysuccinimide_dust",
+  "type": "material",
+  "bindings": [
+    "name:n_hydroxysuccinimide_dust"
+  ],
+  "structure": "official:gtocore/n_hydroxysuccinimide_dust_structure"
+}

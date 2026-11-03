@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/trimethyl_borate",
+  "type": "material",
+  "bindings": [
+    "name:trimethyl_borate"
+  ],
+  "structure": "official:tfg/trimethyl_borate_structure"
+}

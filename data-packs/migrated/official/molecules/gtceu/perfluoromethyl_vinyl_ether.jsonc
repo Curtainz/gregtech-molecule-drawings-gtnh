@@ -1,0 +1,128 @@
+{
+  "atoms": [
+    {
+      "element": "C",
+      "id": "a0",
+      "label": "C",
+      "labelMode": "symbol",
+      "labels": {
+        "left": {
+          "element": "F",
+          "text": "F₃"
+        }
+      },
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a1",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7320508,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        0.5
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a4",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        1.7320508,
+        -1
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a5",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        3.4641016,
+        0
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a6",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        2.598076,
+        1.5
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    }
+  ],
+  "id": "official:gtceu/perfluoromethyl_vinyl_ether_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

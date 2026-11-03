@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/methylbenzaldehyde",
+  "type": "material",
+  "bindings": [
+    "name:methylbenzaldehyde"
+  ],
+  "structure": "official:gcyr/methylbenzaldehyde_structure"
+}

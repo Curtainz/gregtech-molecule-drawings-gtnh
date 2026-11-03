@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tmos",
+  "type": "material",
+  "bindings": [
+    "name:tmos"
+  ],
+  "structure": "official:tfg/tmos_structure"
+}

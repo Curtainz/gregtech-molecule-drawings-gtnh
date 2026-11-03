@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/grcop84_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "grcop84"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

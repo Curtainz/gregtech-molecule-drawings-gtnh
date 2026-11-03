@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/acetic_anhydride",
+  "type": "material",
+  "bindings": [
+    "name:acetic_anhydride"
+  ],
+  "structure": "official:gtceu/acetic_anhydride_structure"
+}

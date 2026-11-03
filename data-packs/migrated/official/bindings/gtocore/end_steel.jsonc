@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/end_steel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "end_steel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

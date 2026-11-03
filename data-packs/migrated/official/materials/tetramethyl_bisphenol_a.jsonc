@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tetramethyl_bisphenol_a",
+  "type": "material",
+  "bindings": [
+    "name:tetramethyl_bisphenol_a"
+  ],
+  "structure": "official:gtocore/tetramethyl_bisphenol_a_structure"
+}

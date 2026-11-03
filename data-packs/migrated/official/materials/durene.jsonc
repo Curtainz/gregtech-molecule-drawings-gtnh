@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/durene",
+  "type": "material",
+  "bindings": [
+    "name:durene"
+  ],
+  "structure": "official:gtceu/durene_structure"
+}

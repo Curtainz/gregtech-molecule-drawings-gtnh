@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/acrylonitrile",
+  "type": "material",
+  "bindings": [
+    "name:acrylonitrile"
+  ],
+  "structure": "official:gtocore/acrylonitrile_structure"
+}

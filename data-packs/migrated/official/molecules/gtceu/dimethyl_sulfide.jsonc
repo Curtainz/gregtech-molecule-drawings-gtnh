@@ -1,0 +1,53 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "S",
+      "id": "a1",
+      "label": "S",
+      "labelMode": "symbol",
+      "position": [
+        0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7320508,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    }
+  ],
+  "id": "official:gtceu/dimethyl_sulfide_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

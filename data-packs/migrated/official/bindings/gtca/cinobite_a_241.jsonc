@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/cinobite_a_241_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "cinobite_a_241"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

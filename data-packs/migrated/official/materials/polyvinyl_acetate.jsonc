@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polyvinyl_acetate",
+  "type": "material",
+  "bindings": [
+    "name:polyvinyl_acetate"
+  ],
+  "structure": "official:gtceu/polyvinyl_acetate_structure"
+}

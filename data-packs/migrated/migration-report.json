@@ -1,0 +1,4139 @@
+{
+  "kind": "legacy-migration-stage-3",
+  "structureSources": 368,
+  "compositionSources": 317,
+  "effectiveStructureNames": 353,
+  "definitions": 1039,
+  "sources": [
+    {
+      "source": "gtceu/molecules/12_crown_4.json",
+      "definition": "official:gtceu/12_crown_4_structure",
+      "status": "bound_by_name",
+      "sha256": "046fc83a8300183af4417b28ee2743565147271685a87b1b896350838a37dced"
+    },
+    {
+      "source": "gtceu/molecules/12_crown_4_li.json",
+      "definition": "official:gtceu/12_crown_4_li_structure",
+      "status": "bound_by_name",
+      "sha256": "f0c6b6ffff8d16ab762742566d0a301554588115f6d039503a29c1ddfcad6a6a"
+    },
+    {
+      "source": "gtceu/molecules/12_dibromoethane.json",
+      "definition": "official:gtceu/12_dibromoethane_structure",
+      "status": "bound_by_name",
+      "sha256": "4dadedea43903d8bd15c5a4e1931261795e449efade09cccb720337bee816c6f"
+    },
+    {
+      "source": "gtceu/molecules/14_butanediol.json",
+      "definition": "official:gtceu/14_butanediol_structure",
+      "status": "bound_by_name",
+      "sha256": "e54eb88aac7efa6128eeaeb1efa0915a27243a373bdce1737d16e6d9bb0b5bbe"
+    },
+    {
+      "source": "gtceu/molecules/15_crown_5.json",
+      "definition": "official:gtceu/15_crown_5_structure",
+      "status": "bound_by_name",
+      "sha256": "5666480176b5e9b957fd5a52e8f41800449a30d7468248843ee3cf26f63280fe"
+    },
+    {
+      "source": "gtceu/molecules/15_crown_5_na.json",
+      "definition": "official:gtceu/15_crown_5_na_structure",
+      "status": "bound_by_name",
+      "sha256": "a43332758e47eb1ddb6f3926104ae403ad78b384036f5e98e5aa6cc7cdff30a6"
+    },
+    {
+      "source": "gtceu/molecules/18_crown_6.json",
+      "definition": "official:gtceu/18_crown_6_structure",
+      "status": "bound_by_name",
+      "sha256": "fea459aa3bb8e5c287e8789b734c617d087cbc3c82c36cab8b646d8b2722b0c1"
+    },
+    {
+      "source": "gtceu/molecules/18_crown_6_k.json",
+      "definition": "official:gtceu/18_crown_6_k_structure",
+      "status": "bound_by_name",
+      "sha256": "98ec380c19e685bf6a5c3eac32d9d32ac649992cfc54cbcfc48be640fd77ea01"
+    },
+    {
+      "source": "gtceu/molecules/1_4_dichlorobutadiene.json",
+      "definition": "official:gtceu/1_4_dichlorobutadiene_structure",
+      "status": "bound_by_name",
+      "sha256": "69a630c414b62df110c8aa6db8afb5f6adc7df702c160cea8a61ac4598f85cfe"
+    },
+    {
+      "source": "gtceu/molecules/34_ethylenedioxythiophene.json",
+      "definition": "official:gtceu/34_ethylenedioxythiophene_structure",
+      "status": "bound_by_name",
+      "sha256": "75bb102837b2ffd306aafb2d16171e8ecc62ea509d457d1c7532523e9c6ff72f"
+    },
+    {
+      "source": "gtceu/molecules/3_4_dichlorobutadiene.json",
+      "definition": "official:gtceu/3_4_dichlorobutadiene_structure",
+      "status": "bound_by_name",
+      "sha256": "86556a5f85aa1085a561251359e6be93cf44d1501f103f1d106c31e7f40f712c"
+    },
+    {
+      "source": "gtceu/molecules/44_difluorobenzophenone.json",
+      "definition": "official:gtceu/44_difluorobenzophenone_structure",
+      "status": "bound_by_name",
+      "sha256": "b00bae8896c8e49a677c2c46121b79afea3d6b318fabddc26a728646daa1a6c2"
+    },
+    {
+      "source": "gtceu/molecules/4_4_oxydianiline_pyromellitimide.json",
+      "definition": "official:gtceu/4_4_oxydianiline_pyromellitimide_structure",
+      "status": "bound_by_name",
+      "sha256": "703e81fee951d616ec77f8df595ad39e7eb133ba40904c13c5d88b252ebcd065"
+    },
+    {
+      "source": "gtceu/molecules/4_fluorobenzoyl_chloride.json",
+      "definition": "official:gtceu/4_fluorobenzoyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "5401130fb34feb14d8011da30ce7e59e925f7b67b0c4ce95d1b1a460426c9202"
+    },
+    {
+      "source": "gtceu/molecules/4_toluenesulfonyl_chloride.json",
+      "definition": "official:gtceu/4_toluenesulfonyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "612f368f8e54b463ac9a04bbd0eb9c20e0a4daa1d85d05eec214714434334419"
+    },
+    {
+      "source": "gtceu/molecules/acetic_acid.json",
+      "definition": "official:gtceu/acetic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "dbcb3ec6f65508ad574f3e01acb5134848f3619fdf2b50ff94321382a3bc6b82"
+    },
+    {
+      "source": "gtceu/molecules/acetic_anhydride.json",
+      "definition": "official:gtceu/acetic_anhydride_structure",
+      "status": "bound_by_name",
+      "sha256": "e6ea68e28cff453d10d4842ab386c6c383fb862a775d64d59467e55fe8190b1a"
+    },
+    {
+      "source": "gtceu/molecules/acetone.json",
+      "definition": "official:gtceu/acetone_structure",
+      "status": "bound_by_name",
+      "sha256": "a608ab6a19dd3a922a81c65da5368aec0f6e8668f50cc22eab60a3053fd13de0"
+    },
+    {
+      "source": "gtceu/molecules/acetone_azine.json",
+      "definition": "official:gtceu/acetone_azine_structure",
+      "status": "bound_by_name",
+      "sha256": "ae2b145e53a82b535356a77d3741ba84828a61b10c2e6808c708031a62905e3a"
+    },
+    {
+      "source": "gtceu/molecules/acetone_cyanohydrin.json",
+      "definition": "official:gtceu/acetone_cyanohydrin_structure",
+      "status": "bound_by_name",
+      "sha256": "ad03ff3f09c88b7800d27c19d248d471caaadee59f3b7a41f4f8a346dbc2c316"
+    },
+    {
+      "source": "gtceu/molecules/acetylene.json",
+      "definition": "official:gtceu/acetylene_structure",
+      "status": "bound_by_name",
+      "sha256": "5b5b97a7639e0611375f15b6b4199d249a33bf327d939abca1ed9f620cf8fc21"
+    },
+    {
+      "source": "gtceu/molecules/adipic_acid.json",
+      "definition": "official:gtceu/adipic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "70c4f21dc72644a957a23233b66f720c1a030367498d1bc25d4f636a20624927"
+    },
+    {
+      "source": "gtceu/molecules/adiponitrile.json",
+      "definition": "official:gtceu/adiponitrile_structure",
+      "status": "bound_by_name",
+      "sha256": "0a4fc62d28e2748c1f3d85cef0df9ba38022325a5ac99d1e49b23575a060d8ca"
+    },
+    {
+      "source": "gtceu/molecules/allyl_chloride.json",
+      "definition": "official:gtceu/allyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "3cd893cd0c1bd0171f4cf4bef8e1d15d3de94a43bc099feba52571ded51de254"
+    },
+    {
+      "source": "gtceu/molecules/aluminium_hydroxide.json",
+      "definition": "official:gtceu/aluminium_hydroxide_structure",
+      "status": "bound_by_name",
+      "sha256": "4bf77d2169f6ca029ce278ab2ef20be257b3fb53272146fa4715946774144fa7"
+    },
+    {
+      "source": "gtceu/molecules/aluminiumoxide.json",
+      "definition": "official:gtceu/aluminiumoxide_structure",
+      "status": "bound_by_name",
+      "sha256": "b17338159256f06a9501e78a7246185a44d709748a54752d49531fc0e962a271"
+    },
+    {
+      "source": "gtceu/molecules/aminophenol.json",
+      "definition": "official:gtceu/aminophenol_structure",
+      "status": "bound_by_name",
+      "sha256": "205d08ba96150d308c27522d81459f541a76c55989b1677e036e14774bbbcb1a"
+    },
+    {
+      "source": "gtceu/molecules/ammonia.json",
+      "definition": "official:gtceu/ammonia_structure",
+      "status": "bound_by_name",
+      "sha256": "724d84e6a4f443cc31473ae747469380a19d5acd425fb6336bf995509f212843"
+    },
+    {
+      "source": "gtceu/molecules/ammonium_formate.json",
+      "definition": "official:gtceu/ammonium_formate_structure",
+      "status": "bound_by_name",
+      "sha256": "3c98ed38521d87d1d2ef7aab7d80d17528e209bfd9db02415ac65dd401a8760f"
+    },
+    {
+      "source": "gtceu/molecules/ammonium_oxalate.json",
+      "definition": "official:gtceu/ammonium_oxalate_structure",
+      "status": "bound_by_name",
+      "sha256": "4e76ac1daff5e70cc6cc2482982cfcd8c56191ac8691663a60b1b6d51e897083"
+    },
+    {
+      "source": "gtceu/molecules/aniline.json",
+      "definition": "official:gtceu/aniline_structure",
+      "status": "bound_by_name",
+      "sha256": "72d768acece1378606386ca690be7823fc389646db950f52c7a871aad6cf77d7"
+    },
+    {
+      "source": "gtceu/molecules/anthracene.json",
+      "definition": "official:gtceu/anthracene_structure",
+      "status": "bound_by_name",
+      "sha256": "eb8e7bf8cb3cb9ad62de0f632eebacef52c02f2df513f8d539006c9edfeef82b"
+    },
+    {
+      "source": "gtceu/molecules/benzene.json",
+      "definition": "official:gtceu/benzene_structure",
+      "status": "bound_by_name",
+      "sha256": "25a0a4a227d7c626f5e9e3081aeb027ff66d3e33ab5b6454fc0a82ff01cfa389"
+    },
+    {
+      "source": "gtceu/molecules/benzotrichloride.json",
+      "definition": "official:gtceu/benzotrichloride_structure",
+      "status": "bound_by_name",
+      "sha256": "73647518534440b238505ca16eb57c1217efc95ae18a8248a3fcaf4b9733556a"
+    },
+    {
+      "source": "gtceu/molecules/benzoyl_chloride.json",
+      "definition": "official:gtceu/benzoyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "5e6b55de54528c4411b7e8137c5955decb14a3db9d1dae24f3e0f91e81d38a7c"
+    },
+    {
+      "source": "gtceu/molecules/benzoyl_peroxide.json",
+      "definition": "official:gtceu/benzoyl_peroxide_structure",
+      "status": "bound_by_name",
+      "sha256": "9ce95c48e375b07a002b38b312805edeac17a7eeeb8560852226f48ba7ac4bc4"
+    },
+    {
+      "source": "gtceu/molecules/bisphenol_a.json",
+      "definition": "official:gtceu/bisphenol_a_structure",
+      "status": "bound_by_name",
+      "sha256": "df17e7722cb179c7be2dea4dd7697ddc6d9c91e10f284706df9291a1207ee518"
+    },
+    {
+      "source": "gtceu/molecules/butadiene.json",
+      "definition": "official:gtceu/butadiene_structure",
+      "status": "bound_by_name",
+      "sha256": "bd3fe3f4e1fb1f75a9c086904f1a56c4766ae2b084e76cc265749771d4a44d47"
+    },
+    {
+      "source": "gtceu/molecules/butane.json",
+      "definition": "official:gtceu/butane_structure",
+      "status": "bound_by_name",
+      "sha256": "f8b5ba9ea7d12210f5ea5370a3272003271ae3c2270e0b2914f1ef6b40e208ad"
+    },
+    {
+      "source": "gtceu/molecules/butanol.json",
+      "definition": "official:gtceu/butanol_structure",
+      "status": "bound_by_name",
+      "sha256": "95cef474e080a7b4d72a330096995b9869b6d23e2daecd665939b11b8771ede2"
+    },
+    {
+      "source": "gtceu/molecules/butene.json",
+      "definition": "official:gtceu/butene_structure",
+      "status": "bound_by_name",
+      "sha256": "1d515de82811644d48b779db422d3fc0ca7782f969b145cb125adcec04b4cefe"
+    },
+    {
+      "source": "gtceu/molecules/butyraldehyde.json",
+      "definition": "official:gtceu/butyraldehyde_structure",
+      "status": "bound_by_name",
+      "sha256": "cd27e080e9c3a04dbd1921c7fc80badb24fa03ef191c32cdd14856f6a52f11aa"
+    },
+    {
+      "source": "gtceu/molecules/caprolactam.json",
+      "definition": "official:gtceu/caprolactam_structure",
+      "status": "bound_by_name",
+      "sha256": "c6e2b82ef97907a79ed069f6644d871a8228f57b904fbd259fc867953cd43b85"
+    },
+    {
+      "source": "gtceu/molecules/carbon_dioxide.json",
+      "definition": "official:gtceu/carbon_dioxide_structure",
+      "status": "bound_by_name",
+      "sha256": "5e64cac2b20341335d1bead89fa92d208719a3631d0a37897c1b60cb203c1252"
+    },
+    {
+      "source": "gtceu/molecules/carbon_monoxide.json",
+      "definition": "official:gtceu/carbon_monoxide_structure",
+      "status": "bound_by_name",
+      "sha256": "09dfb5a925e973ccc3296d3e9adacd32e27bf1c6e57f3a660ff3c5a15c87f292"
+    },
+    {
+      "source": "gtceu/molecules/chlorine.json",
+      "definition": "official:gtceu/chlorine_structure",
+      "status": "bound_by_name",
+      "sha256": "e618779b0a631459f9217791374a3ff38cb0fc3197f52cc88e086943772be6c7"
+    },
+    {
+      "source": "gtceu/molecules/chloroacetate.json",
+      "definition": "official:gtceu/chloroacetate_structure",
+      "status": "bound_by_name",
+      "sha256": "566ce910a2d5546fda8423743e3cffcddf9c546b56d57c3ee949a4ab46c62954"
+    },
+    {
+      "source": "gtceu/molecules/chlorobenzene.json",
+      "definition": "official:gtceu/chlorobenzene_structure",
+      "status": "bound_by_name",
+      "sha256": "3686a4cbb7ead1461d862073d24fa793253d747b560ba729b782fc2ac5d7adcb"
+    },
+    {
+      "source": "gtceu/molecules/chloroethane.json",
+      "definition": "official:gtceu/chloroethane_structure",
+      "status": "bound_by_name",
+      "sha256": "7fa4cc9ba4885514b42f8f0b187c76cb968b66493c9785000d10eb2af957a49d"
+    },
+    {
+      "source": "gtceu/molecules/chloroform.json",
+      "definition": "official:gtceu/chloroform_structure",
+      "status": "bound_by_name",
+      "sha256": "f06facf268e146d67d36c2e5fdef075e5408bd3e27fe6415e4e80f60842231dd"
+    },
+    {
+      "source": "gtceu/molecules/chloromethane.json",
+      "definition": "official:gtceu/chloromethane_structure",
+      "status": "bound_by_name",
+      "sha256": "9dfd986494ae623f02c12a250f8b318601b2c2d07c37668a9490e6fec0b5440c"
+    },
+    {
+      "source": "gtceu/molecules/chloroprene.json",
+      "definition": "official:gtceu/chloroprene_structure",
+      "status": "bound_by_name",
+      "sha256": "e859aa3b6d768fc712165c39d2ff525b8d8f00ff5a9879b12a0db985ffff84e5"
+    },
+    {
+      "source": "gtceu/molecules/cryolite.json",
+      "definition": "official:gtceu/cryolite_structure",
+      "status": "bound_by_name",
+      "sha256": "5b7468e221817d99553cf6a4db488664d4a5ed231cfd662187f8c124b5e9bfb1"
+    },
+    {
+      "source": "gtceu/molecules/cryptand.json",
+      "definition": "official:gtceu/cryptand_structure",
+      "status": "bound_by_name",
+      "sha256": "a272f5d769436172650d56b5e649bf9823191c6f9287d3758c45ba29a2a0e4d7"
+    },
+    {
+      "source": "gtceu/molecules/cryptand_k.json",
+      "definition": "official:gtceu/cryptand_k_structure",
+      "status": "bound_by_name",
+      "sha256": "3c0ef1ca12dd21e4d5a4abe005dfb938e7a91a651edb30877c532f5fbc7dd7b3"
+    },
+    {
+      "source": "gtceu/molecules/cryptand_li.json",
+      "definition": "official:gtceu/cryptand_li_structure",
+      "status": "bound_by_name",
+      "sha256": "70d5514573fbdfbd2d5af2688f44f50e9bba043eb88bd8f9acb999594586262b"
+    },
+    {
+      "source": "gtceu/molecules/cryptand_na.json",
+      "definition": "official:gtceu/cryptand_na_structure",
+      "status": "bound_by_name",
+      "sha256": "fba751903a8d299cf2155c4279fb6dcddae308079e7663b58c4252ec818b534f"
+    },
+    {
+      "source": "gtceu/molecules/cumene.json",
+      "definition": "official:gtceu/cumene_structure",
+      "status": "bound_by_name",
+      "sha256": "1b0bbaafe245be87ae9a2675a195f8d91d3f15d8b217b33f83d4311f1054911d"
+    },
+    {
+      "source": "gtceu/molecules/cyanoacetic_acid.json",
+      "definition": "official:gtceu/cyanoacetic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "d166f7d1237fb9502cc8c25e574b95164a16fc392b16c9aa89277657e474e6a4"
+    },
+    {
+      "source": "gtceu/molecules/cyclohexane.json",
+      "definition": "official:gtceu/cyclohexane_structure",
+      "status": "bound_by_name",
+      "sha256": "68778bc464551e773d8545e47650412e816b0b33d22e8f918ed8269a53a7d430"
+    },
+    {
+      "source": "gtceu/molecules/cyclohexanone_oxime.json",
+      "definition": "official:gtceu/cyclohexanone_oxime_structure",
+      "status": "bound_by_name",
+      "sha256": "d339b735d9c8aca81b9784d69912ea16076c8b5ba46fb483e3679e20bfbcbd62"
+    },
+    {
+      "source": "gtceu/molecules/diaminobenzidine.json",
+      "definition": "official:gtceu/diaminobenzidine_structure",
+      "status": "bound_by_name",
+      "sha256": "2ab32b704741d0de6f5a30d21e0680370ad9511cda46a7e0435ee4951cae8dcc"
+    },
+    {
+      "source": "gtceu/molecules/dichlorobenzene.json",
+      "definition": "official:gtceu/dichlorobenzene_structure",
+      "status": "bound_by_name",
+      "sha256": "9c5adbaa335387e7d3d6da30bf07caa16dd1260d06d16bd68ae19b074d6a9b9b"
+    },
+    {
+      "source": "gtceu/molecules/dichlorobenzidine.json",
+      "definition": "official:gtceu/dichlorobenzidine_structure",
+      "status": "bound_by_name",
+      "sha256": "77e21ea3482f3c22959b25ea09156c2a25b853a5cc0576fcc7631bf2f2ea966c"
+    },
+    {
+      "source": "gtceu/molecules/dichloroethane.json",
+      "definition": "official:gtceu/dichloroethane_structure",
+      "status": "bound_by_name",
+      "sha256": "3fd99407c187e25ef1e845342c42ffc5f855729535367e8575863d9a903988a1"
+    },
+    {
+      "source": "gtceu/molecules/diethylene_glycol.json",
+      "definition": "official:gtceu/diethylene_glycol_structure",
+      "status": "bound_by_name",
+      "sha256": "145cfa4ce96886e2fb2678e60f458d7610b77d71db3f2153b8dd7930422d9acc"
+    },
+    {
+      "source": "gtceu/molecules/diethylenetriamine.json",
+      "definition": "official:gtceu/diethylenetriamine_structure",
+      "status": "bound_by_name",
+      "sha256": "cc9b843928d504a2a7ffdfc693e33c5f0ec17d9790ca82a4fac2aa1d0a3645b6"
+    },
+    {
+      "source": "gtceu/molecules/diethylenetriamine_pentaacetonitrile.json",
+      "definition": "official:gtceu/diethylenetriamine_pentaacetonitrile_structure",
+      "status": "bound_by_name",
+      "sha256": "be9ab331b48f11c955937d48a8cdf7372eec4914ee8d20b758159b60a3a7e683"
+    },
+    {
+      "source": "gtceu/molecules/diethylenetriaminepentaacetic_acid.json",
+      "definition": "official:gtceu/diethylenetriaminepentaacetic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "59df687c07324bcb4cd87e26d7d83f1345c644de1d5cc6fba669b9b379b9966e"
+    },
+    {
+      "source": "gtceu/molecules/dimethyl_maleate.json",
+      "definition": "official:gtceu/dimethyl_maleate_structure",
+      "status": "bound_by_name",
+      "sha256": "6d5f786167c384e68d774999e16f390d546a2c4f06a721aac2df1ecb94d24f2a"
+    },
+    {
+      "source": "gtceu/molecules/dimethyl_succinate.json",
+      "definition": "official:gtceu/dimethyl_succinate_structure",
+      "status": "bound_by_name",
+      "sha256": "a14b77b1a3852d0fdeb40690fd9b0563fcf4d756bc2bc9ebd44dfca3e009db5a"
+    },
+    {
+      "source": "gtceu/molecules/dimethyl_sulfide.json",
+      "definition": "official:gtceu/dimethyl_sulfide_structure",
+      "status": "bound_by_name",
+      "sha256": "aa54045de3f648ec551151abba019778aa3cc2beaf4cf7426e7aaa82bc7aaa63"
+    },
+    {
+      "source": "gtceu/molecules/dimethyl_sulfoxide.json",
+      "definition": "official:gtceu/dimethyl_sulfoxide_structure",
+      "status": "bound_by_name",
+      "sha256": "89408d8644efbb873d935181b96446982a8dfe3a6010b83e869eaeb04cf064bc"
+    },
+    {
+      "source": "gtceu/molecules/dimethylbenzene.json",
+      "definition": "official:gtceu/dimethylbenzene_structure",
+      "status": "bound_by_name",
+      "sha256": "7a8ed3af6680ccd76c21987bdab4b01cfd5dd4f4ae23b460a8f6cd8ae027b02e"
+    },
+    {
+      "source": "gtceu/molecules/dimethyldichlorosilane.json",
+      "definition": "official:gtceu/dimethyldichlorosilane_structure",
+      "status": "bound_by_name",
+      "sha256": "820c78cd098b41b276cde7f4b0ae5743ad62d0c2afb583b2d1a21e16eff38eed"
+    },
+    {
+      "source": "gtceu/molecules/dimethylformamide.json",
+      "definition": "official:gtceu/dimethylformamide_structure",
+      "status": "bound_by_name",
+      "sha256": "4fc69fd4d83e24e07d897989b251b5e0d83030831e1aa091ec5ca0cf9feede4d"
+    },
+    {
+      "source": "gtceu/molecules/dimethylhydrazine.json",
+      "definition": "official:gtceu/dimethylhydrazine_structure",
+      "status": "bound_by_name",
+      "sha256": "4b2df9431f3bfed18a4c96a5ea2b97f376d8166615222c15185d07f4e6c1cd1b"
+    },
+    {
+      "source": "gtceu/molecules/diphenyl_isophthalate.json",
+      "definition": "official:gtceu/diphenyl_isophthalate_structure",
+      "status": "bound_by_name",
+      "sha256": "777c7dc86c9bdd4af81749da4e5fe77f46614b0f7b7d138d674d15a09ede2171"
+    },
+    {
+      "source": "gtceu/molecules/disilane.json",
+      "definition": "official:gtceu/disilane_structure",
+      "status": "bound_by_name",
+      "sha256": "04c069d8a121ae1763c249ad427709f0c7c8c5ea3305e2293400a012bd02de34"
+    },
+    {
+      "source": "gtceu/molecules/disodium_salt_of_hydroquinone.json",
+      "definition": "official:gtceu/disodium_salt_of_hydroquinone_structure",
+      "status": "bound_by_name",
+      "sha256": "0413023721941af945cad8b891f4dd69fb1edae38307097c4e1a447dee8fd388"
+    },
+    {
+      "source": "gtceu/molecules/durene.json",
+      "definition": "official:gtceu/durene_structure",
+      "status": "bound_by_name",
+      "sha256": "28b2230d48e5e8d43be3d319d8922b2420839a7bef1b14c68e75adac969bda1f"
+    },
+    {
+      "source": "gtceu/molecules/epichlorohydrin.json",
+      "definition": "official:gtceu/epichlorohydrin_structure",
+      "status": "bound_by_name",
+      "sha256": "de059b019e29ae72ca1a5178d122affb36d777d80499e9d5d20588306cf5b568"
+    },
+    {
+      "source": "gtceu/molecules/ethane.json",
+      "definition": "official:gtceu/ethane_structure",
+      "status": "bound_by_name",
+      "sha256": "3d10ad76991ce21178ee30f1b4028d20da66bbef196444ad57c973c6b4f0bedf"
+    },
+    {
+      "source": "gtceu/molecules/ethanol.json",
+      "definition": "official:gtceu/ethanol_structure",
+      "status": "bound_by_name",
+      "sha256": "ec607c3952677671d503600ddbea16644a5100136f319a7f9b2f9d7b561e1120"
+    },
+    {
+      "source": "gtceu/molecules/ethyl_anthra_hydro_quinone.json",
+      "definition": "official:gtceu/ethyl_anthra_hydro_quinone_structure",
+      "status": "bound_by_name",
+      "sha256": "7f13bbce7fc0b1b5e9e2c5e6c13046873c6e4aaed2480835b1d43a441f98c28e"
+    },
+    {
+      "source": "gtceu/molecules/ethyl_anthra_quinone.json",
+      "definition": "official:gtceu/ethyl_anthra_quinone_structure",
+      "status": "bound_by_name",
+      "sha256": "a05fc8b6140e9c50152783034421aad4de153239210e38d5ee8a05d8614acc99"
+    },
+    {
+      "source": "gtceu/molecules/ethyl_cyanoacetate.json",
+      "definition": "official:gtceu/ethyl_cyanoacetate_structure",
+      "status": "bound_by_name",
+      "sha256": "5b8480130ea6ddb095f671ef1d8ca44ec39e634bfc4d6ca4c5476c5449e14978"
+    },
+    {
+      "source": "gtceu/molecules/ethyl_cyanoacrylate.json",
+      "definition": "official:gtceu/ethyl_cyanoacrylate_structure",
+      "status": "bound_by_name",
+      "sha256": "950aa193f17acee3dc8587b388e9c3ab56f6462f13b33a4d580693ed3f75c4f2"
+    },
+    {
+      "source": "gtceu/molecules/ethyl_tertbutyl_ether.json",
+      "definition": "official:gtceu/ethyl_tertbutyl_ether_structure",
+      "status": "bound_by_name",
+      "sha256": "bf0433d3cdf48fcd1456fa95c7eac959082d61e6eaae76c47514d46d9a29b846"
+    },
+    {
+      "source": "gtceu/molecules/ethylanthraquinone.json",
+      "definition": "official:gtceu/ethylanthraquinone_structure",
+      "status": "bound_by_name",
+      "sha256": "a05fc8b6140e9c50152783034421aad4de153239210e38d5ee8a05d8614acc99"
+    },
+    {
+      "source": "gtceu/molecules/ethylbenzene.json",
+      "definition": "official:gtceu/ethylbenzene_structure",
+      "status": "bound_by_name",
+      "sha256": "78a48112df665aaee7b9df6060eca5db40bcaf0fc4bdf32a02b5dbcb01612c96"
+    },
+    {
+      "source": "gtceu/molecules/ethylene.json",
+      "definition": "official:gtceu/ethylene_structure",
+      "status": "bound_by_name",
+      "sha256": "63c199e0306f6604ba46efa0e377ec6742bce6fd6f917bb9ff328c7e3e213d86"
+    },
+    {
+      "source": "gtceu/molecules/ethylene_dichloride.json",
+      "definition": "official:gtceu/ethylene_dichloride_structure",
+      "status": "bound_by_name",
+      "sha256": "3fd99407c187e25ef1e845342c42ffc5f855729535367e8575863d9a903988a1"
+    },
+    {
+      "source": "gtceu/molecules/ethylene_glycol.json",
+      "definition": "official:gtceu/ethylene_glycol_structure",
+      "status": "bound_by_name",
+      "sha256": "c80d7829c7089959f0a65688f3e958c3c6734c81648d2bca6821a0aca79b272c"
+    },
+    {
+      "source": "gtceu/molecules/ethylene_oxide.json",
+      "definition": "official:gtceu/ethylene_oxide_structure",
+      "status": "bound_by_name",
+      "sha256": "4054f10336f102180e3cae010f7292eba60794c202c16a4c5d3091a3d6e744d7"
+    },
+    {
+      "source": "gtceu/molecules/ethylene_thiourea.json",
+      "definition": "official:gtceu/ethylene_thiourea_structure",
+      "status": "bound_by_name",
+      "sha256": "38ad555dc6a2fdbb786821b0d644c05400c6709d68740719124a7daf61274e67"
+    },
+    {
+      "source": "gtceu/molecules/ethylenediamine.json",
+      "definition": "official:gtceu/ethylenediamine_structure",
+      "status": "bound_by_name",
+      "sha256": "77a0e752cb016ed9dfb6bbaa7dd6725f6072d42e870522ec59c849b75441bd06"
+    },
+    {
+      "source": "gtceu/molecules/ferrocene.json",
+      "definition": "official:gtceu/ferrocene_structure",
+      "status": "bound_by_name",
+      "sha256": "2de2eba84b2641621e189abae7f88275401ce7183d3bad2ac30855c448e3a83b"
+    },
+    {
+      "source": "gtceu/molecules/fluorinated_ethylene_propylene.json",
+      "definition": "official:gtceu/fluorinated_ethylene_propylene_structure",
+      "status": "bound_by_name",
+      "sha256": "b01b0c8fa3ebe881f3a427d33dd9ad364d50c2348932b188aeaa10d395dce6d0"
+    },
+    {
+      "source": "gtceu/molecules/fluorine.json",
+      "definition": "official:gtceu/fluorine_structure",
+      "status": "bound_by_name",
+      "sha256": "4dae1a29b6a443ebcc9dcf03e0131f65ad1d953dcae8919d7fb426ff2afb7d2f"
+    },
+    {
+      "source": "gtceu/molecules/fluorobenzene.json",
+      "definition": "official:gtceu/fluorobenzene_structure",
+      "status": "bound_by_name",
+      "sha256": "7594d19408a6741f6e8bb71bef99c673714feb35dc884fdf262f69eb25d7a13c"
+    },
+    {
+      "source": "gtceu/molecules/formaldehyde.json",
+      "definition": "official:gtceu/formaldehyde_structure",
+      "status": "bound_by_name",
+      "sha256": "1f072ea66423e701d77c7a0863844dc419756eefaa45032a6b0a0a0cadb17e9f"
+    },
+    {
+      "source": "gtceu/molecules/formamide.json",
+      "definition": "official:gtceu/formamide_structure",
+      "status": "bound_by_name",
+      "sha256": "6d67ebbddf43976098f573d8185ce4064dcadf440faf8b1e35fd0edb977d82b4"
+    },
+    {
+      "source": "gtceu/molecules/formic_acid.json",
+      "definition": "official:gtceu/formic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "9c69d5570f292d9397058b5126a841d415f9712d21ff759d0924bf9f70cb400e"
+    },
+    {
+      "source": "gtceu/molecules/glycerol.json",
+      "definition": "official:gtceu/glycerol_structure",
+      "status": "bound_by_name",
+      "sha256": "b5db0ec4a67819535186b0207b4a6519def81bda3778361799d42d2f5bfb6eab"
+    },
+    {
+      "source": "gtceu/molecules/glyceryl_trinitrate.json",
+      "definition": "official:gtceu/glyceryl_trinitrate_structure",
+      "status": "bound_by_name",
+      "sha256": "0d2ec09c03acb72994eeb567e22a7b00137e3c3887749894926fdbb77ed7c936"
+    },
+    {
+      "source": "gtceu/molecules/glycolonitrile.json",
+      "definition": "official:gtceu/glycolonitrile_structure",
+      "status": "bound_by_name",
+      "sha256": "5eb2e3cd32ce148d68691dd0810c6ece5c0284365d25b1586af517d14d9f23b2"
+    },
+    {
+      "source": "gtceu/molecules/hexafluorobutadiene.json",
+      "definition": "official:gtceu/hexafluorobutadiene_structure",
+      "status": "bound_by_name",
+      "sha256": "6c92eb1384a6a7f04506a27f7f67616c9fa9dcf96ff21b266a90ac85c64bdeac"
+    },
+    {
+      "source": "gtceu/molecules/hexamethylenediamine.json",
+      "definition": "official:gtceu/hexamethylenediamine_structure",
+      "status": "bound_by_name",
+      "sha256": "c9ce23b93109187a0ec98a7d865552752cd5053936f7c6d887db32946d163655"
+    },
+    {
+      "source": "gtceu/molecules/hydrogen.json",
+      "definition": "official:gtceu/hydrogen_structure",
+      "status": "bound_by_name",
+      "sha256": "84a2814a8a3313b4cd1227868f9015f812376762fb95a8a01fb525ed5f310791"
+    },
+    {
+      "source": "gtceu/molecules/hydrogen_chloride.json",
+      "definition": "official:gtceu/hydrogen_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "61c88a725871377a25e84ed6680144d08ce7b400f76fb739a09627ab1d13467a"
+    },
+    {
+      "source": "gtceu/molecules/hydrogen_fluoride.json",
+      "definition": "official:gtceu/hydrogen_fluoride_structure",
+      "status": "bound_by_name",
+      "sha256": "8eb92e9be767870abb8f23cb6e7cfdbaace55edab73500e4c2247939d7232766"
+    },
+    {
+      "source": "gtceu/molecules/hydrogen_sulfide.json",
+      "definition": "official:gtceu/hydrogen_sulfide_structure",
+      "status": "bound_by_name",
+      "sha256": "392ac26fdf31170083f864e34ccf7e5b73584e2a9b88fef7ed57b8a325f621f0"
+    },
+    {
+      "source": "gtceu/molecules/hydroquinone.json",
+      "definition": "official:gtceu/hydroquinone_structure",
+      "status": "bound_by_name",
+      "sha256": "daf105bab26ae7bab6203dd3a76b4745e462ed3e284c25bb2f96f46dbacad19c"
+    },
+    {
+      "source": "gtceu/molecules/isoprene.json",
+      "definition": "official:gtceu/isoprene_structure",
+      "status": "bound_by_name",
+      "sha256": "5bb24afa2bd23daf18c0b42aa5f999ebf65dfb8586c0cd983757e11537d5196b"
+    },
+    {
+      "source": "gtceu/molecules/ka_oil.json",
+      "definition": "official:gtceu/ka_oil_structure",
+      "status": "bound_by_name",
+      "sha256": "cd1edf51912687bca3941c85425147e9395c47d9bd047c720d31e67fefa3042f"
+    },
+    {
+      "source": "gtceu/molecules/kapton_k.json",
+      "definition": "official:gtceu/kapton_k_structure",
+      "status": "bound_by_name",
+      "sha256": "703e81fee951d616ec77f8df595ad39e7eb133ba40904c13c5d88b252ebcd065"
+    },
+    {
+      "source": "gtceu/molecules/maleic_anhydride.json",
+      "definition": "official:gtceu/maleic_anhydride_structure",
+      "status": "bound_by_name",
+      "sha256": "41f2cbad927aad9134fe1c82a95818396ca70d861ac305986033c07f440acf96"
+    },
+    {
+      "source": "gtceu/molecules/methane.json",
+      "definition": "official:gtceu/methane_structure",
+      "status": "bound_by_name",
+      "sha256": "8f49805549090d7fb1b86d06911e0a361722b79f387192fb72a1d3d64268e61c"
+    },
+    {
+      "source": "gtceu/molecules/methanol.json",
+      "definition": "official:gtceu/methanol_structure",
+      "status": "bound_by_name",
+      "sha256": "ec2b155cabe7a88795535dd19bec7d0f3a711a73cc75690d3ef9a47725d8dc34"
+    },
+    {
+      "source": "gtceu/molecules/methyl_acetate.json",
+      "definition": "official:gtceu/methyl_acetate_structure",
+      "status": "bound_by_name",
+      "sha256": "fbecaadf721e23a11820142c492ab17050d684c1539bc7acfae25895329e7fe5"
+    },
+    {
+      "source": "gtceu/molecules/methyl_formate.json",
+      "definition": "official:gtceu/methyl_formate_structure",
+      "status": "bound_by_name",
+      "sha256": "01e74693cfb869130817535e7fd5b1c9c535ef5769ee8fa35fc2829bf4123be2"
+    },
+    {
+      "source": "gtceu/molecules/methyl_hydrazine.json",
+      "definition": "official:gtceu/methyl_hydrazine_structure",
+      "status": "bound_by_name",
+      "sha256": "b4194f009ee0628d706e6b9930c300f20199d03ebf427e31f128c9284b58bfea"
+    },
+    {
+      "source": "gtceu/molecules/methyl_methacrylate.json",
+      "definition": "official:gtceu/methyl_methacrylate_structure",
+      "status": "bound_by_name",
+      "sha256": "0cfd6c9fa3fafce1b5fca516b28e565d776f4789f23dc66f50e915dfa650db84"
+    },
+    {
+      "source": "gtceu/molecules/naphthalene.json",
+      "definition": "official:gtceu/naphthalene_structure",
+      "status": "bound_by_name",
+      "sha256": "90321d6828c82f213c76f41aaa52ec182fd03f6d011c48facb95c9ac2d0764ca"
+    },
+    {
+      "source": "gtceu/molecules/neoprene.json",
+      "definition": "official:gtceu/neoprene_structure",
+      "status": "bound_by_name",
+      "sha256": "f9170eb62d135baa5018f5db3c0d226c9bbb1b71968e56d633043f2c5d3dc279"
+    },
+    {
+      "source": "gtceu/molecules/nitric_acid.json",
+      "definition": "official:gtceu/nitric_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "a2a4f9f41e62a3cd4065f3ca0fa20e250540ff90925ac7ad9c9a2f463c02152b"
+    },
+    {
+      "source": "gtceu/molecules/nitric_oxide.json",
+      "definition": "official:gtceu/nitric_oxide_structure",
+      "status": "bound_by_name",
+      "sha256": "e25592ab3e574aad55ce4292613d77d3d1490598ce86beab8d41215d59e9c3fe"
+    },
+    {
+      "source": "gtceu/molecules/nitrobenzene.json",
+      "definition": "official:gtceu/nitrobenzene_structure",
+      "status": "bound_by_name",
+      "sha256": "d13e681cfdf81f6388801ffbf68c3b66f360fd1b9eca7d07a26bddd311a7dd21"
+    },
+    {
+      "source": "gtceu/molecules/nitrochlorobenzene.json",
+      "definition": "official:gtceu/nitrochlorobenzene_structure",
+      "status": "bound_by_name",
+      "sha256": "7fb28b2abad05dcb626d754d14729f23a96274fcc93bc757a64d3f8dc069b73a"
+    },
+    {
+      "source": "gtceu/molecules/nitrogen.json",
+      "definition": "official:gtceu/nitrogen_structure",
+      "status": "bound_by_name",
+      "sha256": "5cf0301b4bbcd42dd9294ebe6ad75664a9a3cd7193b7529a2a173ccb1c6a62cb"
+    },
+    {
+      "source": "gtceu/molecules/nitrogen_dioxide.json",
+      "definition": "official:gtceu/nitrogen_dioxide_structure",
+      "status": "bound_by_name",
+      "sha256": "50af1a3f3e73b441487d9629f570db63d5c9cfcd393cc97e225f6fa65935e1ee"
+    },
+    {
+      "source": "gtceu/molecules/nylon_6_6.json",
+      "definition": "official:gtceu/nylon_6_6_structure",
+      "status": "bound_by_name",
+      "sha256": "180a3005c8e38aedef0e463ce66e49c1be555863db669b52f9a32c3714f6938a"
+    },
+    {
+      "source": "gtceu/molecules/octane.json",
+      "definition": "official:gtceu/octane_structure",
+      "status": "bound_by_name",
+      "sha256": "d0778e58f341bd56f266629163458678b304a09ec28ceebc5b875ce5459cefee"
+    },
+    {
+      "source": "gtceu/molecules/ortho_xylene.json",
+      "definition": "official:gtceu/ortho_xylene_structure",
+      "status": "bound_by_name",
+      "sha256": "28f5ab1b813b0ecf276ad1df253ac03925df949833407ba648cceae7a589a5ac"
+    },
+    {
+      "source": "gtceu/molecules/oxydianiline.json",
+      "definition": "official:gtceu/oxydianiline_structure",
+      "status": "bound_by_name",
+      "sha256": "8c7f20d9210776a5e81b91c943c50b3ec5784655374fe30c42d2f3604f233966"
+    },
+    {
+      "source": "gtceu/molecules/oxygen.json",
+      "definition": "official:gtceu/oxygen_structure",
+      "status": "bound_by_name",
+      "sha256": "6b079e3295f7c004fd8e71c774a9bdd7368b40e304fa2ba9d39f04ee94f1e848"
+    },
+    {
+      "source": "gtceu/molecules/perfluoroelastomer_rubber.json",
+      "definition": "official:gtceu/perfluoroelastomer_rubber_structure",
+      "status": "bound_by_name",
+      "sha256": "b185e17d97ef5980574fbade070e09f46251bb496d234a7868e75e84a2bd4a77"
+    },
+    {
+      "source": "gtceu/molecules/perfluoromethyl_vinyl_ether.json",
+      "definition": "official:gtceu/perfluoromethyl_vinyl_ether_structure",
+      "status": "bound_by_name",
+      "sha256": "0d97e63b5f5c8a5ac20305d490c777d0e1bad21b33f0d9507fd950698b254aa7"
+    },
+    {
+      "source": "gtceu/molecules/phenol.json",
+      "definition": "official:gtceu/phenol_structure",
+      "status": "bound_by_name",
+      "sha256": "3441cf944ccf47e0f4f628ff3bcc7fd41ad21463a82a09534734df5178e9ea6a"
+    },
+    {
+      "source": "gtceu/molecules/phosphoric_acid.json",
+      "definition": "official:gtceu/phosphoric_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "f7a30fd59cd4c67a26a0cc758c37cf86cae1a1e4b2d982ee5079c768b2b39b2d"
+    },
+    {
+      "source": "gtceu/molecules/phthalic_acid.json",
+      "definition": "official:gtceu/phthalic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "2922e5b159bdfbebfd1bb717c27491be003ef5dd0697091561bfe771ea6a3a4d"
+    },
+    {
+      "source": "gtceu/molecules/phthalic_anhydride.json",
+      "definition": "official:gtceu/phthalic_anhydride_structure",
+      "status": "bound_by_name",
+      "sha256": "bc14e48f65c7836138d957e2a658e15e282c17b9fa1c7bf43cee284ae27ce973"
+    },
+    {
+      "source": "gtceu/molecules/poly_34_ethylenedioxythiophene.json",
+      "definition": "official:gtceu/poly_34_ethylenedioxythiophene_structure",
+      "status": "bound_by_name",
+      "sha256": "4d1f3548318fa65f74a831e0d3691c34e89145c428dccfc22bdbd0d31349cb01"
+    },
+    {
+      "source": "gtceu/molecules/poly_amic_acid.json",
+      "definition": "official:gtceu/poly_amic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "ba46b3e04c952f751787edd4195b6d6cc8e84c6f0571216668ac4b0d005b2270"
+    },
+    {
+      "source": "gtceu/molecules/polybenzimidazole.json",
+      "definition": "official:gtceu/polybenzimidazole_structure",
+      "status": "bound_by_name",
+      "sha256": "a16a25dc337c281bf9058b1646646b652da425079fecef35058686d338a31e12"
+    },
+    {
+      "source": "gtceu/molecules/polycaprolactam.json",
+      "definition": "official:gtceu/polycaprolactam_structure",
+      "status": "bound_by_name",
+      "sha256": "329c4272f24af6569981469ba886451b33256fe4f18c54cef4f6f4ef28b050ab"
+    },
+    {
+      "source": "gtceu/molecules/polydimethylsiloxane.json",
+      "definition": "official:gtceu/polydimethylsiloxane_structure",
+      "status": "bound_by_name",
+      "sha256": "abe5428cff808e2fb60948ed32056a6d3b5082186ad91f48e427269096c81989"
+    },
+    {
+      "source": "gtceu/molecules/polyether_ether_ketone.json",
+      "definition": "official:gtceu/polyether_ether_ketone_structure",
+      "status": "bound_by_name",
+      "sha256": "bd762045e9323a49d9e6d77b68c3a801d0fb2ce976204a5ef0f8f68b8d709f31"
+    },
+    {
+      "source": "gtceu/molecules/polyethylene.json",
+      "definition": "official:gtceu/polyethylene_structure",
+      "status": "bound_by_name",
+      "sha256": "6af88567eef7a60c3007dab4aabf6632ed8e26fde0cf4241ccce61c812def9a5"
+    },
+    {
+      "source": "gtceu/molecules/polymethyl_methacrylate.json",
+      "definition": "official:gtceu/polymethyl_methacrylate_structure",
+      "status": "bound_by_name",
+      "sha256": "af85589b4ead8f2b827e782f0098d884538844bf5f26b97ca5bb4fbe319bf8bd"
+    },
+    {
+      "source": "gtceu/molecules/polyphenylene_sulfide.json",
+      "definition": "official:gtceu/polyphenylene_sulfide_structure",
+      "status": "bound_by_name",
+      "sha256": "cdffd2d67228aebd0313100195372693fdd2d316eea9364cd19a6b13ce2496b7"
+    },
+    {
+      "source": "gtceu/molecules/polytetrafluoroethylene.json",
+      "definition": "official:gtceu/polytetrafluoroethylene_structure",
+      "status": "bound_by_name",
+      "sha256": "953c35680f653079a33f7701d55ace2f20e445e47a9884443ca15619539bcfc5"
+    },
+    {
+      "source": "gtceu/molecules/polyvinyl_acetate.json",
+      "definition": "official:gtceu/polyvinyl_acetate_structure",
+      "status": "bound_by_name",
+      "sha256": "4e32c3159d9a636e99e74cb5942c642d2bd86db81bd8203dbe6b234a75836bdc"
+    },
+    {
+      "source": "gtceu/molecules/polyvinyl_butyral.json",
+      "definition": "official:gtceu/polyvinyl_butyral_structure",
+      "status": "bound_by_name",
+      "sha256": "5707793c55e87f6aae1dc72951dbaa9ed33f961d266324c6932417d0276e9b0d"
+    },
+    {
+      "source": "gtceu/molecules/polyvinyl_chloride.json",
+      "definition": "official:gtceu/polyvinyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "56e80220be7f434e1a3d07a85abeb7907cf2150e77b76a7b3134ce641e16bb0f"
+    },
+    {
+      "source": "gtceu/molecules/potassium_hydroxide.json",
+      "definition": "official:gtceu/potassium_hydroxide_structure",
+      "status": "bound_by_name",
+      "sha256": "96c1023489a2332190ca7df572b9d4a950ad25ed162aab524a63ca07eb0e861c"
+    },
+    {
+      "source": "gtceu/molecules/propane.json",
+      "definition": "official:gtceu/propane_structure",
+      "status": "bound_by_name",
+      "sha256": "2ac0b80cd28b3b904dd548c73fe67288462974f09ca8e7b7008b614ed670b092"
+    },
+    {
+      "source": "gtceu/molecules/propene.json",
+      "definition": "official:gtceu/propene_structure",
+      "status": "bound_by_name",
+      "sha256": "a29a72a2f5b83eec2c2cbcbc405577f6aa2d2fc7b9f8a78e44dad8b7413ba193"
+    },
+    {
+      "source": "gtceu/molecules/pyromellitic_dianhydride.json",
+      "definition": "official:gtceu/pyromellitic_dianhydride_structure",
+      "status": "bound_by_name",
+      "sha256": "5730ac22534fe02591031ccc530ae5169d847e72db6b6281cb66fbc5ae0396f8"
+    },
+    {
+      "source": "gtceu/molecules/raw_perfluoroelastomer_rubber.json",
+      "definition": "official:gtceu/raw_perfluoroelastomer_rubber_structure",
+      "status": "bound_by_name",
+      "sha256": "b185e17d97ef5980574fbade070e09f46251bb496d234a7868e75e84a2bd4a77"
+    },
+    {
+      "source": "gtceu/molecules/raw_rubber.json",
+      "definition": "official:gtceu/raw_rubber_structure",
+      "status": "bound_by_name",
+      "sha256": "e8aae8b7c078f631bf073c0af867f561ce07fb6024574b327b18132842f10c63"
+    },
+    {
+      "source": "gtceu/molecules/raw_styrene_butadiene_rubber.json",
+      "definition": "official:gtceu/raw_styrene_butadiene_rubber_structure",
+      "status": "bound_by_name",
+      "sha256": "699892569f919b20fd58267b2c5071d8f68570497be76aee04d4bcb061aaa54a"
+    },
+    {
+      "source": "gtceu/molecules/rubber.json",
+      "definition": "official:gtceu/rubber_structure",
+      "status": "bound_by_name",
+      "sha256": "e8aae8b7c078f631bf073c0af867f561ce07fb6024574b327b18132842f10c63"
+    },
+    {
+      "source": "gtceu/molecules/silane.json",
+      "definition": "official:gtceu/silane_structure",
+      "status": "bound_by_name",
+      "sha256": "e10815f380a94f50e3ac6febdbfae1da5cc1e12434db90231e9a9c5df52a15de"
+    },
+    {
+      "source": "gtceu/molecules/silicon_dioxide.json",
+      "definition": "official:gtceu/silicon_dioxide_structure",
+      "status": "bound_by_name",
+      "sha256": "b1b43e26ac8cb4f1ba1370efa09593d714ee242092983859b2286527fe0160cb"
+    },
+    {
+      "source": "gtceu/molecules/silicon_tetrachloride.json",
+      "definition": "official:gtceu/silicon_tetrachloride_structure",
+      "status": "bound_by_name",
+      "sha256": "4ecbbc52b400840474c6b97725837bf9541f04985892b16edbc466b58ca171c2"
+    },
+    {
+      "source": "gtceu/molecules/silicon_tetrafluoride.json",
+      "definition": "official:gtceu/silicon_tetrafluoride_structure",
+      "status": "bound_by_name",
+      "sha256": "828c603c1161acb30661152417921e4384f6ebec77742f3fe67ec1d842881033"
+    },
+    {
+      "source": "gtceu/molecules/silicone_rubber.json",
+      "definition": "official:gtceu/silicone_rubber_structure",
+      "status": "bound_by_name",
+      "sha256": "abe5428cff808e2fb60948ed32056a6d3b5082186ad91f48e427269096c81989"
+    },
+    {
+      "source": "gtceu/molecules/sodium_hydroxide.json",
+      "definition": "official:gtceu/sodium_hydroxide_structure",
+      "status": "bound_by_name",
+      "sha256": "3bb70df89ff384a41944010161d06ce1ea04677db9900779b47ab68c2525cfc9"
+    },
+    {
+      "source": "gtceu/molecules/sorbitol.json",
+      "definition": "official:gtceu/sorbitol_structure",
+      "status": "bound_by_name",
+      "sha256": "b53eb04c695642e48081975ba41a91f7af2ca7fec4f2cfb5d1f9f9d2038a3662"
+    },
+    {
+      "source": "gtceu/molecules/styrene.json",
+      "definition": "official:gtceu/styrene_structure",
+      "status": "bound_by_name",
+      "sha256": "099bbeba8ac15759dd9ca540a7d6234fb5dd515460b9fa28e374c78357d9c561"
+    },
+    {
+      "source": "gtceu/molecules/styrene_butadiene_rubber.json",
+      "definition": "official:gtceu/styrene_butadiene_rubber_structure",
+      "status": "bound_by_name",
+      "sha256": "699892569f919b20fd58267b2c5071d8f68570497be76aee04d4bcb061aaa54a"
+    },
+    {
+      "source": "gtceu/molecules/sugar.json",
+      "definition": "official:gtceu/sugar_structure",
+      "status": "bound_by_name",
+      "sha256": "65963a769464f75df6667324e1a6d89731ff18b0a0edb282296a22391877e67a"
+    },
+    {
+      "source": "gtceu/molecules/sulfur_dioxide.json",
+      "definition": "official:gtceu/sulfur_dioxide_structure",
+      "status": "bound_by_name",
+      "sha256": "ac284425affb32d839dd3e3ab050b23441aada478ab5f83722a4d660538ba8fd"
+    },
+    {
+      "source": "gtceu/molecules/sulfur_trioxide.json",
+      "definition": "official:gtceu/sulfur_trioxide_structure",
+      "status": "bound_by_name",
+      "sha256": "62bcf37210170e08b1e675011da8a7813cd54b4cdfab6cc55646436c4441be47"
+    },
+    {
+      "source": "gtceu/molecules/sulfuric_acid.json",
+      "definition": "official:gtceu/sulfuric_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "e867d3ea7dc4cd322445e9a352e4294ca49eb53b5e483b8847337bf9af94d934"
+    },
+    {
+      "source": "gtceu/molecules/tetrachloroethylene.json",
+      "definition": "official:gtceu/tetrachloroethylene_structure",
+      "status": "bound_by_name",
+      "sha256": "e53211c4607ee97721e5c45690dd74a4099f1ed033d9523dd7b4c3d927f00ed6"
+    },
+    {
+      "source": "gtceu/molecules/tetrafluoroethylene.json",
+      "definition": "official:gtceu/tetrafluoroethylene_structure",
+      "status": "bound_by_name",
+      "sha256": "697e314492a04c0be68ed39e6a62d4357f61330d850d8a402678069bf1d42e06"
+    },
+    {
+      "source": "gtceu/molecules/tetranitromethane.json",
+      "definition": "official:gtceu/tetranitromethane_structure",
+      "status": "bound_by_name",
+      "sha256": "13f43e3180281b304b9bc36437581c6ab50552b6ee0da28dbcb1ac9aa4672c6f"
+    },
+    {
+      "source": "gtceu/molecules/thiophene.json",
+      "definition": "official:gtceu/thiophene_structure",
+      "status": "bound_by_name",
+      "sha256": "947132272952429cb700c708125fca97b48a6d0294e178c65d128ae798253d17"
+    },
+    {
+      "source": "gtceu/molecules/toluene.json",
+      "definition": "official:gtceu/toluene_structure",
+      "status": "bound_by_name",
+      "sha256": "6ada7fbced1f38ac08a0f075b8ef0a0707f0661196cd47835665687e40629541"
+    },
+    {
+      "source": "gtceu/molecules/tributyl_phosphate.json",
+      "definition": "official:gtceu/tributyl_phosphate_structure",
+      "status": "bound_by_name",
+      "sha256": "6cad2cae512f80869f88f2f228ec6871e8a07f365e5a8bac4dc347ea6535364a"
+    },
+    {
+      "source": "gtceu/molecules/trichlorosilane.json",
+      "definition": "official:gtceu/trichlorosilane_structure",
+      "status": "bound_by_name",
+      "sha256": "5bd50d3e19740907a4e943fc6589c1c7e5f1c016e6be7ccd7bd19b103f9fdb51"
+    },
+    {
+      "source": "gtceu/molecules/triethylene_glycol.json",
+      "definition": "official:gtceu/triethylene_glycol_structure",
+      "status": "bound_by_name",
+      "sha256": "cbaf4a4842518ba39d9674e07ae636e2b94f5ac9da5e2677911ee8e78e06ded7"
+    },
+    {
+      "source": "gtceu/molecules/triglycol_dichloride.json",
+      "definition": "official:gtceu/triglycol_dichloride_structure",
+      "status": "bound_by_name",
+      "sha256": "2e4015aa30f6f9335661a760a0ee82d1bec90045888194591282c50e0749e273"
+    },
+    {
+      "source": "gtceu/molecules/vinyl_acetate.json",
+      "definition": "official:gtceu/vinyl_acetate_structure",
+      "status": "bound_by_name",
+      "sha256": "e881f16a18dd21325b6330272399b03c1465992c31e921bb1f41910aa3354bc3"
+    },
+    {
+      "source": "gtceu/molecules/vinyl_chloride.json",
+      "definition": "official:gtceu/vinyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "c028e21259ee8feefaa5329a7109db39f6563456eb9f15c5297e3ead8b0c90ec"
+    },
+    {
+      "source": "gtceu/molecules/water.json",
+      "definition": "official:gtceu/water_structure",
+      "status": "bound_by_name",
+      "sha256": "367233f640a6d5225e12b3b7f0aea6e0225762e8a36040186742549da299b5c1"
+    },
+    {
+      "source": "gcyr/molecules/dimethylformamide.json",
+      "definition": "official:gcyr/dimethylformamide_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "4fc69fd4d83e24e07d897989b251b5e0d83030831e1aa091ec5ca0cf9feede4d"
+    },
+    {
+      "source": "gcyr/molecules/durene.json",
+      "definition": "official:gcyr/durene_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "28b2230d48e5e8d43be3d319d8922b2420839a7bef1b14c68e75adac969bda1f"
+    },
+    {
+      "source": "gcyr/molecules/kapton_k.json",
+      "definition": "official:gcyr/kapton_k_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "703e81fee951d616ec77f8df595ad39e7eb133ba40904c13c5d88b252ebcd065"
+    },
+    {
+      "source": "gcyr/molecules/methylbenzaldehyde.json",
+      "definition": "official:gcyr/methylbenzaldehyde_structure",
+      "status": "bound_by_name",
+      "sha256": "742ed0d6711dcb858f5decf7d8cf6a3da1360e1a1a5a6c300e42184266e69fad"
+    },
+    {
+      "source": "gcyr/molecules/nitroaniline.json",
+      "definition": "official:gcyr/nitroaniline_structure",
+      "status": "bound_by_name",
+      "sha256": "50563ef4f0c779cb3ed6497cecedb6af9a1015caf43103a33ae3a61723aa13cd"
+    },
+    {
+      "source": "gcyr/molecules/para_aramid.json",
+      "definition": "official:gcyr/para_aramid_structure",
+      "status": "bound_by_name",
+      "sha256": "965cdbef03f200b3b5df9b5eb5fc3ff61aa08a1b2895df94abc1dcc5e1f5a2b7"
+    },
+    {
+      "source": "gcyr/molecules/para_phenylenediamine.json",
+      "definition": "official:gcyr/para_phenylenediamine_structure",
+      "status": "bound_by_name",
+      "sha256": "e3d87f139848b44a82152496a64ca7c63cf1b06a935d93a22075653fb95629da"
+    },
+    {
+      "source": "gcyr/molecules/pyrometillic_dianhydride.json",
+      "definition": "official:gcyr/pyrometillic_dianhydride_structure",
+      "status": "bound_by_name",
+      "sha256": "5730ac22534fe02591031ccc530ae5169d847e72db6b6281cb66fbc5ae0396f8"
+    },
+    {
+      "source": "gcyr/molecules/terephthaloyl_chloride.json",
+      "definition": "official:gcyr/terephthaloyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "bbcba5090aac24b234af3f7edbace1ef35b9055b5a4ce5fb0323dac3f99ad216"
+    },
+    {
+      "source": "gcyr/molecules/therephthalic_acid.json",
+      "definition": "official:gcyr/therephthalic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "1b59325150d07bc7a745080e479172e1b6fd96cfc6578c753894b65e05daba58"
+    },
+    {
+      "source": "gtca/molecules/isononyl_alcohol.json",
+      "definition": "official:gtca/isononyl_alcohol_structure",
+      "status": "bound_by_name",
+      "sha256": "e8d7fabf8094e626a7c9a4f2761ff8f053a3ec3fdd2740d3a5d33214e5606d0d"
+    },
+    {
+      "source": "gtca/molecules/octene.json",
+      "definition": "official:gtca/octene_structure",
+      "status": "bound_by_name",
+      "sha256": "d95a8a343317e79a69ec14b7d26aaf613d610583d044772fe4fbd7f7ed7c37c8"
+    },
+    {
+      "source": "gtca/molecules/oxylene.json",
+      "definition": "official:gtca/oxylene_structure",
+      "status": "bound_by_name",
+      "sha256": "28f5ab1b813b0ecf276ad1df253ac03925df949833407ba648cceae7a589a5ac"
+    },
+    {
+      "source": "gtca/molecules/phthalic_anhydride_gtca.json",
+      "definition": "official:gtca/phthalic_anhydride_gtca_structure",
+      "status": "bound_by_name",
+      "sha256": "bc14e48f65c7836138d957e2a658e15e282c17b9fa1c7bf43cee284ae27ce973"
+    },
+    {
+      "source": "gtca/molecules/potassium_ethyl_xanthate.json",
+      "definition": "official:gtca/potassium_ethyl_xanthate_structure",
+      "status": "bound_by_name",
+      "sha256": "1a31750677b94755f863f6c663d44e1422fab231356380e606e3a445dab95481"
+    },
+    {
+      "source": "gtca/molecules/propadiene.json",
+      "definition": "official:gtca/propadiene_structure",
+      "status": "bound_by_name",
+      "sha256": "a1b34fa16087c23b527352d43c4892206e3d7ce4104748bc54abf36d7054bf67"
+    },
+    {
+      "source": "gtca/molecules/propyne.json",
+      "definition": "official:gtca/propyne_structure",
+      "status": "bound_by_name",
+      "sha256": "85cf7771a9149c3e70c1becba7807dbd9a05e141ddeae8f63785f85fe58391a0"
+    },
+    {
+      "source": "gtca/molecules/sodium_ethyl_xanthate.json",
+      "definition": "official:gtca/sodium_ethyl_xanthate_structure",
+      "status": "bound_by_name",
+      "sha256": "71ed23ef4a4b6c3a4978086924490db709f5c74cad147aceb863910f7694c8a0"
+    },
+    {
+      "source": "gtocore/molecules/absolute_ethanol.json",
+      "definition": "official:gtocore/absolute_ethanol_structure",
+      "status": "bound_by_name",
+      "sha256": "56ebb7dc85e34bbeab05ed2055542de328414e87ab6350628977bb9f26e12542"
+    },
+    {
+      "source": "gtocore/molecules/acetonitrile_dust.json",
+      "definition": "official:gtocore/acetonitrile_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "33446da3dcd79cbe6f79f17f27434ef6a38ed923234ebfd51da86c32988a71f9"
+    },
+    {
+      "source": "gtocore/molecules/acetyl_chloride.json",
+      "definition": "official:gtocore/acetyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "6ebb647344dbc819a65e5518968615b5d7f3f8279bd476cefc2e049eb861b718"
+    },
+    {
+      "source": "gtocore/molecules/acrylic_acid.json",
+      "definition": "official:gtocore/acrylic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "d591c2b8879456b23262f3014b551b2703455eae3ead90e1bb0ed046235e73a5"
+    },
+    {
+      "source": "gtocore/molecules/acrylonitrile.json",
+      "definition": "official:gtocore/acrylonitrile_structure",
+      "status": "bound_by_name",
+      "sha256": "3334107a7c9bd7ecb319cac1cac6f9879c49942ec8271c495644de92ebf682b3"
+    },
+    {
+      "source": "gtocore/molecules/anthracene.json",
+      "definition": "official:gtocore/anthracene_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "10cc6d528c89d88eface02b22cea2efaa4adb99dc628ae30f4f8495e7be755a9"
+    },
+    {
+      "source": "gtocore/molecules/benzaldehyde.json",
+      "definition": "official:gtocore/benzaldehyde_structure",
+      "status": "bound_by_name",
+      "sha256": "49c8ce37fa6c1048eb770f799064758d2782c1073c2ce958913fd6322fab0c7e"
+    },
+    {
+      "source": "gtocore/molecules/benzenediazonium_tetrafluoroborate.json",
+      "definition": "official:gtocore/benzenediazonium_tetrafluoroborate_structure",
+      "status": "bound_by_name",
+      "sha256": "09d8dcb9369b5de1c915023eee5a7360704626f33b53086c1fb36024da8c08a6"
+    },
+    {
+      "source": "gtocore/molecules/benzenesulfonic_acid.json",
+      "definition": "official:gtocore/benzenesulfonic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "126b843aa2ce8179fc2928b8277e4612b4c1ca70da91ed93ddae1d4349cf3dc1"
+    },
+    {
+      "source": "gtocore/molecules/benzoic_acid.json",
+      "definition": "official:gtocore/benzoic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "1216117a34d80e9e9f6de65f89a5618c3f39136629591ee2c964d5300b500ed4"
+    },
+    {
+      "source": "gtocore/molecules/benzoic_anhydride.json",
+      "definition": "official:gtocore/benzoic_anhydride_structure",
+      "status": "bound_by_name",
+      "sha256": "2a4f5167d5a6d0dc2eb085c65e3c541425d9a39bf5816a3e025f6331151b2e79"
+    },
+    {
+      "source": "gtocore/molecules/benzoyl_peroxide_dust.json",
+      "definition": "official:gtocore/benzoyl_peroxide_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "7a5f57a1337d928d1b2c80901c87a5e15ec726b75fc91197f5938ca6af5aaf3e"
+    },
+    {
+      "source": "gtocore/molecules/benzyl_chloride.json",
+      "definition": "official:gtocore/benzyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "a6cf6f31d41b2f2587478004de3cee64f06ea7ab922b4f570b707f3a1072c5da"
+    },
+    {
+      "source": "gtocore/molecules/benzylamine.json",
+      "definition": "official:gtocore/benzylamine_structure",
+      "status": "bound_by_name",
+      "sha256": "9fb475c4f1d4c95a438e4202247765e721debf2c2369ab12b2407732e8ecdbd7"
+    },
+    {
+      "source": "gtocore/molecules/beta_ionone.json",
+      "definition": "official:gtocore/beta_ionone_structure",
+      "status": "bound_by_name",
+      "sha256": "94f51e2e424be18fbeeae2e6f7dd8394454a4c33c370eb15711a51fd971891d9"
+    },
+    {
+      "source": "gtocore/molecules/beta_pinene_dust.json",
+      "definition": "official:gtocore/beta_pinene_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "56257e2aebbf59b8ba7f47fe8f4b79dd41c5ae59caa9aabd0800bb3892750935"
+    },
+    {
+      "source": "gtocore/molecules/borane_dimethyl_sulfide.json",
+      "definition": "official:gtocore/borane_dimethyl_sulfide_structure",
+      "status": "bound_by_name",
+      "sha256": "a89ef2643b6e8ea4fd1e307f2f4b8bf1848cabeca54ee074c2d526e26fc1b7f7"
+    },
+    {
+      "source": "gtocore/molecules/butane_1_4_diol.json",
+      "definition": "official:gtocore/butane_1_4_diol_structure",
+      "status": "bound_by_name",
+      "sha256": "fbc8af632cd496b05808a220a46bcea87907b8f309a28f8ddd0e5e34c44428db"
+    },
+    {
+      "source": "gtocore/molecules/cetane.json",
+      "definition": "official:gtocore/cetane_structure",
+      "status": "bound_by_name",
+      "sha256": "1b0980554394313fd7fdaa40e5cc13dcf09b746eca3845fc3a8f349eb02660e8"
+    },
+    {
+      "source": "gtocore/molecules/chloroacetic_acid.json",
+      "definition": "official:gtocore/chloroacetic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "59153b52782cecd3025556f60004818f18bc161fee3ae8095765f99a1d69b5df"
+    },
+    {
+      "source": "gtocore/molecules/chloroethoxyethane.json",
+      "definition": "official:gtocore/chloroethoxyethane_structure",
+      "status": "bound_by_name",
+      "sha256": "4f9ba60365d0367a0b1ad0aa8b4f689fb58fc8552dd99e0fae52d684ca790c74"
+    },
+    {
+      "source": "gtocore/molecules/chloropropyltriethoxysilane.json",
+      "definition": "official:gtocore/chloropropyltriethoxysilane_structure",
+      "status": "bound_by_name",
+      "sha256": "89b465f3e2614a8d4eb96d5d8d1182c5f7c869a7191aa8d70a0bc4dada2dfbb9"
+    },
+    {
+      "source": "gtocore/molecules/citral.json",
+      "definition": "official:gtocore/citral_structure",
+      "status": "bound_by_name",
+      "sha256": "ecac11ca4ed4e94bd5854c89e5c804e98533878c48086c2d1cad22cec6282f40"
+    },
+    {
+      "source": "gtocore/molecules/crude_hexanitrohexaaxaisowurtzitane_dust.json",
+      "definition": "official:gtocore/crude_hexanitrohexaaxaisowurtzitane_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "278b879697dc0174cae0f8e6c86ad9eb9f1ca2e1dc09650d74bf60da893341c5"
+    },
+    {
+      "source": "gtocore/molecules/cyclopentadiene.json",
+      "definition": "official:gtocore/cyclopentadiene_structure",
+      "status": "bound_by_name",
+      "sha256": "a4d6dc89606aedf40d846c4a26592d8c96fad303838760ca1c0522c67233169b"
+    },
+    {
+      "source": "gtocore/molecules/dichlorocyclooctadieneplatinium_dust.json",
+      "definition": "official:gtocore/dichlorocyclooctadieneplatinium_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "2055fff19eacd17c4da022d17fc5906c9372f7254e7b31b8635ed7c14c636dc8"
+    },
+    {
+      "source": "gtocore/molecules/dichlorodicyanobenzoquinone.json",
+      "definition": "official:gtocore/dichlorodicyanobenzoquinone_structure",
+      "status": "bound_by_name",
+      "sha256": "d91fdec30c5af52ee7009af760aeb0fc28607a7de15fbfe7b7fd46b10e93dee4"
+    },
+    {
+      "source": "gtocore/molecules/dichlorodicyanohydroquinone.json",
+      "definition": "official:gtocore/dichlorodicyanohydroquinone_structure",
+      "status": "bound_by_name",
+      "sha256": "7fda8eeaf2c50e2798014185bfcf25d7991a328fb7a082be17fa618da6ca2e69"
+    },
+    {
+      "source": "gtocore/molecules/dichlorodiphenylsulfone.json",
+      "definition": "official:gtocore/dichlorodiphenylsulfone_structure",
+      "status": "bound_by_name",
+      "sha256": "52fd61f8b882a641d7a378caf0108bd9d74a51f777ccef07b8b07043fc798296"
+    },
+    {
+      "source": "gtocore/molecules/dichloromethane.json",
+      "definition": "official:gtocore/dichloromethane_structure",
+      "status": "bound_by_name",
+      "sha256": "4df6339596c76bc36a2d4c751ac5b31e6186e8eb186083bc6b39750a895332e0"
+    },
+    {
+      "source": "gtocore/molecules/diethyl_ether.json",
+      "definition": "official:gtocore/diethyl_ether_structure",
+      "status": "bound_by_name",
+      "sha256": "eb851b83f7ad0b0e90fa736787df003c9fe5a5223e727a01d16e7c16ff787d9b"
+    },
+    {
+      "source": "gtocore/molecules/diethyleneglycol.json",
+      "definition": "official:gtocore/diethyleneglycol_structure",
+      "status": "bound_by_name",
+      "sha256": "df33843ea1e579f5d4a9801327487aa4d58d31165dc0fe1c83f0f217b5d6c71d"
+    },
+    {
+      "source": "gtocore/molecules/diethylthiourea.json",
+      "definition": "official:gtocore/diethylthiourea_structure",
+      "status": "bound_by_name",
+      "sha256": "b98cc8d466661d85cd027759b54a10e9725ceb47cf993ec9b7c9e60c5e977c1a"
+    },
+    {
+      "source": "gtocore/molecules/difluoroaniline.json",
+      "definition": "official:gtocore/difluoroaniline_structure",
+      "status": "bound_by_name",
+      "sha256": "b0b4eadcbf570037a6fa80f2140b700da1b6044c18a39a8275997923dc4a8eb7"
+    },
+    {
+      "source": "gtocore/molecules/difluorobenzophenone_dust.json",
+      "definition": "official:gtocore/difluorobenzophenone_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "f822322a5826c80d5c36c5de0605a3ba3285e1382250b42e81e6999969553b41"
+    },
+    {
+      "source": "gtocore/molecules/difluorodiphenylsulfone.json",
+      "definition": "official:gtocore/difluorodiphenylsulfone_structure",
+      "status": "bound_by_name",
+      "sha256": "fb3faf8e0fc9e8a688520d8aca4c8cffab7ca8a825cd2582362c9e6aed2a5f70"
+    },
+    {
+      "source": "gtocore/molecules/dihydroiodotetracene.json",
+      "definition": "official:gtocore/dihydroiodotetracene_structure",
+      "status": "bound_by_name",
+      "sha256": "b17976aac098afcb51ec7310055e8aa5fbdf2810a6cef25420c01d112d6f6cf8"
+    },
+    {
+      "source": "gtocore/molecules/dihydroxybiphenyl.json",
+      "definition": "official:gtocore/dihydroxybiphenyl_structure",
+      "status": "bound_by_name",
+      "sha256": "16d16ad2667c42c8b989d7f9a1bd4c42c3572af5c6c53fb9195578900846015b"
+    },
+    {
+      "source": "gtocore/molecules/diiodobiphenyl_dust.json",
+      "definition": "official:gtocore/diiodobiphenyl_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "814e07086349cf357d013989754bfc76b7ee4739eb509f1035dbf775b4f23d33"
+    },
+    {
+      "source": "gtocore/molecules/dimethoxyethane.json",
+      "definition": "official:gtocore/dimethoxyethane_structure",
+      "status": "bound_by_name",
+      "sha256": "426d772f77fa006d4e0b85975213146e91c202fcc68d8ac59c053ba960ed4412"
+    },
+    {
+      "source": "gtocore/molecules/dimethyl_sulfide.json",
+      "definition": "official:gtocore/dimethyl_sulfide_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "340b79c289f25698abb9a3f27eb6654d6d721d4916b4539fc948d8b7013f49d3"
+    },
+    {
+      "source": "gtocore/molecules/dimethylacetamide.json",
+      "definition": "official:gtocore/dimethylacetamide_structure",
+      "status": "bound_by_name",
+      "sha256": "73f290ea955fd3cfd929fdbd9a6826a3a29ea7825bb57ac96165f8873adaec85"
+    },
+    {
+      "source": "gtocore/molecules/dimethylether.json",
+      "definition": "official:gtocore/dimethylether_structure",
+      "status": "bound_by_name",
+      "sha256": "c537e672aef1f3f854a5befa47eac48bdd854a349cf14c99fa200d6eaad54c0c"
+    },
+    {
+      "source": "gtocore/molecules/dimethylnaphthalene.json",
+      "definition": "official:gtocore/dimethylnaphthalene_structure",
+      "status": "bound_by_name",
+      "sha256": "1c00d0719e95be0e62b9013286e359c79b6cb419ccd878877698ac7c6d5c4f9e"
+    },
+    {
+      "source": "gtocore/molecules/dimethylterephthalate.json",
+      "definition": "official:gtocore/dimethylterephthalate_structure",
+      "status": "bound_by_name",
+      "sha256": "dbfa0e9e88ce17bfe7236534fc002e0b19b34529ddf7bc18d88944028a24cc58"
+    },
+    {
+      "source": "gtocore/molecules/ditert_butyl_1_methoxy_methoxyethoxy_benzene.json",
+      "definition": "official:gtocore/ditert_butyl_1_methoxy_methoxyethoxy_benzene_structure",
+      "status": "bound_by_name",
+      "sha256": "53f30535cec90bb084f9c83052e641df925df909ea1a94bbab3b11724bfdf7ac"
+    },
+    {
+      "source": "gtocore/molecules/ditertbutyl_dicarbonate_dust.json",
+      "definition": "official:gtocore/ditertbutyl_dicarbonate_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "b981619522e8afc0e38a51fed630522fae60a959fb2af09c2df5542be273b602"
+    },
+    {
+      "source": "gtocore/molecules/dmap_dust.json",
+      "definition": "official:gtocore/dmap_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "873b7feabc160aa6db0d9843e63c38d1d647e3b0be5981e0f82f338d3d7e4d00"
+    },
+    {
+      "source": "gtocore/molecules/durene_dust.json",
+      "definition": "official:gtocore/durene_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "2813a5ca592b93a635afe62dc05a4730218164684b14372d37d215e3fef6c1ce"
+    },
+    {
+      "source": "gtocore/molecules/edta_dust.json",
+      "definition": "official:gtocore/edta_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "c4bcbad5622b1ef3540b73b9c5cc4289c161f0252c9ff4a96f886e020367512c"
+    },
+    {
+      "source": "gtocore/molecules/ethanolamine.json",
+      "definition": "official:gtocore/ethanolamine_structure",
+      "status": "bound_by_name",
+      "sha256": "9926563767f26dd79d2d6279fc24f4429973fdd80183a0b7eb7ef5566ce96bc8"
+    },
+    {
+      "source": "gtocore/molecules/ethyl_acrylate.json",
+      "definition": "official:gtocore/ethyl_acrylate_structure",
+      "status": "bound_by_name",
+      "sha256": "fdf11195842df49f2418af8df72ac54f74b5ee11e391371d5808a08ab00f1dd8"
+    },
+    {
+      "source": "gtocore/molecules/ethyl_silicate.json",
+      "definition": "official:gtocore/ethyl_silicate_structure",
+      "status": "bound_by_name",
+      "sha256": "b94ed38d9d59f23119d48ec39a9ab9e7bae819ef6ec0d20a421b69d01aca2a22"
+    },
+    {
+      "source": "gtocore/molecules/ethyl_trifluoroacetate.json",
+      "definition": "official:gtocore/ethyl_trifluoroacetate_structure",
+      "status": "bound_by_name",
+      "sha256": "2f5be3285c150c0a64c2a2d351e8a6c1a94f0cab071fbda184cc93a83dac2562"
+    },
+    {
+      "source": "gtocore/molecules/ethylamine.json",
+      "definition": "official:gtocore/ethylamine_structure",
+      "status": "bound_by_name",
+      "sha256": "b948b2b9cb1a1d9af3485f8fb8ce9349f1e6d8cb42243b203bb2a5aaac627bb2"
+    },
+    {
+      "source": "gtocore/molecules/ethylanthrahydroquinone.json",
+      "definition": "official:gtocore/ethylanthrahydroquinone_structure",
+      "status": "bound_by_name",
+      "sha256": "5687d15cffdd95ce6e8d2cc2d6246637a22b94c88e0c06239fc57a6c5d996b59"
+    },
+    {
+      "source": "gtocore/molecules/ethylene_oxide.json",
+      "definition": "official:gtocore/ethylene_oxide_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "e865be5ab6f48d3cfcfc4ab00d1e5b749da479c88dc91863451731683f3884c2"
+    },
+    {
+      "source": "gtocore/molecules/ethylene_sulfide.json",
+      "definition": "official:gtocore/ethylene_sulfide_structure",
+      "status": "bound_by_name",
+      "sha256": "98f9a1df6d3414a137468719ee021a4134302b5835c2f7f4445e404f2f6e9410"
+    },
+    {
+      "source": "gtocore/molecules/ethylenediamine.json",
+      "definition": "official:gtocore/ethylenediamine_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "c62e2dd02f7b6eeadb2853e12ab630ebc8875b9b1f57215844a410c9ffc87cea"
+    },
+    {
+      "source": "gtocore/molecules/ethyleneglycol.json",
+      "definition": "official:gtocore/ethyleneglycol_structure",
+      "status": "bound_by_name",
+      "sha256": "9cad30ed3d29cfcca59e37ec981b2d28e34900b5564f285f59287adcfd0b85d0"
+    },
+    {
+      "source": "gtocore/molecules/fluoro_benzene.json",
+      "definition": "official:gtocore/fluoro_benzene_structure",
+      "status": "bound_by_name",
+      "sha256": "dd68d6819f22374dcd36a751d1b19ba869d4c14dec0d765db30c816b9b156ce0"
+    },
+    {
+      "source": "gtocore/molecules/fluoroboric_acide.json",
+      "definition": "official:gtocore/fluoroboric_acide_structure",
+      "status": "bound_by_name",
+      "sha256": "23d5aadddf06f76c1944c1d277c451dddfdb7b3f8f097e254ec52ec0364d2c1c"
+    },
+    {
+      "source": "gtocore/molecules/fluorotoluene.json",
+      "definition": "official:gtocore/fluorotoluene_structure",
+      "status": "bound_by_name",
+      "sha256": "60629bdc7f1d53a6bd7323109f00e8017028d08836ec2142b1131296a3b7b45a"
+    },
+    {
+      "source": "gtocore/molecules/fullerene_dust.json",
+      "definition": "official:gtocore/fullerene_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "c90599ed243d4a86e3391a40eac98f575e3419865b200e9e3ecf9a5e9e0e11e4"
+    },
+    {
+      "source": "gtocore/molecules/gammabutyrolactone.json",
+      "definition": "official:gtocore/gammabutyrolactone_structure",
+      "status": "bound_by_name",
+      "sha256": "07aeaf70093e1cc8b81182a54eb0bedcc7e0506a50b1df40ec650557cb95664e"
+    },
+    {
+      "source": "gtocore/molecules/glucose_dust.json",
+      "definition": "official:gtocore/glucose_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "aedfff02e1cbeb9095b73516dc5e3c55d7b37406cb710463720bcf8b5fd75cff"
+    },
+    {
+      "source": "gtocore/molecules/glutamine_dust.json",
+      "definition": "official:gtocore/glutamine_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "bb42683e346d93c7c1c06c7c11250e1ec9dc36f5053067eb403f1c0fa71351b2"
+    },
+    {
+      "source": "gtocore/molecules/glyoxal.json",
+      "definition": "official:gtocore/glyoxal_structure",
+      "status": "bound_by_name",
+      "sha256": "447e3dc941d96150c713ada803e6007cd6252f1c6caec6f5267bd378aa13ca6b"
+    },
+    {
+      "source": "gtocore/molecules/hexabenzylhexaazaisowurtzitane_dust.json",
+      "definition": "official:gtocore/hexabenzylhexaazaisowurtzitane_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "17af00689d70f7b252815d98abb7f52ee5975cd2eb076d3d0fc37475a974a268"
+    },
+    {
+      "source": "gtocore/molecules/hexamethyldisilazane.json",
+      "definition": "official:gtocore/hexamethyldisilazane_structure",
+      "status": "bound_by_name",
+      "sha256": "1cb425836c086303004c363080ca688f9a3d30f436f05ed228ad52d93a481d19"
+    },
+    {
+      "source": "gtocore/molecules/hexamethyldisiloxane.json",
+      "definition": "official:gtocore/hexamethyldisiloxane_structure",
+      "status": "bound_by_name",
+      "sha256": "5acd8c6b0ce0ea7c052a53777c17eb41270c830cd26f416817ca9ee738ba8d54"
+    },
+    {
+      "source": "gtocore/molecules/hexamethylenetetramine_dust.json",
+      "definition": "official:gtocore/hexamethylenetetramine_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "ad58fe5df237b9cdf37ae5462dc2f5362fe80aa02d225c3b8964ba4e9301fe94"
+    },
+    {
+      "source": "gtocore/molecules/hexanitrohexaaxaisowurtzitane_dust.json",
+      "definition": "official:gtocore/hexanitrohexaaxaisowurtzitane_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "278b879697dc0174cae0f8e6c86ad9eb9f1ca2e1dc09650d74bf60da893341c5"
+    },
+    {
+      "source": "gtocore/molecules/hydrazine.json",
+      "definition": "official:gtocore/hydrazine_structure",
+      "status": "bound_by_name",
+      "sha256": "04fb480ac32b7054e2fa1029c2deab6447e33261b2af0c5856e7548c5aa4b06c"
+    },
+    {
+      "source": "gtocore/molecules/hydroquinone.json",
+      "definition": "official:gtocore/hydroquinone_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "ac25d9c000bae2ffd0fc91f9aa7462e0675a42f610512ab0ae3bdd4dab3e36ff"
+    },
+    {
+      "source": "gtocore/molecules/hydroxylamine_hydrochloride.json",
+      "definition": "official:gtocore/hydroxylamine_hydrochloride_structure",
+      "status": "bound_by_name",
+      "sha256": "33a7fe4f5fcf8e2ae8adff751dd3c64c3ba2d964f8f9973870b652510daf9be9"
+    },
+    {
+      "source": "gtocore/molecules/isochloropropane.json",
+      "definition": "official:gtocore/isochloropropane_structure",
+      "status": "bound_by_name",
+      "sha256": "d7f5944e59835350a04157e991dfb1433c251230bd30cfa7a281c5e9831ce821"
+    },
+    {
+      "source": "gtocore/molecules/isophthaloylbis.json",
+      "definition": "official:gtocore/isophthaloylbis_structure",
+      "status": "bound_by_name",
+      "sha256": "e0ec7a4f0c56b151b6482dac6a4dd92b57ddeda5aac8338f3e8c20a2123f7f33"
+    },
+    {
+      "source": "gtocore/molecules/isopropyl_alcohol.json",
+      "definition": "official:gtocore/isopropyl_alcohol_structure",
+      "status": "bound_by_name",
+      "sha256": "14993b32db7fa0ecb475389cd91ed4e5d3ebdc8116060d885eb97f8b617c3129"
+    },
+    {
+      "source": "gtocore/molecules/linoleic_acid.json",
+      "definition": "official:gtocore/linoleic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "25de70be150b17e3d5c95a939e288683c0af8bcc4082d6fa0b7a57a5a9f5e549"
+    },
+    {
+      "source": "gtocore/molecules/lipoic_acid.json",
+      "definition": "official:gtocore/lipoic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "bc070d67efd9cdb5c3f92d6986d587e2487768678e9e7cbdba1f9f86462222d6"
+    },
+    {
+      "source": "gtocore/molecules/maleic_anhydride.json",
+      "definition": "official:gtocore/maleic_anhydride_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "6cf4fc6fe47df2f36f6869cacb173d6e17cca78340eb9d7c8697785047b9bfa8"
+    },
+    {
+      "source": "gtocore/molecules/methylamine.json",
+      "definition": "official:gtocore/methylamine_structure",
+      "status": "bound_by_name",
+      "sha256": "9e422817da3da1cf2b06fa88ae4c90f378af7966fdde1b7a2d01501c172ec710"
+    },
+    {
+      "source": "gtocore/molecules/methylbenzophenanthrene_dust.json",
+      "definition": "official:gtocore/methylbenzophenanthrene_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "a9c71d19928dd2a00ee8f1f3f5e816ef80c11a10a6807ba7618c1bbecbfdb404"
+    },
+    {
+      "source": "gtocore/molecules/monomethylhydrazine.json",
+      "definition": "official:gtocore/monomethylhydrazine_structure",
+      "status": "bound_by_name",
+      "sha256": "8383c4b555d6df00fa1ef5c78c4d8238cd9c24228330787397fccea4cd405fc2"
+    },
+    {
+      "source": "gtocore/molecules/n_difluorophenylpyrrole.json",
+      "definition": "official:gtocore/n_difluorophenylpyrrole_structure",
+      "status": "bound_by_name",
+      "sha256": "ea8368eaae7da2fc0da31feb7094aef30a3afd0498baef343de80ebe823c48f3"
+    },
+    {
+      "source": "gtocore/molecules/n_hydroxysuccinimide_dust.json",
+      "definition": "official:gtocore/n_hydroxysuccinimide_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "aee9dd86e5eb83a1c296fac8e54e8001c32b15de9445edc70f25daf649e09367"
+    },
+    {
+      "source": "gtocore/molecules/n_methylphthalimide.json",
+      "definition": "official:gtocore/n_methylphthalimide_structure",
+      "status": "bound_by_name",
+      "sha256": "ebc12c3f9133e9e49d95e029a595c7f9e6e50f1197576092920685f7c1f9d511"
+    },
+    {
+      "source": "gtocore/molecules/nitrous_acid.json",
+      "definition": "official:gtocore/nitrous_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "ee87a1602b6ff4f516831cdbf263fecc6c1bee89073f12b131290b47ebb1f633"
+    },
+    {
+      "source": "gtocore/molecules/nmethylpyrolidone.json",
+      "definition": "official:gtocore/nmethylpyrolidone_structure",
+      "status": "bound_by_name",
+      "sha256": "9dffb1055ceda3d28e2c4c46810cf64a2644f36b28887355a3d90546cda636fc"
+    },
+    {
+      "source": "gtocore/molecules/p_nitroaniline.json",
+      "definition": "official:gtocore/p_nitroaniline_structure",
+      "status": "bound_by_name",
+      "sha256": "2293318460a7c229dc3c4b8771188bf3a36ae6b885c00e4303f5b6aed4871dbb"
+    },
+    {
+      "source": "gtocore/molecules/p_phenylenediamine_dust.json",
+      "definition": "official:gtocore/p_phenylenediamine_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "43d264a3434f16959a737a7ac181613125faa14ec7b13e94bae795c40df7002a"
+    },
+    {
+      "source": "gtocore/molecules/para_benzoquinone.json",
+      "definition": "official:gtocore/para_benzoquinone_structure",
+      "status": "bound_by_name",
+      "sha256": "5aecb9d2edf5870c3f8b7e60becaf7012620909ca9c9a663d51bbebbd27be54c"
+    },
+    {
+      "source": "gtocore/molecules/pentaerythritol_dust.json",
+      "definition": "official:gtocore/pentaerythritol_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "faff8b5b91f39f4e67281893a23667dd00c6d419f78cb44dbbf74ed736ee0e2e"
+    },
+    {
+      "source": "gtocore/molecules/perfluorooctanesulfonic_acid.json",
+      "definition": "official:gtocore/perfluorooctanesulfonic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "eec125836596334fe9c924269b9725292b0abc9f567410cf496d6fdedcc1a99f"
+    },
+    {
+      "source": "gtocore/molecules/phenylenedioxydiacetic_acid.json",
+      "definition": "official:gtocore/phenylenedioxydiacetic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "8c4a04d6a03296a3308fe4f2d1ef2d4ca0cabe8b79cbaf0c4291a82f5b1105f0"
+    },
+    {
+      "source": "gtocore/molecules/phenylpentanoic_acid.json",
+      "definition": "official:gtocore/phenylpentanoic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "74eccb5a6fa119c7b216a76cd2a15f78bebccdfdbc1afb05c55855e70ccd1fe1"
+    },
+    {
+      "source": "gtocore/molecules/phenylsodium.json",
+      "definition": "official:gtocore/phenylsodium_structure",
+      "status": "bound_by_name",
+      "sha256": "87d942b0d35f84d76cc5c4e19a30e8ba1a2a2ae5f29e0aaa245d82a9b969e58c"
+    },
+    {
+      "source": "gtocore/molecules/phthalic_anhydride_dust.json",
+      "definition": "official:gtocore/phthalic_anhydride_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "988eba61e0e52ac2c9077789b3098babce55c05273f4bbe2b6bc73f2629c3823"
+    },
+    {
+      "source": "gtocore/molecules/polycyclic_aromatic_mixture_dust.json",
+      "definition": "official:gtocore/polycyclic_aromatic_mixture_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "fbee3f329aeac8e541ae5993ab1dffe307faf13af18bc97202dc75c3f1f0342a"
+    },
+    {
+      "source": "gtocore/molecules/polystyrene.json",
+      "definition": "official:gtocore/polystyrene_structure",
+      "status": "bound_by_name",
+      "sha256": "0f20629271134b4ca39db448581bcfb31cba3de5ed36fffa9f8a6cf2899f4509"
+    },
+    {
+      "source": "gtocore/molecules/polyurethane.json",
+      "definition": "official:gtocore/polyurethane_structure",
+      "status": "bound_by_name",
+      "sha256": "666449e2a144c39ee8cce603ba62653168efda27ef04cf218b5ae265b698d5e4"
+    },
+    {
+      "source": "gtocore/molecules/polyvinylpyrrolidone.json",
+      "definition": "official:gtocore/polyvinylpyrrolidone_structure",
+      "status": "bound_by_name",
+      "sha256": "0882c54ca70c01908294b0e2c81c830b1772eb1a60479025f595cadb3416f4aa"
+    },
+    {
+      "source": "gtocore/molecules/propadiene.json",
+      "definition": "official:gtocore/propadiene_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "dba5678e33ee78f5f5c04aa04485d87d08556dfe29b025bf3d0d31d444413430"
+    },
+    {
+      "source": "gtocore/molecules/propargyl_alcohol.json",
+      "definition": "official:gtocore/propargyl_alcohol_structure",
+      "status": "bound_by_name",
+      "sha256": "b46349bacb30b14f581d3c5cc22ba816e95fb3ca4493c049a86e07ac2d8f0ee9"
+    },
+    {
+      "source": "gtocore/molecules/propargyl_chloride.json",
+      "definition": "official:gtocore/propargyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "e95af97897eefe897b5596d86ee947208b69fe86e3a99ab955ea9e9770908b7f"
+    },
+    {
+      "source": "gtocore/molecules/propylene_carbonate.json",
+      "definition": "official:gtocore/propylene_carbonate_structure",
+      "status": "bound_by_name",
+      "sha256": "bcc754018d1f9273e11c6dd1b26e4cd80d830ac140eb3c011f3608daea19b88a"
+    },
+    {
+      "source": "gtocore/molecules/pyromellitic_dianhydride_dust.json",
+      "definition": "official:gtocore/pyromellitic_dianhydride_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "c4c6ba1516a9890408c5de7dfb5932fbe7e862911e5f1c01c0298fa43846cf2b"
+    },
+    {
+      "source": "gtocore/molecules/resorcinol.json",
+      "definition": "official:gtocore/resorcinol_structure",
+      "status": "bound_by_name",
+      "sha256": "ef125bfc6cdbb8beeecff03dfe391de230279e802d2a5fd9ab0d1ca215db4a2b"
+    },
+    {
+      "source": "gtocore/molecules/sarcosine_dust.json",
+      "definition": "official:gtocore/sarcosine_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "801bdcbc1a6126e52571b818c208273eb66199935306ff50a78c1c4410da689e"
+    },
+    {
+      "source": "gtocore/molecules/sodium_allylsulfonate.json",
+      "definition": "official:gtocore/sodium_allylsulfonate_structure",
+      "status": "bound_by_name",
+      "sha256": "2ac50d88b4e5dcd216dd5c1b2d6b168af4ed7367180e94b90d874ceb3097b4b5"
+    },
+    {
+      "source": "gtocore/molecules/sodium_toluenesulfonate.json",
+      "definition": "official:gtocore/sodium_toluenesulfonate_structure",
+      "status": "bound_by_name",
+      "sha256": "383213d5e8442df1a57f77da3274ca37bca52a6aa5b2c21b85502c654da35b2c"
+    },
+    {
+      "source": "gtocore/molecules/stearic_acid.json",
+      "definition": "official:gtocore/stearic_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "6ce6371720941400d041c33d2e680c0dc31945bcdd5a4e56de024592f2a0728c"
+    },
+    {
+      "source": "gtocore/molecules/succinaldehyde.json",
+      "definition": "official:gtocore/succinaldehyde_structure",
+      "status": "bound_by_name",
+      "sha256": "1ddccec35c8cdfeefa2034c7b48823845ec71ca7458d4239fcb5552e2607db26"
+    },
+    {
+      "source": "gtocore/molecules/succinic_acid_dust.json",
+      "definition": "official:gtocore/succinic_acid_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "7386bfcd5d4c9239f0df58aecfb1ad96fff6c8a6008c97de1fd88303af9d8e4a"
+    },
+    {
+      "source": "gtocore/molecules/succinic_anhydride_dust.json",
+      "definition": "official:gtocore/succinic_anhydride_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "4eeeb1cee286a2c60610c19020d209f94db0c11584fe3e0398ac0b118adab86e"
+    },
+    {
+      "source": "gtocore/molecules/succinimide_dust.json",
+      "definition": "official:gtocore/succinimide_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "619d2c07d52742e4687f9e7f87f6eb77e5f92f787c71c4e255dc4b2e0d3ee161"
+    },
+    {
+      "source": "gtocore/molecules/succinimidyl_acetate_dust.json",
+      "definition": "official:gtocore/succinimidyl_acetate_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "aae6a51d7b4cb050d53a21633d3dae879a2b2e0c7d5a5b7e713344b2025f1801"
+    },
+    {
+      "source": "gtocore/molecules/tempo.json",
+      "definition": "official:gtocore/tempo_structure",
+      "status": "bound_by_name",
+      "sha256": "ec95fb5a87523f22f2c9c6b1ed0077341158e7293705cd394b185215f45278d7"
+    },
+    {
+      "source": "gtocore/molecules/terephthalaldehyde_dust.json",
+      "definition": "official:gtocore/terephthalaldehyde_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "20595a0883679755948859968c4d00fa9fd9e1cdf7c6c180b8ec8d9ad0b57016"
+    },
+    {
+      "source": "gtocore/molecules/terephthalicacid.json",
+      "definition": "official:gtocore/terephthalicacid_structure",
+      "status": "bound_by_name",
+      "sha256": "53b06aa64d7ac9a38283f60c9a630c5cdb4a162207ee390be2b5560c02d724ad"
+    },
+    {
+      "source": "gtocore/molecules/terephthaloyl_chloride_dust.json",
+      "definition": "official:gtocore/terephthaloyl_chloride_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "532aacdcb57fa3147e0688d16626c1224c192f0d663a2fb43c80e03310aa1d1e"
+    },
+    {
+      "source": "gtocore/molecules/tert_butyl_chloride.json",
+      "definition": "official:gtocore/tert_butyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "e8b214d37c9199365115e34bd3112b0dc61367c602562ec13040a21823d659bb"
+    },
+    {
+      "source": "gtocore/molecules/tertbuthylcarbonylazide.json",
+      "definition": "official:gtocore/tertbuthylcarbonylazide_structure",
+      "status": "bound_by_name",
+      "sha256": "8299d2f4ac83d7d33fd9edfdd2d55be064ec54bcc4eb69813fa387ac438c0c48"
+    },
+    {
+      "source": "gtocore/molecules/tetracene_dust.json",
+      "definition": "official:gtocore/tetracene_dust_structure",
+      "status": "bound_by_name",
+      "sha256": "3392e8fce935cc0dc9c8e10289144c63b27b3fcbdd88016993074359f930b596"
+    },
+    {
+      "source": "gtocore/molecules/tetrachloroethane.json",
+      "definition": "official:gtocore/tetrachloroethane_structure",
+      "status": "bound_by_name",
+      "sha256": "4bf5bf667981c5725cf13292a3eb1d8a288a58d954916d706743914a38c05c38"
+    },
+    {
+      "source": "gtocore/molecules/tetraethylammonium_bromide.json",
+      "definition": "official:gtocore/tetraethylammonium_bromide_structure",
+      "status": "bound_by_name",
+      "sha256": "2432cf88e8a2b12d4a16a0231317c93bb7a98d90e673aa11f0b16181d421becb"
+    },
+    {
+      "source": "gtocore/molecules/tetrahydrofuran.json",
+      "definition": "official:gtocore/tetrahydrofuran_structure",
+      "status": "bound_by_name",
+      "sha256": "e57c457487a111cbd4624f434126d7d373e51d7d0a1b856fe866d4892f19b3ce"
+    },
+    {
+      "source": "gtocore/molecules/tetramethyl_bisphenol_a.json",
+      "definition": "official:gtocore/tetramethyl_bisphenol_a_structure",
+      "status": "bound_by_name",
+      "sha256": "75fc7824231fdfd0e7ebd2484705322c065643b00a4e10d8fb77f7e795ff15e3"
+    },
+    {
+      "source": "gtocore/molecules/tetramethylpiperidine.json",
+      "definition": "official:gtocore/tetramethylpiperidine_structure",
+      "status": "bound_by_name",
+      "sha256": "9bc2110ec93c85313539e1d99541a91be4e6a782b7686042cc47b032f61d50b4"
+    },
+    {
+      "source": "gtocore/molecules/thionyl_chloride.json",
+      "definition": "official:gtocore/thionyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "c27e19280dbc5b33e3a63abe60747d590a616040d951fc6b1c88c2580e5715e8"
+    },
+    {
+      "source": "gtocore/molecules/toluene_diisocyanate.json",
+      "definition": "official:gtocore/toluene_diisocyanate_structure",
+      "status": "bound_by_name",
+      "sha256": "1ccd92b1c4181ca095a231f7b6fec5765f775f1eb7b7260b8b0c0f1a6f0fdd5c"
+    },
+    {
+      "source": "gtocore/molecules/triethoxysilane.json",
+      "definition": "official:gtocore/triethoxysilane_structure",
+      "status": "bound_by_name",
+      "sha256": "cae0cd392f7da79e7546f9d8812b9642db6d5881e1c5deb3325370ddefb0462a"
+    },
+    {
+      "source": "gtocore/molecules/trifluoromethanesulfonyl_chloride.json",
+      "definition": "official:gtocore/trifluoromethanesulfonyl_chloride_structure",
+      "status": "bound_by_name",
+      "sha256": "6efd146448dbdc39b98dd5225ad505d3bb1159f3eca673806ed7bfb36c2ce20a"
+    },
+    {
+      "source": "gtocore/molecules/trimethylamine.json",
+      "definition": "official:gtocore/trimethylamine_structure",
+      "status": "bound_by_name",
+      "sha256": "f05373cfc624601b686d97a29e1cdd7f688b13b75920303831923daa16c2e08d"
+    },
+    {
+      "source": "gtocore/molecules/trimethylchlorosilane.json",
+      "definition": "official:gtocore/trimethylchlorosilane_structure",
+      "status": "bound_by_name",
+      "sha256": "d0fb4d83ba8b384bd943278e59799a84f560e7ad9f1b640d842e9c850353f3bd"
+    },
+    {
+      "source": "gtocore/molecules/trimethylsilane.json",
+      "definition": "official:gtocore/trimethylsilane_structure",
+      "status": "bound_by_name",
+      "sha256": "3aafbe39bdd52d90394f35c32f8e0f0ad1d164707b7c8e81e8aaf5e5aa25d5b1"
+    },
+    {
+      "source": "gtocore/molecules/trimethylsilanol.json",
+      "definition": "official:gtocore/trimethylsilanol_structure",
+      "status": "bound_by_name",
+      "sha256": "42aadf5a7ddad201835422fb8cc8faf83de88eeffbba620ff2295d2d45543544"
+    },
+    {
+      "source": "gtocore/molecules/tris.json",
+      "definition": "official:gtocore/tris_structure",
+      "status": "bound_by_name",
+      "sha256": "857f552979443f64becf7888ee84b8a5dba4ba5e93a5e60a04c6e19238bd90a7"
+    },
+    {
+      "source": "gtocore/molecules/vitamin_a.json",
+      "definition": "official:gtocore/vitamin_a_structure",
+      "status": "bound_by_name",
+      "sha256": "630735850df2fbeed6b539394718f7f21fee5ad82016e48215a4c907537c2072"
+    },
+    {
+      "source": "tfg/molecules/14_sorbitan.json",
+      "definition": "official:tfg/14_sorbitan_structure",
+      "status": "bound_by_name",
+      "sha256": "1538cb61231ead0a03342759b6d0508f2f905a7040b9f90319e5b8e15ce12735"
+    },
+    {
+      "source": "tfg/molecules/1_1_1_2_tetrafluoroethane.json",
+      "definition": "official:tfg/1_1_1_2_tetrafluoroethane_structure",
+      "status": "bound_by_name",
+      "sha256": "a24447bd9876ba26696f635891af10e6bdfb68d76bd4482c786245d5aab21839"
+    },
+    {
+      "source": "tfg/molecules/acetylene.json",
+      "definition": "official:tfg/acetylene_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "5b5b97a7639e0611375f15b6b4199d249a33bf327d939abca1ed9f620cf8fc21"
+    },
+    {
+      "source": "tfg/molecules/aniline.json",
+      "definition": "official:tfg/aniline_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "72d768acece1378606386ca690be7823fc389646db950f52c7a871aad6cf77d7"
+    },
+    {
+      "source": "tfg/molecules/butyric_acid.json",
+      "definition": "official:tfg/butyric_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "5f317a0b03c4d00f2fdbf23e05db1ef672e1fa6760af185d4c7a070fb2c58343"
+    },
+    {
+      "source": "tfg/molecules/chlorodifluoromethane.json",
+      "definition": "official:tfg/chlorodifluoromethane_structure",
+      "status": "bound_by_name",
+      "sha256": "042a72a081c7071385d7a7088a59ead91754cf44bad15b9dddf7e8dcc2f2c130"
+    },
+    {
+      "source": "tfg/molecules/citric_acid.json",
+      "definition": "official:tfg/citric_acid_structure",
+      "status": "bound_by_name",
+      "sha256": "d21fc34d47fe8942f872e06eff2ac57891849d0656534dcde5329cfc26bc3fa5"
+    },
+    {
+      "source": "tfg/molecules/cyclohexanone.json",
+      "definition": "official:tfg/cyclohexanone_structure",
+      "status": "bound_by_name",
+      "sha256": "67077928340f9132bb7df012ae7707efae3ba7962742c513efba4d58de85642d"
+    },
+    {
+      "source": "tfg/molecules/dimethyl_carbonate.json",
+      "definition": "official:tfg/dimethyl_carbonate_structure",
+      "status": "bound_by_name",
+      "sha256": "02f5ca60493d3c50d42b52a1bf9a602741b241d507e41fdd97b5ea6e18a79e61"
+    },
+    {
+      "source": "tfg/molecules/ethylene_oxide.json",
+      "definition": "official:tfg/ethylene_oxide_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "4054f10336f102180e3cae010f7292eba60794c202c16a4c5d3091a3d6e744d7"
+    },
+    {
+      "source": "tfg/molecules/iodomethane.json",
+      "definition": "official:tfg/iodomethane_structure",
+      "status": "bound_by_name",
+      "sha256": "247ace1e66017f763169382f0d062509f60fb4de2ae667f82b028bc4f4d2575c"
+    },
+    {
+      "source": "tfg/molecules/isobutane.json",
+      "definition": "official:tfg/isobutane_structure",
+      "status": "bound_by_name",
+      "sha256": "fca31e28d8cba6fc9e8095bfddf0a7ef1d959efde20a1f5575f07336e690a269"
+    },
+    {
+      "source": "tfg/molecules/lauryl_alcohol.json",
+      "definition": "official:tfg/lauryl_alcohol_structure",
+      "status": "bound_by_name",
+      "sha256": "d3a2e777e79cd880c8bd8eeea0da108d96aa3ef4de3e8fa31d16cc0a5d0df12f"
+    },
+    {
+      "source": "tfg/molecules/methylene_diphenyl_diisocyanate.json",
+      "definition": "official:tfg/methylene_diphenyl_diisocyanate_structure",
+      "status": "bound_by_name",
+      "sha256": "bc89d4dc2d78034f1fa15a30fce147923b2686b238a118beec0a945c6ef6b9ce"
+    },
+    {
+      "source": "tfg/molecules/n_n_dimethylaniline.json",
+      "definition": "official:tfg/n_n_dimethylaniline_structure",
+      "status": "bound_by_name",
+      "sha256": "3bdab6ead9ca67d220b708a56ff7b0d419ad7a8fc43ece73cad06488fcee232d"
+    },
+    {
+      "source": "tfg/molecules/sorbitol.json",
+      "definition": "official:tfg/sorbitol_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "b53eb04c695642e48081975ba41a91f7af2ca7fec4f2cfb5d1f9f9d2038a3662"
+    },
+    {
+      "source": "tfg/molecules/tmos.json",
+      "definition": "official:tfg/tmos_structure",
+      "status": "bound_by_name",
+      "sha256": "f0f6a2f7fd44738b4ef053001dea1c45b2e0e63bbdee24ef5af2f732a46a1bf6"
+    },
+    {
+      "source": "tfg/molecules/trideuteroiodomethane.json",
+      "definition": "official:tfg/trideuteroiodomethane_structure",
+      "status": "bound_by_name",
+      "sha256": "0636bcd7b028090403a7a909eb850878d55f2bb0889c3dba871713b1fc1f4e8a"
+    },
+    {
+      "source": "tfg/molecules/trimethyl_borate.json",
+      "definition": "official:tfg/trimethyl_borate_structure",
+      "status": "bound_by_name",
+      "sha256": "cfc107c564eda31b22907c29df37150ab37e295d738a0586572330af3bcb3b88"
+    },
+    {
+      "source": "tfg/molecules/trimethylamine.json",
+      "definition": "official:tfg/trimethylamine_structure",
+      "status": "shadowed_structure_preserved",
+      "sha256": "6df2829a6f94b5099ff9511209fc21fb9c7480ae202783fa5c31b561eeadd38a"
+    },
+    {
+      "source": "tfg/molecules/urea.json",
+      "definition": "official:tfg/urea_structure",
+      "status": "bound_by_name",
+      "sha256": "e8c05489de9f86bb049cf76c6cfa189dab9e36649c63ce25aa9843410dd9d31f"
+    },
+    {
+      "source": "gtceu/alloys/abyssal_alloy.json",
+      "definition": "official:gtceu/abyssal_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/advanced_soldering_alloy.json",
+      "definition": "official:gtceu/advanced_soldering_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/aerorelient_steel.json",
+      "definition": "official:gtceu/aerorelient_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/aluminium_silicate.json",
+      "definition": "official:gtceu/aluminium_silicate_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/ancient_runicalium.json",
+      "definition": "official:gtceu/ancient_runicalium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/annealed_manasteel.json",
+      "definition": "official:gtceu/annealed_manasteel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/astatine_bis_tritelluride_cobo_selenium.json",
+      "definition": "official:gtceu/astatine_bis_tritelluride_cobo_selenium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/astatine_bis_tritelluride_cobo_selenium_over_iron_titanium_oxide.json",
+      "definition": "official:gtceu/astatine_bis_tritelluride_cobo_selenium_over_iron_titanium_oxide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/astatium_bioselex_carbonite.json",
+      "definition": "official:gtceu/astatium_bioselex_carbonite_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/astrenaloy_nx.json",
+      "definition": "official:gtceu/astrenaloy_nx_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/austenitic_stainless_steel_304.json",
+      "definition": "official:gtceu/austenitic_stainless_steel_304_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/battery_alloy.json",
+      "definition": "official:gtceu/battery_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/beryllium_aluminium_alloy.json",
+      "definition": "official:gtceu/beryllium_aluminium_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/beryllium_bronze.json",
+      "definition": "official:gtceu/beryllium_bronze_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/birmabright.json",
+      "definition": "official:gtceu/birmabright_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/bismuth_bronze.json",
+      "definition": "official:gtceu/bismuth_bronze_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/bismuth_iridate.json",
+      "definition": "official:gtceu/bismuth_iridate_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/black_bronze.json",
+      "definition": "official:gtceu/black_bronze_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/black_matter.json",
+      "definition": "official:gtceu/black_matter_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/black_steel.json",
+      "definition": "official:gtceu/black_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/blue_alloy.json",
+      "definition": "official:gtceu/blue_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/blue_steel.json",
+      "definition": "official:gtceu/blue_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/borealic_steel.json",
+      "definition": "official:gtceu/borealic_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/brass.json",
+      "definition": "official:gtceu/brass_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/bronze.json",
+      "definition": "official:gtceu/bronze_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/cast_iron.json",
+      "definition": "official:gtceu/cast_iron_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/cerium_tritelluride.json",
+      "definition": "official:gtceu/cerium_tritelluride_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/certus_quartz_skystone_alloy.json",
+      "definition": "official:gtceu/certus_quartz_skystone_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/chaotixic_alloy.json",
+      "definition": "official:gtceu/chaotixic_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/cobalt_brass.json",
+      "definition": "official:gtceu/cobalt_brass_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/conductive_alloy.json",
+      "definition": "official:gtceu/conductive_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/cupronickel.json",
+      "definition": "official:gtceu/cupronickel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/darconite.json",
+      "definition": "official:gtceu/darconite_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/dark_soularium.json",
+      "definition": "official:gtceu/dark_soularium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/dark_steel.json",
+      "definition": "official:gtceu/dark_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/desh.json",
+      "definition": "official:gtceu/desh_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/diamond_skystone_alloy.json",
+      "definition": "official:gtceu/diamond_skystone_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/draco_abyssal.json",
+      "definition": "official:gtceu/draco_abyssal_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/draconyallium.json",
+      "definition": "official:gtceu/draconyallium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/dragonsteel.json",
+      "definition": "official:gtceu/dragonsteel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/duralumin.json",
+      "definition": "official:gtceu/duralumin_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/electrical_steel.json",
+      "definition": "official:gtceu/electrical_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/electrum.json",
+      "definition": "official:gtceu/electrum_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/electrum_flux.json",
+      "definition": "official:gtceu/electrum_flux_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/elgiloy.json",
+      "definition": "official:gtceu/elgiloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/end_steel.json",
+      "definition": "official:gtceu/end_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/enderium.json",
+      "definition": "official:gtceu/enderium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/energetic_alloy.json",
+      "definition": "official:gtceu/energetic_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/enriched_naquadah_trinium_europium_duranide.json",
+      "definition": "official:gtceu/enriched_naquadah_trinium_europium_duranide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/expeditalloy_d_17.json",
+      "definition": "official:gtceu/expeditalloy_d_17_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/fluix_steel.json",
+      "definition": "official:gtceu/fluix_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/gallium_arsenide.json",
+      "definition": "official:gtceu/gallium_arsenide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/galvanized_ethersteel.json",
+      "definition": "official:gtceu/galvanized_ethersteel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/gold_skystone_alloy.json",
+      "definition": "official:gtceu/gold_skystone_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/hafnide_ceramic_base.json",
+      "definition": "official:gtceu/hafnide_ceramic_base_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/hafnide_ito_ceramic.json",
+      "definition": "official:gtceu/hafnide_ito_ceramic_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/hastelloy_c_276.json",
+      "definition": "official:gtceu/hastelloy_c_276_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/hastelloy_x.json",
+      "definition": "official:gtceu/hastelloy_x_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/hsla_steel.json",
+      "definition": "official:gtceu/hsla_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/hsse.json",
+      "definition": "official:gtceu/hsse_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/hssg.json",
+      "definition": "official:gtceu/hssg_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/hsss.json",
+      "definition": "official:gtceu/hsss_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/hvga_steel.json",
+      "definition": "official:gtceu/hvga_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/hydronalium.json",
+      "definition": "official:gtceu/hydronalium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/incoloy_ma_956.json",
+      "definition": "official:gtceu/incoloy_ma_956_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/indium_gallium_phosphide.json",
+      "definition": "official:gtceu/indium_gallium_phosphide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/indium_tin_barium_titanium_cuprate.json",
+      "definition": "official:gtceu/indium_tin_barium_titanium_cuprate_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/indium_tin_lead_cadmium_soldering_alloy.json",
+      "definition": "official:gtceu/indium_tin_lead_cadmium_soldering_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/invar.json",
+      "definition": "official:gtceu/invar_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/iron_titanium_oxide.json",
+      "definition": "official:gtceu/iron_titanium_oxide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/kanthal.json",
+      "definition": "official:gtceu/kanthal_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/kovar.json",
+      "definition": "official:gtceu/kovar_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/lanthanum_gold_cadmium_curium_sulfate.json",
+      "definition": "official:gtceu/lanthanum_gold_cadmium_curium_sulfate_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/lepton_coalescing_superalloy.json",
+      "definition": "official:gtceu/lepton_coalescing_superalloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/lumium.json",
+      "definition": "official:gtceu/lumium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/magmada_alloy.json",
+      "definition": "official:gtceu/magmada_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/magnalium.json",
+      "definition": "official:gtceu/magnalium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/magnesium_diboride.json",
+      "definition": "official:gtceu/magnesium_diboride_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/manasteel.json",
+      "definition": "official:gtceu/manasteel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/manganese_phosphide.json",
+      "definition": "official:gtceu/manganese_phosphide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/manyullyn.json",
+      "definition": "official:gtceu/manyullyn_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/mar_m_200_steel.json",
+      "definition": "official:gtceu/mar_m_200_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/maraging_steel_300.json",
+      "definition": "official:gtceu/maraging_steel_300_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/melastrium_mox.json",
+      "definition": "official:gtceu/melastrium_mox_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/melodium.json",
+      "definition": "official:gtceu/melodium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/mercury_barium_calcium_cuprate.json",
+      "definition": "official:gtceu/mercury_barium_calcium_cuprate_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/microversium.json",
+      "definition": "official:gtceu/microversium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/molybdenum_disilicide.json",
+      "definition": "official:gtceu/molybdenum_disilicide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/mythril.json",
+      "definition": "official:gtceu/mythril_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/mythrolic_alloy.json",
+      "definition": "official:gtceu/mythrolic_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/mythrotight_carbide_steel.json",
+      "definition": "official:gtceu/mythrotight_carbide_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/naquadah_alloy.json",
+      "definition": "official:gtceu/naquadah_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/naquated_soldering_alloy.json",
+      "definition": "official:gtceu/naquated_soldering_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/neptunium_palladium_aluminium.json",
+      "definition": "official:gtceu/neptunium_palladium_aluminium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/netherite_certus_quartz_skystone_alloy.json",
+      "definition": "official:gtceu/netherite_certus_quartz_skystone_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/netherite_gold_skystone_alloy.json",
+      "definition": "official:gtceu/netherite_gold_skystone_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/neutronium_silicon_carbide.json",
+      "definition": "official:gtceu/neutronium_silicon_carbide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/nichrome.json",
+      "definition": "official:gtceu/nichrome_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/nickel_zinc_ferrite.json",
+      "definition": "official:gtceu/nickel_zinc_ferrite_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/niobium_titanium.json",
+      "definition": "official:gtceu/niobium_titanium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/nyanium.json",
+      "definition": "official:gtceu/nyanium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/ohmderblux_alloy.json",
+      "definition": "official:gtceu/ohmderblux_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/osmiridium.json",
+      "definition": "official:gtceu/osmiridium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/ostrum.json",
+      "definition": "official:gtceu/ostrum_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/ostrum_iodide.json",
+      "definition": "official:gtceu/ostrum_iodide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/polonium_bismide.json",
+      "definition": "official:gtceu/polonium_bismide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/polonium_flux.json",
+      "definition": "official:gtceu/polonium_flux_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/potin.json",
+      "definition": "official:gtceu/potin_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/prismalium.json",
+      "definition": "official:gtceu/prismalium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/red_alloy.json",
+      "definition": "official:gtceu/red_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/red_steel.json",
+      "definition": "official:gtceu/red_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/rhenate_w.json",
+      "definition": "official:gtceu/rhenate_w_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/rhenium_super_composite_alloy.json",
+      "definition": "official:gtceu/rhenium_super_composite_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/rhodium_plated_palladium.json",
+      "definition": "official:gtceu/rhodium_plated_palladium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/rocket_alloy_t1.json",
+      "definition": "official:gtceu/rocket_alloy_t1_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/rocket_alloy_t2.json",
+      "definition": "official:gtceu/rocket_alloy_t2_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/rose_gold.json",
+      "definition": "official:gtceu/rose_gold_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/rtm_alloy.json",
+      "definition": "official:gtceu/rtm_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/ruridit.json",
+      "definition": "official:gtceu/ruridit_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/ruthenium_trinium_americium_neutronate.json",
+      "definition": "official:gtceu/ruthenium_trinium_americium_neutronate_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/samarium_iron_arsenic_oxide.json",
+      "definition": "official:gtceu/samarium_iron_arsenic_oxide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/seaborgium_palladium_enriched_estalt_flevorium_alloy.json",
+      "definition": "official:gtceu/seaborgium_palladium_enriched_estalt_flevorium_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/shellite.json",
+      "definition": "official:gtceu/shellite_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/signalum.json",
+      "definition": "official:gtceu/signalum_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/silicon_bronze.json",
+      "definition": "official:gtceu/silicon_bronze_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/sky_steel.json",
+      "definition": "official:gtceu/sky_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/sodium_lead_alloy.json",
+      "definition": "official:gtceu/sodium_lead_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/soldering_alloy.json",
+      "definition": "official:gtceu/soldering_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/soul_ascendant_cuperite.json",
+      "definition": "official:gtceu/soul_ascendant_cuperite_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/stainless_steel.json",
+      "definition": "official:gtceu/stainless_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/starium_alloy.json",
+      "definition": "official:gtceu/starium_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/steel.json",
+      "definition": "official:materials/steel",
+      "status": "explicit_mixture_parts",
+      "sha256": "487d1bc580692b066d932a55b3381d7b7f7c7661911d2c29750a57a2c4fcf398"
+    },
+    {
+      "source": "gtceu/alloys/stellarium.json",
+      "definition": "official:gtceu/stellarium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/stellite_100.json",
+      "definition": "official:gtceu/stellite_100_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/sterling_silver.json",
+      "definition": "official:gtceu/sterling_silver_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/tantalum_carbide.json",
+      "definition": "official:gtceu/tantalum_carbide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/thacoloy_nq_42x.json",
+      "definition": "official:gtceu/thacoloy_nq_42x_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/thorium_plut_duranide_241.json",
+      "definition": "official:gtceu/thorium_plut_duranide_241_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/tin_alloy.json",
+      "definition": "official:gtceu/tin_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/titan_steel.json",
+      "definition": "official:gtceu/titan_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/titanium_carbide.json",
+      "definition": "official:gtceu/titanium_carbide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/titanium_tungsten_carbide.json",
+      "definition": "official:gtceu/titanium_tungsten_carbide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/trikoductive_neutro_steel.json",
+      "definition": "official:gtceu/trikoductive_neutro_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/trinaquadalloy.json",
+      "definition": "official:gtceu/trinaquadalloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/tumbaga.json",
+      "definition": "official:gtceu/tumbaga_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/tungsten_carbide.json",
+      "definition": "official:gtceu/tungsten_carbide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/tungsten_steel.json",
+      "definition": "official:gtceu/tungsten_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/twinite.json",
+      "definition": "official:gtceu/twinite_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/ultimet.json",
+      "definition": "official:gtceu/ultimet_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/ultispestalloy_cmsh.json",
+      "definition": "official:gtceu/ultispestalloy_cmsh_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/uranium_rhodium_dinaquadide.json",
+      "definition": "official:gtceu/uranium_rhodium_dinaquadide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/uranium_triplatinum.json",
+      "definition": "official:gtceu/uranium_triplatinum_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/vanadium_gallium.json",
+      "definition": "official:gtceu/vanadium_gallium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/vanadium_steel.json",
+      "definition": "official:gtceu/vanadium_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/vastaqalloy_cr_4200x.json",
+      "definition": "official:gtceu/vastaqalloy_cr_4200x_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/vibrant_alloy.json",
+      "definition": "official:gtceu/vibrant_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/void.json",
+      "definition": "official:gtceu/void_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/watertight_steel.json",
+      "definition": "official:gtceu/watertight_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/weapon_grade_naquadah.json",
+      "definition": "official:gtceu/weapon_grade_naquadah_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/yttrium_barium_cuprate.json",
+      "definition": "official:gtceu/yttrium_barium_cuprate_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/zalloy.json",
+      "definition": "official:gtceu/zalloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/zamak.json",
+      "definition": "official:gtceu/zamak_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/zerodic_trinate_steel.json",
+      "definition": "official:gtceu/zerodic_trinate_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/zeron_100.json",
+      "definition": "official:gtceu/zeron_100_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/zircalloy_4.json",
+      "definition": "official:gtceu/zircalloy_4_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtceu/alloys/zirconium_selenide_diiodide.json",
+      "definition": "official:gtceu/zirconium_selenide_diiodide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gcyr/alloys/bisalloy_400.json",
+      "definition": "official:gcyr/bisalloy_400_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gcyr/alloys/trinaquadalloy.json",
+      "definition": "official:gcyr/trinaquadalloy_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/adamantium_alloy.json",
+      "definition": "official:gtca/adamantium_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/artherium_sn.json",
+      "definition": "official:gtca/artherium_sn_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/berwollium.json",
+      "definition": "official:gtca/berwollium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/c_n_f_alloy.json",
+      "definition": "official:gtca/c_n_f_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/cinobite_a_241.json",
+      "definition": "official:gtca/cinobite_a_241_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/dark_steel.json",
+      "definition": "official:gtca/dark_steel_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/dural.json",
+      "definition": "official:gtca/dural_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/duranium_x.json",
+      "definition": "official:gtca/duranium_x_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/eglin_steel.json",
+      "definition": "official:gtca/eglin_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/electrical_steel.json",
+      "definition": "official:gtca/electrical_steel_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/end_steel.json",
+      "definition": "official:gtca/end_steel_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/enriched_holmium.json",
+      "definition": "official:gtca/enriched_holmium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/hastelloy_n.json",
+      "definition": "official:gtca/hastelloy_n_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/hg_1223.json",
+      "definition": "official:gtca/hg_1223_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/incoloy_020.json",
+      "definition": "official:gtca/incoloy_020_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/incoloy_846.json",
+      "definition": "official:gtca/incoloy_846_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/incoloy_903.json",
+      "definition": "official:gtca/incoloy_903_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/incoloy_ds.json",
+      "definition": "official:gtca/incoloy_ds_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/incoloy_ma_323.json",
+      "definition": "official:gtca/incoloy_ma_323_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/inconel_625.json",
+      "definition": "official:gtca/inconel_625_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/inconel_690.json",
+      "definition": "official:gtca/inconel_690_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/inconel_718.json",
+      "definition": "official:gtca/inconel_718_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/inconel_792.json",
+      "definition": "official:gtca/inconel_792_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/lafium_compound.json",
+      "definition": "official:gtca/lafium_compound_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/mar_ce_m_200.json",
+      "definition": "official:gtca/mar_ce_m_200_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/mar_m_200.json",
+      "definition": "official:gtca/mar_m_200_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/melodic_alloy.json",
+      "definition": "official:gtca/melodic_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/moltech.json",
+      "definition": "official:gtca/moltech_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/neutronex.json",
+      "definition": "official:gtca/neutronex_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/nimonic_80_a.json",
+      "definition": "official:gtca/nimonic_80_a_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/nitinol_60.json",
+      "definition": "official:gtca/nitinol_60_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/pikyonium_64_y.json",
+      "definition": "official:gtca/pikyonium_64_y_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/quantum_alloy.json",
+      "definition": "official:gtca/quantum_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/silicon_carbide.json",
+      "definition": "official:gtca/silicon_carbide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/stellar_alloy.json",
+      "definition": "official:gtca/stellar_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/stellite_79.json",
+      "definition": "official:gtca/stellite_79_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/tantalloy_60.json",
+      "definition": "official:gtca/tantalloy_60_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/tantalloy_61.json",
+      "definition": "official:gtca/tantalloy_61_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/tm_20_mn_alloy.json",
+      "definition": "official:gtca/tm_20_mn_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/trinium_naquadah.json",
+      "definition": "official:gtca/trinium_naquadah_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/trinium_naquadah_carbonite.json",
+      "definition": "official:gtca/trinium_naquadah_carbonite_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/vitallium.json",
+      "definition": "official:gtca/vitallium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/zeron_182.json",
+      "definition": "official:gtca/zeron_182_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtca/alloys/zirconium_carbide.json",
+      "definition": "official:gtca/zirconium_carbide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/abyssalalloy.json",
+      "definition": "official:gtocore/abyssalalloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/aluminium_bronze.json",
+      "definition": "official:gtocore/aluminium_bronze_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/aluminum_alloy_2090.json",
+      "definition": "official:gtocore/aluminum_alloy_2090_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/aluminum_alloy_5a06.json",
+      "definition": "official:gtocore/aluminum_alloy_5a06_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/aluminum_alloy_7050.json",
+      "definition": "official:gtocore/aluminum_alloy_7050_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/aluminum_alloy_8090.json",
+      "definition": "official:gtocore/aluminum_alloy_8090_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/arceusalloy2b.json",
+      "definition": "official:gtocore/arceusalloy2b_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/artherium_tin.json",
+      "definition": "official:gtocore/artherium_tin_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/babbitt_alloy.json",
+      "definition": "official:gtocore/babbitt_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/beryllium_aluminium_alloy.json",
+      "definition": "official:gtocore/beryllium_aluminium_alloy_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/beryllium_aluminum_f.json",
+      "definition": "official:gtocore/beryllium_aluminum_f_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/beryllium_aluminum_z.json",
+      "definition": "official:gtocore/beryllium_aluminum_z_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/black_titanium.json",
+      "definition": "official:gtocore/black_titanium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/cionbite.json",
+      "definition": "official:gtocore/cionbite_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/cobalt_managanese_gallium_heusler_alloy.json",
+      "definition": "official:gtocore/cobalt_managanese_gallium_heusler_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/conductive_alloy.json",
+      "definition": "official:gtocore/conductive_alloy_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/dalisenite.json",
+      "definition": "official:gtocore/dalisenite_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/depleted_uranium_alloy.json",
+      "definition": "official:gtocore/depleted_uranium_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/duranium_alloy.json",
+      "definition": "official:gtocore/duranium_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/eglin_steel.json",
+      "definition": "official:gtocore/eglin_steel_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/end_steel.json",
+      "definition": "official:gtocore/end_steel_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/enderite.json",
+      "definition": "official:gtocore/enderite_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/fall_king.json",
+      "definition": "official:gtocore/fall_king_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/fluxed_electrum.json",
+      "definition": "official:gtocore/fluxed_electrum_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/germanium_tungsten_nitride.json",
+      "definition": "official:gtocore/germanium_tungsten_nitride_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/grcop84.json",
+      "definition": "official:gtocore/grcop84_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/grisium.json",
+      "definition": "official:gtocore/grisium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/hastelloy_n.json",
+      "definition": "official:gtocore/hastelloy_n_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/hastelloy_n_75.json",
+      "definition": "official:gtocore/hastelloy_n_75_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/hastelloyk_243.json",
+      "definition": "official:gtocore/hastelloyk_243_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/hastelloyx_78.json",
+      "definition": "official:gtocore/hastelloyx_78_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/high_durability_compound_steel.json",
+      "definition": "official:gtocore/high_durability_compound_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/high_entropy_shape_memory_alloy.json",
+      "definition": "official:gtocore/high_entropy_shape_memory_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/high_temperature_shape_memory_alloy.json",
+      "definition": "official:gtocore/high_temperature_shape_memory_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/hikarium.json",
+      "definition": "official:gtocore/hikarium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/inconel_242.json",
+      "definition": "official:gtocore/inconel_242_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/inconel_617.json",
+      "definition": "official:gtocore/inconel_617_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/inconel_625.json",
+      "definition": "official:gtocore/inconel_625_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/inconel_718.json",
+      "definition": "official:gtocore/inconel_718_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/inconel_792.json",
+      "definition": "official:gtocore/inconel_792_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/inconel_x750.json",
+      "definition": "official:gtocore/inconel_x750_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/indalloy_140.json",
+      "definition": "official:gtocore/indalloy_140_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/lafium.json",
+      "definition": "official:gtocore/lafium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/laurenium.json",
+      "definition": "official:gtocore/laurenium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/lumiium.json",
+      "definition": "official:gtocore/lumiium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/magnetic_controlled_shape_memory_alloy.json",
+      "definition": "official:gtocore/magnetic_controlled_shape_memory_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/mar_m_200_steel.json",
+      "definition": "official:gtocore/mar_m_200_steel_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/moon_goddess_titanium.json",
+      "definition": "official:gtocore/moon_goddess_titanium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/nano_strengthened_shape_memory_alloy.json",
+      "definition": "official:gtocore/nano_strengthened_shape_memory_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/nickel_titanium_tin_heusler_alloy.json",
+      "definition": "official:gtocore/nickel_titanium_tin_heusler_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/nitinol_50_shape_memory_alloy.json",
+      "definition": "official:gtocore/nitinol_50_shape_memory_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/nitinol_a.json",
+      "definition": "official:gtocore/nitinol_a_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/odyssey_nano_superalloy.json",
+      "definition": "official:gtocore/odyssey_nano_superalloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/periodicium.json",
+      "definition": "official:gtocore/periodicium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/pikyonium.json",
+      "definition": "official:gtocore/pikyonium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/platinum_manganese_antimony_heusler_alloy.json",
+      "definition": "official:gtocore/platinum_manganese_antimony_heusler_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/platinum_rhodium_alloy.json",
+      "definition": "official:gtocore/platinum_rhodium_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/pulsating_alloy.json",
+      "definition": "official:gtocore/pulsating_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/quantum_metal.json",
+      "definition": "official:gtocore/quantum_metal_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/radiation_shielding_high_density_tungsten_steel.json",
+      "definition": "official:gtocore/radiation_shielding_high_density_tungsten_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/rareearth_mix.json",
+      "definition": "official:gtocore/rareearth_mix_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/reactor_steel.json",
+      "definition": "official:gtocore/reactor_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/redstone_alloy.json",
+      "definition": "official:gtocore/redstone_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/ruthenium_iron_silicon_heusler_alloy.json",
+      "definition": "official:gtocore/ruthenium_iron_silicon_heusler_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/scalm_alloy_s.json",
+      "definition": "official:gtocore/scalm_alloy_s_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/silicon_carbide.json",
+      "definition": "official:gtocore/silicon_carbide_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/sodium_potassium.json",
+      "definition": "official:gtocore/sodium_potassium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/stainless_steel_420.json",
+      "definition": "official:gtocore/stainless_steel_420_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/stainless_steel_jbk75.json",
+      "definition": "official:gtocore/stainless_steel_jbk75_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/stainless_stell_15_5ph.json",
+      "definition": "official:gtocore/stainless_stell_15_5ph_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/stainless_stell_316.json",
+      "definition": "official:gtocore/stainless_stell_316_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/stainless_stell_gc4.json",
+      "definition": "official:gtocore/stainless_stell_gc4_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/starlite_steel.json",
+      "definition": "official:gtocore/starlite_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/stellite.json",
+      "definition": "official:gtocore/stellite_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/structural_steel.json",
+      "definition": "official:gtocore/structural_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/structural_steel_q690.json",
+      "definition": "official:gtocore/structural_steel_q690_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/superheavy_h_alloy.json",
+      "definition": "official:gtocore/superheavy_h_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/superheavy_l_alloy.json",
+      "definition": "official:gtocore/superheavy_l_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/tairitsu.json",
+      "definition": "official:gtocore/tairitsu_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/tanmolyium.json",
+      "definition": "official:gtocore/tanmolyium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/tantalloy_61.json",
+      "definition": "official:gtocore/tantalloy_61_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/thermal_conductive_alloy.json",
+      "definition": "official:gtocore/thermal_conductive_alloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/titan_precision_steel.json",
+      "definition": "official:gtocore/titan_precision_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/titanium_5553.json",
+      "definition": "official:gtocore/titanium_5553_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/titanium_tb6.json",
+      "definition": "official:gtocore/titanium_tb6_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/titanium_tc11.json",
+      "definition": "official:gtocore/titanium_tc11_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/titanium_tc21.json",
+      "definition": "official:gtocore/titanium_tc21_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/titanium_ti53311s.json",
+      "definition": "official:gtocore/titanium_ti53311s_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/titanium_ti64.json",
+      "definition": "official:gtocore/titanium_ti64_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/titansteel.json",
+      "definition": "official:gtocore/titansteel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/trasition_mix.json",
+      "definition": "official:gtocore/trasition_mix_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/trinaquadalloy.json",
+      "definition": "official:gtocore/trinaquadalloy_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/trinium_titanium.json",
+      "definition": "official:gtocore/trinium_titanium_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/tungsten_alloy_yg10.json",
+      "definition": "official:gtocore/tungsten_alloy_yg10_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/tungsten_alloy_yw3.json",
+      "definition": "official:gtocore/tungsten_alloy_yw3_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/ultra_lightweight_composite_steel.json",
+      "definition": "official:gtocore/ultra_lightweight_composite_steel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/vibrant_alloy.json",
+      "definition": "official:gtocore/vibrant_alloy_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/woods_glass.json",
+      "definition": "official:gtocore/woods_glass_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "gtocore/alloys/zirconium_carbide.json",
+      "definition": "official:gtocore/zirconium_carbide_composition_rule",
+      "status": "shadowed_composition",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "cosmiccore/alloys/naquadric_superalloy.json",
+      "definition": "official:cosmiccore/naquadric_superalloy_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "cosmiccore/alloys/prismatic_tungstensteel.json",
+      "definition": "official:cosmiccore/prismatic_tungstensteel_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "cosmiccore/alloys/resonant_virtue_meld.json",
+      "definition": "official:cosmiccore/resonant_virtue_meld_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "cosmiccore/alloys/trinium_naqide.json",
+      "definition": "official:cosmiccore/trinium_naqide_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "tfg/alloys/tungsten_bismuth_oxide_composite.json",
+      "definition": "official:tfg/tungsten_bismuth_oxide_composite_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    },
+    {
+      "source": "tfg/alloys/zirconium_diboride.json",
+      "definition": "official:tfg/zirconium_diboride_composition_rule",
+      "status": "dynamic_gt_candidate",
+      "sha256": "5531cbc534d91f24abb233e1e7439db948bac6472e6377c093b8bdc98a9aeeec"
+    }
+  ],
+  "reviewNotes": [
+    "gtceu/molecules/poly_amic_acid.json: removed 2 redundant single-stroke overlays already drawn by an uncentered multi-stroke bond; raster union retained",
+    "gtocore/molecules/beta_ionone.json: legacy stereo property was ignored by Bond.Json; strokes retained unchanged",
+    "gtocore/molecules/citral.json: legacy stereo property was ignored by Bond.Json; strokes retained unchanged",
+    "gtocore/molecules/dichlorocyclooctadieneplatinium_dust.json: legacy stereo property was ignored by Bond.Json; strokes retained unchanged",
+    "gtocore/molecules/dichlorocyclooctadieneplatinium_dust.json: legacy stereo property was ignored by Bond.Json; strokes retained unchanged",
+    "gtocore/molecules/linoleic_acid.json: legacy stereo property was ignored by Bond.Json; strokes retained unchanged",
+    "gtocore/molecules/linoleic_acid.json: legacy stereo property was ignored by Bond.Json; strokes retained unchanged",
+    "gtocore/molecules/vitamin_a.json: legacy stereo property was ignored by Bond.Json; strokes retained unchanged",
+    "gtocore/molecules/vitamin_a.json: legacy stereo property was ignored by Bond.Json; strokes retained unchanged",
+    "gtocore/molecules/vitamin_a.json: legacy stereo property was ignored by Bond.Json; strokes retained unchanged",
+    "gtocore/molecules/vitamin_a.json: legacy stereo property was ignored by Bond.Json; strokes retained unchanged",
+    "Unresolved legacy alias: heavy_ice -> heavy_water"
+  ],
+  "legacyJavaSourceHashes": {
+    "MoleculeManager.java": "5bfbee3da09a361ab4f9e509c3f4f93bf2a6a8dac8550994bf4958822d05211d",
+    "AlloyManager.java": "4d9f447506dd51123fe18506d36f29ef752a2bc2de4a421574b59e7b7cf50dbe",
+    "util/FormulaParser.java": "f9368df4da8f7b6f2b9d4ad58a3ae0bba85d6fc4c3217a46fe2fbf21f44872f3",
+    "molecule/Element.java": "f5ca183c3202bafbd9e8de442e7e2f16d807ca3037a801fe44c113f14ca35694"
+  }
+}

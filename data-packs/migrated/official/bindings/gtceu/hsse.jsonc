@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/hsse_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "hsse"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

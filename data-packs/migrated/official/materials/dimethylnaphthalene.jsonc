@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dimethylnaphthalene",
+  "type": "material",
+  "bindings": [
+    "name:dimethylnaphthalene"
+  ],
+  "structure": "official:gtocore/dimethylnaphthalene_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/diethylthiourea",
+  "type": "material",
+  "bindings": [
+    "name:diethylthiourea"
+  ],
+  "structure": "official:gtocore/diethylthiourea_structure"
+}

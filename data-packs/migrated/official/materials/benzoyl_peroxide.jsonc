@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/benzoyl_peroxide",
+  "type": "material",
+  "bindings": [
+    "name:benzoyl_peroxide"
+  ],
+  "structure": "official:gtceu/benzoyl_peroxide_structure"
+}

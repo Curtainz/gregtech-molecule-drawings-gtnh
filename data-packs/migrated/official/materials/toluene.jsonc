@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/toluene",
+  "type": "material",
+  "bindings": [
+    "name:toluene"
+  ],
+  "structure": "official:gtceu/toluene_structure"
+}

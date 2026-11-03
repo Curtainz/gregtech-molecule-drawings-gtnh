@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/benzaldehyde",
+  "type": "material",
+  "bindings": [
+    "name:benzaldehyde"
+  ],
+  "structure": "official:gtocore/benzaldehyde_structure"
+}

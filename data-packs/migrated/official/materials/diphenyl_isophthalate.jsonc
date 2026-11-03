@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/diphenyl_isophthalate",
+  "type": "material",
+  "bindings": [
+    "name:diphenyl_isophthalate"
+  ],
+  "structure": "official:gtceu/diphenyl_isophthalate_structure"
+}

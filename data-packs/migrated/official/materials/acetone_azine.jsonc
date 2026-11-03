@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/acetone_azine",
+  "type": "material",
+  "bindings": [
+    "name:acetone_azine"
+  ],
+  "structure": "official:gtceu/acetone_azine_structure"
+}

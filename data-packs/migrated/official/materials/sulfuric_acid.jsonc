@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/sulfuric_acid",
+  "type": "material",
+  "bindings": [
+    "name:sulfuric_acid"
+  ],
+  "structure": "official:gtceu/sulfuric_acid_structure"
+}

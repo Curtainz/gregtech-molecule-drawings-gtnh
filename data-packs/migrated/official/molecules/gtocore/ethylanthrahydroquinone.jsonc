@@ -1,0 +1,343 @@
+{
+  "atoms": [
+    {
+      "element": "O",
+      "id": "a0",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0.3762891,
+        -2.9233384
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a1",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0.9405017,
+        3.0500748
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.7054131,
+        -0.5611527
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.5643599,
+        0.9322005
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.8811507,
+        -0.8054639
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.0222037,
+        0.6878893
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -3.2919767,
+        -0.3168415
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.5173422,
+        -1.429985
+      ]
+    },
+    {
+      "element": null,
+      "id": "a8",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -2.0692215,
+        -1.1856738
+      ]
+    },
+    {
+      "element": null,
+      "id": "a9",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.7994485,
+        1.5567216
+      ]
+    },
+    {
+      "element": null,
+      "id": "a10",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.7871152,
+        1.8010328
+      ]
+    },
+    {
+      "element": null,
+      "id": "a11",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -4.655785,
+        -0.9413625
+      ]
+    },
+    {
+      "element": null,
+      "id": "a12",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -3.1509237,
+        1.1765118
+      ]
+    },
+    {
+      "element": null,
+      "id": "a13",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        3.103906,
+        -1.6742961
+      ]
+    },
+    {
+      "element": null,
+      "id": "a14",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        3.3860123,
+        1.3124104
+      ]
+    },
+    {
+      "element": null,
+      "id": "a15",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -5.8785405,
+        -0.0725303
+      ]
+    },
+    {
+      "element": null,
+      "id": "a16",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        4.4677143,
+        -1.0497752
+      ]
+    },
+    {
+      "element": null,
+      "id": "a17",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        4.6087675,
+        0.4435781
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a13"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a14"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a10",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a11",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a15"
+    },
+    {
+      "from": "a13",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a16"
+    },
+    {
+      "from": "a14",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a17"
+    },
+    {
+      "from": "a16",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a17"
+    }
+  ],
+  "id": "official:gtocore/ethylanthrahydroquinone_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

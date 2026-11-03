@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/raw_styrene_butadiene_rubber",
+  "type": "material",
+  "bindings": [
+    "name:raw_styrene_butadiene_rubber"
+  ],
+  "structure": "official:gtceu/raw_styrene_butadiene_rubber_structure"
+}

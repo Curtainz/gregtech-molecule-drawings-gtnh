@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/thiophene",
+  "type": "material",
+  "bindings": [
+    "name:thiophene"
+  ],
+  "structure": "official:gtceu/thiophene_structure"
+}

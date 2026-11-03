@@ -1,0 +1,54 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        -0.5
+      ]
+    },
+    {
+      "element": "Cl",
+      "id": "a2",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        0.8660254,
+        -1.5
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    }
+  ],
+  "id": "official:gtceu/vinyl_chloride_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

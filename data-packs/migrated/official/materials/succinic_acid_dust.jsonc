@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/succinic_acid_dust",
+  "type": "material",
+  "bindings": [
+    "name:succinic_acid_dust"
+  ],
+  "structure": "official:gtocore/succinic_acid_dust_structure"
+}

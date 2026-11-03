@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/p_phenylenediamine_dust",
+  "type": "material",
+  "bindings": [
+    "name:p_phenylenediamine_dust"
+  ],
+  "structure": "official:gtocore/p_phenylenediamine_dust_structure"
+}

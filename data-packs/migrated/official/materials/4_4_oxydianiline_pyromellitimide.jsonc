@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/4_4_oxydianiline_pyromellitimide",
+  "type": "material",
+  "bindings": [
+    "name:4_4_oxydianiline_pyromellitimide"
+  ],
+  "structure": "official:gtceu/4_4_oxydianiline_pyromellitimide_structure"
+}

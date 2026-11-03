@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/cumene",
+  "type": "material",
+  "bindings": [
+    "name:cumene"
+  ],
+  "structure": "official:gtceu/cumene_structure"
+}

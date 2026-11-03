@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/citric_acid",
+  "type": "material",
+  "bindings": [
+    "name:citric_acid"
+  ],
+  "structure": "official:tfg/citric_acid_structure"
+}

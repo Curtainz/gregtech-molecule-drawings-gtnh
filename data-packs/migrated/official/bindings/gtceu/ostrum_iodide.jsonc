@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/ostrum_iodide_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "ostrum_iodide"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/phenol",
+  "type": "material",
+  "bindings": [
+    "name:phenol"
+  ],
+  "structure": "official:gtceu/phenol_structure"
+}

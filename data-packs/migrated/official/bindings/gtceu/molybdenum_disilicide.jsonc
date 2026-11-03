@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/molybdenum_disilicide_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "molybdenum_disilicide"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

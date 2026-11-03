@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/cryolite",
+  "type": "material",
+  "bindings": [
+    "name:cryolite"
+  ],
+  "structure": "official:gtceu/cryolite_structure"
+}

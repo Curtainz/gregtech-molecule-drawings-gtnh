@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/bisphenol_a",
+  "type": "material",
+  "bindings": [
+    "name:bisphenol_a"
+  ],
+  "structure": "official:gtceu/bisphenol_a_structure"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/zeron_100_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "zeron_100"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

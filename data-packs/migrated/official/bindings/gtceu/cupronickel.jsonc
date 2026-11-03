@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/cupronickel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "cupronickel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

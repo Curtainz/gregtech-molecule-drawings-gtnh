@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/titan_steel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "titan_steel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

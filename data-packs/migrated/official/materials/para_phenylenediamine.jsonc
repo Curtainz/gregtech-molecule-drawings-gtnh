@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/para_phenylenediamine",
+  "type": "material",
+  "bindings": [
+    "name:para_phenylenediamine"
+  ],
+  "structure": "official:gcyr/para_phenylenediamine_structure"
+}

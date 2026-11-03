@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/hydroquinone",
+  "type": "material",
+  "bindings": [
+    "name:hydroquinone"
+  ],
+  "structure": "official:gtceu/hydroquinone_structure"
+}

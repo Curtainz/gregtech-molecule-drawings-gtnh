@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/difluoroaniline",
+  "type": "material",
+  "bindings": [
+    "name:difluoroaniline"
+  ],
+  "structure": "official:gtocore/difluoroaniline_structure"
+}

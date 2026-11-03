@@ -1,0 +1,319 @@
+{
+  "atoms": [
+    {
+      "element": "Cl",
+      "id": "a0",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        6,
+        0
+      ]
+    },
+    {
+      "element": "Cl",
+      "id": "a1",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        -6,
+        0
+      ]
+    },
+    {
+      "element": "S",
+      "id": "a2",
+      "label": "S",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a3",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        1.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a4",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        -1.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.5,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.5,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.25,
+        -1.299038
+      ]
+    },
+    {
+      "element": null,
+      "id": "a8",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -2.25,
+        1.299038
+      ]
+    },
+    {
+      "element": null,
+      "id": "a9",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.25,
+        1.299038
+      ]
+    },
+    {
+      "element": null,
+      "id": "a10",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -2.25,
+        -1.299038
+      ]
+    },
+    {
+      "element": null,
+      "id": "a11",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        3.75,
+        -1.299038
+      ]
+    },
+    {
+      "element": null,
+      "id": "a12",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -3.75,
+        1.299038
+      ]
+    },
+    {
+      "element": null,
+      "id": "a13",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        3.75,
+        1.299038
+      ]
+    },
+    {
+      "element": null,
+      "id": "a14",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -3.75,
+        -1.299038
+      ]
+    },
+    {
+      "element": null,
+      "id": "a15",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        4.5,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a16",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -4.5,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a15"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a16"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a9",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a13"
+    },
+    {
+      "from": "a10",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a14"
+    },
+    {
+      "from": "a11",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a15"
+    },
+    {
+      "from": "a12",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a16"
+    },
+    {
+      "from": "a13",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a15"
+    },
+    {
+      "from": "a14",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a16"
+    }
+  ],
+  "id": "official:gtocore/dichlorodiphenylsulfone_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

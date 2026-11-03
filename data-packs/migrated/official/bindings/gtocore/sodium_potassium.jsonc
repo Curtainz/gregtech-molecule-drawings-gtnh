@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/sodium_potassium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "sodium_potassium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

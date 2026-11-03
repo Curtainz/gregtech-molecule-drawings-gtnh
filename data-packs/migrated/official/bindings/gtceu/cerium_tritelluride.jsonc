@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/cerium_tritelluride_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "cerium_tritelluride"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

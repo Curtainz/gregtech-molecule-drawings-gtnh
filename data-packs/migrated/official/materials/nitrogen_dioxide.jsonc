@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/nitrogen_dioxide",
+  "type": "material",
+  "bindings": [
+    "name:nitrogen_dioxide"
+  ],
+  "structure": "official:gtceu/nitrogen_dioxide_structure"
+}

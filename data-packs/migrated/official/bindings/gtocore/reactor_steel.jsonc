@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/reactor_steel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "reactor_steel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

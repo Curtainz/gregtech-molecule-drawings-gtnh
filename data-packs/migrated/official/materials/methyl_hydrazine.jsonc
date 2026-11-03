@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/methyl_hydrazine",
+  "type": "material",
+  "bindings": [
+    "name:methyl_hydrazine"
+  ],
+  "structure": "official:gtceu/methyl_hydrazine_structure"
+}

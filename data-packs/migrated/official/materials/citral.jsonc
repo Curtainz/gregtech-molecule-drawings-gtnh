@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/citral",
+  "type": "material",
+  "bindings": [
+    "name:citral"
+  ],
+  "structure": "official:gtocore/citral_structure"
+}

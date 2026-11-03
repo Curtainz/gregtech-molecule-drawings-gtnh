@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/benzylamine",
+  "type": "material",
+  "bindings": [
+    "name:benzylamine"
+  ],
+  "structure": "official:gtocore/benzylamine_structure"
+}

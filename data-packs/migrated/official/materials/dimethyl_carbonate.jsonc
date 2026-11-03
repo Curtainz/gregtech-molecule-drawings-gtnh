@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dimethyl_carbonate",
+  "type": "material",
+  "bindings": [
+    "name:dimethyl_carbonate"
+  ],
+  "structure": "official:tfg/dimethyl_carbonate_structure"
+}

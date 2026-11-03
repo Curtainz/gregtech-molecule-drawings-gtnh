@@ -1,4 +1,4 @@
-"""Stage-1 authoring checks. Not a runtime loader, assembler, formatter or migration tool."""
+"""Standard JSON Schema cross-checks of review and migrated definitions; no runtime loading."""
 import copy
 import json
 from pathlib import Path
@@ -111,6 +111,8 @@ def validate_review():
     bad=copy.deepcopy(ring);bad['instances'][0]['module']='core:execute';negative.append(bad)
     bad=copy.deepcopy(by_id['official:water']);bad['disabled']=True;negative.append(bad)
     bad=copy.deepcopy(water);bad['schemaVersion']=2;negative.append(bad)
+    bad=copy.deepcopy(water);bad['atoms'][0]['optionalColor']=True;negative.append(bad)
+    bad={'schemaVersion':1,'id':'official:empty_candidate','type':'bindings','rules':[{'kind':'composition_candidate','names':[]}]};negative.append(bad)
     for bad in negative:
         if definition_validator.is_valid(bad):raise AssertionError('Invalid fixture accepted: '+repr(bad))
     assert parse_jsonc('{"s":"// not a comment",/* block */"a":[1,2,],}')=={'s':'// not a comment','a':[1,2]}
@@ -148,4 +150,23 @@ def validate_review():
     print(f'Authoring contract checks passed: 2 schemas, {len(packs)} manifests, {len(records)} definitions, {len(negative)} schema rejection cases, JSONC lexical cases and fusion fixture.')
     print('Scope: Python authoring cross-check only. Java packRegression checks offline expansion; game loading/reload remains disabled.')
 
-if __name__=='__main__':validate_review()
+def validate_migrated():
+    import hashlib
+    root=ROOT/'data-packs/migrated'
+    report=json.loads((root/'migration-report.json').read_text(encoding='utf-8'))
+    validators={key:Draft202012Validator(value) for key,value in schemas().items()}
+    definitions=0
+    for path in sorted(root.rglob('*.jsonc')):
+        value=parse_jsonc(path.read_text(encoding='utf-8'))
+        validators['pack.schema.json' if value['type']=='pack' else 'definition.schema.json'].validate(value)
+        if value['type']!='pack':definitions+=1
+    assert definitions==report['definitions']
+    assert len(report['sources'])==report['structureSources']+report['compositionSources']
+    for item in report['sources']:
+        source=ROOT/'src/main/resources/assets'/item['source']
+        assert hashlib.sha256(source.read_bytes()).hexdigest()==item['sha256'], 'Stale provenance: '+item['source']
+    print(f'Migrated contract checks passed: {definitions} definitions, {len(report["sources"])} source hashes')
+
+if __name__=='__main__':
+    validate_review()
+    validate_migrated()

@@ -1,0 +1,36 @@
+{
+  "atoms": [
+    {
+      "element": "H",
+      "id": "a0",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        -0.7,
+        0
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a1",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        0.7,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    }
+  ],
+  "id": "official:gtceu/hydrogen_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

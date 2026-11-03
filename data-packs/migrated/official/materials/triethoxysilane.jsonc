@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/triethoxysilane",
+  "type": "material",
+  "bindings": [
+    "name:triethoxysilane"
+  ],
+  "structure": "official:gtocore/triethoxysilane_structure"
+}

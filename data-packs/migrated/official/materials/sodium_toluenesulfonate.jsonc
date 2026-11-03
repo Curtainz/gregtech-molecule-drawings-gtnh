@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/sodium_toluenesulfonate",
+  "type": "material",
+  "bindings": [
+    "name:sodium_toluenesulfonate"
+  ],
+  "structure": "official:gtocore/sodium_toluenesulfonate_structure"
+}

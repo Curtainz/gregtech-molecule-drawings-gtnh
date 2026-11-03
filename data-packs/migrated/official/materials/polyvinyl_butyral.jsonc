@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polyvinyl_butyral",
+  "type": "material",
+  "bindings": [
+    "name:polyvinyl_butyral"
+  ],
+  "structure": "official:gtceu/polyvinyl_butyral_structure"
+}

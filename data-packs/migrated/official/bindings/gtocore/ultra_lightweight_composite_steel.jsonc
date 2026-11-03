@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/ultra_lightweight_composite_steel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "ultra_lightweight_composite_steel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/mar_ce_m_200_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "mar_ce_m_200"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

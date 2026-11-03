@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/benzotrichloride",
+  "type": "material",
+  "bindings": [
+    "name:benzotrichloride"
+  ],
+  "structure": "official:gtceu/benzotrichloride_structure"
+}

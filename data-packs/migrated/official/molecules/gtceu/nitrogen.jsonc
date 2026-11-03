@@ -1,0 +1,39 @@
+{
+  "atoms": [
+    {
+      "element": "N",
+      "id": "a0",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        -0.8,
+        0
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a1",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        0.8,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "centered": true,
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid",
+        "solid"
+      ],
+      "to": "a1"
+    }
+  ],
+  "id": "official:gtceu/nitrogen_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

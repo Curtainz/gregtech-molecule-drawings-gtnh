@@ -1,0 +1,327 @@
+{
+  "atoms": [
+    {
+      "element": "O",
+      "id": "a0",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        1.7320508,
+        1
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        -0.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a3",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        1.7320508,
+        -1
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7320508,
+        -2
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        -2.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a6",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        -2
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.8660254,
+        -2.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a8",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.7320508,
+        -2
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a9",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -1.7320508,
+        -1
+      ]
+    },
+    {
+      "element": null,
+      "id": "a10",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -2.598076,
+        -0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a11",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -2.598076,
+        0.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a12",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -1.7320508,
+        1
+      ]
+    },
+    {
+      "element": null,
+      "id": "a13",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.7320508,
+        2
+      ]
+    },
+    {
+      "element": null,
+      "id": "a14",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.8660254,
+        2.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a15",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        2
+      ]
+    },
+    {
+      "element": null,
+      "id": "a16",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        2.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a17",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7320508,
+        2
+      ]
+    },
+    {
+      "color": "#FF8F40D4",
+      "element": "K⁺",
+      "id": "a18",
+      "label": "K⁺",
+      "labelMode": "symbol",
+      "optionalColor": true,
+      "position": [
+        0,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a9",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a10",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a11",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a12",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a13"
+    },
+    {
+      "from": "a13",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a14"
+    },
+    {
+      "from": "a14",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a15"
+    },
+    {
+      "from": "a15",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a16"
+    },
+    {
+      "from": "a16",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a17"
+    },
+    {
+      "from": "a17",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a0"
+    }
+  ],
+  "id": "official:gtceu/18_crown_6_k_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

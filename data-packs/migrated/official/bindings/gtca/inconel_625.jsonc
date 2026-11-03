@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/inconel_625_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "inconel_625"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

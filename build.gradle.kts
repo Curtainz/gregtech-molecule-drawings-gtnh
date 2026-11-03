@@ -66,14 +66,14 @@ val architectureRegression by tasks.registering(JavaExec::class) {
 tasks.named("check") { dependsOn(architectureRegression) }
 
 val reviewPackZip by tasks.registering(Zip::class) {
-    archiveFileName.set("gtmoldraw-jsonc-v1-stage-2-review.zip")
+    archiveFileName.set("gtmoldraw-data-pack-stage-3.zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true
     from("schema") { into("schema") }
-    from("data-packs/review") { into("packs") }
+    from("data-packs/migrated") { into("packs") }
     from("docs/FORMAT-V1.md")
-    from("data-packs/REVIEW-README.md") { rename { "README.md" } }
+    from("docs/STAGE-3-TESTING.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(reviewPackZip) }
 
@@ -87,7 +87,7 @@ dependencies {
 }
 val packToolJar by tasks.registering(Jar::class) {
     dependsOn(tasks.named("classes"))
-    archiveFileName.set("gtmoldraw-pack-tool-stage-2.jar")
+    archiveFileName.set("gtmoldraw-pack-tool-stage-3.jar")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest { attributes("Main-Class" to "com.rubenverg.moldraw.tool.PackTool") }
@@ -131,27 +131,46 @@ val packRegression by tasks.registering(JavaExec::class) {
 }
 tasks.named("check") { dependsOn(packRegression) }
 
-val previewDirectory = layout.buildDirectory.dir("preview-stage-2")
+val previewDirectory = layout.buildDirectory.dir("preview-stage-3")
 val generatePackPreview by tasks.registering(JavaExec::class) {
     dependsOn(packToolJar)
     classpath = files(packToolJar.flatMap { it.archiveFile })
     mainClass.set("com.rubenverg.moldraw.tool.PackTool")
     javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
-    args("preview", layout.projectDirectory.dir("data-packs/review").asFile.absolutePath, previewDirectory.get().asFile.absolutePath)
-    inputs.dir("data-packs/review")
+    args("preview", layout.projectDirectory.dir("data-packs/migrated").asFile.absolutePath, previewDirectory.get().asFile.absolutePath)
+    inputs.dir("data-packs/migrated")
     outputs.dir(previewDirectory)
 }
 val previewZip by tasks.registering(Zip::class) {
     dependsOn(generatePackPreview)
-    archiveFileName.set("gtmoldraw-stage-2-preview.zip")
+    archiveFileName.set("gtmoldraw-stage-3-preview.zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true
-    from(previewDirectory) { into("preview") }
+    val currentGeneration = providers.fileContents(previewDirectory.map { it.file("report.json") }).asText.map { report ->
+        Regex("\"path\"\\s*:\\s*\"(gallery-[^/\"]+)/").find(report)?.groupValues?.get(1) ?: ""
+    }
+    from(previewDirectory) {
+        into("preview")
+        exclude {
+            val first = it.relativePath.segments.firstOrNull() ?: ""
+            first.startsWith("gallery-") && first != currentGeneration.get()
+        }
+    }
     from(packToolJar) { into("tools") }
-    from("data-packs/review") { into("packs") }
+    from("tools/migration/legacy-bindings.json") { into("tools") }
+    from("data-packs/migrated") { into("packs") }
     from("schema") { into("schema") }
     from("docs/FORMAT-V1.md")
-    from("docs/STAGE-2-TESTING.md") { rename { "README.md" } }
+    from("docs/STAGE-3-TESTING.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(previewZip) }
+
+val migrationRegression by tasks.registering(JavaExec::class) {
+    dependsOn(tasks.named("testClasses"))
+    classpath = sourceSets["test"].runtimeClasspath
+    mainClass.set("com.rubenverg.moldraw.core.MigrationRegression")
+    args(layout.projectDirectory.asFile.absolutePath)
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
+}
+tasks.named("check") { dependsOn(migrationRegression) }

@@ -1,0 +1,138 @@
+{
+  "atoms": [
+    {
+      "element": "Si",
+      "id": "a0",
+      "label": "Si",
+      "labelMode": "symbol",
+      "position": [
+        -0.6,
+        0
+      ]
+    },
+    {
+      "element": "Si",
+      "id": "a1",
+      "label": "Si",
+      "labelMode": "symbol",
+      "position": [
+        0.6,
+        0
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a2",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        -1.4,
+        0
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a3",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        -0.9,
+        0.7
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a4",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        -0.9,
+        -0.7
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a5",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        1.4,
+        0
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a6",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        0.9,
+        0.7
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a7",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        0.9,
+        -0.7
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    }
+  ],
+  "id": "official:gtceu/disilane_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

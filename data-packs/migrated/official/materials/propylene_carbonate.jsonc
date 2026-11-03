@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/propylene_carbonate",
+  "type": "material",
+  "bindings": [
+    "name:propylene_carbonate"
+  ],
+  "structure": "official:gtocore/propylene_carbonate_structure"
+}

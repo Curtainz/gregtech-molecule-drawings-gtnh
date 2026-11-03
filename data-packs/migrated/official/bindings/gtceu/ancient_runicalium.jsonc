@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/ancient_runicalium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "ancient_runicalium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

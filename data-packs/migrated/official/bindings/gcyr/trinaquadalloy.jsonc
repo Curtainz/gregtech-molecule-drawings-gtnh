@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gcyr/trinaquadalloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "trinaquadalloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

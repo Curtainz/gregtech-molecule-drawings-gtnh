@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/cobalt_managanese_gallium_heusler_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "cobalt_managanese_gallium_heusler_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

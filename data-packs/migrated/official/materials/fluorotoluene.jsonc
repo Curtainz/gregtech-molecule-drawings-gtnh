@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/fluorotoluene",
+  "type": "material",
+  "bindings": [
+    "name:fluorotoluene"
+  ],
+  "structure": "official:gtocore/fluorotoluene_structure"
+}

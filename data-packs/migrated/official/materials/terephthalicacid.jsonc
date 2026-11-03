@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/terephthalicacid",
+  "type": "material",
+  "bindings": [
+    "name:terephthalicacid"
+  ],
+  "structure": "official:gtocore/terephthalicacid_structure"
+}

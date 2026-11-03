@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/acetic_acid",
+  "type": "material",
+  "bindings": [
+    "name:acetic_acid"
+  ],
+  "structure": "official:gtceu/acetic_acid_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/trichlorosilane",
+  "type": "material",
+  "bindings": [
+    "name:trichlorosilane"
+  ],
+  "structure": "official:gtceu/trichlorosilane_structure"
+}

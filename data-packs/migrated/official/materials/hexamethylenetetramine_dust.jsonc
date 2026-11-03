@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/hexamethylenetetramine_dust",
+  "type": "material",
+  "bindings": [
+    "name:hexamethylenetetramine_dust"
+  ],
+  "structure": "official:gtocore/hexamethylenetetramine_dust_structure"
+}

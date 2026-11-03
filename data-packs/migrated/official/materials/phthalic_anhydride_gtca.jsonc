@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/phthalic_anhydride_gtca",
+  "type": "material",
+  "bindings": [
+    "name:phthalic_anhydride_gtca"
+  ],
+  "structure": "official:gtca/phthalic_anhydride_gtca_structure"
+}

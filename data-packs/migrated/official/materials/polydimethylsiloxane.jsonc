@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polydimethylsiloxane",
+  "type": "material",
+  "bindings": [
+    "name:polydimethylsiloxane"
+  ],
+  "structure": "official:gtceu/polydimethylsiloxane_structure"
+}

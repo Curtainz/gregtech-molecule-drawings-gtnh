@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/poly_amic_acid",
+  "type": "material",
+  "bindings": [
+    "name:poly_amic_acid"
+  ],
+  "structure": "official:gtceu/poly_amic_acid_structure"
+}

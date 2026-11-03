@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "type": "pack",
+  "id": "official",
+  "version": "1.0.0",
+  "description": "Migrated legacy definitions; runtime external loading begins in stage 4.",
+  "modVersion": {
+    "min": "0.6.0-stage.3",
+    "maxExclusive": "0.7.0"
+  },
+  "dependencies": [],
+  "providers": [
+    "gregtech"
+  ]
+}

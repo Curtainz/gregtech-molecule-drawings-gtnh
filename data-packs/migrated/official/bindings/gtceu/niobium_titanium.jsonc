@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/niobium_titanium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "niobium_titanium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

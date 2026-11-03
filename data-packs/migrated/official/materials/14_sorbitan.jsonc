@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/14_sorbitan",
+  "type": "material",
+  "bindings": [
+    "name:14_sorbitan"
+  ],
+  "structure": "official:tfg/14_sorbitan_structure"
+}

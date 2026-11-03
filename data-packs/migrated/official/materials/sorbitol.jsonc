@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/sorbitol",
+  "type": "material",
+  "bindings": [
+    "name:sorbitol"
+  ],
+  "structure": "official:gtceu/sorbitol_structure"
+}

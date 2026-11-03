@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dichlorodiphenylsulfone",
+  "type": "material",
+  "bindings": [
+    "name:dichlorodiphenylsulfone"
+  ],
+  "structure": "official:gtocore/dichlorodiphenylsulfone_structure"
+}

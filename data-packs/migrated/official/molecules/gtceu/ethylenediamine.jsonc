@@ -1,0 +1,82 @@
+{
+  "atoms": [
+    {
+      "element": "N",
+      "id": "a0",
+      "label": "N",
+      "labelMode": "symbol",
+      "labels": {
+        "left": {
+          "element": "H",
+          "text": "H₂"
+        }
+      },
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7320508,
+        0
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a3",
+      "label": "N",
+      "labelMode": "symbol",
+      "labels": {
+        "right": {
+          "element": "H",
+          "text": "H₂"
+        }
+      },
+      "position": [
+        2.598076,
+        0.5
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    }
+  ],
+  "id": "official:gtceu/ethylenediamine_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tributyl_phosphate",
+  "type": "material",
+  "bindings": [
+    "name:tributyl_phosphate"
+  ],
+  "structure": "official:gtceu/tributyl_phosphate_structure"
+}

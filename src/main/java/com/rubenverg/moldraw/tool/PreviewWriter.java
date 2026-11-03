@@ -51,19 +51,113 @@ public final class PreviewWriter {
     public static void write(PackCatalog catalog, Path output, String only) throws IOException {
         if (only != null && !catalog.definitions()
             .containsKey(only)) throw new PackException("Unknown preview definition " + only);
+        long cards = catalog.definitions()
+            .values()
+            .stream()
+            .filter(
+                d -> List.of("molecule", "fragment", "material")
+                    .contains(d.type()))
+            .count();
+        if (only == null && cards > 512) {
+            paged(catalog, output);
+            return;
+        }
+        writeSelected(catalog, output, only == null ? null : Set.of(only));
+    }
+
+    private static void ownedDirectory(Path output) throws IOException {
+        if (Files.isSymbolicLink(output)) throw new PackException("Preview output cannot be a symlink");
+        if (Files.exists(output)) try (var files = Files.list(output)) {
+            if (files.findAny()
+                .isPresent() && !Files.isRegularFile(output.resolve(".gtmoldraw-preview"), LinkOption.NOFOLLOW_LINKS))
+                throw new PackException("Output is not an owned/empty preview directory");
+        }
+        Files.createDirectories(output);
+    }
+
+    private static void paged(PackCatalog catalog, Path output) throws IOException {
+        ownedDirectory(output);
+        atomic(output.resolve(".gtmoldraw-preview"), "stage-3\n");
+        if (catalog.definitions()
+            .size() > 8192) throw new PackException("Preview definition limit exceeded");
+        StringBuilder links = new StringBuilder();
+        JsonArray pages = new JsonArray();
+        // Build pages in a new generation. The old root index stays usable until all pages succeed.
+        Path generation = Files.createTempDirectory(output, "gallery-");
+        long generationBytes = 0;
+        for (String type : List.of("molecule", "fragment", "material")) {
+            List<String> ids = catalog.definitions()
+                .values()
+                .stream()
+                .filter(
+                    d -> d.type()
+                        .equals(type))
+                .map(PackCatalog.Definition::id)
+                .sorted()
+                .toList();
+            for (int offset = 0; offset < ids.size(); offset += 96) {
+                List<String> batch = ids.subList(offset, Math.min(offset + 96, ids.size()));
+                String page = type + "_" + (offset / 96 + 1);
+                Path directory = generation.resolve(page);
+                writeSelected(catalog, directory, new HashSet<>(batch));
+                try (var generated = Files.walk(directory)) {
+                    for (Path file : generated.filter(Files::isRegularFile)
+                        .toList()) generationBytes += Files.size(file);
+                }
+                if (generationBytes > 268_435_456L)
+                    throw new PackException("Preview generation exceeds 256 MiB; use --id");
+                String relative = generation.getFileName() + "/" + page + "/index.html";
+                links.append("<article><h2>")
+                    .append(type.equals("material") ? "材料显示" : "结构定义")
+                    .append(" ")
+                    .append(offset + 1)
+                    .append("–")
+                    .append(offset + batch.size())
+                    .append("</h2><p><a href=\"")
+                    .append(relative)
+                    .append("\">打开图册</a></p><details><summary>本页定义</summary><ul>");
+                for (String id : batch) links.append("<li><a href=\"")
+                    .append(relative)
+                    .append("#")
+                    .append(escape(id))
+                    .append("\">")
+                    .append(escape(id))
+                    .append("</a></li>");
+                links.append("</ul></details></article>");
+                JsonObject entry = new JsonObject();
+                entry.addProperty("path", relative);
+                entry.addProperty("count", batch.size());
+                pages.add(entry);
+            }
+        }
+        JsonObject report = new JsonObject();
+        report.addProperty("kind", "offline-stage-3-paged");
+        report.add("pages", pages);
+        atomic(
+            output.resolve("report.json"),
+            new GsonBuilder().setPrettyPrinting()
+                .create()
+                .toJson(report) + "\n");
+        atomic(output.resolve(".gtmoldraw-preview"), "stage-3\n");
+        atomic(
+            output.resolve("index.html"),
+            "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><title>GTMolDraw 全量图册</title><style>body{background:#171b25;color:#e5e8ef;font:16px system-ui;margin:32px}section{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}article{background:#202634;padding:20px;border-radius:8px}a{color:#8ed5ff}li{font-size:13px;overflow-wrap:anywhere}</style><h1>GTMolDraw 第③阶段全量图册</h1><p>结构定义与材料显示分别列出；同名结构按旧命名空间优先级绑定，其余仍保留供审阅。GT动态组成需游戏数据，离线不生成虚构饼图或质量。</p><section>"
+                + links
+                + "</section></html>\n");
+    }
+
+    private static void writeSelected(PackCatalog catalog, Path output, Set<String> selected) throws IOException {
         List<String> geometry = catalog.molecules()
             .keySet()
             .stream()
-            .filter(id -> only == null || id.equals(only))
+            .filter(id -> selected == null || selected.contains(id))
             .toList();
         List<PackCatalog.Definition> materials = catalog.definitions()
             .values()
             .stream()
             .filter(
                 d -> d.type()
-                    .equals("material")
-                    && (only == null || d.id()
-                        .equals(only)))
+                    .equals("material") && (selected == null || selected.contains(d.id())))
             .toList();
         if (geometry.size() + materials.size() > 512)
             throw new PackException("Preview exceeds 512 cards; use --id to select a definition");
@@ -79,7 +173,7 @@ public final class PreviewWriter {
         Map<String, String> files = new LinkedHashMap<>();
         StringBuilder cards = new StringBuilder();
         JsonObject report = new JsonObject();
-        report.addProperty("kind", "offline-stage-2");
+        report.addProperty("kind", "offline-pack-preview");
         JsonArray graphs = new JsonArray(), pies = new JsonArray();
         for (String id : geometry) {
             var graph = catalog.molecules()
@@ -111,7 +205,9 @@ public final class PreviewWriter {
                 graph.ports()
                     .size());
             graphs.add(item);
-            cards.append("<article><h3>")
+            cards.append("<article id=\"")
+                .append(escape(id))
+                .append("\"><h3>")
                 .append(escape(id))
                 .append("</h3><img alt=\"")
                 .append(escape(id))
@@ -141,7 +237,9 @@ public final class PreviewWriter {
             boolean disabled = json.has("disabled") && json.get("disabled")
                 .getAsBoolean();
             String message;
-            materialCards.append("<article><h3>")
+            materialCards.append("<article id=\"")
+                .append(escape(definition.id()))
+                .append("\"><h3>")
                 .append(escape(definition.id()))
                 .append("</h3><p>provider: ")
                 .append(escape(definition.owner()))
@@ -218,7 +316,7 @@ public final class PreviewWriter {
             new GsonBuilder().setPrettyPrinting()
                 .create()
                 .toJson(report) + "\n");
-        String html = "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><title>GTMolDraw stage 2 preview</title><style>body{background:#171b25;color:#e5e8ef;font:16px system-ui,sans-serif;margin:32px}h1{font-size:26px}section{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}article{background:#202634;border:1px solid #3c4961;border-radius:8px;padding:18px;overflow:auto}h3{font-size:15px;overflow-wrap:anywhere}img{max-width:100%;min-height:100px;image-rendering:pixelated}p{color:#c2ccdc;font-size:13px;overflow-wrap:anywhere}.notice{max-width:1000px;line-height:1.6}a{color:#8ed5ff}</style><h1>GTMolDraw 第②阶段离线预览</h1><p class=\"notice\">直接查看组装结果，无需阅读JSON。使用与游戏相同的纯布局代码及近似字体，游戏字体可能不同。没有自动补氢、结构推测或联网查询；饼图仅展示可确定的数量份额，未捏造GT质量。此工具不向游戏发布数据。</p><h2>结构定义（不等于材料最终显示选择）</h2><section>"
+        String html = "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><title>GTMolDraw pack preview</title><style>body{background:#171b25;color:#e5e8ef;font:16px system-ui,sans-serif;margin:32px}h1{font-size:26px}section{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}article{background:#202634;border:1px solid #3c4961;border-radius:8px;padding:18px;overflow:auto}h3{font-size:15px;overflow-wrap:anywhere}img{max-width:100%;min-height:100px;image-rendering:pixelated}p{color:#c2ccdc;font-size:13px;overflow-wrap:anywhere}.notice{max-width:1000px;line-height:1.6}a{color:#8ed5ff}</style><h1>GTMolDraw 离线预览</h1><p class=\"notice\">直接查看组装结果，无需阅读JSON。使用与游戏相同的纯布局代码及近似字体，游戏字体可能不同。没有自动补氢、结构推测或联网查询；饼图仅展示可确定的数量份额，未捏造GT质量。此工具不向游戏发布数据。</p><h2>结构定义（不等于材料最终显示选择）</h2><section>"
             + cards
             + "</section><h2>覆盖后的材料显示意图</h2><section>"
             + materialCards

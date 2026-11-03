@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethylene_sulfide",
+  "type": "material",
+  "bindings": [
+    "name:ethylene_sulfide"
+  ],
+  "structure": "official:gtocore/ethylene_sulfide_structure"
+}

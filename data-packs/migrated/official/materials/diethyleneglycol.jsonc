@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/diethyleneglycol",
+  "type": "material",
+  "bindings": [
+    "name:diethyleneglycol"
+  ],
+  "structure": "official:gtocore/diethyleneglycol_structure"
+}

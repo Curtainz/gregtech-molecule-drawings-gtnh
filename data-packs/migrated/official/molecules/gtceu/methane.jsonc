@@ -1,0 +1,87 @@
+{
+  "atoms": [
+    {
+      "element": "C",
+      "id": "a0",
+      "label": "C",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a1",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        1
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a2",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        0.9659258,
+        -0.25881904
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a3",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        0.5,
+        -0.8660254
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a4",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        -0.8660254,
+        -0.5
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "inward"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "outward"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    }
+  ],
+  "id": "official:gtceu/methane_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

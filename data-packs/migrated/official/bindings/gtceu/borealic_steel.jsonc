@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/borealic_steel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "borealic_steel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

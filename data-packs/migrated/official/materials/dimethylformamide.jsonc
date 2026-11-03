@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dimethylformamide",
+  "type": "material",
+  "bindings": [
+    "name:dimethylformamide"
+  ],
+  "structure": "official:gtceu/dimethylformamide_structure"
+}

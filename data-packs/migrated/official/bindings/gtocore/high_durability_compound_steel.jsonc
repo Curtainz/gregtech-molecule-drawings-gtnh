@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/high_durability_compound_steel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "high_durability_compound_steel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

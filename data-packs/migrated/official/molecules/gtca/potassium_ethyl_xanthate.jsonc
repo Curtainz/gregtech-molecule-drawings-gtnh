@@ -1,0 +1,116 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a2",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        1.7320508,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        0.5
+      ]
+    },
+    {
+      "color": "#FFFFFF30",
+      "element": "S⁻",
+      "id": "a4",
+      "label": "S⁻",
+      "labelMode": "symbol",
+      "labels": {
+        "right": {
+          "color": "#FF8F40D4",
+          "element": "K⁺",
+          "optionalColor": true,
+          "text": "K⁺"
+        }
+      },
+      "optionalColor": true,
+      "position": [
+        3.4641016,
+        0
+      ]
+    },
+    {
+      "element": "S",
+      "id": "a5",
+      "label": "S",
+      "labelMode": "symbol",
+      "position": [
+        2.598076,
+        1.5
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "centered": true,
+      "from": "a3",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a5"
+    }
+  ],
+  "id": "official:gtca/potassium_ethyl_xanthate_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

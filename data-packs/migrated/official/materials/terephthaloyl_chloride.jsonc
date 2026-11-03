@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/terephthaloyl_chloride",
+  "type": "material",
+  "bindings": [
+    "name:terephthaloyl_chloride"
+  ],
+  "structure": "official:gcyr/terephthaloyl_chloride_structure"
+}

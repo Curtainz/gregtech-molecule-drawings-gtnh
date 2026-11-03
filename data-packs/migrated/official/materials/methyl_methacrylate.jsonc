@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/methyl_methacrylate",
+  "type": "material",
+  "bindings": [
+    "name:methyl_methacrylate"
+  ],
+  "structure": "official:gtceu/methyl_methacrylate_structure"
+}

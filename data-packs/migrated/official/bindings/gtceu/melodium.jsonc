@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/melodium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "melodium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

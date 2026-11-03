@@ -1,0 +1,36 @@
+{
+  "atoms": [
+    {
+      "element": "H",
+      "id": "a0",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        -0.8,
+        0
+      ]
+    },
+    {
+      "element": "Cl",
+      "id": "a1",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        0.8,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    }
+  ],
+  "id": "official:gtceu/hydrogen_chloride_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

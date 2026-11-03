@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/succinimidyl_acetate_dust",
+  "type": "material",
+  "bindings": [
+    "name:succinimidyl_acetate_dust"
+  ],
+  "structure": "official:gtocore/succinimidyl_acetate_dust_structure"
+}

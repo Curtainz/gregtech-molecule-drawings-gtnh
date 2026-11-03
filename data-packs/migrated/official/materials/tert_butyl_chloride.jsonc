@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tert_butyl_chloride",
+  "type": "material",
+  "bindings": [
+    "name:tert_butyl_chloride"
+  ],
+  "structure": "official:gtocore/tert_butyl_chloride_structure"
+}

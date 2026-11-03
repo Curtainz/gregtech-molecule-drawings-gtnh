@@ -42,3 +42,4 @@ layout.json
 # Python authoring-check caches
 __pycache__/
 *.pyc
+**/.gtmoldraw-migrate-*/

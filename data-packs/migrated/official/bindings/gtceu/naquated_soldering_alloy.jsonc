@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/naquated_soldering_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "naquated_soldering_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

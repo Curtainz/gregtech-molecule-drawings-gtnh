@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/trasition_mix_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "trasition_mix"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

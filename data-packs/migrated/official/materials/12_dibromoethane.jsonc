@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/12_dibromoethane",
+  "type": "material",
+  "bindings": [
+    "name:12_dibromoethane"
+  ],
+  "structure": "official:gtceu/12_dibromoethane_structure"
+}

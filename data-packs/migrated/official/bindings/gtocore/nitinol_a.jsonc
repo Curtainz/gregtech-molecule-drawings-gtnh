@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/nitinol_a_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "nitinol_a"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "atoms": [
+    {
+      "element": "S",
+      "id": "a0",
+      "label": "S",
+      "labelMode": "symbol",
+      "position": [
+        2.0454545,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.5454545,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.2045455,
+        -1.299038
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.7045455,
+        -1.299038
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -2.4545455,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -3.9545455,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.7045455,
+        1.299038
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.2045455,
+        1.299038
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a8",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        3.5454545,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a9",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        2.0454545,
+        -1.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a10",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        2.0454545,
+        1.5
+      ]
+    },
+    {
+      "element": "Na",
+      "id": "a11",
+      "label": "Na",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        2.5
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a10"
+    }
+  ],
+  "id": "official:gtocore/sodium_toluenesulfonate_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

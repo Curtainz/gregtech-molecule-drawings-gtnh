@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/adiponitrile",
+  "type": "material",
+  "bindings": [
+    "name:adiponitrile"
+  ],
+  "structure": "official:gtceu/adiponitrile_structure"
+}

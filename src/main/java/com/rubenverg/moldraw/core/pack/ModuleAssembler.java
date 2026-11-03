@@ -401,7 +401,9 @@ public final class ModuleAssembler {
                         d.get("text")
                             .getAsString(),
                         text(d, "element", null),
-                        color(d)));
+                        color(d),
+                        d.has("optionalColor") && d.get("optionalColor")
+                            .getAsBoolean()));
             }
         Integer hydrogens = atom.has("hydrogens") ? atom.get("hydrogens")
             .getAsInt() : null;
@@ -420,7 +422,9 @@ public final class ModuleAssembler {
             atom.has("charge") ? atom.get("charge")
                 .getAsInt() : 0,
             color(atom),
-            labels);
+            labels,
+            atom.has("optionalColor") && atom.get("optionalColor")
+                .getAsBoolean());
     }
 
     private void addAtom(String id, double x, double y, Style style, Transform transform,

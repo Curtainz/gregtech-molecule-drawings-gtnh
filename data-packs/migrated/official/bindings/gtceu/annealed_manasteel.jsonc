@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/annealed_manasteel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "annealed_manasteel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

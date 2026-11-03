@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/pyromellitic_dianhydride_dust",
+  "type": "material",
+  "bindings": [
+    "name:pyromellitic_dianhydride_dust"
+  ],
+  "structure": "official:gtocore/pyromellitic_dianhydride_dust_structure"
+}

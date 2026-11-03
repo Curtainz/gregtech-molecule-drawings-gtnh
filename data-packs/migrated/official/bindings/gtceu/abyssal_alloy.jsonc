@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/abyssal_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "abyssal_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

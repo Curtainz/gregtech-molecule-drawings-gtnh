@@ -1,0 +1,57 @@
+{
+  "atoms": [
+    {
+      "element": "C",
+      "id": "a0",
+      "label": "C",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a1",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -1.3,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a2",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        1.3,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "centered": true,
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "centered": true,
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a2"
+    }
+  ],
+  "id": "official:gtceu/carbon_dioxide_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

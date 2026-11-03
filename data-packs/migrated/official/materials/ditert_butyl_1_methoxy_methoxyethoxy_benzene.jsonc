@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ditert_butyl_1_methoxy_methoxyethoxy_benzene",
+  "type": "material",
+  "bindings": [
+    "name:ditert_butyl_1_methoxy_methoxyethoxy_benzene"
+  ],
+  "structure": "official:gtocore/ditert_butyl_1_methoxy_methoxyethoxy_benzene_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/monomethylhydrazine",
+  "type": "material",
+  "bindings": [
+    "name:monomethylhydrazine"
+  ],
+  "structure": "official:gtocore/monomethylhydrazine_structure"
+}

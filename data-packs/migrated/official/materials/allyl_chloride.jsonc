@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/allyl_chloride",
+  "type": "material",
+  "bindings": [
+    "name:allyl_chloride"
+  ],
+  "structure": "official:gtceu/allyl_chloride_structure"
+}

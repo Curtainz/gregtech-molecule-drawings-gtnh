@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/dark_soularium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "dark_soularium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

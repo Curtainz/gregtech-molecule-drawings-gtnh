@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/silicon_tetrachloride",
+  "type": "material",
+  "bindings": [
+    "name:silicon_tetrachloride"
+  ],
+  "structure": "official:gtceu/silicon_tetrachloride_structure"
+}

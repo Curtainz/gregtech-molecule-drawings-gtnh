@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/succinimide_dust",
+  "type": "material",
+  "bindings": [
+    "name:succinimide_dust"
+  ],
+  "structure": "official:gtocore/succinimide_dust_structure"
+}

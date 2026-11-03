@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/zeron_182_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "zeron_182"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

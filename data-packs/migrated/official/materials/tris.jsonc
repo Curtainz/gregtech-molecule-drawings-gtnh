@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tris",
+  "type": "material",
+  "bindings": [
+    "name:tris"
+  ],
+  "structure": "official:gtocore/tris_structure"
+}

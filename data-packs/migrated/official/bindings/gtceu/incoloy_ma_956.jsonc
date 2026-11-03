@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/incoloy_ma_956_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "incoloy_ma_956"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

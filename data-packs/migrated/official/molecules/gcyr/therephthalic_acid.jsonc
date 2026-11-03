@@ -1,0 +1,226 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        -1
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "labelMode": "hidden",
+      "position": [
+        0.86602545,
+        -1.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "labelMode": "hidden",
+      "position": [
+        1.7320508,
+        -0.9999999
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "labelMode": "hidden",
+      "position": [
+        1.7320505,
+        1.1920929E-7
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "labelMode": "hidden",
+      "position": [
+        0.866025,
+        0.49999988
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        1.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a7",
+      "label": "O",
+      "labelMode": "symbol",
+      "labels": {
+        "right": {
+          "element": "H",
+          "text": "H"
+        }
+      },
+      "position": [
+        1.7320508,
+        2
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a8",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        2
+      ]
+    },
+    {
+      "element": null,
+      "id": "a9",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        -2.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a10",
+      "label": "O",
+      "labelMode": "symbol",
+      "labels": {
+        "left": {
+          "element": "H",
+          "text": "H"
+        }
+      },
+      "position": [
+        0,
+        -3
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a11",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        1.7320508,
+        -3
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a0"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "centered": true,
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a9",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "centered": true,
+      "from": "a9",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a11"
+    }
+  ],
+  "id": "official:gcyr/therephthalic_acid_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

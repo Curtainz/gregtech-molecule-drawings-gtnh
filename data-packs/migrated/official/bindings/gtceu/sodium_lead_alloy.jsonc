@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/sodium_lead_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "sodium_lead_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

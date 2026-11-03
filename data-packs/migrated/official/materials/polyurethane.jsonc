@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polyurethane",
+  "type": "material",
+  "bindings": [
+    "name:polyurethane"
+  ],
+  "structure": "official:gtocore/polyurethane_structure"
+}

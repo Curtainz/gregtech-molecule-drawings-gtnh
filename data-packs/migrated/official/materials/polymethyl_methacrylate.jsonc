@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polymethyl_methacrylate",
+  "type": "material",
+  "bindings": [
+    "name:polymethyl_methacrylate"
+  ],
+  "structure": "official:gtceu/polymethyl_methacrylate_structure"
+}

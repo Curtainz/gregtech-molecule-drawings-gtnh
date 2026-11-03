@@ -25,12 +25,14 @@ def schemas():
             "color": string(r"^#(?:[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$",9)}
     defs["override"] = obj({"pack": string(PACK,64), "id": ref("id")}, ["pack","id"])
     common = {"schemaVersion": {"const":1}, "id": ref("id"), "overrides": ref("override")}
-    label = obj({"text": {"type":"string","maxLength":128}, "element": string(limit=32), "color": ref("color")},["text"])
+    label = obj({"text": {"type":"string","maxLength":128}, "element": string(limit=32), "color": ref("color"), "optionalColor":{"type":"boolean"}},["text"])
+    label["allOf"] = [{"if":{"properties":{"optionalColor":{"const":True}},"required":["optionalColor"]},"then":{"required":["color"]}}]
     atom = {"id":ref("local"), "position":ref("position"), "element":{"type":["string","null"],"minLength":1,"maxLength":32},
             "label":{"type":"string","maxLength":128},"labelMode":enum("symbol","skeletal","hidden"),
-            "hydrogens":integer(0,32),"isotope":integer(1,999),"charge":integer(-16,16),"color":ref("color"),
+            "hydrogens":integer(0,32),"isotope":integer(1,999),"charge":integer(-16,16),"color":ref("color"),"optionalColor":{"type":"boolean"},
             "labels":obj({key:label for key in ["above","right","below","left"]})}
     defs["atom"] = obj(atom,["id","position","element"])
+    defs["atom"]["allOf"] = label["allOf"]
     defs["bond"] = obj({"from":ref("atomRef"),"to":ref("atomRef"),"order":enum(1,2,3),"centered":{"type":"boolean"},
                         "style":enum("solid","dotted","thick","inward","outward"),
                         "strokes":array(enum("solid","dotted","thick","inward","outward"),1,8)},["from","to"])
@@ -63,9 +65,9 @@ def schemas():
     defs["material"]["allOf"] = [{"if":{"properties":{"disabled":{"const":True}},"required":["disabled"]},"then":{"not":{"anyOf":[{"required":[x]} for x in ["formula","structure","composition","display"]]}}}]
     rules = [obj({"kind":{"const":"alias"},"from":string(),"to":ref("id")},["kind","from","to"]),
              obj({"kind":{"const":"strip_prefix"},"prefixes":array(string(limit=64),1,64),"target":enum("structure","composition")},["kind","prefixes","target"]),
-             obj({"kind":{"const":"composition_candidate"},"materials":{**array(string(r"^gt:.+$"),0,4096),"uniqueItems":True},"containsAny":{**array(string(limit=64),0,64),"uniqueItems":True}},["kind"]),
+             obj({"kind":{"const":"composition_candidate"},"materials":{**array(string(r"^gt:.+$"),0,4096),"uniqueItems":True},"names":{**array(string(),0,4096),"uniqueItems":True},"containsAny":{**array(string(limit=64),0,64),"uniqueItems":True}},["kind"]),
              obj({"kind":{"const":"element_binding"},"symbol":string(limit=32),"material":string(r"^gt:.+$")},["kind","symbol","material"])]
-    rules[2]["anyOf"] = [{"required":[x],"properties":{x:{"minItems":1}}} for x in ["materials","containsAny"]]
+    rules[2]["anyOf"] = [{"required":[x],"properties":{x:{"minItems":1}}} for x in ["materials","names","containsAny"]]
     defs["bindings"] = obj({**common,"type":{"const":"bindings"},"rules":array({"oneOf":rules},1,4096)},["schemaVersion","id","type","rules"])
     definition = {"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"urn:gtmoldraw:definition:1","title":"GTMolDraw data definition v1","oneOf":[ref(x) for x in ["material","molecule","fragment","bindings"]],"$defs":defs}
     manifest = obj({"schemaVersion":{"const":1},"type":{"const":"pack"},"id":string(PACK,64),"version":string(VERSION,128),"description":{"type":"string","maxLength":2048},

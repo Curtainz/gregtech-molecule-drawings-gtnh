@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/methyl_formate",
+  "type": "material",
+  "bindings": [
+    "name:methyl_formate"
+  ],
+  "structure": "official:gtceu/methyl_formate_structure"
+}

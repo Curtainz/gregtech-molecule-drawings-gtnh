@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/formaldehyde",
+  "type": "material",
+  "bindings": [
+    "name:formaldehyde"
+  ],
+  "structure": "official:gtceu/formaldehyde_structure"
+}

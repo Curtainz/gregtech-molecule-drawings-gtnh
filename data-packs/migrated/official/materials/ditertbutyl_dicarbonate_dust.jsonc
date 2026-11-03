@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ditertbutyl_dicarbonate_dust",
+  "type": "material",
+  "bindings": [
+    "name:ditertbutyl_dicarbonate_dust"
+  ],
+  "structure": "official:gtocore/ditertbutyl_dicarbonate_dust_structure"
+}

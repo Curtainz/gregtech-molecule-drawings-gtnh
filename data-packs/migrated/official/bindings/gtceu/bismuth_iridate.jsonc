@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/bismuth_iridate_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "bismuth_iridate"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

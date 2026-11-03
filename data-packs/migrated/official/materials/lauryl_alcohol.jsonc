@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/lauryl_alcohol",
+  "type": "material",
+  "bindings": [
+    "name:lauryl_alcohol"
+  ],
+  "structure": "official:tfg/lauryl_alcohol_structure"
+}

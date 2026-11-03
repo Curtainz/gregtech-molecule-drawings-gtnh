@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/butane",
+  "type": "material",
+  "bindings": [
+    "name:butane"
+  ],
+  "structure": "official:gtceu/butane_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/diiodobiphenyl_dust",
+  "type": "material",
+  "bindings": [
+    "name:diiodobiphenyl_dust"
+  ],
+  "structure": "official:gtocore/diiodobiphenyl_dust_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/nmethylpyrolidone",
+  "type": "material",
+  "bindings": [
+    "name:nmethylpyrolidone"
+  ],
+  "structure": "official:gtocore/nmethylpyrolidone_structure"
+}

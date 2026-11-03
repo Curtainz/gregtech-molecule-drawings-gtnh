@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/inconel_617_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "inconel_617"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/black_bronze_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "black_bronze"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

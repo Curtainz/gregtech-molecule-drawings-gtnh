@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/formamide",
+  "type": "material",
+  "bindings": [
+    "name:formamide"
+  ],
+  "structure": "official:gtceu/formamide_structure"
+}

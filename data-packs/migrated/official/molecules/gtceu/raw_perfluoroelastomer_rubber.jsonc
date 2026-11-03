@@ -1,0 +1,284 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7320508,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        3.4641016,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        4.3301272,
+        0.5
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a6",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        0.8660254,
+        -0.5
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a7",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        0.8660254,
+        1.5
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a8",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        1.7320508,
+        -1
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a9",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        1.7320508,
+        1
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a10",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        2.598076,
+        -0.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a11",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        2.598076,
+        1.5
+      ]
+    },
+    {
+      "element": "C",
+      "id": "a12",
+      "label": "C",
+      "labelMode": "symbol",
+      "labels": {
+        "right": {
+          "element": "F",
+          "text": "F₃"
+        }
+      },
+      "position": [
+        2.598076,
+        2.5
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a13",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        3.4641016,
+        -1
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a14",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        3.4641016,
+        1
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "atoms": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a6",
+        "a7",
+        "a8",
+        "a9",
+        "a10",
+        "a11",
+        "a12",
+        "a13",
+        "a14"
+      ],
+      "sub": "n",
+      "type": "bracket"
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a11",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a13"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a14"
+    }
+  ],
+  "id": "official:gtceu/raw_perfluoroelastomer_rubber_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

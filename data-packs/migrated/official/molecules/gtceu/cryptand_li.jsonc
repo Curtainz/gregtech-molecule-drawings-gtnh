@@ -1,0 +1,470 @@
+{
+  "atoms": [
+    {
+      "element": "O",
+      "id": "a0",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        1.763,
+        -0.647
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.543,
+        -0.003
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        4.16,
+        -0.003
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a3",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        4.952,
+        -0.647
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        5.956,
+        -0.647
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        6.502,
+        -1.324
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a6",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        5.69,
+        -1.929
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        6.691,
+        -2.08
+      ]
+    },
+    {
+      "element": null,
+      "id": "a8",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        5.851,
+        -2.629
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a9",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        4.952,
+        -2.276
+      ]
+    },
+    {
+      "element": null,
+      "id": "a10",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        4.16,
+        -2.904
+      ]
+    },
+    {
+      "element": null,
+      "id": "a11",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.543,
+        -2.904
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a12",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        1.763,
+        -2.276
+      ]
+    },
+    {
+      "element": null,
+      "id": "a13",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.853,
+        -2.629
+      ]
+    },
+    {
+      "element": null,
+      "id": "a14",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.023,
+        -2.08
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a15",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        1.013,
+        -1.929
+      ]
+    },
+    {
+      "element": null,
+      "id": "a16",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.201,
+        -1.324
+      ]
+    },
+    {
+      "element": null,
+      "id": "a17",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.748,
+        -0.647
+      ]
+    },
+    {
+      "element": null,
+      "id": "a18",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        6.312,
+        -2.866
+      ]
+    },
+    {
+      "element": null,
+      "id": "a19",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        5.509,
+        -3.446
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a20",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        4.614,
+        -3.105
+      ]
+    },
+    {
+      "element": null,
+      "id": "a21",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        3.859,
+        -3.773
+      ]
+    },
+    {
+      "element": null,
+      "id": "a22",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.848,
+        -3.773
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a23",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        2.101,
+        -3.105
+      ]
+    },
+    {
+      "element": null,
+      "id": "a24",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.195,
+        -3.446
+      ]
+    },
+    {
+      "element": null,
+      "id": "a25",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.392,
+        -2.866
+      ]
+    },
+    {
+      "color": "#FFCC80FF",
+      "element": "Li⁺",
+      "id": "a26",
+      "label": "Li⁺",
+      "labelMode": "symbol",
+      "optionalColor": true,
+      "position": [
+        3.36,
+        -1.447
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a9",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a10",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a11",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a12",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a13"
+    },
+    {
+      "from": "a13",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a14"
+    },
+    {
+      "from": "a14",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a15"
+    },
+    {
+      "from": "a15",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a16"
+    },
+    {
+      "from": "a16",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a17"
+    },
+    {
+      "from": "a17",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a0"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "outward"
+      ],
+      "to": "a18"
+    },
+    {
+      "from": "a18",
+      "strokes": [
+        "thick"
+      ],
+      "to": "a19"
+    },
+    {
+      "from": "a19",
+      "strokes": [
+        "thick"
+      ],
+      "to": "a20"
+    },
+    {
+      "from": "a20",
+      "strokes": [
+        "thick"
+      ],
+      "to": "a21"
+    },
+    {
+      "from": "a21",
+      "strokes": [
+        "thick"
+      ],
+      "to": "a22"
+    },
+    {
+      "from": "a22",
+      "strokes": [
+        "thick"
+      ],
+      "to": "a23"
+    },
+    {
+      "from": "a23",
+      "strokes": [
+        "thick"
+      ],
+      "to": "a24"
+    },
+    {
+      "from": "a24",
+      "strokes": [
+        "thick"
+      ],
+      "to": "a25"
+    },
+    {
+      "from": "a15",
+      "strokes": [
+        "outward"
+      ],
+      "to": "a25"
+    }
+  ],
+  "id": "official:gtceu/cryptand_li_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

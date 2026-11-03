@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/octene",
+  "type": "material",
+  "bindings": [
+    "name:octene"
+  ],
+  "structure": "official:gtca/octene_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/diethylenetriamine_pentaacetonitrile",
+  "type": "material",
+  "bindings": [
+    "name:diethylenetriamine_pentaacetonitrile"
+  ],
+  "structure": "official:gtceu/diethylenetriamine_pentaacetonitrile_structure"
+}

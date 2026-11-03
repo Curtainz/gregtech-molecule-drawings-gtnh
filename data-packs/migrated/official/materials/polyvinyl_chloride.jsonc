@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polyvinyl_chloride",
+  "type": "material",
+  "bindings": [
+    "name:polyvinyl_chloride"
+  ],
+  "structure": "official:gtceu/polyvinyl_chloride_structure"
+}

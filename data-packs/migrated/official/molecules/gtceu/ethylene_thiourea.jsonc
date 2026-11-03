@@ -1,0 +1,125 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1,
+        0
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a2",
+      "label": "N",
+      "labelMode": "symbol",
+      "labels": {
+        "left": {
+          "element": "H",
+          "text": "H"
+        }
+      },
+      "position": [
+        -0.309017,
+        0.95
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a3",
+      "label": "N",
+      "labelMode": "symbol",
+      "labels": {
+        "right": {
+          "element": "H",
+          "text": "H"
+        }
+      },
+      "position": [
+        1.309017,
+        0.95
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.5,
+        1.5388418
+      ]
+    },
+    {
+      "element": "S",
+      "id": "a5",
+      "label": "S",
+      "labelMode": "symbol",
+      "position": [
+        0.5,
+        2.5388417
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a0"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "centered": true,
+      "from": "a4",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a5"
+    }
+  ],
+  "id": "official:gtceu/ethylene_thiourea_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

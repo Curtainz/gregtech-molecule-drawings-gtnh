@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/electrum_flux_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "electrum_flux"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/benzoic_acid",
+  "type": "material",
+  "bindings": [
+    "name:benzoic_acid"
+  ],
+  "structure": "official:gtocore/benzoic_acid_structure"
+}

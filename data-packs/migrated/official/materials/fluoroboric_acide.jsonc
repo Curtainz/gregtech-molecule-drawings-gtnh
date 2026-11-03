@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/fluoroboric_acide",
+  "type": "material",
+  "bindings": [
+    "name:fluoroboric_acide"
+  ],
+  "structure": "official:gtocore/fluoroboric_acide_structure"
+}

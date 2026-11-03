@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tertbuthylcarbonylazide",
+  "type": "material",
+  "bindings": [
+    "name:tertbuthylcarbonylazide"
+  ],
+  "structure": "official:gtocore/tertbuthylcarbonylazide_structure"
+}

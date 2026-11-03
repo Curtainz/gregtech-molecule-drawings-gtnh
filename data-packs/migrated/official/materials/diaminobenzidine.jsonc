@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/diaminobenzidine",
+  "type": "material",
+  "bindings": [
+    "name:diaminobenzidine"
+  ],
+  "structure": "official:gtceu/diaminobenzidine_structure"
+}

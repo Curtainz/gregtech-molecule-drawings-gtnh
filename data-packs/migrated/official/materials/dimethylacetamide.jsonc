@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dimethylacetamide",
+  "type": "material",
+  "bindings": [
+    "name:dimethylacetamide"
+  ],
+  "structure": "official:gtocore/dimethylacetamide_structure"
+}

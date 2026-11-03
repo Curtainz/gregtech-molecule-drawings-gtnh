@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/kovar_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "kovar"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

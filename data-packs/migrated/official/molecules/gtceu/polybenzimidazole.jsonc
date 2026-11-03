@@ -1,0 +1,516 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1,
+        0
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a2",
+      "label": "N",
+      "labelMode": "symbol",
+      "labels": {
+        "above": {
+          "element": "H",
+          "text": "H"
+        }
+      },
+      "position": [
+        1.5877852,
+        0.809017
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a4",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        1.5877852,
+        -0.809017
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "labelMode": "hidden",
+      "position": [
+        2.5388417,
+        -0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "labelMode": "hidden",
+      "position": [
+        3.4048672,
+        -1
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "labelMode": "hidden",
+      "position": [
+        4.2708926,
+        -0.49999988
+      ]
+    },
+    {
+      "element": null,
+      "id": "a8",
+      "labelMode": "hidden",
+      "position": [
+        4.2708926,
+        0.5000001
+      ]
+    },
+    {
+      "element": null,
+      "id": "a9",
+      "labelMode": "hidden",
+      "position": [
+        3.4048672,
+        0.9999999
+      ]
+    },
+    {
+      "element": null,
+      "id": "a10",
+      "labelMode": "hidden",
+      "position": [
+        2.538842,
+        0.49999964
+      ]
+    },
+    {
+      "element": null,
+      "id": "a11",
+      "labelMode": "hidden",
+      "position": [
+        5.2708926,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a12",
+      "labelMode": "hidden",
+      "position": [
+        5.2708926,
+        -0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a13",
+      "labelMode": "hidden",
+      "position": [
+        6.136918,
+        -0.99999994
+      ]
+    },
+    {
+      "element": null,
+      "id": "a14",
+      "labelMode": "hidden",
+      "position": [
+        7.0029435,
+        -0.49999982
+      ]
+    },
+    {
+      "element": null,
+      "id": "a15",
+      "labelMode": "hidden",
+      "position": [
+        7.0029435,
+        0.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a16",
+      "labelMode": "hidden",
+      "position": [
+        6.136918,
+        0.99999994
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a17",
+      "label": "N",
+      "labelMode": "symbol",
+      "labels": {
+        "above": {
+          "element": "H",
+          "text": "H"
+        }
+      },
+      "position": [
+        7.9529433,
+        0.809017
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a19",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        7.9529433,
+        -0.809017
+      ]
+    },
+    {
+      "element": null,
+      "id": "a20",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        8.541785,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a21",
+      "labelMode": "hidden",
+      "position": [
+        9.541785,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a22",
+      "labelMode": "hidden",
+      "position": [
+        9.541785,
+        -1
+      ]
+    },
+    {
+      "element": null,
+      "id": "a23",
+      "labelMode": "hidden",
+      "position": [
+        10.40781,
+        -1.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a24",
+      "labelMode": "hidden",
+      "position": [
+        11.273835,
+        -0.9999999
+      ]
+    },
+    {
+      "element": null,
+      "id": "a25",
+      "labelMode": "hidden",
+      "position": [
+        11.273835,
+        1.1920929E-7
+      ]
+    },
+    {
+      "element": null,
+      "id": "a26",
+      "labelMode": "hidden",
+      "position": [
+        10.407809,
+        0.49999988
+      ]
+    },
+    {
+      "element": null,
+      "id": "a27",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        12.273836,
+        0
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "atoms": [
+        "a1",
+        "a2",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9",
+        "a10",
+        "a11",
+        "a12",
+        "a13",
+        "a14",
+        "a15",
+        "a16",
+        "a17",
+        "a19",
+        "a20",
+        "a21",
+        "a22",
+        "a23",
+        "a24",
+        "a25",
+        "a26"
+      ],
+      "sub": "n",
+      "type": "bracket"
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a9",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a10",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a11",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a12",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a13"
+    },
+    {
+      "from": "a13",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a14"
+    },
+    {
+      "from": "a14",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a15"
+    },
+    {
+      "from": "a15",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a16"
+    },
+    {
+      "from": "a16",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a15",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a17"
+    },
+    {
+      "from": "a14",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a19"
+    },
+    {
+      "from": "a17",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a20"
+    },
+    {
+      "from": "a19",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a20"
+    },
+    {
+      "from": "a21",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a22"
+    },
+    {
+      "from": "a22",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a23"
+    },
+    {
+      "from": "a23",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a24"
+    },
+    {
+      "from": "a24",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a25"
+    },
+    {
+      "from": "a25",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a26"
+    },
+    {
+      "from": "a26",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a21"
+    },
+    {
+      "from": "a20",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a21"
+    },
+    {
+      "from": "a25",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a27"
+    }
+  ],
+  "id": "official:gtceu/polybenzimidazole_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

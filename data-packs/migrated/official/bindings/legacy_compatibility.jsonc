@@ -1,0 +1,976 @@
+{
+  "schemaVersion": 1,
+  "id": "official:legacy_compatibility",
+  "type": "bindings",
+  "rules": [
+    {
+      "kind": "alias",
+      "from": "ice",
+      "to": "official:gtceu/water_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "crushed_ice",
+      "to": "official:gtceu/water_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "dry_ice",
+      "to": "official:gtceu/carbon_dioxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "pbi",
+      "to": "official:gtceu/polybenzimidazole_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "sbr",
+      "to": "official:gtceu/styrene_butadiene_rubber_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "raw_sbr",
+      "to": "official:gtceu/raw_styrene_butadiene_rubber_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "rubber_raw",
+      "to": "official:gtceu/raw_rubber_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "rubber_silicone",
+      "to": "official:gtceu/silicone_rubber_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "ptfe",
+      "to": "official:gtceu/polytetrafluoroethylene_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "pvc",
+      "to": "official:gtceu/polyvinyl_chloride_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "peek",
+      "to": "official:gtceu/polyether_ether_ketone_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "pmma",
+      "to": "official:gtceu/polymethyl_methacrylate_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "pps",
+      "to": "official:gtceu/polyphenylene_sulfide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "pvb",
+      "to": "official:gtceu/polyvinyl_butyral_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "pva",
+      "to": "official:gtceu/polyvinyl_acetate_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "aluminiumhydroxide",
+      "to": "official:gtceu/aluminium_hydroxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "aluminium_hydroxide",
+      "to": "official:gtceu/aluminium_hydroxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "aluminum_hydroxide",
+      "to": "official:gtceu/aluminium_hydroxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "sodium_hydroxide",
+      "to": "official:gtceu/sodium_hydroxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "sodiumhydroxide",
+      "to": "official:gtceu/sodium_hydroxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "potassium_hydroxide",
+      "to": "official:gtceu/potassium_hydroxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "potassiumhydroxide",
+      "to": "official:gtceu/potassium_hydroxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "sulfuric_acid",
+      "to": "official:gtceu/sulfuric_acid_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "sulfuricacid",
+      "to": "official:gtceu/sulfuric_acid_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "diluted_sulfuric_acid",
+      "to": "official:gtceu/sulfuric_acid_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "nitric_acid",
+      "to": "official:gtceu/nitric_acid_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "nitricacid",
+      "to": "official:gtceu/nitric_acid_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "phosphoric_acid",
+      "to": "official:gtceu/phosphoric_acid_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "phosphoricacid",
+      "to": "official:gtceu/phosphoric_acid_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "silane",
+      "to": "official:gtceu/silane_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "disilane",
+      "to": "official:gtceu/disilane_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "silicon_tetrachloride",
+      "to": "official:gtceu/silicon_tetrachloride_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "silicon_tetrafluoride",
+      "to": "official:gtceu/silicon_tetrafluoride_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "trichlorosilane",
+      "to": "official:gtceu/trichlorosilane_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "aluminiumoxide",
+      "to": "official:gtceu/aluminiumoxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "aluminium_oxide",
+      "to": "official:gtceu/aluminiumoxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "aluminum_oxide",
+      "to": "official:gtceu/aluminiumoxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "alumina",
+      "to": "official:gtceu/aluminiumoxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "cryolite",
+      "to": "official:gtceu/cryolite_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "silicon_dioxide",
+      "to": "official:gtceu/silicon_dioxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "silicondioxide",
+      "to": "official:gtceu/silicon_dioxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "silica",
+      "to": "official:gtceu/silicon_dioxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "quartz",
+      "to": "official:gtceu/silicon_dioxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "quartzite",
+      "to": "official:gtceu/silicon_dioxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "quartz_sand",
+      "to": "official:gtceu/silicon_dioxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "oxygen",
+      "to": "official:gtceu/oxygen_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "hydrogen",
+      "to": "official:gtceu/hydrogen_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "nitrogen",
+      "to": "official:gtceu/nitrogen_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "chlorine",
+      "to": "official:gtceu/chlorine_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "fluorine",
+      "to": "official:gtceu/fluorine_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "carbon_dioxide",
+      "to": "official:gtceu/carbon_dioxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "carbon_monoxide",
+      "to": "official:gtceu/carbon_monoxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "ammonia",
+      "to": "official:gtceu/ammonia_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "water",
+      "to": "official:gtceu/water_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "hydrogen_sulfide",
+      "to": "official:gtceu/hydrogen_sulfide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "sulfur_dioxide",
+      "to": "official:gtceu/sulfur_dioxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "sulfur_trioxide",
+      "to": "official:gtceu/sulfur_trioxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "hydrogen_chloride",
+      "to": "official:gtceu/hydrogen_chloride_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "hydrogen_fluoride",
+      "to": "official:gtceu/hydrogen_fluoride_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "hydrochloric_acid",
+      "to": "official:gtceu/hydrogen_chloride_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "hydrofluoric_acid",
+      "to": "official:gtceu/hydrogen_fluoride_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "nitric_oxide",
+      "to": "official:gtceu/nitric_oxide_structure"
+    },
+    {
+      "kind": "alias",
+      "from": "nitrogen_dioxide",
+      "to": "official:gtceu/nitrogen_dioxide_structure"
+    },
+    {
+      "kind": "strip_prefix",
+      "prefixes": [
+        "raw_",
+        "impure_",
+        "purified_",
+        "centrifuged_",
+        "liquid_",
+        "gas_",
+        "solid_",
+        "molten_",
+        "crushed_",
+        "packed_"
+      ],
+      "target": "structure"
+    },
+    {
+      "names": [
+        "battery_alloy",
+        "brass",
+        "bronze",
+        "cupronickel",
+        "electrum",
+        "invar",
+        "kanthal",
+        "magnalium",
+        "nichrome",
+        "niobium_titanium",
+        "sterling_silver",
+        "rose_gold",
+        "black_bronze",
+        "bismuth_bronze",
+        "rtm_alloy",
+        "ruridit",
+        "soldering_alloy",
+        "stainless_steel",
+        "tin_alloy",
+        "ultimet",
+        "vanadium_gallium",
+        "yttrium_barium_cuprate",
+        "osmiridium",
+        "gallium_arsenide",
+        "indium_gallium_phosphide",
+        "nickel_zinc_ferrite",
+        "tungsten_carbide",
+        "manganese_phosphide",
+        "magnesium_diboride",
+        "mercury_barium_calcium_cuprate",
+        "uranium_triplatinum",
+        "samarium_iron_arsenic_oxide",
+        "indium_tin_barium_titanium_cuprate",
+        "uranium_rhodium_dinaquadide",
+        "enriched_naquadah_trinium_europium_duranide",
+        "ruthenium_trinium_americium_neutronate",
+        "black_steel",
+        "tungsten_steel",
+        "cobalt_brass",
+        "vanadium_steel",
+        "potin",
+        "naquadah_alloy",
+        "rhodium_plated_palladium",
+        "red_steel",
+        "blue_steel",
+        "hssg",
+        "red_alloy",
+        "hsse",
+        "hsss",
+        "blue_alloy",
+        "tantalum_carbide",
+        "hsla_steel",
+        "molybdenum_disilicide",
+        "zeron_100",
+        "watertight_steel",
+        "incoloy_ma_956",
+        "maraging_steel_300",
+        "hastelloy_x",
+        "stellite_100",
+        "titanium_carbide",
+        "titanium_tungsten_carbide",
+        "hastelloy_c_276",
+        "steel",
+        "conductive_alloy",
+        "sodium_lead_alloy",
+        "neptunium_palladium_aluminium",
+        "dark_soularium",
+        "microversium",
+        "trinaquadalloy",
+        "end_steel",
+        "lumium",
+        "darconite",
+        "electrum_flux",
+        "manyullyn",
+        "advanced_soldering_alloy",
+        "signalum",
+        "energetic_alloy",
+        "mythril",
+        "vibrant_alloy",
+        "enderium",
+        "dark_steel",
+        "electrical_steel",
+        "desh",
+        "ostrum",
+        "rocket_alloy_t1",
+        "rocket_alloy_t2",
+        "manasteel",
+        "annealed_manasteel",
+        "galvanized_ethersteel",
+        "trinium_naqide",
+        "prismatic_tungstensteel",
+        "resonant_virtue_meld",
+        "naquadric_superalloy",
+        "mar_m_200_steel",
+        "artherium_sn",
+        "hg_1223",
+        "nimonic_80_a",
+        "mar_ce_m_200",
+        "cinobite_a_241",
+        "adamantium_alloy",
+        "inconel_792",
+        "dural",
+        "berwollium",
+        "incoloy_846",
+        "melodic_alloy",
+        "tritanium",
+        "pikyonium",
+        "indalloy_140",
+        "babbitt_alloy",
+        "staballoy",
+        "damascus_steel"
+      ],
+      "containsAny": [
+        "alloy",
+        "steel",
+        "bronze",
+        "brass",
+        "invar",
+        "solder",
+        "cuprate",
+        "superalloy",
+        "cupronickel",
+        "superconductor"
+      ],
+      "kind": "composition_candidate"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "H",
+      "material": "gt:Hydrogen"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "He",
+      "material": "gt:Helium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Li",
+      "material": "gt:Lithium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Be",
+      "material": "gt:Beryllium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "B",
+      "material": "gt:Boron"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "C",
+      "material": "gt:Carbon"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "N",
+      "material": "gt:Nitrogen"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "O",
+      "material": "gt:Oxygen"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "F",
+      "material": "gt:Fluorine"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ne",
+      "material": "gt:Neon"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Na",
+      "material": "gt:Sodium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Mg",
+      "material": "gt:Magnesium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Al",
+      "material": "gt:Aluminium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Si",
+      "material": "gt:Silicon"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "P",
+      "material": "gt:Phosphorus"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "S",
+      "material": "gt:Sulfur"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Cl",
+      "material": "gt:Chlorine"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ar",
+      "material": "gt:Argon"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "K",
+      "material": "gt:Potassium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ca",
+      "material": "gt:Calcium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Sc",
+      "material": "gt:Scandium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ti",
+      "material": "gt:Titanium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "V",
+      "material": "gt:Vanadium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Cr",
+      "material": "gt:Chrome"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Mn",
+      "material": "gt:Manganese"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Fe",
+      "material": "gt:Iron"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Co",
+      "material": "gt:Cobalt"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ni",
+      "material": "gt:Nickel"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Cu",
+      "material": "gt:Copper"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Zn",
+      "material": "gt:Zinc"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ga",
+      "material": "gt:Gallium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ge",
+      "material": "gt:Germanium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "As",
+      "material": "gt:Arsenic"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Se",
+      "material": "gt:Selenium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Br",
+      "material": "gt:Bromine"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Kr",
+      "material": "gt:Krypton"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Rb",
+      "material": "gt:Rubidium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Sr",
+      "material": "gt:Strontium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Y",
+      "material": "gt:Yttrium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Zr",
+      "material": "gt:Zirconium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Nb",
+      "material": "gt:Niobium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Mo",
+      "material": "gt:Molybdenum"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Tc",
+      "material": "gt:Technetium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ru",
+      "material": "gt:Ruthenium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Rh",
+      "material": "gt:Rhodium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Pd",
+      "material": "gt:Palladium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ag",
+      "material": "gt:Silver"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Cd",
+      "material": "gt:Cadmium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "In",
+      "material": "gt:Indium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Sn",
+      "material": "gt:Tin"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Sb",
+      "material": "gt:Antimony"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Te",
+      "material": "gt:Tellurium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "I",
+      "material": "gt:Iodine"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Xe",
+      "material": "gt:Xenon"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Cs",
+      "material": "gt:Caesium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ba",
+      "material": "gt:Barium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "La",
+      "material": "gt:Lanthanum"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ce",
+      "material": "gt:Cerium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Pr",
+      "material": "gt:Praseodymium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Nd",
+      "material": "gt:Neodymium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Sm",
+      "material": "gt:Samarium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Eu",
+      "material": "gt:Europium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Gd",
+      "material": "gt:Gadolinium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Tb",
+      "material": "gt:Terbium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Dy",
+      "material": "gt:Dysprosium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ho",
+      "material": "gt:Holmium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Er",
+      "material": "gt:Erbium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Tm",
+      "material": "gt:Thulium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Yb",
+      "material": "gt:Ytterbium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Lu",
+      "material": "gt:Lutetium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Hf",
+      "material": "gt:Hafnium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ta",
+      "material": "gt:Tantalum"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "W",
+      "material": "gt:Tungsten"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Re",
+      "material": "gt:Rhenium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Os",
+      "material": "gt:Osmium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ir",
+      "material": "gt:Iridium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Pt",
+      "material": "gt:Platinum"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Au",
+      "material": "gt:Gold"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Hg",
+      "material": "gt:Mercury"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Tl",
+      "material": "gt:Thallium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Pb",
+      "material": "gt:Lead"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Bi",
+      "material": "gt:Bismuth"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Po",
+      "material": "gt:Polonium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Rn",
+      "material": "gt:Radon"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ra",
+      "material": "gt:Radium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ac",
+      "material": "gt:Actinium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Th",
+      "material": "gt:Thorium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Pa",
+      "material": "gt:Protactinium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "U",
+      "material": "gt:Uranium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Np",
+      "material": "gt:Neptunium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Pu",
+      "material": "gt:Plutonium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Am",
+      "material": "gt:Americium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "D",
+      "material": "gt:Deuterium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "T",
+      "material": "gt:Tritium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Pm",
+      "material": "gt:Promethium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "At",
+      "material": "gt:Astatine"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Fr",
+      "material": "gt:Francium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Nq",
+      "material": "gt:Naquadah"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ke",
+      "material": "gt:Trinium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Tr",
+      "material": "gt:Tritanium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Dr",
+      "material": "gt:Duranium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Nt",
+      "material": "gt:Neutronium"
+    }
+  ]
+}

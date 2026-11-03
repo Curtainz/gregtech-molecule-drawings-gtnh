@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/methylene_diphenyl_diisocyanate",
+  "type": "material",
+  "bindings": [
+    "name:methylene_diphenyl_diisocyanate"
+  ],
+  "structure": "official:tfg/methylene_diphenyl_diisocyanate_structure"
+}

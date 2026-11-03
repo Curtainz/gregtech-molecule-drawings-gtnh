@@ -19,7 +19,7 @@ public final class PackTool {
     public static int run(String[] args, PrintStream output, PrintStream error) {
         try {
             List<String> arguments = new ArrayList<>(List.of(args));
-            String version = "0.6.0-stage.2", only = null;
+            String version = "0.6.0-stage.3", only = null;
             for (String flag : List.of("--mod-version", "--id")) {
                 int index = arguments.indexOf(flag);
                 if (index >= 0) {
@@ -36,6 +36,12 @@ public final class PackTool {
                 return 0;
             }
             String command = arguments.getFirst();
+            if (command.equals("migrate") && arguments.size() == 4 && only == null) {
+                LegacyMigrator
+                    .migrate(Path.of(arguments.get(1)), Path.of(arguments.get(2)), Path.of(arguments.get(3)), version);
+                output.println("Migrated and validated new pack directory: " + arguments.get(3));
+                return 0;
+            }
             boolean write = command.equals("format") && arguments.size() == 3
                 && arguments.get(1)
                     .equals("--write");
@@ -116,6 +122,6 @@ public final class PackTool {
 
     private static void usage(PrintStream out) {
         out.println(
-            "GTMolDraw pack tool (Java25, offline, stage 2)\nvalidate <packs> [--mod-version VERSION]\nformat --check|--write <packs> [--mod-version VERSION]\npreview <packs> <output> [--id DEFINITION] [--mod-version VERSION]\nExit: 0 success, 1 formatting differs, 2 invalid input/IO. External game loading, migration and MOL import are not enabled in this stage.");
+            "GTMolDraw pack tool (Java25, offline, stage 3)\nvalidate <packs> [--mod-version VERSION]\nformat --check|--write <packs> [--mod-version VERSION]\npreview <packs> <output> [--id DEFINITION] [--mod-version VERSION]\nmigrate <legacy-assets> <legacy-bindings.json> <new-output> [--mod-version VERSION]\nExit: 0 success, 1 formatting differs, 2 invalid input/IO. External game loading/reload and MOL import are not enabled in this stage.");
     }
 }
