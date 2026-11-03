@@ -11,8 +11,6 @@ import java.util.Map;
 
 import net.minecraft.client.gui.FontRenderer;
 
-import org.lwjgl.opengl.GL11;
-
 import com.rubenverg.moldraw.component.ITooltipDrawable;
 
 public class NEITooltipHelper {
@@ -151,20 +149,6 @@ public class NEITooltipHelper {
 
     private static void renderWithGL(ITooltipDrawable drawable, FontRenderer font, int x, int y) {
         if (drawable == null || font == null) return;
-        GL11.glPushMatrix();
-        GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
-        GL11.glDisable(GL11.GL_LIGHTING);
-        GL11.glDisable(GL11.GL_DEPTH_TEST);
-        GL11.glEnable(GL11.GL_BLEND);
-        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-
-        try {
-            drawable.render(font, x, y);
-        } finally {
-            GL11.glPopAttrib();
-            GL11.glPopMatrix();
-        }
-
+        com.rubenverg.moldraw.component.TooltipDrawPass.render(drawable, font, x, y);
     }
 }

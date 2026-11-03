@@ -124,15 +124,18 @@ public class MoleculeRenderer implements ITooltipDrawable {
 
         // 阶段 2：绘制底层骨架结构（化学键、圆环、括号），严格在 OpenGL 状态守卫下绘制
         GL11.glPushAttrib(GL11.GL_ENABLE_BIT | GL11.GL_COLOR_BUFFER_BIT);
-        GL11.glDisable(GL11.GL_TEXTURE_2D);
-        GL11.glEnable(GL11.GL_BLEND);
-        OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
+        try {
+            GL11.glDisable(GL11.GL_TEXTURE_2D);
+            GL11.glEnable(GL11.GL_BLEND);
+            OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
 
-        for (final var elem : this.molecule.contents()) {
-            renderOneImage(elem, font, x, y, ts, defaultColor, null);
+            for (final var elem : this.molecule.contents()) {
+                renderOneImage(elem, font, x, y, ts, defaultColor, null);
+            }
+
+        } finally {
+            GL11.glPopAttrib();
         }
-
-        GL11.glPopAttrib();
 
         // 阶段 3：绘制顶层文字（盖在连线之上），文字背景清晰
         for (final var elem : this.molecule.contents()) {
