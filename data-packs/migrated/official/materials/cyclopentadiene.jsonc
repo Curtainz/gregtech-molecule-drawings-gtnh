@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/cyclopentadiene",
+  "type": "material",
+  "bindings": [
+    "name:cyclopentadiene"
+  ],
+  "structure": "official:gtocore/cyclopentadiene_structure"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/seaborgium_palladium_enriched_estalt_flevorium_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "seaborgium_palladium_enriched_estalt_flevorium_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

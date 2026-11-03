@@ -24,7 +24,7 @@ public final class MaterialAuditCommand extends CommandBase {
 
     @Override
     public String getCommandUsage(ICommandSender sender) {
-        return "/gtmoldraw audit";
+        return "/gtmoldraw reload | status | audit | format-info";
     }
 
     @Override
@@ -34,6 +34,36 @@ public final class MaterialAuditCommand extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
+        if (args.length == 1 && "reload".equals(args[0])) {
+            com.rubenverg.moldraw.client.ExternalPackService.request(true, true);
+            sender.addChatMessage(
+                new ChatComponentText("GTMolDraw: reload queued; previous valid snapshot remains active."));
+            return;
+        }
+        if (args.length == 1 && "status".equals(args[0])) {
+            sender.addChatMessage(
+                new ChatComponentText("GTMolDraw: " + com.rubenverg.moldraw.client.ExternalPackService.status()));
+            sender.addChatMessage(
+                new ChatComponentText("Directory: " + com.rubenverg.moldraw.client.ExternalPackService.directory()));
+            return;
+        }
+        if (args.length == 1 && "format-info".equals(args[0])) {
+            sender.addChatMessage(
+                new ChatComponentText(
+                    "GTMolDraw " + MolDraw.VERSION
+                        + "; JSONC schema "
+                        + com.rubenverg.moldraw.core.DataPackContract.SCHEMA_VERSION
+                        + "; stage "
+                        + com.rubenverg.moldraw.core.DataPackContract.IMPLEMENTATION_STAGE));
+            sender.addChatMessage(
+                new ChatComponentText(
+                    "Pack directory: " + com.rubenverg.moldraw.client.ExternalPackService.directory()));
+            sender.addChatMessage(
+                new ChatComponentText(
+                    "Stage 4: external loading enabled. /gtmoldraw reload validates a candidate before atomic publication; no bundled fallback."));
+            sender.addChatMessage(new ChatComponentText(com.rubenverg.moldraw.client.ExternalPackService.status()));
+            return;
+        }
         if (args.length != 1 || !"audit".equals(args[0])) {
             sender.addChatMessage(new ChatComponentText(getCommandUsage(sender)));
             return;
@@ -42,23 +72,30 @@ public final class MaterialAuditCommand extends CommandBase {
             List<Materials> materials = new ArrayList<>(Materials.getAll());
             materials.sort(Comparator.comparing(material -> material.mName));
             List<String> rows = new ArrayList<>();
-            rows.add("id,name,formula,formulaStatus,molecule,composition,display");
+            rows.add(
+                "id,name,formula,formulaStatus,molecule,composition,display,structureState,compositionState,source,quantityShares,massShares,diagnostics");
             for (Materials material : materials) {
                 if (!GT5MaterialLookup.isMaterialValid(material)) continue;
-                String formula = material.getChemicalFormula();
+                var entry = MaterialRegistry.entry(material);
+                var definition = entry.definition();
+                var quantity = MaterialRegistry
+                    .composition(definition.id(), false, MolDrawConfig.INSTANCE.alloy.recursive);
+                var mass = MaterialRegistry.composition(definition.id(), true, MolDrawConfig.INSTANCE.alloy.recursive);
+                String formula = definition.formula();
                 String status;
                 try {
-                    com.rubenverg.moldraw.core.ChemicalFormula.parse(formula);
+                    com.rubenverg.moldraw.core.ChemicalFormula.parseExact(formula);
                     status = "parsed";
                 } catch (IllegalArgumentException | ArithmeticException invalid) {
                     status = "unsupported_or_unknown";
                 }
-                boolean molecule = MoleculeManager.getMolecule(material) != null;
-                boolean composition = AlloyManager.isAlloy(material)
-                    && com.rubenverg.moldraw.component.AlloyRenderer.hasValidComponents(material);
+                var display = MaterialTargetResolver
+                    .resolveFromMaterial(material, Minecraft.getMinecraft().fontRenderer);
+                boolean molecule = display.isValid() && display.getType() == DisplayPlan.Type.MOLECULE;
+                boolean composition = display.isValid() && display.getType() == DisplayPlan.Type.ALLOY;
                 rows.add(
-                    csv("gt:" + material.mName) + ","
-                        + csv(material.mDefaultLocalName)
+                    csv(definition.id()) + ","
+                        + csv(definition.name())
                         + ","
                         + csv(formula)
                         + ","
@@ -68,7 +105,37 @@ public final class MaterialAuditCommand extends CommandBase {
                         + ","
                         + composition
                         + ","
-                        + (molecule ? "molecule" : composition ? "composition" : "text"));
+                        + (molecule ? "molecule" : composition ? "composition" : "text")
+                        + ","
+                        + csv(
+                            entry.molecule()
+                                .state()
+                                .name())
+                        + ","
+                        + csv(
+                            definition.state()
+                                .name())
+                        + ","
+                        + csv(
+                            definition.source() + ";"
+                                + entry.molecule()
+                                    .source())
+                        + ","
+                        + csv(shares(quantity))
+                        + ","
+                        + csv(shares(mass))
+                        + ","
+                        + csv(
+                            String.join(
+                                ";",
+                                entry.molecule()
+                                    .diagnostics())
+                                + ";"
+                                + String.join(";", quantity.diagnostics())
+                                + ";"
+                                + String.join(";", mass.diagnostics())
+                                + ";"
+                                + String.join(";", RendererCache.diagnostics(definition.id()))));
             }
             Path directory = Minecraft.getMinecraft().mcDataDir.toPath()
                 .resolve("gtmoldraw-audit");
@@ -80,6 +147,20 @@ public final class MaterialAuditCommand extends CommandBase {
             MolDraw.LOGGER.error("Material export failed", failure);
             sender.addChatMessage(new ChatComponentText("MolDraw export failed; see client log."));
         }
+    }
+
+    private static String shares(com.rubenverg.moldraw.core.CompositionResolver.Result result) {
+        return result.shares()
+            .entrySet()
+            .stream()
+            .map(
+                e -> e.getKey() + "="
+                    + e.getValue()
+                        .numerator()
+                    + "/"
+                    + e.getValue()
+                        .denominator())
+            .collect(java.util.stream.Collectors.joining(";"));
     }
 
     private static String csv(String value) {

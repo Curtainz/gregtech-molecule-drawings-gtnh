@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/nickel_zinc_ferrite_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "nickel_zinc_ferrite"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

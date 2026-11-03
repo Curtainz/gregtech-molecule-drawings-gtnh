@@ -1,0 +1,36 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "schemaVersion": 1,
+  "id": "official:compatibility",
+  "type": "bindings",
+  "rules": [
+    {
+      "kind": "alias",
+      "from": "ice",
+      "to": "official:water_structure"
+    },
+    {
+      "kind": "strip_prefix",
+      "prefixes": [
+        "molten_",
+        "liquid_"
+      ],
+      "target": "structure"
+    },
+    {
+      "materials": [
+        "gt:Bronze"
+      ],
+      "containsAny": [
+        "alloy",
+        "steel"
+      ],
+      "kind": "composition_candidate"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "D",
+      "material": "gt:Deuterium"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/melodic_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "melodic_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

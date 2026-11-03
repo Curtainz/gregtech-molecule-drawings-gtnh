@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/nitric_oxide",
+  "type": "material",
+  "bindings": [
+    "name:nitric_oxide"
+  ],
+  "structure": "official:gtceu/nitric_oxide_structure"
+}

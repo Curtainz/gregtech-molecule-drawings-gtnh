@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/silicon_dioxide",
+  "type": "material",
+  "bindings": [
+    "name:silicon_dioxide"
+  ],
+  "structure": "official:gtceu/silicon_dioxide_structure"
+}

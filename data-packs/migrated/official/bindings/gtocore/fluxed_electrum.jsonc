@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/fluxed_electrum_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "fluxed_electrum"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

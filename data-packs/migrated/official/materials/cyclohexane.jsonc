@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/cyclohexane",
+  "type": "material",
+  "bindings": [
+    "name:cyclohexane"
+  ],
+  "structure": "official:gtceu/cyclohexane_structure"
+}

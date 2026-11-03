@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/quantum_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "quantum_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

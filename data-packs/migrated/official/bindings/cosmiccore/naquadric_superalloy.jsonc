@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:cosmiccore/naquadric_superalloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "naquadric_superalloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

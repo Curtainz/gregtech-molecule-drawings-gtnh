@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tetranitromethane",
+  "type": "material",
+  "bindings": [
+    "name:tetranitromethane"
+  ],
+  "structure": "official:gtceu/tetranitromethane_structure"
+}

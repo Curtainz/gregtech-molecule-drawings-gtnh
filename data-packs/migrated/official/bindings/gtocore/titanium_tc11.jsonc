@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/titanium_tc11_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "titanium_tc11"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

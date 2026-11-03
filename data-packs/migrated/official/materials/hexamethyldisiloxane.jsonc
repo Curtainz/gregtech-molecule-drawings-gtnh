@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/hexamethyldisiloxane",
+  "type": "material",
+  "bindings": [
+    "name:hexamethyldisiloxane"
+  ],
+  "structure": "official:gtocore/hexamethyldisiloxane_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/sulfur_dioxide",
+  "type": "material",
+  "bindings": [
+    "name:sulfur_dioxide"
+  ],
+  "structure": "official:gtceu/sulfur_dioxide_structure"
+}

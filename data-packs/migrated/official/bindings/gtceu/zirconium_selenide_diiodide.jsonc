@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/zirconium_selenide_diiodide_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "zirconium_selenide_diiodide"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

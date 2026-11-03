@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/diethyl_ether",
+  "type": "material",
+  "bindings": [
+    "name:diethyl_ether"
+  ],
+  "structure": "official:gtocore/diethyl_ether_structure"
+}

@@ -1,19 +1,17 @@
 package com.rubenverg.moldraw;
 
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.rubenverg.moldraw.core.DefinitionResult;
+import com.rubenverg.moldraw.core.MaterialDefinition.State;
 import com.rubenverg.moldraw.molecule.*;
 
 import gregtech.api.enums.Materials;
 
 public final class MoleculeManager {
-
-    private static final Map<Materials, Molecule> MOLECULE_CACHE = new HashMap<>();
 
     public static final Gson GSON = new GsonBuilder().registerTypeAdapter(Molecule.class, Molecule.Json.INSTANCE)
         .registerTypeAdapter(Element.class, Element.Json.INSTANCE)
@@ -31,7 +29,6 @@ public final class MoleculeManager {
         "gtmoldraw" };
 
     private static final Map<String, String> ALIASES = new HashMap<>();
-    private static final Map<String, String> FORMULA_MAP = new HashMap<>();
 
     private static final String[] PREFIXES_TO_STRIP = new String[] { "raw_", "impure_", "purified_", "centrifuged_",
         "liquid_", "gas_", "solid_", "molten_", "crushed_", "packed_" };
@@ -102,70 +99,19 @@ public final class MoleculeManager {
         ALIASES.put("nitric_oxide", "nitric_oxide");
         ALIASES.put("nitrogen_dioxide", "nitrogen_dioxide");
 
-        // 化学式反查分子结构
-        FORMULA_MAP.put("aloh3", "aluminium_hydroxide");
-        FORMULA_MAP.put("alo3h3", "aluminium_hydroxide");
-        FORMULA_MAP.put("naoh", "sodium_hydroxide");
-        FORMULA_MAP.put("koh", "potassium_hydroxide");
-        FORMULA_MAP.put("h2so4", "sulfuric_acid");
-        FORMULA_MAP.put("hno3", "nitric_acid");
-        FORMULA_MAP.put("h3po4", "phosphoric_acid");
-        FORMULA_MAP.put("h2o", "water");
-        FORMULA_MAP.put("ch4", "methane");
-        FORMULA_MAP.put("co2", "carbon_dioxide");
-        FORMULA_MAP.put("co", "carbon_monoxide");
-        FORMULA_MAP.put("nh3", "ammonia");
-        FORMULA_MAP.put("o2", "oxygen");
-        FORMULA_MAP.put("n2", "nitrogen");
-        FORMULA_MAP.put("h2", "hydrogen");
-        FORMULA_MAP.put("cl2", "chlorine");
-        FORMULA_MAP.put("f2", "fluorine");
-        FORMULA_MAP.put("h2s", "hydrogen_sulfide");
-        FORMULA_MAP.put("so2", "sulfur_dioxide");
-        FORMULA_MAP.put("so3", "sulfur_trioxide");
-        FORMULA_MAP.put("hcl", "hydrogen_chloride");
-        FORMULA_MAP.put("hf", "hydrogen_fluoride");
-        FORMULA_MAP.put("no", "nitric_oxide");
-        FORMULA_MAP.put("no2", "nitrogen_dioxide");
-        FORMULA_MAP.put("al2o3", "aluminiumoxide");
-        FORMULA_MAP.put("na3alf6", "cryolite");
-        FORMULA_MAP.put("sio2", "silicon_dioxide");
-        FORMULA_MAP.put("c2h6osi", "polydimethylsiloxane");
-        FORMULA_MAP.put("c20n4h12", "polybenzimidazole");
-        FORMULA_MAP.put("c8h8c4h63", "styrene_butadiene_rubber");
-        FORMULA_MAP.put("c2h4", "ethylene");
-        FORMULA_MAP.put("c2h6", "ethane");
-        FORMULA_MAP.put("c3h8", "propane");
-        FORMULA_MAP.put("c4h10", "butane");
-        FORMULA_MAP.put("c6h6", "benzene");
-        FORMULA_MAP.put("c7h8", "toluene");
-        FORMULA_MAP.put("c3h6o", "acetone");
-        FORMULA_MAP.put("c2h4o2", "acetic_acid");
-        FORMULA_MAP.put("c2h4o", "ethylene_oxide");
-        FORMULA_MAP.put("c2h6o", "ethanol");
-        FORMULA_MAP.put("c2h5oh", "ethanol");
-        FORMULA_MAP.put("ch4o", "methanol");
-        FORMULA_MAP.put("ch3oh", "methanol");
-        FORMULA_MAP.put("c6h6o", "phenol");
-        FORMULA_MAP.put("c6h7n", "aniline");
-        FORMULA_MAP.put("c4h6", "butadiene");
-        FORMULA_MAP.put("c5h8", "isoprene");
-        FORMULA_MAP.put("c2h4cl2", "dichloroethane");
-        FORMULA_MAP.put("c2h3cl", "vinyl_chloride");
-        FORMULA_MAP.put("c2f4", "tetrafluoroethylene");
-        FORMULA_MAP.put("sih4", "silane");
-        FORMULA_MAP.put("si2h6", "disilane");
-        FORMULA_MAP.put("sicl4", "silicon_tetrachloride");
-        FORMULA_MAP.put("sif4", "silicon_tetrafluoride");
-        FORMULA_MAP.put("sihcl3", "trichlorosilane");
+        // Structures are bound by material identity/name only.
     }
 
-    public static Molecule getMolecule(Materials material) {
-        if (material == null || material == Materials._NULL) return null;
-        if (MOLECULE_CACHE.containsKey(material)) {
-            return MOLECULE_CACHE.get(material);
-        }
+    private static DefinitionResult<Molecule> lastFailure;
+    private static final Map<Molecule, String> SOURCES = new WeakHashMap<>();
 
+    public static Molecule getMolecule(Materials material) {
+        return definition(material).value();
+    }
+
+    public static DefinitionResult<Molecule> definition(Materials material) {
+        if (material == null || material == Materials._NULL) return DefinitionResult.absent();
+        lastFailure = null;
         // 尝试从枚举名称与 mName 提取多种候选名称
         List<String> candidates = new ArrayList<>();
 
@@ -188,78 +134,110 @@ public final class MoleculeManager {
 
             // 1. 直接匹配
             loaded = loadMoleculeFromJson(name);
-            if (loaded != null) break;
+            if (loaded != null || lastFailure != null) break;
 
             // 2. 剥离常见前缀后匹配
             for (String prefix : PREFIXES_TO_STRIP) {
                 if (name.startsWith(prefix)) {
                     String stripped = name.substring(prefix.length());
                     loaded = loadMoleculeFromJson(stripped);
-                    if (loaded != null) break;
+                    if (loaded != null || lastFailure != null) break;
                 }
             }
-            if (loaded != null) break;
+            if (loaded != null || lastFailure != null) break;
 
             // 3. 去除下划线后匹配
             if (name.contains("_")) {
                 loaded = loadMoleculeFromJson(name.replace("_", ""));
-                if (loaded != null) break;
+                if (loaded != null || lastFailure != null) break;
             }
         }
 
-        MOLECULE_CACHE.put(material, loaded);
-        return loaded;
+        return loaded != null
+            ? new DefinitionResult<>(State.PRESENT, loaded, SOURCES.getOrDefault(loaded, ""), List.of())
+            : lastFailure != null ? lastFailure : DefinitionResult.absent();
     }
 
     private static String toSnakeCase(String str) {
         return MaterialNames.normalize(str);
     }
 
-    private static final Map<String, Optional<Molecule>> RESOURCE_CACHE = new HashMap<>();
+    private static final Map<String, DefinitionResult<Molecule>> RESOURCE_CACHE = new LinkedHashMap<>() {
+
+        protected boolean removeEldestEntry(Map.Entry<String, DefinitionResult<Molecule>> entry) {
+            return size() > 4096;
+        }
+    };
 
     private static Molecule loadMoleculeFromJson(String name) {
-        return RESOURCE_CACHE.computeIfAbsent(name, key -> Optional.ofNullable(readMolecule(key)))
-            .orElse(null);
+        DefinitionResult<Molecule> result = RESOURCE_CACHE.computeIfAbsent(name, MoleculeManager::readMolecule);
+        if (result.state() == State.INVALID || result.state() == State.DISABLED) lastFailure = result;
+        return result.value();
     }
 
-    private static Molecule readMolecule(String name) {
+    private static DefinitionResult<Molecule> readMolecule(String name) {
         for (String ns : NAMESPACES) {
             String path = "/assets/" + ns + "/molecules/" + name + ".json";
             try (InputStream is = ResourceData.open(ns, "molecules/" + name + ".json")) {
                 if (is != null) {
-                    return GSON.fromJson(new InputStreamReader(is, StandardCharsets.UTF_8), Molecule.class);
+                    var json = com.rubenverg.moldraw.core.ResourceJson.read(is);
+                    if (json.isJsonObject() && json.getAsJsonObject()
+                        .has("disabled")
+                        && json.getAsJsonObject()
+                            .get("disabled")
+                            .getAsBoolean())
+                        return new DefinitionResult<>(
+                            State.DISABLED,
+                            null,
+                            ns + ":" + name,
+                            List.of("DISABLED_STRUCTURE:" + ns + ":" + name));
+                    Molecule model = GSON.fromJson(json, Molecule.class);
+                    MoleculeSnapshots.freeze(model);
+                    SOURCES.put(model, ns + ":" + name);
+                    return new DefinitionResult<>(State.PRESENT, model, ns + ":" + name, List.of());
                 }
+            } catch (java.io.FileNotFoundException missing) {
+                // Try next namespace.
             } catch (Exception e) {
                 if (MolDrawConfig.INSTANCE.debugMode) {
                     MolDraw.LOGGER.warn("Failed to load molecule " + path, e);
                 }
+                return new DefinitionResult<>(
+                    State.INVALID,
+                    null,
+                    ns + ":" + name,
+                    List.of("INVALID_STRUCTURE:" + path + ":" + e.getMessage()));
             }
         }
-        return null;
+        return DefinitionResult.absent();
     }
 
-    public static Molecule getMoleculeByFormula(String formula) {
-        // A formula does not identify an isomer. Name/explicit resource bindings only.
-        return null;
+    public static DefinitionResult<Molecule> namedDefinition(String name) {
+        lastFailure = null;
+        Molecule model = getMoleculeByName(name);
+        return model != null ? new DefinitionResult<>(State.PRESENT, model, SOURCES.getOrDefault(model, ""), List.of())
+            : lastFailure != null ? lastFailure : DefinitionResult.absent();
     }
 
-    public static Molecule getMoleculeByName(String rawName) {
+    private static Molecule getMoleculeByName(String rawName) {
         if (rawName == null || rawName.isEmpty()) return null;
         String name = ALIASES.getOrDefault(toSnakeCase(rawName), toSnakeCase(rawName));
         Molecule loaded = loadMoleculeFromJson(name);
-        if (loaded != null) return loaded;
+        if (loaded != null || lastFailure != null) return loaded;
         for (String prefix : PREFIXES_TO_STRIP) {
             if (name.startsWith(prefix)) {
                 String stripped = name.substring(prefix.length());
                 loaded = loadMoleculeFromJson(stripped);
-                if (loaded != null) return loaded;
+                if (loaded != null || lastFailure != null) return loaded;
             }
         }
         return null;
     }
 
     public static void clearCache() {
-        MOLECULE_CACHE.clear();
+
         RESOURCE_CACHE.clear();
+        SOURCES.clear();
+        lastFailure = null;
     }
 }

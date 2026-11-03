@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tetracene_dust",
+  "type": "material",
+  "bindings": [
+    "name:tetracene_dust"
+  ],
+  "structure": "official:gtocore/tetracene_dust_structure"
+}

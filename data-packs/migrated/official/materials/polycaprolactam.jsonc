@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polycaprolactam",
+  "type": "material",
+  "bindings": [
+    "name:polycaprolactam"
+  ],
+  "structure": "official:gtceu/polycaprolactam_structure"
+}

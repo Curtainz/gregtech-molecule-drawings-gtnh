@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethylanthraquinone",
+  "type": "material",
+  "bindings": [
+    "name:ethylanthraquinone"
+  ],
+  "structure": "official:gtceu/ethylanthraquinone_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/trifluoromethanesulfonyl_chloride",
+  "type": "material",
+  "bindings": [
+    "name:trifluoromethanesulfonyl_chloride"
+  ],
+  "structure": "official:gtocore/trifluoromethanesulfonyl_chloride_structure"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/fall_king_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "fall_king"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

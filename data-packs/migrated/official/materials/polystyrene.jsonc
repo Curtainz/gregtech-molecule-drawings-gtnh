@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polystyrene",
+  "type": "material",
+  "bindings": [
+    "name:polystyrene"
+  ],
+  "structure": "official:gtocore/polystyrene_structure"
+}

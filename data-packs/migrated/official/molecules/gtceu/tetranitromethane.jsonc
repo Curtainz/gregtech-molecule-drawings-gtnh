@@ -1,0 +1,223 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a1",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        1,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a2",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        1.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a3",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        1.8660254,
+        -0.5
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a4",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        -1,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a5",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -1.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a6",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -1.8660254,
+        -0.5
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a7",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        1
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a8",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0.5,
+        1.8660254
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a9",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -0.5,
+        1.8660254
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a10",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        -1
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a11",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0.5,
+        -1.8660254
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a12",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -0.5,
+        -1.8660254
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a10",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a10",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a12"
+    }
+  ],
+  "id": "official:gtceu/tetranitromethane_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

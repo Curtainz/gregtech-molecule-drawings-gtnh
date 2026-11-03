@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/high_temperature_shape_memory_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "high_temperature_shape_memory_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

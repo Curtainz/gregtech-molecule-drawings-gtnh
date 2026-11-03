@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/titan_precision_steel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "titan_precision_steel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

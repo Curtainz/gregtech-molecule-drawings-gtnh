@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/durene_dust",
+  "type": "material",
+  "bindings": [
+    "name:durene_dust"
+  ],
+  "structure": "official:gtocore/durene_dust_structure"
+}

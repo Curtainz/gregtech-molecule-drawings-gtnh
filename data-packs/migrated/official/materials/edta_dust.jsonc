@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/edta_dust",
+  "type": "material",
+  "bindings": [
+    "name:edta_dust"
+  ],
+  "structure": "official:gtocore/edta_dust_structure"
+}

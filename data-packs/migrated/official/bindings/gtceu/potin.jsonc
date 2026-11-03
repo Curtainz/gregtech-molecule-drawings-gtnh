@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/potin_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "potin"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

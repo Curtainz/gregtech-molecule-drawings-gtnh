@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/incoloy_020_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "incoloy_020"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/stellite_79_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "stellite_79"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

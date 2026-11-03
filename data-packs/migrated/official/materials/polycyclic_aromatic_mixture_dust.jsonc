@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polycyclic_aromatic_mixture_dust",
+  "type": "material",
+  "bindings": [
+    "name:polycyclic_aromatic_mixture_dust"
+  ],
+  "structure": "official:gtocore/polycyclic_aromatic_mixture_dust_structure"
+}

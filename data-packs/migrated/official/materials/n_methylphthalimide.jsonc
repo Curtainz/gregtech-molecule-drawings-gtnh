@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/n_methylphthalimide",
+  "type": "material",
+  "bindings": [
+    "name:n_methylphthalimide"
+  ],
+  "structure": "official:gtocore/n_methylphthalimide_structure"
+}

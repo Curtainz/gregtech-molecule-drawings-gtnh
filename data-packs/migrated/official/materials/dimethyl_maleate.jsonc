@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dimethyl_maleate",
+  "type": "material",
+  "bindings": [
+    "name:dimethyl_maleate"
+  ],
+  "structure": "official:gtceu/dimethyl_maleate_structure"
+}

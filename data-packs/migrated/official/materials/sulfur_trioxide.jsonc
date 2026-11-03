@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/sulfur_trioxide",
+  "type": "material",
+  "bindings": [
+    "name:sulfur_trioxide"
+  ],
+  "structure": "official:gtceu/sulfur_trioxide_structure"
+}

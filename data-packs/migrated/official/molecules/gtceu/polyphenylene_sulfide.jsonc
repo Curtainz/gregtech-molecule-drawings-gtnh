@@ -1,0 +1,174 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        1.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "labelMode": "hidden",
+      "position": [
+        1.7320509,
+        5.9604645E-8
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "labelMode": "hidden",
+      "position": [
+        2.5980763,
+        0.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        1.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "labelMode": "hidden",
+      "position": [
+        1.7320505,
+        2
+      ]
+    },
+    {
+      "element": "S",
+      "id": "a7",
+      "label": "S",
+      "labelMode": "symbol",
+      "position": [
+        3.4641016,
+        2
+      ]
+    },
+    {
+      "element": null,
+      "id": "a8",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        4.3301272,
+        2.5
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "atoms": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7"
+      ],
+      "sub": "n",
+      "type": "bracket"
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a8"
+    }
+  ],
+  "id": "official:gtceu/polyphenylene_sulfide_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

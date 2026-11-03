@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ammonium_oxalate",
+  "type": "material",
+  "bindings": [
+    "name:ammonium_oxalate"
+  ],
+  "structure": "official:gtceu/ammonium_oxalate_structure"
+}

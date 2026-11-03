@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/platinum_manganese_antimony_heusler_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "platinum_manganese_antimony_heusler_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "schemaVersion": 1,
+  "id": "official:naphthalene",
+  "type": "material",
+  "bindings": [
+    "gt:Naphthalene",
+    "name:naphthalene"
+  ],
+  "formula": "C10H8",
+  "structure": "official:naphthalene_structure",
+  "display": {
+    "mode": "auto"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/gammabutyrolactone",
+  "type": "material",
+  "bindings": [
+    "name:gammabutyrolactone"
+  ],
+  "structure": "official:gtocore/gammabutyrolactone_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/hydrogen_chloride",
+  "type": "material",
+  "bindings": [
+    "name:hydrogen_chloride"
+  ],
+  "structure": "official:gtceu/hydrogen_chloride_structure"
+}

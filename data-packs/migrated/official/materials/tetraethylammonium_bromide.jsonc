@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tetraethylammonium_bromide",
+  "type": "material",
+  "bindings": [
+    "name:tetraethylammonium_bromide"
+  ],
+  "structure": "official:gtocore/tetraethylammonium_bromide_structure"
+}

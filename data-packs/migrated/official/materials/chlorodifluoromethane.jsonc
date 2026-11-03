@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/chlorodifluoromethane",
+  "type": "material",
+  "bindings": [
+    "name:chlorodifluoromethane"
+  ],
+  "structure": "official:tfg/chlorodifluoromethane_structure"
+}

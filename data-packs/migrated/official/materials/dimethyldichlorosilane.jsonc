@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dimethyldichlorosilane",
+  "type": "material",
+  "bindings": [
+    "name:dimethyldichlorosilane"
+  ],
+  "structure": "official:gtceu/dimethyldichlorosilane_structure"
+}

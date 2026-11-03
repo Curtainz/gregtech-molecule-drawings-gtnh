@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/rhenate_w_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "rhenate_w"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/redstone_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "redstone_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

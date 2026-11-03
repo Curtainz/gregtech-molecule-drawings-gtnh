@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/succinic_anhydride_dust",
+  "type": "material",
+  "bindings": [
+    "name:succinic_anhydride_dust"
+  ],
+  "structure": "official:gtocore/succinic_anhydride_dust_structure"
+}

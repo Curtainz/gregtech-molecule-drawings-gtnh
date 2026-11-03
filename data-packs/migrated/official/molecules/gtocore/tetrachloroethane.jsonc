@@ -1,0 +1,104 @@
+{
+  "atoms": [
+    {
+      "element": "Cl",
+      "id": "a0",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        -1.5,
+        1.299038
+      ]
+    },
+    {
+      "element": "Cl",
+      "id": "a1",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        -1.5,
+        -1.299038
+      ]
+    },
+    {
+      "element": "Cl",
+      "id": "a2",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        1.5,
+        -1.299038
+      ]
+    },
+    {
+      "element": "Cl",
+      "id": "a3",
+      "label": "Cl",
+      "labelMode": "symbol",
+      "position": [
+        1.5,
+        1.299038
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -0.75,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.75,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    }
+  ],
+  "id": "official:gtocore/tetrachloroethane_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

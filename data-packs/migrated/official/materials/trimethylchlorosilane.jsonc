@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/trimethylchlorosilane",
+  "type": "material",
+  "bindings": [
+    "name:trimethylchlorosilane"
+  ],
+  "structure": "official:gtocore/trimethylchlorosilane_structure"
+}

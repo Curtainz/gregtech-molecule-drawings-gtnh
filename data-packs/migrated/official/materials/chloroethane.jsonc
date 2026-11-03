@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/chloroethane",
+  "type": "material",
+  "bindings": [
+    "name:chloroethane"
+  ],
+  "structure": "official:gtceu/chloroethane_structure"
+}

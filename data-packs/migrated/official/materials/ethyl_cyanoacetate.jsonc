@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethyl_cyanoacetate",
+  "type": "material",
+  "bindings": [
+    "name:ethyl_cyanoacetate"
+  ],
+  "structure": "official:gtceu/ethyl_cyanoacetate_structure"
+}

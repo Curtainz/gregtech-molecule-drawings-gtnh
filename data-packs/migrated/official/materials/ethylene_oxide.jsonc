@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethylene_oxide",
+  "type": "material",
+  "bindings": [
+    "name:ethylene_oxide"
+  ],
+  "structure": "official:gtceu/ethylene_oxide_structure"
+}

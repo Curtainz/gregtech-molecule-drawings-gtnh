@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/isochloropropane",
+  "type": "material",
+  "bindings": [
+    "name:isochloropropane"
+  ],
+  "structure": "official:gtocore/isochloropropane_structure"
+}

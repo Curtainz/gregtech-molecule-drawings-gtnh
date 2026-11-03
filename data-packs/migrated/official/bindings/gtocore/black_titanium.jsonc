@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/black_titanium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "black_titanium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

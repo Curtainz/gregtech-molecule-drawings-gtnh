@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethyl_acrylate",
+  "type": "material",
+  "bindings": [
+    "name:ethyl_acrylate"
+  ],
+  "structure": "official:gtocore/ethyl_acrylate_structure"
+}

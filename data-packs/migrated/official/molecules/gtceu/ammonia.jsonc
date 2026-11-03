@@ -1,0 +1,70 @@
+{
+  "atoms": [
+    {
+      "element": "N",
+      "id": "a0",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a1",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        -0.9,
+        -0.5
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a2",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        -0.8
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a3",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        0.9,
+        -0.5
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "inward"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    }
+  ],
+  "id": "official:gtceu/ammonia_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

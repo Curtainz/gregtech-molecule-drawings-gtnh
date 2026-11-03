@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/aniline",
+  "type": "material",
+  "bindings": [
+    "name:aniline"
+  ],
+  "structure": "official:gtceu/aniline_structure"
+}

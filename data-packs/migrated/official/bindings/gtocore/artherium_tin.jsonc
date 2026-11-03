@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/artherium_tin_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "artherium_tin"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/nylon_6_6",
+  "type": "material",
+  "bindings": [
+    "name:nylon_6_6"
+  ],
+  "structure": "official:gtceu/nylon_6_6_structure"
+}

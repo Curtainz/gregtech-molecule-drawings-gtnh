@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/nitrochlorobenzene",
+  "type": "material",
+  "bindings": [
+    "name:nitrochlorobenzene"
+  ],
+  "structure": "official:gtceu/nitrochlorobenzene_structure"
+}

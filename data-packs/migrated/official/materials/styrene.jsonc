@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/styrene",
+  "type": "material",
+  "bindings": [
+    "name:styrene"
+  ],
+  "structure": "official:gtceu/styrene_structure"
+}

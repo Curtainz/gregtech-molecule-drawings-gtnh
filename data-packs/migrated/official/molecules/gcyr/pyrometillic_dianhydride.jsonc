@@ -1,0 +1,300 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "labelMode": "hidden",
+      "position": [
+        -0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "labelMode": "hidden",
+      "position": [
+        -0.8660254,
+        -0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "labelMode": "hidden",
+      "position": [
+        5.9604645E-8,
+        -0.99999994
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        -0.49999982
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "labelMode": "hidden",
+      "position": [
+        0.8660252,
+        0.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "labelMode": "hidden",
+      "position": [
+        -3.5762787E-7,
+        0.99999994
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.8160254,
+        0.809017
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.8160254,
+        -0.809017
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a8",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        2.4048672,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a9",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        2.1250424,
+        1.7600735
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a10",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        2.1250424,
+        -1.7600735
+      ]
+    },
+    {
+      "element": null,
+      "id": "a11",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.8160254,
+        0.809017
+      ]
+    },
+    {
+      "element": null,
+      "id": "a12",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.8160254,
+        -0.809017
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a13",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -2.4048672,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a14",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -2.1250424,
+        1.7600735
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a15",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -2.1250424,
+        -1.7600735
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a0"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "centered": true,
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "centered": true,
+      "from": "a7",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a11",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a13"
+    },
+    {
+      "from": "a13",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a12",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "centered": true,
+      "from": "a11",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a14"
+    },
+    {
+      "centered": true,
+      "from": "a12",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a15"
+    }
+  ],
+  "id": "official:gcyr/pyrometillic_dianhydride_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

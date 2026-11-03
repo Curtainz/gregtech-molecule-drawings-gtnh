@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/nitroaniline",
+  "type": "material",
+  "bindings": [
+    "name:nitroaniline"
+  ],
+  "structure": "official:gcyr/nitroaniline_structure"
+}

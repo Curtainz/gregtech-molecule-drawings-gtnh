@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/propadiene",
+  "type": "material",
+  "bindings": [
+    "name:propadiene"
+  ],
+  "structure": "official:gtca/propadiene_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dichlorocyclooctadieneplatinium_dust",
+  "type": "material",
+  "bindings": [
+    "name:dichlorocyclooctadieneplatinium_dust"
+  ],
+  "structure": "official:gtocore/dichlorocyclooctadieneplatinium_dust_structure"
+}

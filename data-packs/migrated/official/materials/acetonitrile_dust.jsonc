@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/acetonitrile_dust",
+  "type": "material",
+  "bindings": [
+    "name:acetonitrile_dust"
+  ],
+  "structure": "official:gtocore/acetonitrile_dust_structure"
+}

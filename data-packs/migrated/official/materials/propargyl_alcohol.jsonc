@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/propargyl_alcohol",
+  "type": "material",
+  "bindings": [
+    "name:propargyl_alcohol"
+  ],
+  "structure": "official:gtocore/propargyl_alcohol_structure"
+}

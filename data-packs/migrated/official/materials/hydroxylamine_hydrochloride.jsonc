@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/hydroxylamine_hydrochloride",
+  "type": "material",
+  "bindings": [
+    "name:hydroxylamine_hydrochloride"
+  ],
+  "structure": "official:gtocore/hydroxylamine_hydrochloride_structure"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/lanthanum_gold_cadmium_curium_sulfate_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "lanthanum_gold_cadmium_curium_sulfate"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

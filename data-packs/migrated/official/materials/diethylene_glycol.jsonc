@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/diethylene_glycol",
+  "type": "material",
+  "bindings": [
+    "name:diethylene_glycol"
+  ],
+  "structure": "official:gtceu/diethylene_glycol_structure"
+}

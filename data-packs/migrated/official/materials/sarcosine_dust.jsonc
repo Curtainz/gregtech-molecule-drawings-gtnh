@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/sarcosine_dust",
+  "type": "material",
+  "bindings": [
+    "name:sarcosine_dust"
+  ],
+  "structure": "official:gtocore/sarcosine_dust_structure"
+}

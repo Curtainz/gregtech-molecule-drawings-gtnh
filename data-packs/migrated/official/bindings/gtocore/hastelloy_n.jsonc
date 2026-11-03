@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/hastelloy_n_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "hastelloy_n"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

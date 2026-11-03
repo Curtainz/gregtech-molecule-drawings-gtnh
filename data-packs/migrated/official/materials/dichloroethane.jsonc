@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dichloroethane",
+  "type": "material",
+  "bindings": [
+    "name:dichloroethane"
+  ],
+  "structure": "official:gtceu/dichloroethane_structure"
+}

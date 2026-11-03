@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/platinum_rhodium_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "platinum_rhodium_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -51,6 +51,7 @@ public class GraphicalUtils {
     }
 
     public static void fill(int minX, int minY, int maxX, int maxY, int color) {
+        if (!com.rubenverg.moldraw.MolDraw.isClientThread()) return;
         Gui.drawRect(minX, minY, maxX, maxY, color);
     }
 
@@ -59,91 +60,53 @@ public class GraphicalUtils {
     }
 
     public static void plotLine(int x0, int y0, int x1, int y1, PixelPredicate shouldDraw, DrawPixel doDraw) {
-        final int dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0);
-        final int sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
-        int error = dx + dy;
-        int count = 0;
-        while (true) {
-            if (shouldDraw.test(x0, y0, count++)) doDraw.draw(x0, y0);
-            final int e2 = 2 * error;
-            if (e2 >= dy) {
-                if (x0 == x1) break;
-                error += dy;
-                x0 += sx;
-            }
-            if (e2 <= dx) {
-                if (y0 == y1) break;
-                error += dx;
-                y0 += sy;
-            }
-        }
+        com.rubenverg.moldraw.core.PixelRaster.plotLine(x0, y0, x1, y1, shouldDraw::test, doDraw::draw);
     }
 
     public static void plotLine(int x0, int y0, int x1, int y1, PixelPredicate shouldDraw, IntBinaryOperator color) {
-        GL11.glPushAttrib(GL11.GL_ENABLE_BIT | GL11.GL_COLOR_BUFFER_BIT);
-        GL11.glDisable(GL11.GL_TEXTURE_2D);
-        GL11.glEnable(GL11.GL_BLEND);
-        OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
-
-        Tessellator tess = Tessellator.instance;
-        tess.startDrawingQuads();
-        plotLine(x0, y0, x1, y1, shouldDraw, (DrawPixel) (xp, yp) -> {
-            int c = color.applyAsInt(xp, yp);
-            float a = (float) ((c >> 24) & 255) / 255.0F;
-            float r = (float) ((c >> 16) & 255) / 255.0F;
-            float g = (float) ((c >> 8) & 255) / 255.0F;
-            float b = (float) (c & 255) / 255.0F;
-            if (a <= 0.0f) a = 1.0f;
-            tess.setColorRGBA_F(r, g, b, a);
-            tess.addVertex(xp, yp + 1, 0.0);
-            tess.addVertex(xp + 1, yp + 1, 0.0);
-            tess.addVertex(xp + 1, yp, 0.0);
-            tess.addVertex(xp, yp, 0.0);
-        });
-        tess.draw();
-
-        GL11.glPopAttrib();
+        drawBatch(com.rubenverg.moldraw.core.PixelBatch.line(x0, y0, x1, y1, shouldDraw::test, color));
     }
 
     public static void plotCircle(int xm, int ym, int r, PixelPredicate shouldDraw, DrawPixel doDraw) {
-        int x0 = 0, y0 = r, d = 3 - 2 * r;
-        while (y0 >= x0) {
-            GraphicalUtils.plotLine(xm - y0, ym - x0, xm + y0, ym - x0, shouldDraw, doDraw);
-            if (x0 > 0) GraphicalUtils.plotLine(xm - y0, ym + x0, xm + y0, ym + x0, shouldDraw, doDraw);
-            if (d < 0) d += 4 * x0++ + 6;
-            else {
-                if (x0 != y0) {
-                    GraphicalUtils.plotLine(xm - x0, ym - y0, xm + x0, ym - y0, shouldDraw, doDraw);
-                    GraphicalUtils.plotLine(xm - x0, ym + y0, xm + x0, ym + y0, shouldDraw, doDraw);
-                }
-                d += 4 * (x0++ - y0--) + 10;
-            }
-        }
+        com.rubenverg.moldraw.core.PixelRaster.plotCircle(xm, ym, r, shouldDraw::test, doDraw::draw);
     }
 
     public static void plotCircle(int xm, int ym, int r, PixelPredicate shouldDraw, IntBinaryOperator color) {
-        GL11.glPushAttrib(GL11.GL_ENABLE_BIT | GL11.GL_COLOR_BUFFER_BIT);
-        GL11.glDisable(GL11.GL_TEXTURE_2D);
-        GL11.glEnable(GL11.GL_BLEND);
-        OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
+        drawBatch(com.rubenverg.moldraw.core.PixelBatch.circle(xm, ym, r, shouldDraw::test, color));
+    }
 
-        Tessellator tess = Tessellator.instance;
-        tess.startDrawingQuads();
-        plotCircle(xm, ym, r, shouldDraw, (DrawPixel) (xp, yp) -> {
-            int c = color.applyAsInt(xp, yp);
-            float a = (float) ((c >> 24) & 255) / 255.0F;
-            float rCol = (float) ((c >> 16) & 255) / 255.0F;
-            float g = (float) ((c >> 8) & 255) / 255.0F;
-            float b = (float) (c & 255) / 255.0F;
-            if (a <= 0.0f) a = 1.0f;
-            tess.setColorRGBA_F(rCol, g, b, a);
-            tess.addVertex(xp, yp + 1, 0.0);
-            tess.addVertex(xp + 1, yp + 1, 0.0);
-            tess.addVertex(xp + 1, yp, 0.0);
-            tess.addVertex(xp, yp, 0.0);
-        });
-        tess.draw();
+    private static void drawBatch(com.rubenverg.moldraw.core.PixelBatch batch) {
+        drawPixels(batch.pixels(), 0, 0);
+    }
 
-        GL11.glPopAttrib();
+    public static void drawPixels(java.util.List<com.rubenverg.moldraw.core.PixelBatch.Pixel> pixels, int offsetX,
+        int offsetY) {
+        if (!com.rubenverg.moldraw.MolDraw.isClientThread() || pixels.isEmpty()) return;
+        GL11.glPushAttrib(GL11.GL_ENABLE_BIT | GL11.GL_COLOR_BUFFER_BIT | GL11.GL_CURRENT_BIT);
+        try {
+            GL11.glDisable(GL11.GL_TEXTURE_2D);
+            GL11.glEnable(GL11.GL_BLEND);
+            OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
+            Tessellator tess = Tessellator.instance;
+            tess.startDrawingQuads();
+            try {
+                for (var pixel : pixels) {
+                    int c = pixel.color();
+                    float a = ((c >>> 24) & 255) / 255.0F;
+                    if (a <= 0) a = 1;
+                    tess.setColorRGBA_F(((c >>> 16) & 255) / 255.0F, ((c >>> 8) & 255) / 255.0F, (c & 255) / 255.0F, a);
+                    int x = pixel.x() + offsetX, y = pixel.y() + offsetY;
+                    tess.addVertex(x, y + 1, 0);
+                    tess.addVertex(x + 1, y + 1, 0);
+                    tess.addVertex(x + 1, y, 0);
+                    tess.addVertex(x, y, 0);
+                }
+            } finally {
+                // startDrawingQuads succeeded; always close this batch before releasing GL state.
+                tess.draw();
+            }
+        } finally {
+            GL11.glPopAttrib();
+        }
     }
 }

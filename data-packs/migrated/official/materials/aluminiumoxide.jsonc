@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/aluminiumoxide",
+  "type": "material",
+  "bindings": [
+    "name:aluminiumoxide"
+  ],
+  "structure": "official:gtceu/aluminiumoxide_structure"
+}

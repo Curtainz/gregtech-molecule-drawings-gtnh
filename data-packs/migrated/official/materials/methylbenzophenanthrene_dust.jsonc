@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/methylbenzophenanthrene_dust",
+  "type": "material",
+  "bindings": [
+    "name:methylbenzophenanthrene_dust"
+  ],
+  "structure": "official:gtocore/methylbenzophenanthrene_dust_structure"
+}

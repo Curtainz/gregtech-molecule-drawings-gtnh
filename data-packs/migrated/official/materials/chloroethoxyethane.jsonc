@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/chloroethoxyethane",
+  "type": "material",
+  "bindings": [
+    "name:chloroethoxyethane"
+  ],
+  "structure": "official:gtocore/chloroethoxyethane_structure"
+}

@@ -31,7 +31,7 @@ test.2 的正常启动和显示已由用户确认；0.4.0 的苯环与 modid 改
 .\gradlew.bat build
 ```
 
-产物位于 `build/libs/`。`check` 包含化学式及分子集合回归程序。不要将 `-dev` 或 `-sources` JAR 放入游戏。
+产物位于 `build/libs/`。`check` 包含公式、分子集合、栅格与架构回归及发布包/核心依赖边界检查。请安装版本名完全匹配的游戏 JAR，不要使用带额外 `-dev` 或 `-sources` classifier 的构建产物。
 
 ## English
 
@@ -48,3 +48,11 @@ Original concept, molecular drawing code and resources: RubenVerg and upstream c
 ## Repository layout / 分支约定
 
 默认分支为 **main**，后续重构在 **develop**。保留 v0.3.0 和 v0.4.0 两个里程碑标签。历史引用备份及恢复方法见 [分支与版本约定](docs/REPOSITORY.md)。
+
+0.5.0-test.1里程碑：不可变材料与几何数据、纯布局、受限缓存、精确组成及质量计算已接入 tooltip 和 audit。保留 CodeChickenCore 1.4.22 公开 tooltip API 与客户端绘制隔离。缺少质量时会停止对应质量饼图，可切换数量模式；最大显示项数为1时显示单项“其他”。该里程碑已由用户基本实测通过，历史测试清单见 [0.5.0测试说明](docs/TESTING-0.5.0.md)。
+
+
+当前正式版本为 **0.6.0**（第④阶段已由用户实机基本验证），已接入外部JSONC挂载与 `/gtmoldraw reload`。必须同时安装游戏JAR和官方数据包；推荐将安装ZIP解压到 `.minecraft` 根目录。后台校验成功后由客户端线程原子替换快照，失败保留上一有效版本；游戏JAR不再包含旧定义回退。安装、可选覆盖示例及实机验收见 [第④阶段交付](docs/STAGE-4-TESTING.md)，格式见 [FORMAT-V1](docs/FORMAT-V1.md)。全量图册、1,039条声明及HTML/CSV来源报告继续单独交付。
+
+
+后续材料覆盖与结构重绘计划见 [开发路线](docs/ROADMAP-0.7.md)。

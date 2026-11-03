@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/neoprene",
+  "type": "material",
+  "bindings": [
+    "name:neoprene"
+  ],
+  "structure": "official:gtceu/neoprene_structure"
+}

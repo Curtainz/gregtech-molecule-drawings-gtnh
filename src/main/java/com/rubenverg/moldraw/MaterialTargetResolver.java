@@ -2,7 +2,6 @@ package com.rubenverg.moldraw;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -12,9 +11,6 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
-import com.rubenverg.moldraw.component.AlloyRenderer;
-import com.rubenverg.moldraw.molecule.Molecule;
-
 import codechicken.nei.guihook.GuiContainerManager;
 import gregtech.api.enums.Materials;
 
@@ -23,10 +19,16 @@ public final class MaterialTargetResolver {
     private MaterialTargetResolver() {}
 
     public static DisplayPlan resolve(ItemStack stack, FontRenderer font) {
-        if (!MolDrawConfig.INSTANCE.enabled || stack == null || stack.getItem() == null) {
+        if (!MolDrawConfig.INSTANCE.enabled || !MaterialRegistry.enabled()
+            || stack == null
+            || stack.getItem() == null) {
             return DisplayPlan.EMPTY;
         }
 
+        try {
+            var fluid = gregtech.api.util.GTUtility.getFluidFromContainerOrFluidDisplay(stack);
+            if (fluid != null && fluid.getFluid() != null) return resolveFromFluid(fluid.getFluid(), font);
+        } catch (RuntimeException ignored) {}
         Materials mat = GT5MaterialLookup.getMaterial(stack);
         if (mat == null) {
             return DisplayPlan.EMPTY;
@@ -36,59 +38,56 @@ public final class MaterialTargetResolver {
     }
 
     public static DisplayPlan resolveFromMaterial(Materials mat, FontRenderer font) {
-        if (!MolDrawConfig.INSTANCE.enabled || mat == null || mat == Materials._NULL) {
+        if (!MolDrawConfig.INSTANCE.enabled || !MaterialRegistry.enabled() || mat == null || mat == Materials._NULL) {
             return DisplayPlan.EMPTY;
         }
 
-        // 1. 单质元素不需要显示合金成分，也不绘制分子模型（如单质金、铜等）
-        if (mat.mElement != null && MoleculeManager.getMolecule(mat) == null) {
-            return DisplayPlan.EMPTY;
-        }
+        return resolveEntry(MaterialRegistry.entry(mat), font);
+    }
 
-        // 2. 优先检查 3D 分子结构
-        Molecule mol = MoleculeManager.getMolecule(mat);
-        if (mol != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
+    private static DisplayPlan resolveEntry(MaterialRegistry.Entry entry, FontRenderer font) {
+        if (font == null) return DisplayPlan.EMPTY;
+        if (entry.molecule()
+            .value() != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
+            var renderer = RendererCache.molecule(entry, font);
             return new DisplayPlan(
-                DisplayPlan.Type.MOLECULE,
-                RendererCache.getMoleculeRenderer(mol),
-                mat.getChemicalFormula(),
-                mat);
+                new com.rubenverg.moldraw.core.PresentationData(
+                    com.rubenverg.moldraw.core.PresentationData.Kind.MOLECULE,
+                    entry.definition()),
+                renderer);
         }
-
-        // 3. 只有当没有分子结构，且为明确定义的真正多元合金时，才展示成分分析饼图
-        if (AlloyManager.isAlloy(mat) && AlloyRenderer.hasValidComponents(mat)
-            && MolDrawConfig.INSTANCE.alloy.showAlloys) {
+        if (entry.chartEligible() && MolDrawConfig.INSTANCE.alloy.showAlloys) {
+            var result = RendererCache.composition(entry);
+            if (result.valid() && result.shares()
+                .size() > 1)
+                return new DisplayPlan(
+                    new com.rubenverg.moldraw.core.PresentationData(
+                        com.rubenverg.moldraw.core.PresentationData.Kind.ALLOY,
+                        entry.definition()),
+                    RendererCache.alloy(entry, font, result));
+        }
+        if (entry.definition()
+            .diagnostics()
+            .contains("PACK_FORMULA_OVERRIDE"))
             return new DisplayPlan(
-                DisplayPlan.Type.ALLOY,
-                RendererCache.getAlloyRenderer(mat, font),
-                mat.getChemicalFormula(),
-                mat);
-        }
-
+                new com.rubenverg.moldraw.core.PresentationData(
+                    com.rubenverg.moldraw.core.PresentationData.Kind.NONE,
+                    entry.definition()),
+                null);
         return DisplayPlan.EMPTY;
     }
 
     public static DisplayPlan resolveFromFluid(Fluid fluid, FontRenderer font) {
-        if (!MolDrawConfig.INSTANCE.enabled || fluid == null) {
+        if (!MolDrawConfig.INSTANCE.enabled || !MaterialRegistry.enabled() || fluid == null) {
             return DisplayPlan.EMPTY;
         }
 
         Materials mat = GT5MaterialLookup.getMaterialFromFluid(fluid);
-        if (mat != null) {
-            return resolveFromMaterial(mat, font);
-        }
-
-        // 回退检查：流体名是否直接对应某种分子模型
-        Molecule mol = MoleculeManager.getMoleculeByName(fluid.getName());
-        if (mol != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
-            return new DisplayPlan(DisplayPlan.Type.MOLECULE, RendererCache.getMoleculeRenderer(mol), null, null);
-        }
-
-        return DisplayPlan.EMPTY;
+        return resolveEntry(MaterialRegistry.bound("fluid:" + fluid.getName(), fluid.getName(), mat), font);
     }
 
     public static DisplayPlan resolveFromTooltipLines(GuiContainer gui, List<String> tip, FontRenderer font) {
-        if (!MolDrawConfig.INSTANCE.enabled || tip == null || tip.isEmpty()) {
+        if (!MolDrawConfig.INSTANCE.enabled || !MaterialRegistry.enabled() || tip == null || tip.isEmpty()) {
             return DisplayPlan.EMPTY;
         }
 
@@ -101,18 +100,20 @@ public final class MaterialTargetResolver {
             } catch (Throwable ignored) {}
         }
 
+        DisplayPlan fluidPlan = resolveFluidTooltip(tip, font);
+        if (fluidPlan != null) return fluidPlan;
+
         // 1. 尝试从 Tooltip 文本行解析材料
         Materials mat = resolveMaterialFromTooltipText(tip);
         if (mat != null) {
             return resolveFromMaterial(mat, font);
         }
 
-        // 2. 尝试从 Tooltip 中的化学式或名称反查分子模型
-        Molecule mol = resolveMoleculeFromTooltipText(tip);
-        if (mol != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
-            return new DisplayPlan(DisplayPlan.Type.MOLECULE, RendererCache.getMoleculeRenderer(mol), null, null);
+        for (String candidate : new String[] { EnumChatFormatting.getTextWithoutFormattingCodes(tip.get(0))
+            .trim(), cleanFluidName(tip.get(0)) }) {
+            DisplayPlan plan = resolveEntry(MaterialRegistry.named("name:" + candidate, candidate), font);
+            if (plan.isValid() || plan.hasFormulaOverride()) return plan;
         }
-
         return DisplayPlan.EMPTY;
     }
 
@@ -130,6 +131,38 @@ public final class MaterialTargetResolver {
         return s.trim();
     }
 
+    /** Null means no fluid identity; EMPTY also deliberately preserves a fluid's disabled binding. */
+    private static DisplayPlan resolveFluidTooltip(List<String> tip, FontRenderer font) {
+        for (String candidate : new String[] { EnumChatFormatting.getTextWithoutFormattingCodes(tip.get(0))
+            .trim(), cleanFluidName(tip.get(0)) }) {
+            if (candidate.isEmpty()) continue;
+            Fluid exact = FluidRegistry.getFluid(candidate);
+            if (exact != null) return resolveFromFluid(exact, font);
+            java.util.Set<Fluid> matches = new java.util.HashSet<>();
+            for (Fluid fluid : FluidRegistry.getRegisteredFluids()
+                .values()) {
+                if (fluid == null) continue;
+                if (candidate.equalsIgnoreCase(fluid.getName())) matches.add(fluid);
+                try {
+                    String localized = fluid.getLocalizedName(new FluidStack(fluid, 1000));
+                    if (localized != null && candidate.equalsIgnoreCase(
+                        EnumChatFormatting.getTextWithoutFormattingCodes(localized)
+                            .trim()))
+                        matches.add(fluid);
+                } catch (RuntimeException ignored) {}
+            }
+            if (matches.size() > 1) {
+                MolDraw.LOGGER.debug("AMBIGUOUS_BINDING: fluid tooltip {}", candidate);
+                return DisplayPlan.EMPTY;
+            }
+            if (matches.size() == 1) return resolveFromFluid(
+                matches.iterator()
+                    .next(),
+                font);
+        }
+        return null;
+    }
+
     private static Materials resolveMaterialFromTooltipText(List<String> tip) {
         if (tip.isEmpty()) return null;
 
@@ -138,31 +171,6 @@ public final class MaterialTargetResolver {
         String cleanedFirst = cleanFluidName(tip.get(0));
 
         String[] candidates = new String[] { rawFirst, cleanedFirst };
-
-        // 匹配 FluidRegistry
-        Map<String, Fluid> fluids = FluidRegistry.getRegisteredFluids();
-        if (fluids != null) {
-            for (String cand : candidates) {
-                if (cand.isEmpty()) continue;
-                for (Fluid f : fluids.values()) {
-                    if (f == null) continue;
-                    String fName = f.getName();
-                    if (cand.equalsIgnoreCase(fName)) {
-                        Materials mat = GT5MaterialLookup.getMaterialFromFluid(f);
-                        if (mat != null) return mat;
-                    }
-                    try {
-                        String loc = f.getLocalizedName(new FluidStack(f, 1000));
-                        if (loc != null && cand.equalsIgnoreCase(
-                            EnumChatFormatting.getTextWithoutFormattingCodes(loc)
-                                .trim())) {
-                            Materials mat = GT5MaterialLookup.getMaterialFromFluid(f);
-                            if (mat != null) return mat;
-                        }
-                    } catch (Throwable ignored) {}
-                }
-            }
-        }
 
         // 匹配 GT Materials
         for (String cand : candidates) {
@@ -192,39 +200,4 @@ public final class MaterialTargetResolver {
         return null;
     }
 
-    private static Molecule resolveMoleculeFromTooltipText(List<String> tip) {
-        if (tip.isEmpty()) return null;
-
-        String rawFirst = EnumChatFormatting.getTextWithoutFormattingCodes(tip.get(0))
-            .trim();
-        String cleanedFirst = cleanFluidName(tip.get(0));
-
-        for (String cand : new String[] { rawFirst, cleanedFirst }) {
-            if (cand.isEmpty()) continue;
-            Molecule byName = MoleculeManager.getMoleculeByName(cand);
-            if (byName != null) return byName;
-        }
-
-        // 遍历每行寻找化学式
-        for (String line : tip) {
-            if (line == null) continue;
-            String clean = EnumChatFormatting.getTextWithoutFormattingCodes(line)
-                .trim();
-            if (clean.toLowerCase(Locale.ROOT)
-                .startsWith("formula:") || clean.startsWith("化学式:")
-                || clean.startsWith("分子式:")) {
-                int colon = clean.indexOf(':');
-                if (colon >= 0 && colon < clean.length() - 1) {
-                    String f = clean.substring(colon + 1)
-                        .trim();
-                    Molecule byFormula = MoleculeManager.getMoleculeByFormula(f);
-                    if (byFormula != null) return byFormula;
-                }
-            }
-            Molecule byFormulaDirect = MoleculeManager.getMoleculeByFormula(clean);
-            if (byFormulaDirect != null) return byFormulaDirect;
-        }
-
-        return null;
-    }
 }

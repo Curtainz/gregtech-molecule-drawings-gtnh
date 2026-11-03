@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/benzoyl_chloride",
+  "type": "material",
+  "bindings": [
+    "name:benzoyl_chloride"
+  ],
+  "structure": "official:gtceu/benzoyl_chloride_structure"
+}

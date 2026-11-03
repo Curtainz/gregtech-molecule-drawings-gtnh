@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/adipic_acid",
+  "type": "material",
+  "bindings": [
+    "name:adipic_acid"
+  ],
+  "structure": "official:gtceu/adipic_acid_structure"
+}

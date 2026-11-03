@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/diethylenetriaminepentaacetic_acid",
+  "type": "material",
+  "bindings": [
+    "name:diethylenetriaminepentaacetic_acid"
+  ],
+  "structure": "official:gtceu/diethylenetriaminepentaacetic_acid_structure"
+}

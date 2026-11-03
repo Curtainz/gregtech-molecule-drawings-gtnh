@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/glycolonitrile",
+  "type": "material",
+  "bindings": [
+    "name:glycolonitrile"
+  ],
+  "structure": "official:gtceu/glycolonitrile_structure"
+}

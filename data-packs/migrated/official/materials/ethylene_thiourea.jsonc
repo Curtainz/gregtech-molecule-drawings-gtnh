@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethylene_thiourea",
+  "type": "material",
+  "bindings": [
+    "name:ethylene_thiourea"
+  ],
+  "structure": "official:gtceu/ethylene_thiourea_structure"
+}

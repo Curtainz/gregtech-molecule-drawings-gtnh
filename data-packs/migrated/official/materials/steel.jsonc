@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/steel",
+  "type": "material",
+  "bindings": [
+    "name:steel"
+  ],
+  "composition": {
+    "source": "explicit",
+    "basis": "mixture_parts",
+    "components": [
+      {
+        "material": "gt:Iron",
+        "amount": 39
+      },
+      {
+        "material": "gt:Carbon",
+        "amount": 5
+      }
+    ]
+  }
+}

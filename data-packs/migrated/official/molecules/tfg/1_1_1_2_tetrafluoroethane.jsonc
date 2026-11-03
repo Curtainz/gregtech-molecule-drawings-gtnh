@@ -1,0 +1,104 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a2",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        -0.8660254,
+        -0.5
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a3",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        -0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a4",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        -1
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a5",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        1.7320508,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    }
+  ],
+  "id": "official:tfg/1_1_1_2_tetrafluoroethane_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

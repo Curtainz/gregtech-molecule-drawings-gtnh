@@ -1,0 +1,600 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "labelMode": "hidden",
+      "position": [
+        -0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "labelMode": "hidden",
+      "position": [
+        -0.8660254,
+        -0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "labelMode": "hidden",
+      "position": [
+        5.9604645E-8,
+        -0.99999994
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        -0.49999982
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "labelMode": "hidden",
+      "position": [
+        0.8660252,
+        0.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "labelMode": "hidden",
+      "position": [
+        -3.5762787E-7,
+        0.99999994
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.8160254,
+        0.809017
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.8160254,
+        -0.809017
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a8",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        2.4048672,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a9",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        2.1250424,
+        1.7600735
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a10",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        2.1250424,
+        -1.7600735
+      ]
+    },
+    {
+      "element": null,
+      "id": "a11",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.8160254,
+        0.809017
+      ]
+    },
+    {
+      "element": null,
+      "id": "a12",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -1.8160254,
+        -0.809017
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a13",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        -2.4048672,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a14",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -2.1250424,
+        1.7600735
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a15",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -2.1250424,
+        -1.7600735
+      ]
+    },
+    {
+      "element": null,
+      "id": "a16",
+      "labelMode": "hidden",
+      "position": [
+        3.4048672,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a17",
+      "labelMode": "hidden",
+      "position": [
+        3.9048672,
+        -0.8660254
+      ]
+    },
+    {
+      "element": null,
+      "id": "a18",
+      "labelMode": "hidden",
+      "position": [
+        4.904867,
+        -0.8660253
+      ]
+    },
+    {
+      "element": null,
+      "id": "a19",
+      "labelMode": "hidden",
+      "position": [
+        5.404867,
+        1.7881393E-7
+      ]
+    },
+    {
+      "element": null,
+      "id": "a20",
+      "labelMode": "hidden",
+      "position": [
+        4.904867,
+        0.8660255
+      ]
+    },
+    {
+      "element": null,
+      "id": "a21",
+      "labelMode": "hidden",
+      "position": [
+        3.9048672,
+        0.8660252
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a22",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        6.404867,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a23",
+      "labelMode": "hidden",
+      "position": [
+        7.404867,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a24",
+      "labelMode": "hidden",
+      "position": [
+        7.904867,
+        -0.8660254
+      ]
+    },
+    {
+      "element": null,
+      "id": "a25",
+      "labelMode": "hidden",
+      "position": [
+        8.904867,
+        -0.8660253
+      ]
+    },
+    {
+      "element": null,
+      "id": "a26",
+      "labelMode": "hidden",
+      "position": [
+        9.404867,
+        1.7881393E-7
+      ]
+    },
+    {
+      "element": null,
+      "id": "a27",
+      "labelMode": "hidden",
+      "position": [
+        8.904867,
+        0.8660255
+      ]
+    },
+    {
+      "element": null,
+      "id": "a28",
+      "labelMode": "hidden",
+      "position": [
+        7.904867,
+        0.8660252
+      ]
+    },
+    {
+      "element": null,
+      "id": "a29",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        10.404867,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a30",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        -3.4048672,
+        0
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "atoms": [
+        "a0",
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9",
+        "a10",
+        "a11",
+        "a12",
+        "a13",
+        "a14",
+        "a15",
+        "a16",
+        "a17",
+        "a18",
+        "a19",
+        "a20",
+        "a21",
+        "a22",
+        "a23",
+        "a24",
+        "a25",
+        "a26",
+        "a27",
+        "a28"
+      ],
+      "sub": "n",
+      "type": "bracket"
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a0"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "centered": true,
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "centered": true,
+      "from": "a7",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a11",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a13"
+    },
+    {
+      "from": "a13",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a12",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "centered": true,
+      "from": "a11",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a14"
+    },
+    {
+      "centered": true,
+      "from": "a12",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a15"
+    },
+    {
+      "from": "a16",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a17"
+    },
+    {
+      "from": "a17",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a18"
+    },
+    {
+      "from": "a18",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a19"
+    },
+    {
+      "from": "a19",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a20"
+    },
+    {
+      "from": "a20",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a21"
+    },
+    {
+      "from": "a21",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a16"
+    },
+    {
+      "from": "a23",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a24"
+    },
+    {
+      "from": "a24",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a25"
+    },
+    {
+      "from": "a25",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a26"
+    },
+    {
+      "from": "a26",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a27"
+    },
+    {
+      "from": "a27",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a28"
+    },
+    {
+      "from": "a28",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a23"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a16"
+    },
+    {
+      "from": "a19",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a22"
+    },
+    {
+      "from": "a22",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a23"
+    },
+    {
+      "from": "a26",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a29"
+    },
+    {
+      "from": "a13",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a30"
+    }
+  ],
+  "id": "official:gtceu/4_4_oxydianiline_pyromellitimide_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

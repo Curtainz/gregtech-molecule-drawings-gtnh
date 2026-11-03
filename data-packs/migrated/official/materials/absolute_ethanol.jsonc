@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/absolute_ethanol",
+  "type": "material",
+  "bindings": [
+    "name:absolute_ethanol"
+  ],
+  "structure": "official:gtocore/absolute_ethanol_structure"
+}

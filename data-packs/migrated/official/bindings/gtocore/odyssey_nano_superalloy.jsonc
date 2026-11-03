@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/odyssey_nano_superalloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "odyssey_nano_superalloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

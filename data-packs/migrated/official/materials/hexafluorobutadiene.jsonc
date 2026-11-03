@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/hexafluorobutadiene",
+  "type": "material",
+  "bindings": [
+    "name:hexafluorobutadiene"
+  ],
+  "structure": "official:gtceu/hexafluorobutadiene_structure"
+}

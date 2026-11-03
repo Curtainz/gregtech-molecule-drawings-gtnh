@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/phosphoric_acid",
+  "type": "material",
+  "bindings": [
+    "name:phosphoric_acid"
+  ],
+  "structure": "official:gtceu/phosphoric_acid_structure"
+}

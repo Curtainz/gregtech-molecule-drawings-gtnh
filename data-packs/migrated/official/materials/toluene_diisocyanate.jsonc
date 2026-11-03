@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/toluene_diisocyanate",
+  "type": "material",
+  "bindings": [
+    "name:toluene_diisocyanate"
+  ],
+  "structure": "official:gtocore/toluene_diisocyanate_structure"
+}

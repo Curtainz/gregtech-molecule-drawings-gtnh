@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/fluorobenzene",
+  "type": "material",
+  "bindings": [
+    "name:fluorobenzene"
+  ],
+  "structure": "official:gtceu/fluorobenzene_structure"
+}

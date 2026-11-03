@@ -37,3 +37,19 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
+
+  data-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python for authoring checks
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: tools/contract/requirements.txt
+      - name: Validate schema source and JSONC review fixtures
+        run: |
+          python -m pip install -r tools/contract/requirements.txt
+          python tools/contract/check.py

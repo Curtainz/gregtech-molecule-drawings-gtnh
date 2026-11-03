@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/vastaqalloy_cr_4200x_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "vastaqalloy_cr_4200x"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

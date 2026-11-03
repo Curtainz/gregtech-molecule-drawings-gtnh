@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dimethylether",
+  "type": "material",
+  "bindings": [
+    "name:dimethylether"
+  ],
+  "structure": "official:gtocore/dimethylether_structure"
+}

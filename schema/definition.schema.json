@@ -1,0 +1,1300 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:gtmoldraw:definition:1",
+  "title": "GTMolDraw data definition v1",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/material"
+    },
+    {
+      "$ref": "#/$defs/molecule"
+    },
+    {
+      "$ref": "#/$defs/fragment"
+    },
+    {
+      "$ref": "#/$defs/bindings"
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9_]+(?:[/.-][a-z0-9_]+)*$"
+    },
+    "local": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+    },
+    "atomRef": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[A-Za-z][A-Za-z0-9_]*(?:\\.[A-Za-z][A-Za-z0-9_]*)*$"
+    },
+    "position": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number",
+          "minimum": -10000,
+          "maximum": 10000
+        },
+        {
+          "type": "number",
+          "minimum": -10000,
+          "maximum": 10000
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "color": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 9,
+      "pattern": "^#(?:[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$"
+    },
+    "override": {
+      "type": "object",
+      "properties": {
+        "pack": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^(?!(?:core|gt|fluid|name)$)[a-z][a-z0-9_-]*$"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "required": [
+        "pack",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "atom": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/local"
+        },
+        "position": {
+          "$ref": "#/$defs/position"
+        },
+        "element": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "label": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "labelMode": {
+          "enum": [
+            "symbol",
+            "skeletal",
+            "hidden"
+          ]
+        },
+        "hydrogens": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 32
+        },
+        "isotope": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 999
+        },
+        "charge": {
+          "type": "integer",
+          "minimum": -16,
+          "maximum": 16
+        },
+        "color": {
+          "$ref": "#/$defs/color"
+        },
+        "optionalColor": {
+          "type": "boolean"
+        },
+        "labels": {
+          "type": "object",
+          "properties": {
+            "above": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "element": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 32
+                },
+                "color": {
+                  "$ref": "#/$defs/color"
+                },
+                "optionalColor": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "optionalColor": {
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "optionalColor"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "color"
+                    ]
+                  }
+                }
+              ]
+            },
+            "right": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "element": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 32
+                },
+                "color": {
+                  "$ref": "#/$defs/color"
+                },
+                "optionalColor": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "optionalColor": {
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "optionalColor"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "color"
+                    ]
+                  }
+                }
+              ]
+            },
+            "below": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "element": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 32
+                },
+                "color": {
+                  "$ref": "#/$defs/color"
+                },
+                "optionalColor": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "optionalColor": {
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "optionalColor"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "color"
+                    ]
+                  }
+                }
+              ]
+            },
+            "left": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "element": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 32
+                },
+                "color": {
+                  "$ref": "#/$defs/color"
+                },
+                "optionalColor": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "optionalColor": {
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "optionalColor"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "color"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "position",
+        "element"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "optionalColor": {
+                "const": true
+              }
+            },
+            "required": [
+              "optionalColor"
+            ]
+          },
+          "then": {
+            "required": [
+              "color"
+            ]
+          }
+        }
+      ]
+    },
+    "bond": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "$ref": "#/$defs/atomRef"
+        },
+        "to": {
+          "$ref": "#/$defs/atomRef"
+        },
+        "order": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "centered": {
+          "type": "boolean"
+        },
+        "style": {
+          "enum": [
+            "solid",
+            "dotted",
+            "thick",
+            "inward",
+            "outward"
+          ]
+        },
+        "strokes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "solid",
+              "dotted",
+              "thick",
+              "inward",
+              "outward"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 8
+        }
+      },
+      "required": [
+        "from",
+        "to"
+      ],
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "order"
+          ],
+          "not": {
+            "required": [
+              "strokes"
+            ]
+          }
+        },
+        {
+          "required": [
+            "strokes"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "order"
+                ]
+              },
+              {
+                "required": [
+                  "style"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "style": {
+                "enum": [
+                  "inward",
+                  "outward"
+                ]
+              }
+            },
+            "required": [
+              "style"
+            ]
+          },
+          "then": {
+            "properties": {
+              "order": {
+                "const": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "instance": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/local"
+            },
+            "origin": {
+              "$ref": "#/$defs/position"
+            },
+            "rotation": {
+              "type": "number",
+              "minimum": -360000,
+              "maximum": 360000
+            },
+            "mirror": {
+              "enum": [
+                "none",
+                "x",
+                "y"
+              ]
+            },
+            "scale": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 100
+            },
+            "atomMap": {
+              "type": "object",
+              "propertyNames": {
+                "$ref": "#/$defs/atomRef"
+              },
+              "additionalProperties": {
+                "$ref": "#/$defs/atomRef"
+              },
+              "maxProperties": 16384
+            },
+            "module": {
+              "const": "core:benzene"
+            },
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "bondLength": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "maximum": 100
+                },
+                "doubleBondStart": {
+                  "enum": [
+                    0,
+                    1
+                  ]
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "module"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/local"
+            },
+            "origin": {
+              "$ref": "#/$defs/position"
+            },
+            "rotation": {
+              "type": "number",
+              "minimum": -360000,
+              "maximum": 360000
+            },
+            "mirror": {
+              "enum": [
+                "none",
+                "x",
+                "y"
+              ]
+            },
+            "scale": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 100
+            },
+            "atomMap": {
+              "type": "object",
+              "propertyNames": {
+                "$ref": "#/$defs/atomRef"
+              },
+              "additionalProperties": {
+                "$ref": "#/$defs/atomRef"
+              },
+              "maxProperties": 16384
+            },
+            "module": {
+              "const": "core:ring"
+            },
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "elements": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32
+                  },
+                  "minItems": 3,
+                  "maxItems": 64
+                },
+                "bondOrders": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      1,
+                      2,
+                      3
+                    ]
+                  },
+                  "minItems": 3,
+                  "maxItems": 64
+                },
+                "bondLength": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "maximum": 100
+                }
+              },
+              "required": [
+                "elements",
+                "bondOrders"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "module",
+            "parameters"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/local"
+            },
+            "origin": {
+              "$ref": "#/$defs/position"
+            },
+            "rotation": {
+              "type": "number",
+              "minimum": -360000,
+              "maximum": 360000
+            },
+            "mirror": {
+              "enum": [
+                "none",
+                "x",
+                "y"
+              ]
+            },
+            "scale": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 100
+            },
+            "atomMap": {
+              "type": "object",
+              "propertyNames": {
+                "$ref": "#/$defs/atomRef"
+              },
+              "additionalProperties": {
+                "$ref": "#/$defs/atomRef"
+              },
+              "maxProperties": 16384
+            },
+            "fragment": {
+              "$ref": "#/$defs/id"
+            }
+          },
+          "required": [
+            "id",
+            "fragment"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "annotation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "bracket"
+            },
+            "atoms": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/atomRef"
+              },
+              "minItems": 1,
+              "maxItems": 16384
+            },
+            "sub": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "sup": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "color": {
+              "$ref": "#/$defs/color"
+            }
+          },
+          "required": [
+            "type",
+            "atoms"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "text"
+            },
+            "position": {
+              "$ref": "#/$defs/position"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "color": {
+              "$ref": "#/$defs/color"
+            }
+          },
+          "required": [
+            "type",
+            "position",
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "ellipse"
+            },
+            "atoms": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/atomRef"
+              },
+              "minItems": 1,
+              "maxItems": 16384
+            },
+            "matrix": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number",
+                  "minimum": -100,
+                  "maximum": 100
+                },
+                {
+                  "type": "number",
+                  "minimum": -100,
+                  "maximum": 100
+                },
+                {
+                  "type": "number",
+                  "minimum": -100,
+                  "maximum": 100
+                },
+                {
+                  "type": "number",
+                  "minimum": -100,
+                  "maximum": 100
+                }
+              ],
+              "items": false,
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "color": {
+              "$ref": "#/$defs/color"
+            }
+          },
+          "required": [
+            "type",
+            "atoms",
+            "matrix"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "molecule": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "overrides": {
+          "$ref": "#/$defs/override"
+        },
+        "atoms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/atom"
+          },
+          "minItems": 0,
+          "maxItems": 16384
+        },
+        "bonds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bond"
+          },
+          "minItems": 0,
+          "maxItems": 16384
+        },
+        "instances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/instance"
+          },
+          "minItems": 0,
+          "maxItems": 4096
+        },
+        "annotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/annotation"
+          },
+          "minItems": 0,
+          "maxItems": 16384
+        },
+        "ports": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/local"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/atomRef"
+          },
+          "maxProperties": 4096
+        },
+        "type": {
+          "const": "molecule"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "type"
+      ],
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "atoms"
+          ],
+          "properties": {
+            "atoms": {
+              "minItems": 1
+            }
+          }
+        },
+        {
+          "required": [
+            "instances"
+          ],
+          "properties": {
+            "instances": {
+              "minItems": 1
+            }
+          }
+        }
+      ]
+    },
+    "fragment": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "overrides": {
+          "$ref": "#/$defs/override"
+        },
+        "atoms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/atom"
+          },
+          "minItems": 0,
+          "maxItems": 16384
+        },
+        "bonds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bond"
+          },
+          "minItems": 0,
+          "maxItems": 16384
+        },
+        "instances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/instance"
+          },
+          "minItems": 0,
+          "maxItems": 4096
+        },
+        "annotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/annotation"
+          },
+          "minItems": 0,
+          "maxItems": 16384
+        },
+        "ports": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/local"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/atomRef"
+          },
+          "maxProperties": 4096
+        },
+        "type": {
+          "const": "fragment"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "type"
+      ],
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "atoms"
+          ],
+          "properties": {
+            "atoms": {
+              "minItems": 1
+            }
+          }
+        },
+        {
+          "required": [
+            "instances"
+          ],
+          "properties": {
+            "instances": {
+              "minItems": 1
+            }
+          }
+        }
+      ]
+    },
+    "material": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "overrides": {
+          "$ref": "#/$defs/override"
+        },
+        "type": {
+          "const": "material"
+        },
+        "bindings": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256,
+            "pattern": "^(?:gt|fluid|name):.+$"
+          },
+          "minItems": 1,
+          "maxItems": 4096,
+          "uniqueItems": true
+        },
+        "formula": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "structure": {
+          "$ref": "#/$defs/id"
+        },
+        "composition": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "enum": [
+                    "gregtech",
+                    "formula"
+                  ]
+                }
+              },
+              "required": [
+                "source"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "const": "explicit"
+                },
+                "basis": {
+                  "enum": [
+                    "mixture_parts",
+                    "stoichiometric"
+                  ]
+                },
+                "components": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "material": {
+                        "anyOf": [
+                          {
+                            "$ref": "#/$defs/id"
+                          },
+                          {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^gt:.+$"
+                          }
+                        ]
+                      },
+                      "amount": {
+                        "oneOf": [
+                          {
+                            "type": "integer",
+                            "exclusiveMinimum": 0
+                          },
+                          {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 4096,
+                            "pattern": "^[1-9][0-9]*(?:/[1-9][0-9]*)?$"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "material",
+                      "amount"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 4096
+                }
+              },
+              "required": [
+                "source",
+                "basis",
+                "components"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "display": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "enum": [
+                "auto",
+                "molecule",
+                "composition",
+                "text"
+              ]
+            }
+          },
+          "required": [
+            "mode"
+          ],
+          "additionalProperties": false
+        },
+        "disabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "type",
+        "bindings"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "disabled": {
+                "const": true
+              }
+            },
+            "required": [
+              "disabled"
+            ]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "formula"
+                  ]
+                },
+                {
+                  "required": [
+                    "structure"
+                  ]
+                },
+                {
+                  "required": [
+                    "composition"
+                  ]
+                },
+                {
+                  "required": [
+                    "display"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "bindings": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "overrides": {
+          "$ref": "#/$defs/override"
+        },
+        "type": {
+          "const": "bindings"
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "alias"
+                  },
+                  "from": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256
+                  },
+                  "to": {
+                    "$ref": "#/$defs/id"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "from",
+                  "to"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "strip_prefix"
+                  },
+                  "prefixes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "minItems": 1,
+                    "maxItems": 64
+                  },
+                  "target": {
+                    "enum": [
+                      "structure",
+                      "composition"
+                    ]
+                  }
+                },
+                "required": [
+                  "kind",
+                  "prefixes",
+                  "target"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "composition_candidate"
+                  },
+                  "materials": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256,
+                      "pattern": "^gt:.+$"
+                    },
+                    "minItems": 0,
+                    "maxItems": 4096,
+                    "uniqueItems": true
+                  },
+                  "names": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256
+                    },
+                    "minItems": 0,
+                    "maxItems": 4096,
+                    "uniqueItems": true
+                  },
+                  "containsAny": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "minItems": 0,
+                    "maxItems": 64,
+                    "uniqueItems": true
+                  }
+                },
+                "required": [
+                  "kind"
+                ],
+                "additionalProperties": false,
+                "anyOf": [
+                  {
+                    "required": [
+                      "materials"
+                    ],
+                    "properties": {
+                      "materials": {
+                        "minItems": 1
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "names"
+                    ],
+                    "properties": {
+                      "names": {
+                        "minItems": 1
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "containsAny"
+                    ],
+                    "properties": {
+                      "containsAny": {
+                        "minItems": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "element_binding"
+                  },
+                  "symbol": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32
+                  },
+                  "material": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256,
+                    "pattern": "^gt:.+$"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "symbol",
+                  "material"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 4096
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "type",
+        "rules"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

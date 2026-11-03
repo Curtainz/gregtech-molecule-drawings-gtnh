@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/thorium_plut_duranide_241_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "thorium_plut_duranide_241"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

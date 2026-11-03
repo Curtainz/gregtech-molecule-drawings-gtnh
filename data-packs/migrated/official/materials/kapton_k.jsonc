@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/kapton_k",
+  "type": "material",
+  "bindings": [
+    "name:kapton_k"
+  ],
+  "structure": "official:gtceu/kapton_k_structure"
+}

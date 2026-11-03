@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/acetyl_chloride",
+  "type": "material",
+  "bindings": [
+    "name:acetyl_chloride"
+  ],
+  "structure": "official:gtocore/acetyl_chloride_structure"
+}

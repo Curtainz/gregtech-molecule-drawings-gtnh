@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/lafium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "lafium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

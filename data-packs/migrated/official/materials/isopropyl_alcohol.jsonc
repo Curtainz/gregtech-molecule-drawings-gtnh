@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/isopropyl_alcohol",
+  "type": "material",
+  "bindings": [
+    "name:isopropyl_alcohol"
+  ],
+  "structure": "official:gtocore/isopropyl_alcohol_structure"
+}

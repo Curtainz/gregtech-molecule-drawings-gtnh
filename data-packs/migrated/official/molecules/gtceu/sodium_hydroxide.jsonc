@@ -1,0 +1,53 @@
+{
+  "atoms": [
+    {
+      "element": "Na",
+      "id": "a0",
+      "label": "Na",
+      "labelMode": "symbol",
+      "position": [
+        -1.1,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a1",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0.2,
+        0
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a2",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        1,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    }
+  ],
+  "id": "official:gtceu/sodium_hydroxide_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

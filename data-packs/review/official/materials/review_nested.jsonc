@@ -1,0 +1,26 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "schemaVersion": 1,
+  "id": "official:review_nested",
+  "type": "material",
+  "bindings": [
+    "name:review_nested"
+  ],
+  "composition": {
+    "source": "explicit",
+    "basis": "mixture_parts",
+    "components": [
+      {
+        "material": "official:review_alloy",
+        "amount": "1/1"
+      },
+      {
+        "material": "gt:Tin",
+        "amount": 1
+      }
+    ]
+  },
+  "display": {
+    "mode": "composition"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/hexamethylenediamine",
+  "type": "material",
+  "bindings": [
+    "name:hexamethylenediamine"
+  ],
+  "structure": "official:gtceu/hexamethylenediamine_structure"
+}

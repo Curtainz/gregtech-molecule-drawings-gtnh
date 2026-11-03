@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/perfluoromethyl_vinyl_ether",
+  "type": "material",
+  "bindings": [
+    "name:perfluoromethyl_vinyl_ether"
+  ],
+  "structure": "official:gtceu/perfluoromethyl_vinyl_ether_structure"
+}

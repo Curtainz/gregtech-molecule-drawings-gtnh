@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/superheavy_l_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "superheavy_l_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

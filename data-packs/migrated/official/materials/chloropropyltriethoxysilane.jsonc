@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/chloropropyltriethoxysilane",
+  "type": "material",
+  "bindings": [
+    "name:chloropropyltriethoxysilane"
+  ],
+  "structure": "official:gtocore/chloropropyltriethoxysilane_structure"
+}

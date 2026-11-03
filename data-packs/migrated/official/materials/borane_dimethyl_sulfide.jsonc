@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/borane_dimethyl_sulfide",
+  "type": "material",
+  "bindings": [
+    "name:borane_dimethyl_sulfide"
+  ],
+  "structure": "official:gtocore/borane_dimethyl_sulfide_structure"
+}

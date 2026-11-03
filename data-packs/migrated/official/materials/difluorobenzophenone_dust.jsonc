@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/difluorobenzophenone_dust",
+  "type": "material",
+  "bindings": [
+    "name:difluorobenzophenone_dust"
+  ],
+  "structure": "official:gtocore/difluorobenzophenone_dust_structure"
+}

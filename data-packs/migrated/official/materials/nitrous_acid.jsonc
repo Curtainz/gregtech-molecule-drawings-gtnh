@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/nitrous_acid",
+  "type": "material",
+  "bindings": [
+    "name:nitrous_acid"
+  ],
+  "structure": "official:gtocore/nitrous_acid_structure"
+}

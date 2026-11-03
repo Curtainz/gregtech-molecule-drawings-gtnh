@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dichlorobenzidine",
+  "type": "material",
+  "bindings": [
+    "name:dichlorobenzidine"
+  ],
+  "structure": "official:gtceu/dichlorobenzidine_structure"
+}

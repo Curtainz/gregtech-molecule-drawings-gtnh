@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/phenylsodium",
+  "type": "material",
+  "bindings": [
+    "name:phenylsodium"
+  ],
+  "structure": "official:gtocore/phenylsodium_structure"
+}

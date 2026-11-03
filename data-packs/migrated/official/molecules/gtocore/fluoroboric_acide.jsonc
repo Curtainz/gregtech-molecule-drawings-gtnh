@@ -1,0 +1,97 @@
+{
+  "atoms": [
+    {
+      "element": "F",
+      "id": "a0",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        1.5,
+        0
+      ]
+    },
+    {
+      "element": "B",
+      "id": "a1",
+      "label": "B",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a2",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        -1.5,
+        0
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a3",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        1.5
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a4",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        -1.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        2.5,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    }
+  ],
+  "id": "official:gtocore/fluoroboric_acide_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

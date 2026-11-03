@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/benzenediazonium_tetrafluoroborate",
+  "type": "material",
+  "bindings": [
+    "name:benzenediazonium_tetrafluoroborate"
+  ],
+  "structure": "official:gtocore/benzenediazonium_tetrafluoroborate_structure"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/enriched_naquadah_trinium_europium_duranide_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "enriched_naquadah_trinium_europium_duranide"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

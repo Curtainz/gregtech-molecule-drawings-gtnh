@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/vinyl_acetate",
+  "type": "material",
+  "bindings": [
+    "name:vinyl_acetate"
+  ],
+  "structure": "official:gtceu/vinyl_acetate_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/phenylenedioxydiacetic_acid",
+  "type": "material",
+  "bindings": [
+    "name:phenylenedioxydiacetic_acid"
+  ],
+  "structure": "official:gtocore/phenylenedioxydiacetic_acid_structure"
+}

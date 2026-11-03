@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tetrachloroethane",
+  "type": "material",
+  "bindings": [
+    "name:tetrachloroethane"
+  ],
+  "structure": "official:gtocore/tetrachloroethane_structure"
+}

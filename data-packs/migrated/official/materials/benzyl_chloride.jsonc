@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/benzyl_chloride",
+  "type": "material",
+  "bindings": [
+    "name:benzyl_chloride"
+  ],
+  "structure": "official:gtocore/benzyl_chloride_structure"
+}

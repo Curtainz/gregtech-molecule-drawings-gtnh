@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/glyceryl_trinitrate",
+  "type": "material",
+  "bindings": [
+    "name:glyceryl_trinitrate"
+  ],
+  "structure": "official:gtceu/glyceryl_trinitrate_structure"
+}

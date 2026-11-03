@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/indium_gallium_phosphide_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "indium_gallium_phosphide"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

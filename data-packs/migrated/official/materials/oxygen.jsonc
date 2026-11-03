@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/oxygen",
+  "type": "material",
+  "bindings": [
+    "name:oxygen"
+  ],
+  "structure": "official:gtceu/oxygen_structure"
+}

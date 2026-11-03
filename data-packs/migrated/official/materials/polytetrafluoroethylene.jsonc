@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polytetrafluoroethylene",
+  "type": "material",
+  "bindings": [
+    "name:polytetrafluoroethylene"
+  ],
+  "structure": "official:gtceu/polytetrafluoroethylene_structure"
+}

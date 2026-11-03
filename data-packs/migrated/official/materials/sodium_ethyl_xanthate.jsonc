@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/sodium_ethyl_xanthate",
+  "type": "material",
+  "bindings": [
+    "name:sodium_ethyl_xanthate"
+  ],
+  "structure": "official:gtca/sodium_ethyl_xanthate_structure"
+}

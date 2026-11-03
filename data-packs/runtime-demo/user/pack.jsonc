@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "type": "pack",
+  "id": "user",
+  "version": "1.0.0",
+  "description": "Optional reload demo: Water text-only; remove the user pack to undo.",
+  "modVersion": {
+    "min": "0.6.0-stage.4",
+    "maxExclusive": "0.7.0"
+  },
+  "dependencies": [
+    {
+      "id": "official",
+      "version": "1.0.0"
+    }
+  ],
+  "providers": []
+}

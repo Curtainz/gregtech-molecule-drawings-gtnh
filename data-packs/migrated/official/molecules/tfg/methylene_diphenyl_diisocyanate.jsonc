@@ -1,0 +1,341 @@
+{
+  "atoms": [
+    {
+      "element": "N",
+      "id": "a0",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        1.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "labelMode": "hidden",
+      "position": [
+        1.7320509,
+        5.9604645E-8
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "labelMode": "hidden",
+      "position": [
+        2.5980763,
+        0.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        1.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "labelMode": "hidden",
+      "position": [
+        1.7320505,
+        2
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        3.4641016,
+        2
+      ]
+    },
+    {
+      "element": null,
+      "id": "a10",
+      "labelMode": "hidden",
+      "position": [
+        4.3301272,
+        1.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a11",
+      "labelMode": "hidden",
+      "position": [
+        4.3301272,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a12",
+      "labelMode": "hidden",
+      "position": [
+        5.1961527,
+        5.9604645E-8
+      ]
+    },
+    {
+      "element": null,
+      "id": "a13",
+      "labelMode": "hidden",
+      "position": [
+        6.062178,
+        0.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a14",
+      "labelMode": "hidden",
+      "position": [
+        6.062178,
+        1.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a15",
+      "labelMode": "hidden",
+      "position": [
+        5.1961527,
+        2
+      ]
+    },
+    {
+      "element": "N",
+      "id": "a16",
+      "label": "N",
+      "labelMode": "symbol",
+      "position": [
+        6.928203,
+        0
+      ]
+    },
+    {
+      "element": "C",
+      "id": "a17",
+      "label": "C",
+      "labelMode": "symbol",
+      "position": [
+        -0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a18",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -1.7320508,
+        1
+      ]
+    },
+    {
+      "element": "C",
+      "id": "a19",
+      "label": "C",
+      "labelMode": "symbol",
+      "position": [
+        7.7942286,
+        0.5
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a20",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        8.6602545,
+        1
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a10",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a11",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a12",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a13"
+    },
+    {
+      "from": "a13",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a14"
+    },
+    {
+      "from": "a14",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a15"
+    },
+    {
+      "from": "a15",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a13",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a16"
+    },
+    {
+      "centered": true,
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a17"
+    },
+    {
+      "centered": true,
+      "from": "a17",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a18"
+    },
+    {
+      "centered": true,
+      "from": "a16",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a19"
+    },
+    {
+      "centered": true,
+      "from": "a19",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a20"
+    }
+  ],
+  "id": "official:tfg/methylene_diphenyl_diisocyanate_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

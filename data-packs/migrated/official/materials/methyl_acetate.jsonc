@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/methyl_acetate",
+  "type": "material",
+  "bindings": [
+    "name:methyl_acetate"
+  ],
+  "structure": "official:gtceu/methyl_acetate_structure"
+}

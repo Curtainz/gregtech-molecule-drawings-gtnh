@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/acrylic_acid",
+  "type": "material",
+  "bindings": [
+    "name:acrylic_acid"
+  ],
+  "structure": "official:gtocore/acrylic_acid_structure"
+}

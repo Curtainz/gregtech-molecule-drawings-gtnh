@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tetramethylpiperidine",
+  "type": "material",
+  "bindings": [
+    "name:tetramethylpiperidine"
+  ],
+  "structure": "official:gtocore/tetramethylpiperidine_structure"
+}

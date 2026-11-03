@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/hafnide_ito_ceramic_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "hafnide_ito_ceramic"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

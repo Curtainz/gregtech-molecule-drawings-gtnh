@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/glyoxal",
+  "type": "material",
+  "bindings": [
+    "name:glyoxal"
+  ],
+  "structure": "official:gtocore/glyoxal_structure"
+}

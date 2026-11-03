@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/cetane",
+  "type": "material",
+  "bindings": [
+    "name:cetane"
+  ],
+  "structure": "official:gtocore/cetane_structure"
+}

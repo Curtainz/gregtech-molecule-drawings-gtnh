@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/resorcinol",
+  "type": "material",
+  "bindings": [
+    "name:resorcinol"
+  ],
+  "structure": "official:gtocore/resorcinol_structure"
+}

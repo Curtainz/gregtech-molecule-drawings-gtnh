@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/hydrogen_fluoride",
+  "type": "material",
+  "bindings": [
+    "name:hydrogen_fluoride"
+  ],
+  "structure": "official:gtceu/hydrogen_fluoride_structure"
+}

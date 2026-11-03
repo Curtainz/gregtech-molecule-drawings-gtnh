@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/pentaerythritol_dust",
+  "type": "material",
+  "bindings": [
+    "name:pentaerythritol_dust"
+  ],
+  "structure": "official:gtocore/pentaerythritol_dust_structure"
+}

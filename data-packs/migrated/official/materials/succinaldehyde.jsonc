@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/succinaldehyde",
+  "type": "material",
+  "bindings": [
+    "name:succinaldehyde"
+  ],
+  "structure": "official:gtocore/succinaldehyde_structure"
+}

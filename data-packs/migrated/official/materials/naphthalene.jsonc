@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/naphthalene",
+  "type": "material",
+  "bindings": [
+    "name:naphthalene"
+  ],
+  "structure": "official:gtceu/naphthalene_structure"
+}

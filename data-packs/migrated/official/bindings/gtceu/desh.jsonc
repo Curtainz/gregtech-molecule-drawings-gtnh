@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/desh_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "desh"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

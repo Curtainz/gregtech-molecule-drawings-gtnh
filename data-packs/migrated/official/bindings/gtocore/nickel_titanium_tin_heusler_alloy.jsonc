@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/nickel_titanium_tin_heusler_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "nickel_titanium_tin_heusler_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

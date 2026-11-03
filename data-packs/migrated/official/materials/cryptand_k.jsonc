@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/cryptand_k",
+  "type": "material",
+  "bindings": [
+    "name:cryptand_k"
+  ],
+  "structure": "official:gtceu/cryptand_k_structure"
+}

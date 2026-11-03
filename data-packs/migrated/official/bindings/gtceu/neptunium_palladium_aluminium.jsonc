@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/neptunium_palladium_aluminium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "neptunium_palladium_aluminium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

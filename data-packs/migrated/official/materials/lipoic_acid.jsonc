@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/lipoic_acid",
+  "type": "material",
+  "bindings": [
+    "name:lipoic_acid"
+  ],
+  "structure": "official:gtocore/lipoic_acid_structure"
+}

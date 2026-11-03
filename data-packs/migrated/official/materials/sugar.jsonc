@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/sugar",
+  "type": "material",
+  "bindings": [
+    "name:sugar"
+  ],
+  "structure": "official:gtceu/sugar_structure"
+}

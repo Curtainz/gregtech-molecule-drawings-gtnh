@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/para_benzoquinone",
+  "type": "material",
+  "bindings": [
+    "name:para_benzoquinone"
+  ],
+  "structure": "official:gtocore/para_benzoquinone_structure"
+}

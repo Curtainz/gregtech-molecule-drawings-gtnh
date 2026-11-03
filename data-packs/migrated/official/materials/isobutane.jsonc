@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/isobutane",
+  "type": "material",
+  "bindings": [
+    "name:isobutane"
+  ],
+  "structure": "official:tfg/isobutane_structure"
+}

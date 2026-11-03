@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethyl_silicate",
+  "type": "material",
+  "bindings": [
+    "name:ethyl_silicate"
+  ],
+  "structure": "official:gtocore/ethyl_silicate_structure"
+}

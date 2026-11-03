@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polyether_ether_ketone",
+  "type": "material",
+  "bindings": [
+    "name:polyether_ether_ketone"
+  ],
+  "structure": "official:gtceu/polyether_ether_ketone_structure"
+}

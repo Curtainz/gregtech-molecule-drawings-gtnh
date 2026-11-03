@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/thacoloy_nq_42x_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "thacoloy_nq_42x"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

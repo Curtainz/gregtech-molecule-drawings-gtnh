@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/epichlorohydrin",
+  "type": "material",
+  "bindings": [
+    "name:epichlorohydrin"
+  ],
+  "structure": "official:gtceu/epichlorohydrin_structure"
+}

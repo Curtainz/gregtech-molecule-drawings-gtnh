@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/lumium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "lumium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

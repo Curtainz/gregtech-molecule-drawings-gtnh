@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/galvanized_ethersteel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "galvanized_ethersteel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

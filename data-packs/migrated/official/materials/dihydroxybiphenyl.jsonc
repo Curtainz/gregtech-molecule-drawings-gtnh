@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dihydroxybiphenyl",
+  "type": "material",
+  "bindings": [
+    "name:dihydroxybiphenyl"
+  ],
+  "structure": "official:gtocore/dihydroxybiphenyl_structure"
+}

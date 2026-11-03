@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/carbon_dioxide",
+  "type": "material",
+  "bindings": [
+    "name:carbon_dioxide"
+  ],
+  "structure": "official:gtceu/carbon_dioxide_structure"
+}

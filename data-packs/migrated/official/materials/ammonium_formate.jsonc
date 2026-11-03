@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ammonium_formate",
+  "type": "material",
+  "bindings": [
+    "name:ammonium_formate"
+  ],
+  "structure": "official:gtceu/ammonium_formate_structure"
+}

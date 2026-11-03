@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/silane",
+  "type": "material",
+  "bindings": [
+    "name:silane"
+  ],
+  "structure": "official:gtceu/silane_structure"
+}

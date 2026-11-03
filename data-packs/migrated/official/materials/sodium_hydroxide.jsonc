@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/sodium_hydroxide",
+  "type": "material",
+  "bindings": [
+    "name:sodium_hydroxide"
+  ],
+  "structure": "official:gtceu/sodium_hydroxide_structure"
+}

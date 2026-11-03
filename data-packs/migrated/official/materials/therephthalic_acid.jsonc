@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/therephthalic_acid",
+  "type": "material",
+  "bindings": [
+    "name:therephthalic_acid"
+  ],
+  "structure": "official:gcyr/therephthalic_acid_structure"
+}

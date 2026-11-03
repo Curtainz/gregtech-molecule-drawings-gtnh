@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ethyl_trifluoroacetate",
+  "type": "material",
+  "bindings": [
+    "name:ethyl_trifluoroacetate"
+  ],
+  "structure": "official:gtocore/ethyl_trifluoroacetate_structure"
+}

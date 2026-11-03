@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/acetone_cyanohydrin",
+  "type": "material",
+  "bindings": [
+    "name:acetone_cyanohydrin"
+  ],
+  "structure": "official:gtceu/acetone_cyanohydrin_structure"
+}

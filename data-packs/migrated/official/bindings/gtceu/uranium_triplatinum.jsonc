@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/uranium_triplatinum_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "uranium_triplatinum"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

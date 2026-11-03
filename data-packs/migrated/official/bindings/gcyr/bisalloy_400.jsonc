@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gcyr/bisalloy_400_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "bisalloy_400"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

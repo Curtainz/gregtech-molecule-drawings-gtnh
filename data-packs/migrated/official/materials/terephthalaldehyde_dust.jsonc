@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/terephthalaldehyde_dust",
+  "type": "material",
+  "bindings": [
+    "name:terephthalaldehyde_dust"
+  ],
+  "structure": "official:gtocore/terephthalaldehyde_dust_structure"
+}

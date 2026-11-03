@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dimethyl_sulfoxide",
+  "type": "material",
+  "bindings": [
+    "name:dimethyl_sulfoxide"
+  ],
+  "structure": "official:gtceu/dimethyl_sulfoxide_structure"
+}

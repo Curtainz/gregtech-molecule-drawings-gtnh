@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/isononyl_alcohol",
+  "type": "material",
+  "bindings": [
+    "name:isononyl_alcohol"
+  ],
+  "structure": "official:gtca/isononyl_alcohol_structure"
+}

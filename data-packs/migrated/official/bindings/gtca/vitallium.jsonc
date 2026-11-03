@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtca/vitallium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "vitallium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/methylamine",
+  "type": "material",
+  "bindings": [
+    "name:methylamine"
+  ],
+  "structure": "official:gtocore/methylamine_structure"
+}

@@ -119,10 +119,13 @@ public record BenzeneRing(int[] indices, Vector3f first, Vector3f next, int spin
             else if (obj.has("start_index")) {
                 final var count = obj.has("count") ? obj.get("count")
                     .getAsInt() : 6;
+                if (count < 3 || count > 64) throw new JsonParseException("Ring size must be between 3 and 64");
                 indices = new int[count];
                 for (var idx = 0; idx < count; idx++) indices[idx] = obj.get("start_index")
                     .getAsInt() + idx;
             } else throw new JsonParseException("Benzene ring JSON must contain either indices or start_index");
+            if (indices.length < 3 || indices.length > 64)
+                throw new JsonParseException("Ring size must be between 3 and 64");
             final var first = new Vector3f();
             if (obj.has("u0") && obj.has("v0")) {
                 final var xy = new Vector2f();

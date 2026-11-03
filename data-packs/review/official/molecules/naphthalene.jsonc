@@ -1,0 +1,34 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "instances": [
+    {
+      "id": "left",
+      "module": "core:benzene",
+      "origin": [
+        0,
+        0
+      ],
+      "parameters": {
+        "doubleBondStart": 0
+      }
+    },
+    {
+      "atomMap": {
+        "a3": "left.a1",
+        "a4": "left.a0"
+      },
+      "id": "right",
+      "module": "core:benzene",
+      "origin": [
+        1.5,
+        0.8660254037844386
+      ],
+      "parameters": {
+        "doubleBondStart": 1
+      }
+    }
+  ],
+  "id": "official:naphthalene_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

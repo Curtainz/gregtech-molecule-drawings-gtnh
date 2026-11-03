@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/isoprene",
+  "type": "material",
+  "bindings": [
+    "name:isoprene"
+  ],
+  "structure": "official:gtceu/isoprene_structure"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/scalm_alloy_s_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "scalm_alloy_s"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

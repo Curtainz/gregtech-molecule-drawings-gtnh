@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/butanol",
+  "type": "material",
+  "bindings": [
+    "name:butanol"
+  ],
+  "structure": "official:gtceu/butanol_structure"
+}

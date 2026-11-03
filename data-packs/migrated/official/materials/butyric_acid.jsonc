@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/butyric_acid",
+  "type": "material",
+  "bindings": [
+    "name:butyric_acid"
+  ],
+  "structure": "official:tfg/butyric_acid_structure"
+}

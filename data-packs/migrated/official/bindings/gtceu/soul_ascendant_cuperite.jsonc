@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/soul_ascendant_cuperite_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "soul_ascendant_cuperite"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

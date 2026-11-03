@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polybenzimidazole",
+  "type": "material",
+  "bindings": [
+    "name:polybenzimidazole"
+  ],
+  "structure": "official:gtceu/polybenzimidazole_structure"
+}

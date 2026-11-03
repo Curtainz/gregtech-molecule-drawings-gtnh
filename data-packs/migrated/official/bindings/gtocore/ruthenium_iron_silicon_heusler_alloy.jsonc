@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/ruthenium_iron_silicon_heusler_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "ruthenium_iron_silicon_heusler_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

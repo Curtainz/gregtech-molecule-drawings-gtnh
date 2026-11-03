@@ -9,14 +9,11 @@ import net.minecraft.util.EnumChatFormatting;
 
 import org.jetbrains.annotations.Nullable;
 
-import com.rubenverg.moldraw.molecule.Element;
-import com.rubenverg.moldraw.molecule.MathUtils;
-
 import gregtech.api.enums.Materials;
 
 public class MoleculeColorize {
 
-    public static int FALLBACK_COLOR = MathUtils.chatFormattingColor(EnumChatFormatting.YELLOW);
+    public static int FALLBACK_COLOR = 0xFFFFFF55;
 
     private static final Map<String, Integer> CPK_COLORS = new HashMap<>();
 
@@ -67,7 +64,7 @@ public class MoleculeColorize {
             int idx = "0123456789abcdef".indexOf(Character.toLowerCase(code));
             if (idx >= 0) {
                 EnumChatFormatting f = EnumChatFormatting.values()[idx];
-                return MathUtils.chatFormattingColor(f);
+                return chatColor(f.getFormattingCode());
             }
             return FALLBACK_COLOR;
         } else if (str.length() == 7 && str.charAt(0) == '#') {
@@ -138,21 +135,18 @@ public class MoleculeColorize {
         return COLOR_CACHE.get(material);
     }
 
-    public static int getColorForElement(Element element) {
-        if (MolDrawConfig.INSTANCE.color.colors) {
-            if (MolDrawConfig.INSTANCE.color.useMaterialColors && element.material != null
-                && element.material != Materials._NULL) {
-                return getColorForMaterial(element.material);
-            }
-            if (element.color instanceof Element.Color.Always always) {
-                return lightenColor(always.color());
-            } else if (element.color instanceof Element.Color.Optional opt) {
-                return lightenColor(opt.color());
-            }
-            if (element.symbol != null && CPK_COLORS.containsKey(element.symbol)) {
-                return CPK_COLORS.get(element.symbol);
-            }
-        }
-        return configColor(null);
+    private static int chatColor(char code) {
+        int index = "0123456789abcdef".indexOf(Character.toLowerCase(code));
+        int[] colors = { 0x000000, 0x0000AA, 0x00AA00, 0x00AAAA, 0xAA0000, 0xAA00AA, 0xFFAA00, 0xAAAAAA, 0x555555,
+            0x5555FF, 0x55FF55, 0x55FFFF, 0xFF5555, 0xFF55FF, 0xFFFF55, 0xFFFFFF };
+        return index < 0 ? 0xFFFFFFFF : 0xFF000000 | colors[index];
+    }
+
+    public static Map<String, Integer> symbolPalette() {
+        Map<String, Integer> result = new HashMap<>();
+        com.rubenverg.moldraw.core.ElementPalette.COLORS.forEach(
+            (symbol, color) -> result
+                .put(symbol, MolDrawConfig.INSTANCE.color.colors ? lightenColor(color) : configColor(null)));
+        return Map.copyOf(result);
     }
 }

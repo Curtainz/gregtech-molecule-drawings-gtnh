@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/hydrogen_sulfide",
+  "type": "material",
+  "bindings": [
+    "name:hydrogen_sulfide"
+  ],
+  "structure": "official:gtceu/hydrogen_sulfide_structure"
+}

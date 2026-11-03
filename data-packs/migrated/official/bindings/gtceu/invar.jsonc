@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/invar_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "invar"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

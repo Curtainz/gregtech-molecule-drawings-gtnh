@@ -49,7 +49,10 @@ public class TooltipEventHandler {
             return;
         }
 
-        TooltipPipeline.renderPendingGraphics(event.mouseX, event.mouseY);
-        TooltipRenderContext.clear();
+        try {
+            TooltipPipeline.renderPendingGraphics(event.mouseX, event.mouseY);
+        } finally {
+            TooltipRenderContext.clear();
+        }
     }
 }

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/magnesium_diboride_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "magnesium_diboride"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

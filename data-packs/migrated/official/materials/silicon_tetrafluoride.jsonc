@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/silicon_tetrafluoride",
+  "type": "material",
+  "bindings": [
+    "name:silicon_tetrafluoride"
+  ],
+  "structure": "official:gtceu/silicon_tetrafluoride_structure"
+}

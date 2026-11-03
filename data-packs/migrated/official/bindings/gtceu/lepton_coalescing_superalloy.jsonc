@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/lepton_coalescing_superalloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "lepton_coalescing_superalloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

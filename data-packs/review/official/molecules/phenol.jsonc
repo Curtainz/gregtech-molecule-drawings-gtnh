@@ -1,0 +1,31 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "instances": [
+    {
+      "id": "ring",
+      "module": "core:benzene",
+      "origin": [
+        0,
+        0
+      ]
+    },
+    {
+      "fragment": "official:hydroxyl",
+      "id": "hydroxyl",
+      "origin": [
+        2,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "ring.a0",
+      "order": 1,
+      "to": "hydroxyl.attach"
+    }
+  ],
+  "id": "official:phenol_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

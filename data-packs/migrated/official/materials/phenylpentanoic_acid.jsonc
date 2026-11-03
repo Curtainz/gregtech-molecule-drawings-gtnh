@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/phenylpentanoic_acid",
+  "type": "material",
+  "bindings": [
+    "name:phenylpentanoic_acid"
+  ],
+  "structure": "official:gtocore/phenylpentanoic_acid_structure"
+}

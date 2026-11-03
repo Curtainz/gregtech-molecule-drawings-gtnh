@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/formic_acid",
+  "type": "material",
+  "bindings": [
+    "name:formic_acid"
+  ],
+  "structure": "official:gtceu/formic_acid_structure"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/melastrium_mox_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "melastrium_mox"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

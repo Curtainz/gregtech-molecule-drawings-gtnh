@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/difluorodiphenylsulfone",
+  "type": "material",
+  "bindings": [
+    "name:difluorodiphenylsulfone"
+  ],
+  "structure": "official:gtocore/difluorodiphenylsulfone_structure"
+}

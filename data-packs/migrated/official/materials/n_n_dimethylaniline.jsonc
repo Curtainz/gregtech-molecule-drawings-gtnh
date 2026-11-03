@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/n_n_dimethylaniline",
+  "type": "material",
+  "bindings": [
+    "name:n_n_dimethylaniline"
+  ],
+  "structure": "official:tfg/n_n_dimethylaniline_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/isophthaloylbis",
+  "type": "material",
+  "bindings": [
+    "name:isophthaloylbis"
+  ],
+  "structure": "official:gtocore/isophthaloylbis_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/caprolactam",
+  "type": "material",
+  "bindings": [
+    "name:caprolactam"
+  ],
+  "structure": "official:gtceu/caprolactam_structure"
+}

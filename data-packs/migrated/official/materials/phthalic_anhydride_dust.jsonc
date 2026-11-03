@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/phthalic_anhydride_dust",
+  "type": "material",
+  "bindings": [
+    "name:phthalic_anhydride_dust"
+  ],
+  "structure": "official:gtocore/phthalic_anhydride_dust_structure"
+}

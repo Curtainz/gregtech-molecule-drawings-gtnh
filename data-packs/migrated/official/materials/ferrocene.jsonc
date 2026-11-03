@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/ferrocene",
+  "type": "material",
+  "bindings": [
+    "name:ferrocene"
+  ],
+  "structure": "official:gtceu/ferrocene_structure"
+}

@@ -1,0 +1,91 @@
+{
+  "atoms": [
+    {
+      "element": "O",
+      "id": "a0",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -2.4,
+        0
+      ]
+    },
+    {
+      "element": "Al",
+      "id": "a1",
+      "label": "Al",
+      "labelMode": "symbol",
+      "position": [
+        -1.2,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a2",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0.4
+      ]
+    },
+    {
+      "element": "Al",
+      "id": "a3",
+      "label": "Al",
+      "labelMode": "symbol",
+      "position": [
+        1.2,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a4",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        2.4,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "centered": true,
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "centered": true,
+      "from": "a3",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a4"
+    }
+  ],
+  "id": "official:gtceu/aluminiumoxide_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

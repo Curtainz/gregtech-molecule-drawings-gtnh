@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/ultispestalloy_cmsh_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "ultispestalloy_cmsh"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

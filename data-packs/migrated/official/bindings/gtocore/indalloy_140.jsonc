@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/indalloy_140_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "indalloy_140"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

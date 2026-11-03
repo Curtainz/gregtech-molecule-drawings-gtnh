@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/p_nitroaniline",
+  "type": "material",
+  "bindings": [
+    "name:p_nitroaniline"
+  ],
+  "structure": "official:gtocore/p_nitroaniline_structure"
+}

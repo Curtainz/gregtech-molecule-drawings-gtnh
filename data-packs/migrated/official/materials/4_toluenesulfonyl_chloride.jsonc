@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/4_toluenesulfonyl_chloride",
+  "type": "material",
+  "bindings": [
+    "name:4_toluenesulfonyl_chloride"
+  ],
+  "structure": "official:gtceu/4_toluenesulfonyl_chloride_structure"
+}

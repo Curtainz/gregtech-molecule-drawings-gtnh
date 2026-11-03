@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/hastelloy_x_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "hastelloy_x"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

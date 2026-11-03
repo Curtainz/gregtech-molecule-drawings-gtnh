@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/hsla_steel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "hsla_steel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

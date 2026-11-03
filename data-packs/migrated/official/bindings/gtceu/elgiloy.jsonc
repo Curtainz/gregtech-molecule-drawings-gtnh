@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/elgiloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "elgiloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

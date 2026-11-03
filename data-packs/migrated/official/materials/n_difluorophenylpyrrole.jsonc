@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/n_difluorophenylpyrrole",
+  "type": "material",
+  "bindings": [
+    "name:n_difluorophenylpyrrole"
+  ],
+  "structure": "official:gtocore/n_difluorophenylpyrrole_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polyphenylene_sulfide",
+  "type": "material",
+  "bindings": [
+    "name:polyphenylene_sulfide"
+  ],
+  "structure": "official:gtceu/polyphenylene_sulfide_structure"
+}

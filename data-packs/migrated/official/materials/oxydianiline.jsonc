@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/oxydianiline",
+  "type": "material",
+  "bindings": [
+    "name:oxydianiline"
+  ],
+  "structure": "official:gtceu/oxydianiline_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/1_1_1_2_tetrafluoroethane",
+  "type": "material",
+  "bindings": [
+    "name:1_1_1_2_tetrafluoroethane"
+  ],
+  "structure": "official:tfg/1_1_1_2_tetrafluoroethane_structure"
+}

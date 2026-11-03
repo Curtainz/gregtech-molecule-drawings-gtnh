@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/periodicium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "periodicium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

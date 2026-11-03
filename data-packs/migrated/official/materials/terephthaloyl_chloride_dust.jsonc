@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/terephthaloyl_chloride_dust",
+  "type": "material",
+  "bindings": [
+    "name:terephthaloyl_chloride_dust"
+  ],
+  "structure": "official:gtocore/terephthaloyl_chloride_dust_structure"
+}

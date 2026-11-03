@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/nitrogen",
+  "type": "material",
+  "bindings": [
+    "name:nitrogen"
+  ],
+  "structure": "official:gtceu/nitrogen_structure"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/tanmolyium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "tanmolyium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

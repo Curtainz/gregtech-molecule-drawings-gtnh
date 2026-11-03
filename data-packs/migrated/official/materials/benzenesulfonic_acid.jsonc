@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/benzenesulfonic_acid",
+  "type": "material",
+  "bindings": [
+    "name:benzenesulfonic_acid"
+  ],
+  "structure": "official:gtocore/benzenesulfonic_acid_structure"
+}

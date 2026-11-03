@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/radiation_shielding_high_density_tungsten_steel_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "radiation_shielding_high_density_tungsten_steel"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

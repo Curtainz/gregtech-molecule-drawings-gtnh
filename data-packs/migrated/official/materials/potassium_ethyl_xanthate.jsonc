@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/potassium_ethyl_xanthate",
+  "type": "material",
+  "bindings": [
+    "name:potassium_ethyl_xanthate"
+  ],
+  "structure": "official:gtca/potassium_ethyl_xanthate_structure"
+}

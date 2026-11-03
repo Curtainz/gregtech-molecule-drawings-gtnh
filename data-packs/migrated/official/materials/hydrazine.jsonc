@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/hydrazine",
+  "type": "material",
+  "bindings": [
+    "name:hydrazine"
+  ],
+  "structure": "official:gtocore/hydrazine_structure"
+}

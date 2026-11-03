@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:tfg/tungsten_bismuth_oxide_composite_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "tungsten_bismuth_oxide_composite"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "atoms": [
+    {
+      "element": null,
+      "id": "a0",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.85,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.35,
+        1.1
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.35,
+        1.1
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0,
+        2.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.85,
+        3
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.7,
+        2.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a8",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        1.35,
+        1.9
+      ]
+    },
+    {
+      "element": null,
+      "id": "a9",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.35,
+        1.9
+      ]
+    },
+    {
+      "element": null,
+      "id": "a10",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.85,
+        0.64
+      ]
+    },
+    {
+      "element": null,
+      "id": "a11",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        0.85,
+        2.36
+      ]
+    },
+    {
+      "element": "Fe",
+      "id": "a12",
+      "label": "Fe",
+      "labelMode": "symbol",
+      "position": [
+        0.85,
+        1.5
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "atoms": [
+        "a0",
+        "a1",
+        "a2",
+        "a3",
+        "a4"
+      ],
+      "matrix": [
+        0.5,
+        0,
+        0,
+        0.3
+      ],
+      "type": "ellipse"
+    },
+    {
+      "atoms": [
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9"
+      ],
+      "matrix": [
+        0.5,
+        0,
+        0,
+        0.3
+      ],
+      "type": "ellipse"
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "outward"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "outward"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a0"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "outward"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a8",
+      "strokes": [
+        "thick"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "outward"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a10",
+      "strokes": [
+        "dotted"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a11",
+      "strokes": [
+        "dotted"
+      ],
+      "to": "a12"
+    }
+  ],
+  "id": "official:gtceu/ferrocene_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

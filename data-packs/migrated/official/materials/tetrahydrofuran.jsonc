@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/tetrahydrofuran",
+  "type": "material",
+  "bindings": [
+    "name:tetrahydrofuran"
+  ],
+  "structure": "official:gtocore/tetrahydrofuran_structure"
+}

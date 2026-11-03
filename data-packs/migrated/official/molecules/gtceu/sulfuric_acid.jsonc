@@ -1,0 +1,125 @@
+{
+  "atoms": [
+    {
+      "element": "S",
+      "id": "a0",
+      "label": "S",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a1",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        1.2
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a2",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        -1.2
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a3",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        -1.2,
+        0
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a4",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        -1.8,
+        0.4
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a5",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        1.2,
+        0
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a6",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        1.8,
+        -0.4
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "centered": true,
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "centered": true,
+      "from": "a0",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    }
+  ],
+  "id": "official:gtceu/sulfuric_acid_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

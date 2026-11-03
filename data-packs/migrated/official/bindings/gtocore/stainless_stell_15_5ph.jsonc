@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/stainless_stell_15_5ph_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "stainless_stell_15_5ph"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

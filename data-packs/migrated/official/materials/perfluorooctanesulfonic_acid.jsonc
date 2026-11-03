@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/perfluorooctanesulfonic_acid",
+  "type": "material",
+  "bindings": [
+    "name:perfluorooctanesulfonic_acid"
+  ],
+  "structure": "official:gtocore/perfluorooctanesulfonic_acid_structure"
+}

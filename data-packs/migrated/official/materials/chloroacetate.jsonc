@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/chloroacetate",
+  "type": "material",
+  "bindings": [
+    "name:chloroacetate"
+  ],
+  "structure": "official:gtceu/chloroacetate_structure"
+}

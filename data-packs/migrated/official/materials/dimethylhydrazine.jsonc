@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dimethylhydrazine",
+  "type": "material",
+  "bindings": [
+    "name:dimethylhydrazine"
+  ],
+  "structure": "official:gtceu/dimethylhydrazine_structure"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/44_difluorobenzophenone",
+  "type": "material",
+  "bindings": [
+    "name:44_difluorobenzophenone"
+  ],
+  "structure": "official:gtceu/44_difluorobenzophenone_structure"
+}

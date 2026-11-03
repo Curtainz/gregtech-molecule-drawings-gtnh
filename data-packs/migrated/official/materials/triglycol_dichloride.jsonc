@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/triglycol_dichloride",
+  "type": "material",
+  "bindings": [
+    "name:triglycol_dichloride"
+  ],
+  "structure": "official:gtceu/triglycol_dichloride_structure"
+}

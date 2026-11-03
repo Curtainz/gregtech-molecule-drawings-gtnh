@@ -1,0 +1,284 @@
+{
+  "atoms": [
+    {
+      "element": "F",
+      "id": "a0",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "element": null,
+      "id": "a1",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        1.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a2",
+      "labelMode": "hidden",
+      "position": [
+        0.8660254,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a3",
+      "labelMode": "hidden",
+      "position": [
+        1.7320509,
+        5.9604645E-8
+      ]
+    },
+    {
+      "element": null,
+      "id": "a4",
+      "labelMode": "hidden",
+      "position": [
+        2.5980763,
+        0.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a5",
+      "labelMode": "hidden",
+      "position": [
+        2.598076,
+        1.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a6",
+      "labelMode": "hidden",
+      "position": [
+        1.7320505,
+        2
+      ]
+    },
+    {
+      "element": null,
+      "id": "a7",
+      "label": "",
+      "labelMode": "hidden",
+      "position": [
+        3.4641016,
+        2
+      ]
+    },
+    {
+      "element": "O",
+      "id": "a8",
+      "label": "O",
+      "labelMode": "symbol",
+      "position": [
+        3.4641016,
+        3
+      ]
+    },
+    {
+      "element": null,
+      "id": "a9",
+      "labelMode": "hidden",
+      "position": [
+        4.3301272,
+        1.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a10",
+      "labelMode": "hidden",
+      "position": [
+        4.3301272,
+        0.5
+      ]
+    },
+    {
+      "element": null,
+      "id": "a11",
+      "labelMode": "hidden",
+      "position": [
+        5.1961527,
+        5.9604645E-8
+      ]
+    },
+    {
+      "element": null,
+      "id": "a12",
+      "labelMode": "hidden",
+      "position": [
+        6.062178,
+        0.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a13",
+      "labelMode": "hidden",
+      "position": [
+        6.062178,
+        1.5000002
+      ]
+    },
+    {
+      "element": null,
+      "id": "a14",
+      "labelMode": "hidden",
+      "position": [
+        5.1961527,
+        2
+      ]
+    },
+    {
+      "element": "F",
+      "id": "a15",
+      "label": "F",
+      "labelMode": "symbol",
+      "position": [
+        6.928203,
+        0
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a1",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a2",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a3"
+    },
+    {
+      "from": "a3",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a4"
+    },
+    {
+      "from": "a4",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a5"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a6"
+    },
+    {
+      "from": "a6",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    },
+    {
+      "from": "a5",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a7"
+    },
+    {
+      "centered": true,
+      "from": "a7",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a8"
+    },
+    {
+      "from": "a9",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a10"
+    },
+    {
+      "from": "a10",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a11"
+    },
+    {
+      "from": "a11",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a12"
+    },
+    {
+      "from": "a12",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a13"
+    },
+    {
+      "from": "a13",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a14"
+    },
+    {
+      "from": "a14",
+      "strokes": [
+        "solid",
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a7",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a9"
+    },
+    {
+      "from": "a12",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a15"
+    }
+  ],
+  "id": "official:gtceu/44_difluorobenzophenone_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

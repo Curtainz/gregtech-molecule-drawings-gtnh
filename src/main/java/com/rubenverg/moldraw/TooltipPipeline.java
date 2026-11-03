@@ -9,11 +9,10 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
 
 import com.rubenverg.moldraw.component.ITooltipDrawable;
 import com.rubenverg.moldraw.component.TooltipRenderContext;
-import com.rubenverg.moldraw.util.FormulaParser;
+import com.rubenverg.moldraw.core.FormulaText;
 
 public final class TooltipPipeline {
 
@@ -41,9 +40,14 @@ public final class TooltipPipeline {
     }
 
     public static boolean apply(List<String> tip, DisplayPlan plan, FontRenderer font) {
-        if (!MolDraw.isClientThread() || font == null || tip == null || plan == null || !plan.isValid()) {
+        if (!MolDraw.isClientThread() || font == null || tip == null || plan == null) {
             return false;
         }
+
+        boolean formulaChanged = plan.hasFormulaOverride()
+            && FormulaText.applyOverride(tip, plan.getFormula(), plan.originalFormula());
+        tip.removeIf(NEITooltipHelper::isStaleOwnToken);
+        if (!plan.isValid()) return formulaChanged;
 
         if (hasMolDrawTokenOrHint(tip)) {
             return false;
@@ -105,10 +109,10 @@ public final class TooltipPipeline {
     private static void insertToken(List<String> tip, String token, String formula) {
         int targetIdx = -1;
         if (formula != null && !formula.isEmpty()) {
-            String cleanFormula = FormulaParser.normalizeFormula(formula)
+            String cleanFormula = FormulaText.normalizeFormula(formula)
                 .toLowerCase(Locale.ROOT);
             for (int i = 0; i < tip.size(); i++) {
-                String line = FormulaParser.normalizeFormula(tip.get(i))
+                String line = FormulaText.normalizeFormula(tip.get(i))
                     .toLowerCase(Locale.ROOT);
                 if (line.contains(cleanFormula)) {
                     targetIdx = i + 1;
@@ -180,20 +184,8 @@ public final class TooltipPipeline {
         int drawX = tooltipX;
         int drawY = tooltipY + (targetLine == 0 ? 0 : 2 + targetLine * 10);
 
-        GL11.glPushMatrix();
-        GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
-        GL11.glDisable(GL11.GL_LIGHTING);
-        GL11.glDisable(GL11.GL_DEPTH_TEST);
-        GL11.glEnable(GL11.GL_BLEND);
-        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-
-        ITooltipDrawable drawable = TooltipRenderContext.getPendingDrawable();
-        if (drawable != null) {
-            drawable.render(font, drawX, drawY);
-        }
-
-        GL11.glPopAttrib();
-        GL11.glPopMatrix();
+        com.rubenverg.moldraw.component.TooltipDrawPass
+            .render(TooltipRenderContext.getPendingDrawable(), font, drawX, drawY);
 
         TooltipRenderContext.updateMousePosition(mouseX, mouseY);
     }

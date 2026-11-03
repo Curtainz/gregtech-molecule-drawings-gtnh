@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/rubber",
+  "type": "material",
+  "bindings": [
+    "name:rubber"
+  ],
+  "structure": "official:gtceu/rubber_structure"
+}

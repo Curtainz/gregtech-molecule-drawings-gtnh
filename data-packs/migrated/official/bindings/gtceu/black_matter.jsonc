@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/black_matter_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "black_matter"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

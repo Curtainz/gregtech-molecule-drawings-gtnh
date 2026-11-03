@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/dimethylterephthalate",
+  "type": "material",
+  "bindings": [
+    "name:dimethylterephthalate"
+  ],
+  "structure": "official:gtocore/dimethylterephthalate_structure"
+}

@@ -1,0 +1,53 @@
+{
+  "atoms": [
+    {
+      "element": "S",
+      "id": "a0",
+      "label": "S",
+      "labelMode": "symbol",
+      "position": [
+        0,
+        0.3
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a1",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        -0.8,
+        -0.3
+      ]
+    },
+    {
+      "element": "H",
+      "id": "a2",
+      "label": "H",
+      "labelMode": "symbol",
+      "position": [
+        0.8,
+        -0.3
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a1"
+    },
+    {
+      "from": "a0",
+      "strokes": [
+        "solid"
+      ],
+      "to": "a2"
+    }
+  ],
+  "id": "official:gtceu/hydrogen_sulfide_structure",
+  "schemaVersion": 1,
+  "type": "molecule"
+}

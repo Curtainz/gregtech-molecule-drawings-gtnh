@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/neutronium_silicon_carbide_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "neutronium_silicon_carbide"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

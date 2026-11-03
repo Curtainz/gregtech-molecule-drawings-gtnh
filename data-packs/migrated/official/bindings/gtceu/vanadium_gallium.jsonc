@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/vanadium_gallium_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "vanadium_gallium"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

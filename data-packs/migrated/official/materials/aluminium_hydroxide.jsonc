@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/aluminium_hydroxide",
+  "type": "material",
+  "bindings": [
+    "name:aluminium_hydroxide"
+  ],
+  "structure": "official:gtceu/aluminium_hydroxide_structure"
+}

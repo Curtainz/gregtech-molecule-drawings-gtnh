@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/pyrometillic_dianhydride",
+  "type": "material",
+  "bindings": [
+    "name:pyrometillic_dianhydride"
+  ],
+  "structure": "official:gcyr/pyrometillic_dianhydride_structure"
+}

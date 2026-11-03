@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/maraging_steel_300_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "maraging_steel_300"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

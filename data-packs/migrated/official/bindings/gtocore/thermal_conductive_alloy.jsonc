@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/thermal_conductive_alloy_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "thermal_conductive_alloy"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/chloroprene",
+  "type": "material",
+  "bindings": [
+    "name:chloroprene"
+  ],
+  "structure": "official:gtceu/chloroprene_structure"
+}

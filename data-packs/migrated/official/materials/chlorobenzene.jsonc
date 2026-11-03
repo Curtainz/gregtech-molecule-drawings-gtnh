@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/chlorobenzene",
+  "type": "material",
+  "bindings": [
+    "name:chlorobenzene"
+  ],
+  "structure": "official:gtceu/chlorobenzene_structure"
+}

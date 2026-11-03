@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/polyethylene",
+  "type": "material",
+  "bindings": [
+    "name:polyethylene"
+  ],
+  "structure": "official:gtceu/polyethylene_structure"
+}

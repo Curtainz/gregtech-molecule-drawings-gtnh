@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/benzene",
+  "type": "material",
+  "bindings": [
+    "name:benzene"
+  ],
+  "structure": "official:gtceu/benzene_structure"
+}

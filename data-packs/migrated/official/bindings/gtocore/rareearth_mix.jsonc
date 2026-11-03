@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtocore/rareearth_mix_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "rareearth_mix"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

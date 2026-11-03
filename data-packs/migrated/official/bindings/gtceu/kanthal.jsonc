@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "official:gtceu/kanthal_composition_rule",
+  "type": "bindings",
+  "rules": [
+    {
+      "names": [
+        "kanthal"
+      ],
+      "kind": "composition_candidate"
+    }
+  ]
+}

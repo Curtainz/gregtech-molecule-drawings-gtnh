@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/methane",
+  "type": "material",
+  "bindings": [
+    "name:methane"
+  ],
+  "structure": "official:gtceu/methane_structure"
+}

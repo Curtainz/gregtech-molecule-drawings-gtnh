@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "official:materials/vitamin_a",
+  "type": "material",
+  "bindings": [
+    "name:vitamin_a"
+  ],
+  "structure": "official:gtocore/vitamin_a_structure"
+}

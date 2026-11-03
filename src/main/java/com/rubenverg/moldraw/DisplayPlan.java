@@ -1,10 +1,10 @@
 package com.rubenverg.moldraw;
 
-import com.rubenverg.moldraw.component.ITooltipDrawable;
+import com.rubenverg.moldraw.component.LayoutRenderer;
+import com.rubenverg.moldraw.core.*;
 
-import gregtech.api.enums.Materials;
-
-public class DisplayPlan {
+/** Client binding of frozen presentation data to an already measured immutable layout. */
+public final class DisplayPlan {
 
     public enum Type {
         NONE,
@@ -12,37 +12,59 @@ public class DisplayPlan {
         ALLOY
     }
 
-    public static final DisplayPlan EMPTY = new DisplayPlan(Type.NONE, null, null, null);
+    public static final DisplayPlan EMPTY = new DisplayPlan(
+        new PresentationData(PresentationData.Kind.NONE, null),
+        null);
+    private final PresentationData data;
+    private final LayoutRenderer drawable;
 
-    private final Type type;
-    private final ITooltipDrawable drawable;
-    private final String formula;
-    private final Materials material;
-
-    public DisplayPlan(Type type, ITooltipDrawable drawable, String formula, Materials material) {
-        this.type = type != null ? type : Type.NONE;
+    public DisplayPlan(PresentationData data, LayoutRenderer drawable) {
+        this.data = data;
         this.drawable = drawable;
-        this.formula = formula;
-        this.material = material;
     }
 
     public Type getType() {
-        return type;
+        return Type.valueOf(
+            data.kind()
+                .name());
     }
 
-    public ITooltipDrawable getDrawable() {
+    public LayoutRenderer getDrawable() {
         return drawable;
     }
 
     public String getFormula() {
-        return formula;
+        return data.material() == null ? null
+            : data.material()
+                .formula();
     }
 
-    public Materials getMaterial() {
-        return material;
+    public PresentationData data() {
+        return data;
+    }
+
+    public boolean hasFormulaOverride() {
+        return data.material() != null && data.material()
+            .diagnostics()
+            .contains("PACK_FORMULA_OVERRIDE");
+    }
+
+    public String originalFormula() {
+        if (data.material() == null) return "";
+        return data.material()
+            .diagnostics()
+            .stream()
+            .filter(s -> s.startsWith("GT_ORIGINAL_FORMULA:"))
+            .map(s -> s.substring("GT_ORIGINAL_FORMULA:".length()))
+            .findFirst()
+            .orElse("");
+    }
+
+    public TooltipLayout layout() {
+        return drawable == null ? null : drawable.layout();
     }
 
     public boolean isValid() {
-        return type != Type.NONE && drawable != null;
+        return getType() != Type.NONE && drawable != null && layout().width() > 0 && layout().height() > 0;
     }
 }
