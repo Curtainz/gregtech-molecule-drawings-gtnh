@@ -68,7 +68,7 @@ val architectureRegression by tasks.registering(JavaExec::class) {
 tasks.named("check") { dependsOn(architectureRegression) }
 
 val reviewPackZip by tasks.registering(Zip::class) {
-    archiveFileName.set("gtmoldraw-data-pack-stage-4.zip")
+    archiveFileName.set("gtmoldraw-data-pack-0.6.0.zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true
@@ -89,7 +89,7 @@ dependencies {
 }
 val packToolJar by tasks.registering(Jar::class) {
     dependsOn(tasks.named("classes"))
-    archiveFileName.set("gtmoldraw-pack-tool-stage-4.jar")
+    archiveFileName.set("gtmoldraw-pack-tool-0.6.0.jar")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest { attributes("Main-Class" to "com.rubenverg.moldraw.tool.PackTool") }
@@ -145,7 +145,7 @@ val generatePackPreview by tasks.registering(JavaExec::class) {
 }
 val previewZip by tasks.registering(Zip::class) {
     dependsOn(generatePackPreview)
-    archiveFileName.set("gtmoldraw-stage-4-preview.zip")
+    archiveFileName.set("gtmoldraw-0.6.0-preview.zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true
@@ -195,7 +195,7 @@ tasks.named("check") { dependsOn(runtimePackRegression) }
 
 val installZip by tasks.registering(Zip::class) {
     dependsOn(tasks.named("reobfJar"))
-    archiveFileName.set("gtmoldraw-stage-4-install.zip")
+    archiveFileName.set("gtmoldraw-0.6.0-install.zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true

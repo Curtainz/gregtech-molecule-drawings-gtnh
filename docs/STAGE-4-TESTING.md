@@ -1,19 +1,19 @@
 # 第④阶段：游戏内外部挂载与热重载
 
-版本：0.6.0-stage.4，目标仍为Java 25驱动的GTNH 2.9。首次接入游戏内挂载，需实机验收；自动检查通过不代表历史native崩溃的根因已经确定。
+版本：0.6.0，目标仍为Java 25驱动的GTNH 2.9。第④阶段已由用户基本实机验证，本说明用于正式版回归；自动检查通过不代表历史native崩溃的根因已经确定。
 
 ## 安装
 
 1. 退出游戏，将旧GTMolDraw JAR移出mods，避免同时安装两个版本。保留现有配置。
-2. 将 `gtmoldraw-stage-4-install.zip` 解压到实例的 **`.minecraft` 根目录**。安装包已有 `mods/`、`config/` 和说明目录，勿再套一层目录。
+2. 将 `gtmoldraw-0.6.0-install.zip` 解压到实例的 **`.minecraft` 根目录**。安装包已有 `mods/`、`config/` 和说明目录，勿再套一层目录。
 3. 核对以下两个路径：
 
 ```text
-.minecraft/mods/gtmoldraw-0.6.0-stage.4.jar
+.minecraft/mods/gtmoldraw-0.6.0.jar
 .minecraft/config/gtmoldraw/packs/official/pack.jsonc
 ```
 
-也可单独安装游戏JAR与 `gtmoldraw-data-pack-stage-4.zip`，将其中 `packs/official` 文件夹复制到 `.minecraft/config/gtmoldraw/packs/official`。
+也可单独安装游戏JAR与 `gtmoldraw-data-pack-0.6.0.zip`，将其中 `packs/official` 文件夹复制到 `.minecraft/config/gtmoldraw/packs/official`。
 
 工具JAR和可视图册不放进mods。游戏JAR已经移除旧结构/组成资源及旧硬编码适配器；**只装JAR不会显示图形，必须手动安装数据包**。不会自动解包，也不从旧JAR或资源包读取旧定义回退。
 
