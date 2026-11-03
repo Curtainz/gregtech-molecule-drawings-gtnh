@@ -164,7 +164,7 @@ def validate_migrated():
     assert len(report['sources'])==report['structureSources']+report['compositionSources']
     for item in report['sources']:
         source=ROOT/'src/main/resources/assets'/item['source']
-        assert hashlib.sha256(source.read_bytes()).hexdigest()==item['sha256'], 'Stale provenance: '+item['source']
+        assert hashlib.sha256(source.read_bytes().replace(b'\r\n', b'\n')).hexdigest()==item['sha256'], 'Stale provenance: '+item['source']
     print(f'Migrated contract checks passed: {definitions} definitions, {len(report["sources"])} source hashes')
 
 if __name__=='__main__':

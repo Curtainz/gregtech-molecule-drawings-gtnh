@@ -94,3 +94,5 @@ MOL首版严格为单个V2000二维结构，支持普通原子、1/2/3键及可�
 `data-packs/review`保留2份清单和15份小型样例。完整迁移结果位于 `data-packs/migrated`，包含official包的1,039条定义及逐来源HTML/CSV/JSON报告。报告文件位于包目录之外，不参与定义加载。不要用小型样例替换完整包。第④阶段发布手动安装ZIP，并在 `data-packs/runtime-demo` 提供可选的全量包覆盖示例。
 
 审阅重点：GT身份与定义ID分离、整条覆盖、实例/端口/atomMap写法及显式二维坐标。format-info/status只展示版本和状态，不触发加载；reload异步校验和发布。离线工具可独立校验/预览，不修改游戏状态。
+
+来源报告的SHA-256使用UTF-8源文件字节，并在计算前将CRLF统一为LF；不改变其他字符或JSON值。此规则用于让Windows与Linux检出得到一致的迁移校验结果。

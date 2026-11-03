@@ -879,13 +879,13 @@
       "source": "gtceu/molecules/polybenzimidazole.json",
       "definition": "official:gtceu/polybenzimidazole_structure",
       "status": "bound_by_name",
-      "sha256": "a16a25dc337c281bf9058b1646646b652da425079fecef35058686d338a31e12"
+      "sha256": "cdd05df65fe6125b6bba1cc175a8a76ed231c902a1cef579aa7f3670fe03e66f"
     },
     {
       "source": "gtceu/molecules/polycaprolactam.json",
       "definition": "official:gtceu/polycaprolactam_structure",
       "status": "bound_by_name",
-      "sha256": "329c4272f24af6569981469ba886451b33256fe4f18c54cef4f6f4ef28b050ab"
+      "sha256": "2228a667599b4c49849fbc83146eb434f9ac8efd5b3c03d01a342fb4f39399d0"
     },
     {
       "source": "gtceu/molecules/polydimethylsiloxane.json",
@@ -897,7 +897,7 @@
       "source": "gtceu/molecules/polyether_ether_ketone.json",
       "definition": "official:gtceu/polyether_ether_ketone_structure",
       "status": "bound_by_name",
-      "sha256": "bd762045e9323a49d9e6d77b68c3a801d0fb2ce976204a5ef0f8f68b8d709f31"
+      "sha256": "33bfd64f3f81dbce32e9dd695187b10830c521b53740e9cad85289c9be8736ab"
     },
     {
       "source": "gtceu/molecules/polyethylene.json",
