@@ -1,35 +1,149 @@
 package com.rubenverg.moldraw;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.*;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.util.StatCollector;
 
-import com.rubenverg.moldraw.component.AlloyRenderer;
-import com.rubenverg.moldraw.component.MoleculeRenderer;
-import com.rubenverg.moldraw.molecule.Molecule;
+import com.rubenverg.moldraw.component.*;
+import com.rubenverg.moldraw.core.*;
 
-import gregtech.api.enums.Materials;
-
+/** Bounded presentation cache keyed by stable identity, resource/config epoch, metrics and layout settings. */
 public final class RendererCache {
 
-    private static final Map<Materials, AlloyRenderer> ALLOY_CACHE = new ConcurrentHashMap<>();
-    private static final Map<Molecule, MoleculeRenderer> MOLECULE_CACHE = new ConcurrentHashMap<>();
+    private record FontKey(FontRenderer font, int height, boolean unicode, boolean bidi, String language) {}
+
+    private record Settings(int scale, int radius, int limit, double threshold, boolean mass, boolean recursive,
+        int color) {}
+
+    private record Key(String id, long version, FontKey font, Settings settings, DisplayPlan.Type type) {}
+
+    private static final BoundedCache<Key, LayoutRenderer> CACHE = new BoundedCache<>(256);
+    private static final Map<Key, String> FAILURES = new LinkedHashMap<>() {
+
+        protected boolean removeEldestEntry(Map.Entry<Key, String> e) {
+            return size() > 256;
+        }
+    };
+
+    private static LayoutRenderer attempt(Key key, java.util.function.Supplier<LayoutRenderer> build) {
+        try {
+            return build.get();
+        } catch (RuntimeException failure) {
+            FAILURES.put(key, "LAYOUT_FAILED:" + key.id() + ":" + failure.getMessage());
+            MolDraw.LOGGER.error("Cannot lay out material {}", key.id(), failure);
+            return new LayoutRenderer(new TooltipLayout(0, 0, List.of()));
+        }
+    }
+
+    public static List<String> diagnostics(String id) {
+        return FAILURES.entrySet()
+            .stream()
+            .filter(
+                e -> e.getKey()
+                    .id()
+                    .equals(id))
+            .map(Map.Entry::getValue)
+            .toList();
+    }
 
     private RendererCache() {}
 
-    public static MoleculeRenderer getMoleculeRenderer(Molecule molecule) {
-        if (molecule == null) return null;
-        return MOLECULE_CACHE.computeIfAbsent(molecule, MoleculeRenderer::new);
+    public static TextMeasure measure(FontRenderer font) {
+        return new TextMeasure() {
+
+            public int width(String text) {
+                return font.getStringWidth(text);
+            }
+
+            public int lineHeight() {
+                return font.FONT_HEIGHT;
+            }
+        };
     }
 
-    public static AlloyRenderer getAlloyRenderer(Materials material, FontRenderer font) {
-        if (material == null) return null;
-        return ALLOY_CACHE.computeIfAbsent(material, mat -> new AlloyRenderer(mat, font));
+    private static Key key(String id, FontRenderer font, DisplayPlan.Type type) {
+        var c = MolDrawConfig.INSTANCE;
+        var f = new FontKey(
+            font,
+            font.FONT_HEIGHT,
+            font.getUnicodeFlag(),
+            font.getBidiFlag(),
+            Minecraft.getMinecraft()
+                .getLanguageManager()
+                .getCurrentLanguage()
+                .getLanguageCode());
+        var s = new Settings(
+            c.molecule.moleculeScale,
+            c.alloy.pieChartRadius,
+            c.alloy.maxComponentsDisplayed,
+            c.alloy.minPercentageThreshold,
+            c.alloy.partsByMass,
+            c.alloy.recursive,
+            MoleculeColorize.configColor(null));
+        return new Key(id, MaterialRegistry.version(), f, s, type);
+    }
+
+    public static LayoutRenderer molecule(MaterialRegistry.Entry entry, FontRenderer font) {
+        return CACHE.get(
+            key(
+                entry.definition()
+                    .id(),
+                font,
+                DisplayPlan.Type.MOLECULE),
+            k -> attempt(
+                k,
+                () -> new MoleculeRenderer(
+                    entry.molecule()
+                        .value(),
+                    measure(font),
+                    MolDrawConfig.INSTANCE.molecule.moleculeScale,
+                    MoleculeColorize.configColor(null))));
+    }
+
+    public static CompositionResolver.Result composition(MaterialRegistry.Entry entry) {
+        return MaterialRegistry.composition(
+            entry.definition()
+                .id(),
+            MolDrawConfig.INSTANCE.alloy.partsByMass,
+            MolDrawConfig.INSTANCE.alloy.recursive);
+    }
+
+    public static LayoutRenderer alloy(MaterialRegistry.Entry entry, FontRenderer font,
+        CompositionResolver.Result composition) {
+        return CACHE.get(
+            key(
+                entry.definition()
+                    .id(),
+                font,
+                DisplayPlan.Type.ALLOY),
+            k -> attempt(k, () -> {
+                var c = MolDrawConfig.INSTANCE.alloy;
+                var folded = CompositionResolver
+                    .fold(composition.shares(), c.maxComponentsDisplayed, c.minPercentageThreshold);
+                List<PieLayout.Slice> slices = new ArrayList<>();
+                for (var part : folded.entrySet()) {
+                    var d = MaterialRegistry.definition(part.getKey());
+                    boolean other = part.getKey()
+                        .equals("gtmoldraw:other");
+                    String label = other ? StatCollector.translateToLocal("tooltip.gtmoldraw.other")
+                        : d == null ? part.getKey()
+                            : d.formula()
+                                .isEmpty() ? d.name() : d.formula();
+                    slices.add(
+                        new PieLayout.Slice(
+                            part.getKey(),
+                            part.getValue(),
+                            label,
+                            other ? 0xFFAAAAAA : d == null ? 0xFFBB66FF : d.color()));
+                }
+                return new AlloyRenderer(PieLayout.build(slices, c.pieChartRadius, measure(font)));
+            }));
     }
 
     public static void clear() {
-        ALLOY_CACHE.clear();
-        MOLECULE_CACHE.clear();
+        CACHE.clear();
+        FAILURES.clear();
     }
 }

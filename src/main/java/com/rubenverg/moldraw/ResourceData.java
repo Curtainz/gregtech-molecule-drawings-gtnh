@@ -29,6 +29,7 @@ public final class ResourceData {
         MoleculeManager.clearCache();
         AlloyManager.clearCache();
         MoleculeColorize.invalidateColorCache();
+        MaterialRegistry.clear();
         RendererCache.clear();
         com.rubenverg.moldraw.component.TooltipDrawPass.clearFailures();
         com.rubenverg.moldraw.component.TooltipRenderContext.clear();

@@ -1,23 +1,19 @@
 package com.rubenverg.moldraw;
 
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.rubenverg.moldraw.util.Pair;
+import com.rubenverg.moldraw.core.DefinitionResult;
+import com.rubenverg.moldraw.core.LegacyComposition;
+import com.rubenverg.moldraw.core.MaterialDefinition.Component;
+import com.rubenverg.moldraw.core.MaterialDefinition.State;
+import com.rubenverg.moldraw.core.ResourceJson;
 
 import gregtech.api.enums.Materials;
 
 public final class AlloyManager {
 
     private static final Set<String> KNOWN_ALLOYS = new HashSet<>();
-    private static final Map<Materials, List<Pair<Materials, Long>>> ALLOY_OVERRIDE_CACHE = new HashMap<>();
-    private static final Set<Materials> NON_ALLOYS = new HashSet<>();
 
     private static final String[] NAMESPACES = new String[] { "gtceu", "gcyr", "gtca", "gtocore", "cosmiccore", "tfg",
         "gtmoldraw" };
@@ -50,7 +46,6 @@ public final class AlloyManager {
 
     public static boolean isAlloy(Materials material) {
         if (material == null || material == Materials._NULL) return false;
-        if (NON_ALLOYS.contains(material)) return false;
         if (material.mElement != null) return false; // 单质绝对不是合金
 
         // 如果存在分子图（如聚合物、有机化学品、水等），绝不作为合金展示
@@ -75,21 +70,14 @@ public final class AlloyManager {
 
         // 检查是否有对应的 alloy json
         if (loadAlloyJson(name) != null) {
-            KNOWN_ALLOYS.add(name);
+
             return true;
         }
 
-        NON_ALLOYS.add(material);
         return false;
     }
 
-    public static List<Pair<Materials, Long>> getAlloyComponents(Materials material) {
-        return loadAlloyJson(getNormalizedName(material));
-    }
-
     public static void clearCache() {
-        NON_ALLOYS.clear();
-        ALLOY_OVERRIDE_CACHE.clear();
         JSON_CACHE.clear();
     }
 
@@ -97,56 +85,49 @@ public final class AlloyManager {
         return MaterialNames.normalize(material.mName);
     }
 
-    private static final Map<String, Optional<List<Pair<Materials, Long>>>> JSON_CACHE = new HashMap<>();
+    private static final Map<String, DefinitionResult<List<Component>>> JSON_CACHE = new LinkedHashMap<>() {
 
-    private static List<Pair<Materials, Long>> loadAlloyJson(String name) {
-        return JSON_CACHE.computeIfAbsent(name, key -> Optional.ofNullable(readAlloyJson(key)))
-            .orElse(null);
+        protected boolean removeEldestEntry(Map.Entry<String, DefinitionResult<List<Component>>> entry) {
+            return size() > 4096;
+        }
+    };
+
+    public static DefinitionResult<List<Component>> definition(Materials material) {
+        return JSON_CACHE.computeIfAbsent(getNormalizedName(material), AlloyManager::readAlloyJson);
     }
 
-    private static List<Pair<Materials, Long>> readAlloyJson(String name) {
+    private static List<Component> loadAlloyJson(String name) {
+        return JSON_CACHE.computeIfAbsent(name, AlloyManager::readAlloyJson)
+            .value();
+    }
+
+    private static DefinitionResult<List<Component>> readAlloyJson(String name) {
         for (String ns : NAMESPACES) {
             try (InputStream is = ResourceData.open(ns, "alloys/" + name + ".json")) {
                 if (is == null) continue;
-                JsonObject obj = new JsonParser().parse(new InputStreamReader(is, StandardCharsets.UTF_8))
-                    .getAsJsonObject();
-                if (obj.has("derive") && obj.get("derive")
-                    .getAsBoolean()) return Collections.emptyList();
-                List<Pair<Materials, Long>> result = new ArrayList<>();
-                for (JsonElement el : obj.getAsJsonArray("components")) {
-                    String id;
-                    long count = 1;
-                    if (el.isJsonPrimitive()) id = el.getAsString();
-                    else if (el.isJsonArray()) {
-                        JsonArray pair = el.getAsJsonArray();
-                        if (pair.size() != 2) throw new IllegalArgumentException("Expected material/count pair");
-                        id = pair.get(0)
-                            .getAsString();
-                        count = pair.get(1)
-                            .getAsLong();
-                    } else {
-                        id = el.getAsJsonObject()
-                            .get("material")
-                            .getAsString();
-                        if (el.getAsJsonObject()
-                            .has("amount"))
-                            count = el.getAsJsonObject()
-                                .get("amount")
-                                .getAsLong();
-                    }
-                    Materials material = MaterialNames.resolve(id);
-                    if (!GT5MaterialLookup.isMaterialValid(material) || count <= 0)
-                        throw new IllegalArgumentException("Invalid component: " + id);
-                    result.add(new Pair<>(material, count));
+                String source = ns + ":" + name;
+                var decoded = LegacyComposition.decode(ResourceJson.read(is), source);
+                if (decoded.value() == null || decoded.value()
+                    .isEmpty()) return decoded;
+                List<Component> result = new ArrayList<>();
+                for (var component : decoded.value()) {
+                    Materials material = MaterialNames.resolve(component.id());
+                    if (!GT5MaterialLookup.isMaterialValid(material))
+                        throw new IllegalArgumentException("Unresolved component: " + component.id());
+                    result.add(new Component("gt:" + material.mName, component.amount()));
                 }
-                if (result.isEmpty()) throw new IllegalArgumentException("Empty components");
-                return Collections.unmodifiableList(result);
+                return new DefinitionResult<>(State.PRESENT, List.copyOf(result), source, List.of());
             } catch (java.io.FileNotFoundException missing) {
                 // Absent in this namespace.
             } catch (Exception failure) {
                 MolDraw.LOGGER.warn("Invalid alloy resource {}:{}", ns, name, failure);
+                return new DefinitionResult<>(
+                    State.INVALID,
+                    null,
+                    ns + ":" + name,
+                    List.of("INVALID_COMPOSITION:" + ns + ":" + name + ":" + failure.getMessage()));
             }
         }
-        return null;
+        return DefinitionResult.absent();
     }
 }

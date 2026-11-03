@@ -12,9 +12,6 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
-import com.rubenverg.moldraw.component.AlloyRenderer;
-import com.rubenverg.moldraw.molecule.Molecule;
-
 import codechicken.nei.guihook.GuiContainerManager;
 import gregtech.api.enums.Materials;
 
@@ -40,31 +37,30 @@ public final class MaterialTargetResolver {
             return DisplayPlan.EMPTY;
         }
 
-        // 1. 单质元素不需要显示合金成分，也不绘制分子模型（如单质金、铜等）
-        if (mat.mElement != null && MoleculeManager.getMolecule(mat) == null) {
-            return DisplayPlan.EMPTY;
-        }
+        return resolveEntry(MaterialRegistry.entry(mat), font);
+    }
 
-        // 2. 优先检查 3D 分子结构
-        Molecule mol = MoleculeManager.getMolecule(mat);
-        if (mol != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
+    private static DisplayPlan resolveEntry(MaterialRegistry.Entry entry, FontRenderer font) {
+        if (font == null) return DisplayPlan.EMPTY;
+        if (entry.molecule()
+            .value() != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
+            var renderer = RendererCache.molecule(entry, font);
             return new DisplayPlan(
-                DisplayPlan.Type.MOLECULE,
-                RendererCache.getMoleculeRenderer(mol),
-                mat.getChemicalFormula(),
-                mat);
+                new com.rubenverg.moldraw.core.PresentationData(
+                    com.rubenverg.moldraw.core.PresentationData.Kind.MOLECULE,
+                    entry.definition()),
+                renderer);
         }
-
-        // 3. 只有当没有分子结构，且为明确定义的真正多元合金时，才展示成分分析饼图
-        if (AlloyManager.isAlloy(mat) && AlloyRenderer.hasValidComponents(mat)
-            && MolDrawConfig.INSTANCE.alloy.showAlloys) {
-            return new DisplayPlan(
-                DisplayPlan.Type.ALLOY,
-                RendererCache.getAlloyRenderer(mat, font),
-                mat.getChemicalFormula(),
-                mat);
+        if (entry.chartEligible() && MolDrawConfig.INSTANCE.alloy.showAlloys) {
+            var result = RendererCache.composition(entry);
+            if (result.valid() && result.shares()
+                .size() > 1)
+                return new DisplayPlan(
+                    new com.rubenverg.moldraw.core.PresentationData(
+                        com.rubenverg.moldraw.core.PresentationData.Kind.ALLOY,
+                        entry.definition()),
+                    RendererCache.alloy(entry, font, result));
         }
-
         return DisplayPlan.EMPTY;
     }
 
@@ -78,13 +74,7 @@ public final class MaterialTargetResolver {
             return resolveFromMaterial(mat, font);
         }
 
-        // 回退检查：流体名是否直接对应某种分子模型
-        Molecule mol = MoleculeManager.getMoleculeByName(fluid.getName());
-        if (mol != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
-            return new DisplayPlan(DisplayPlan.Type.MOLECULE, RendererCache.getMoleculeRenderer(mol), null, null);
-        }
-
-        return DisplayPlan.EMPTY;
+        return resolveEntry(MaterialRegistry.named("fluid:" + fluid.getName(), fluid.getName()), font);
     }
 
     public static DisplayPlan resolveFromTooltipLines(GuiContainer gui, List<String> tip, FontRenderer font) {
@@ -107,12 +97,11 @@ public final class MaterialTargetResolver {
             return resolveFromMaterial(mat, font);
         }
 
-        // 2. 尝试从 Tooltip 中的化学式或名称反查分子模型
-        Molecule mol = resolveMoleculeFromTooltipText(tip);
-        if (mol != null && MolDrawConfig.INSTANCE.molecule.showMolecules) {
-            return new DisplayPlan(DisplayPlan.Type.MOLECULE, RendererCache.getMoleculeRenderer(mol), null, null);
+        for (String candidate : new String[] { EnumChatFormatting.getTextWithoutFormattingCodes(tip.get(0))
+            .trim(), cleanFluidName(tip.get(0)) }) {
+            DisplayPlan plan = resolveEntry(MaterialRegistry.named("name:" + candidate, candidate), font);
+            if (plan.isValid()) return plan;
         }
-
         return DisplayPlan.EMPTY;
     }
 
@@ -192,39 +181,4 @@ public final class MaterialTargetResolver {
         return null;
     }
 
-    private static Molecule resolveMoleculeFromTooltipText(List<String> tip) {
-        if (tip.isEmpty()) return null;
-
-        String rawFirst = EnumChatFormatting.getTextWithoutFormattingCodes(tip.get(0))
-            .trim();
-        String cleanedFirst = cleanFluidName(tip.get(0));
-
-        for (String cand : new String[] { rawFirst, cleanedFirst }) {
-            if (cand.isEmpty()) continue;
-            Molecule byName = MoleculeManager.getMoleculeByName(cand);
-            if (byName != null) return byName;
-        }
-
-        // 遍历每行寻找化学式
-        for (String line : tip) {
-            if (line == null) continue;
-            String clean = EnumChatFormatting.getTextWithoutFormattingCodes(line)
-                .trim();
-            if (clean.toLowerCase(Locale.ROOT)
-                .startsWith("formula:") || clean.startsWith("化学式:")
-                || clean.startsWith("分子式:")) {
-                int colon = clean.indexOf(':');
-                if (colon >= 0 && colon < clean.length() - 1) {
-                    String f = clean.substring(colon + 1)
-                        .trim();
-                    Molecule byFormula = MoleculeManager.getMoleculeByFormula(f);
-                    if (byFormula != null) return byFormula;
-                }
-            }
-            Molecule byFormulaDirect = MoleculeManager.getMoleculeByFormula(clean);
-            if (byFormulaDirect != null) return byFormulaDirect;
-        }
-
-        return null;
-    }
 }

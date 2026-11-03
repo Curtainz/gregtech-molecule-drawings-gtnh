@@ -76,8 +76,12 @@ public class GraphicalUtils {
     }
 
     private static void drawBatch(com.rubenverg.moldraw.core.PixelBatch batch) {
-        if (!com.rubenverg.moldraw.MolDraw.isClientThread() || batch.pixels()
-            .isEmpty()) return;
+        drawPixels(batch.pixels(), 0, 0);
+    }
+
+    public static void drawPixels(java.util.List<com.rubenverg.moldraw.core.PixelBatch.Pixel> pixels, int offsetX,
+        int offsetY) {
+        if (!com.rubenverg.moldraw.MolDraw.isClientThread() || pixels.isEmpty()) return;
         GL11.glPushAttrib(GL11.GL_ENABLE_BIT | GL11.GL_COLOR_BUFFER_BIT | GL11.GL_CURRENT_BIT);
         try {
             GL11.glDisable(GL11.GL_TEXTURE_2D);
@@ -86,12 +90,12 @@ public class GraphicalUtils {
             Tessellator tess = Tessellator.instance;
             tess.startDrawingQuads();
             try {
-                for (var pixel : batch.pixels()) {
+                for (var pixel : pixels) {
                     int c = pixel.color();
                     float a = ((c >>> 24) & 255) / 255.0F;
                     if (a <= 0) a = 1;
                     tess.setColorRGBA_F(((c >>> 16) & 255) / 255.0F, ((c >>> 8) & 255) / 255.0F, (c & 255) / 255.0F, a);
-                    int x = pixel.x(), y = pixel.y();
+                    int x = pixel.x() + offsetX, y = pixel.y() + offsetY;
                     tess.addVertex(x, y + 1, 0);
                     tess.addVertex(x + 1, y + 1, 0);
                     tess.addVertex(x + 1, y, 0);

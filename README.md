@@ -31,7 +31,7 @@ test.2 的正常启动和显示已由用户确认；0.4.0 的苯环与 modid 改
 .\gradlew.bat build
 ```
 
-产物位于 `build/libs/`。`check` 包含化学式及分子集合回归程序。不要将 `-dev` 或 `-sources` JAR 放入游戏。
+产物位于 `build/libs/`。`check` 包含公式、分子集合、栅格与架构回归及发布包/核心依赖边界检查。请安装版本名完全匹配的游戏 JAR，不要使用带额外 `-dev` 或 `-sources` classifier 的构建产物。
 
 ## English
 
@@ -49,4 +49,4 @@ Original concept, molecular drawing code and resources: RubenVerg and upstream c
 
 默认分支为 **main**，后续重构在 **develop**。保留 v0.3.0 和 v0.4.0 两个里程碑标签。历史引用备份及恢复方法见 [分支与版本约定](docs/REPOSITORY.md)。
 
-`develop` 的 0.4.1-dev 已将像素计算与 Tessellator 提交分离，并使用 CodeChickenCore 1.4.22 的公开 tooltip API。构建包含纯 Java 栅格回归与发布包边界检查。开发版仍需在库存、NEI、ChromaticTooltips 和资源重载场景中实测，详见 [重构进度与验收](docs/REFACTOR-PROGRESS.md)。
+`develop` 当前为 **0.5.0-test.1**：不可变材料与几何数据、纯布局、受限缓存、精确组成及质量计算已接入 tooltip 和 audit。保留 CodeChickenCore 1.4.22 公开 tooltip API 与客户端绘制隔离。缺少质量时会停止对应质量饼图，可切换数量模式；最大显示项数为1时显示单项“其他”。本版尚待实机验收，安装与测试清单见 [0.5.0测试说明](docs/TESTING-0.5.0.md)。
