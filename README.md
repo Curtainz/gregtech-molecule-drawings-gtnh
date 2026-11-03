@@ -44,3 +44,7 @@ Bundled models determine structure coverage. Formula parsing is general, but doe
 ## 致谢 / Attribution
 
 Original concept, molecular drawing code and resources: RubenVerg and upstream contributors. The GTNH port was initially developed with Google Antigravity / Gemini; subsequent analysis, stabilization and refactoring were performed with Codex in collaboration with the maintainer. See repository license files and upstream for licensing information.
+
+## Repository layout / 分支约定
+
+默认分支为 **main**，后续重构在 **develop**。保留 v0.3.0 和 v0.4.0 两个里程碑标签。历史引用备份及恢复方法见 [分支与版本约定](docs/REPOSITORY.md)。
