@@ -14,7 +14,8 @@ public final class MoleculeSnapshots {
         return new MoleculeScene.Label(
             label.toString(),
             label.element().invisible,
-            MoleculeColorize.getColorForElement(label.element()));
+            MoleculeColorize.symbolPalette()
+                .getOrDefault(label.element().symbol, MoleculeColorize.configColor(null)));
     }
 
     public static MoleculeScene freeze(Molecule molecule) {

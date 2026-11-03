@@ -1,0 +1,17 @@
+// Optional demonstration only. Not included in the default installation.
+{
+  "schemaVersion": 1,
+  "id": "official:materials/water",
+  "overrides": {
+    "pack": "official",
+    "id": "official:materials/water"
+  },
+  "type": "material",
+  "bindings": [
+    "name:water"
+  ],
+  "formula": "H2O",
+  "display": {
+    "mode": "text"
+  }
+}

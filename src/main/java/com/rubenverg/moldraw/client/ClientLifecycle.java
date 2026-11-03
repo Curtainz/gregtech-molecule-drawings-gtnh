@@ -59,6 +59,7 @@ public final class ClientLifecycle extends CommonLifecycle {
                 NEITooltipHelper.init();
             }
             MolDraw.LOGGER.info("[lifecycle] client integrations installed");
+            ExternalPackService.initialize();
         }
         if (configPending.getAndSet(false)) {
             MolDrawConfig.syncConfig();
@@ -66,8 +67,10 @@ public final class ClientLifecycle extends CommonLifecycle {
         }
         if (reloadPending.getAndSet(false)) {
             ResourceData.invalidate();
+            ExternalPackService.request(false, false);
             MolDraw.LOGGER.info("[lifecycle] caches invalidated on client thread");
         }
+        ExternalPackService.tick();
     }
 
     @SubscribeEvent

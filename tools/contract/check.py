@@ -148,7 +148,7 @@ def validate_review():
     bad=copy.deepcopy(packs['official']);bad['version']='1.0.0-01'
     assert not pack_validator.is_valid(bad),'Invalid numeric prerelease accepted'
     print(f'Authoring contract checks passed: 2 schemas, {len(packs)} manifests, {len(records)} definitions, {len(negative)} schema rejection cases, JSONC lexical cases and fusion fixture.')
-    print('Scope: Python authoring cross-check only. Java packRegression checks offline expansion; game loading/reload remains disabled.')
+    print('Scope: Python authoring cross-check only. Java regressions additionally check expansion and runtime binding/publication; live GTNH acceptance is manual.')
 
 def validate_migrated():
     import hashlib

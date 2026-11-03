@@ -1,33 +1,17 @@
 package com.rubenverg.moldraw;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ResourceLocation;
-
-/** Resolve through Minecraft so selected resource packs can override bundled data. */
+/** Cache invalidation only. Legacy resource mounting has been removed from the production artifact. */
 public final class ResourceData {
 
     private ResourceData() {}
 
-    public static InputStream open(String namespace, String path) throws IOException {
-        if (!MolDraw.isClientThread()) throw new IllegalStateException("Resources must be read on the client thread");
-        try {
-            return Minecraft.getMinecraft()
-                .getResourceManager()
-                .getResource(new ResourceLocation(namespace, path))
-                .getInputStream();
-        } catch (java.io.FileNotFoundException missing) {
-            return ResourceData.class.getResourceAsStream("/assets/" + namespace + "/" + path);
-        }
+    /** Source compatibility for the archived migration adapters; never reads bundled resources. */
+    public static java.io.InputStream open(String namespace, String path) {
+        throw new UnsupportedOperationException("Legacy resources are not mounted; install external packs");
     }
 
     public static void invalidate() {
-        if (!MolDraw.isClientThread())
-            throw new IllegalStateException("Caches must be invalidated on the client thread");
-        MoleculeManager.clearCache();
-        AlloyManager.clearCache();
+        if (!MolDraw.isClientThread()) throw new IllegalStateException("Cache invalidation requires client thread");
         MoleculeColorize.invalidateColorCache();
         MaterialRegistry.clear();
         RendererCache.clear();

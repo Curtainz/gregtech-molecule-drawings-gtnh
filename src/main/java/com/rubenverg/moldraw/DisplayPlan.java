@@ -43,6 +43,23 @@ public final class DisplayPlan {
         return data;
     }
 
+    public boolean hasFormulaOverride() {
+        return data.material() != null && data.material()
+            .diagnostics()
+            .contains("PACK_FORMULA_OVERRIDE");
+    }
+
+    public String originalFormula() {
+        if (data.material() == null) return "";
+        return data.material()
+            .diagnostics()
+            .stream()
+            .filter(s -> s.startsWith("GT_ORIGINAL_FORMULA:"))
+            .map(s -> s.substring("GT_ORIGINAL_FORMULA:".length()))
+            .findFirst()
+            .orElse("");
+    }
+
     public TooltipLayout layout() {
         return drawable == null ? null : drawable.layout();
     }

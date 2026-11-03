@@ -2,7 +2,6 @@ package com.rubenverg.moldraw;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -20,10 +19,16 @@ public final class MaterialTargetResolver {
     private MaterialTargetResolver() {}
 
     public static DisplayPlan resolve(ItemStack stack, FontRenderer font) {
-        if (!MolDrawConfig.INSTANCE.enabled || stack == null || stack.getItem() == null) {
+        if (!MolDrawConfig.INSTANCE.enabled || !MaterialRegistry.enabled()
+            || stack == null
+            || stack.getItem() == null) {
             return DisplayPlan.EMPTY;
         }
 
+        try {
+            var fluid = gregtech.api.util.GTUtility.getFluidFromContainerOrFluidDisplay(stack);
+            if (fluid != null && fluid.getFluid() != null) return resolveFromFluid(fluid.getFluid(), font);
+        } catch (RuntimeException ignored) {}
         Materials mat = GT5MaterialLookup.getMaterial(stack);
         if (mat == null) {
             return DisplayPlan.EMPTY;
@@ -33,7 +38,7 @@ public final class MaterialTargetResolver {
     }
 
     public static DisplayPlan resolveFromMaterial(Materials mat, FontRenderer font) {
-        if (!MolDrawConfig.INSTANCE.enabled || mat == null || mat == Materials._NULL) {
+        if (!MolDrawConfig.INSTANCE.enabled || !MaterialRegistry.enabled() || mat == null || mat == Materials._NULL) {
             return DisplayPlan.EMPTY;
         }
 
@@ -61,24 +66,28 @@ public final class MaterialTargetResolver {
                         entry.definition()),
                     RendererCache.alloy(entry, font, result));
         }
+        if (entry.definition()
+            .diagnostics()
+            .contains("PACK_FORMULA_OVERRIDE"))
+            return new DisplayPlan(
+                new com.rubenverg.moldraw.core.PresentationData(
+                    com.rubenverg.moldraw.core.PresentationData.Kind.NONE,
+                    entry.definition()),
+                null);
         return DisplayPlan.EMPTY;
     }
 
     public static DisplayPlan resolveFromFluid(Fluid fluid, FontRenderer font) {
-        if (!MolDrawConfig.INSTANCE.enabled || fluid == null) {
+        if (!MolDrawConfig.INSTANCE.enabled || !MaterialRegistry.enabled() || fluid == null) {
             return DisplayPlan.EMPTY;
         }
 
         Materials mat = GT5MaterialLookup.getMaterialFromFluid(fluid);
-        if (mat != null) {
-            return resolveFromMaterial(mat, font);
-        }
-
-        return resolveEntry(MaterialRegistry.named("fluid:" + fluid.getName(), fluid.getName()), font);
+        return resolveEntry(MaterialRegistry.bound("fluid:" + fluid.getName(), fluid.getName(), mat), font);
     }
 
     public static DisplayPlan resolveFromTooltipLines(GuiContainer gui, List<String> tip, FontRenderer font) {
-        if (!MolDrawConfig.INSTANCE.enabled || tip == null || tip.isEmpty()) {
+        if (!MolDrawConfig.INSTANCE.enabled || !MaterialRegistry.enabled() || tip == null || tip.isEmpty()) {
             return DisplayPlan.EMPTY;
         }
 
@@ -91,6 +100,9 @@ public final class MaterialTargetResolver {
             } catch (Throwable ignored) {}
         }
 
+        DisplayPlan fluidPlan = resolveFluidTooltip(tip, font);
+        if (fluidPlan != null) return fluidPlan;
+
         // 1. 尝试从 Tooltip 文本行解析材料
         Materials mat = resolveMaterialFromTooltipText(tip);
         if (mat != null) {
@@ -100,7 +112,7 @@ public final class MaterialTargetResolver {
         for (String candidate : new String[] { EnumChatFormatting.getTextWithoutFormattingCodes(tip.get(0))
             .trim(), cleanFluidName(tip.get(0)) }) {
             DisplayPlan plan = resolveEntry(MaterialRegistry.named("name:" + candidate, candidate), font);
-            if (plan.isValid()) return plan;
+            if (plan.isValid() || plan.hasFormulaOverride()) return plan;
         }
         return DisplayPlan.EMPTY;
     }
@@ -119,6 +131,38 @@ public final class MaterialTargetResolver {
         return s.trim();
     }
 
+    /** Null means no fluid identity; EMPTY also deliberately preserves a fluid's disabled binding. */
+    private static DisplayPlan resolveFluidTooltip(List<String> tip, FontRenderer font) {
+        for (String candidate : new String[] { EnumChatFormatting.getTextWithoutFormattingCodes(tip.get(0))
+            .trim(), cleanFluidName(tip.get(0)) }) {
+            if (candidate.isEmpty()) continue;
+            Fluid exact = FluidRegistry.getFluid(candidate);
+            if (exact != null) return resolveFromFluid(exact, font);
+            java.util.Set<Fluid> matches = new java.util.HashSet<>();
+            for (Fluid fluid : FluidRegistry.getRegisteredFluids()
+                .values()) {
+                if (fluid == null) continue;
+                if (candidate.equalsIgnoreCase(fluid.getName())) matches.add(fluid);
+                try {
+                    String localized = fluid.getLocalizedName(new FluidStack(fluid, 1000));
+                    if (localized != null && candidate.equalsIgnoreCase(
+                        EnumChatFormatting.getTextWithoutFormattingCodes(localized)
+                            .trim()))
+                        matches.add(fluid);
+                } catch (RuntimeException ignored) {}
+            }
+            if (matches.size() > 1) {
+                MolDraw.LOGGER.debug("AMBIGUOUS_BINDING: fluid tooltip {}", candidate);
+                return DisplayPlan.EMPTY;
+            }
+            if (matches.size() == 1) return resolveFromFluid(
+                matches.iterator()
+                    .next(),
+                font);
+        }
+        return null;
+    }
+
     private static Materials resolveMaterialFromTooltipText(List<String> tip) {
         if (tip.isEmpty()) return null;
 
@@ -127,31 +171,6 @@ public final class MaterialTargetResolver {
         String cleanedFirst = cleanFluidName(tip.get(0));
 
         String[] candidates = new String[] { rawFirst, cleanedFirst };
-
-        // 匹配 FluidRegistry
-        Map<String, Fluid> fluids = FluidRegistry.getRegisteredFluids();
-        if (fluids != null) {
-            for (String cand : candidates) {
-                if (cand.isEmpty()) continue;
-                for (Fluid f : fluids.values()) {
-                    if (f == null) continue;
-                    String fName = f.getName();
-                    if (cand.equalsIgnoreCase(fName)) {
-                        Materials mat = GT5MaterialLookup.getMaterialFromFluid(f);
-                        if (mat != null) return mat;
-                    }
-                    try {
-                        String loc = f.getLocalizedName(new FluidStack(f, 1000));
-                        if (loc != null && cand.equalsIgnoreCase(
-                            EnumChatFormatting.getTextWithoutFormattingCodes(loc)
-                                .trim())) {
-                            Materials mat = GT5MaterialLookup.getMaterialFromFluid(f);
-                            if (mat != null) return mat;
-                        }
-                    } catch (Throwable ignored) {}
-                }
-            }
-        }
 
         // 匹配 GT Materials
         for (String cand : candidates) {

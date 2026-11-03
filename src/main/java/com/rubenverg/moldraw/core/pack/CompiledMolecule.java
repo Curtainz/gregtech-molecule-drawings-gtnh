@@ -135,7 +135,7 @@ public record CompiledMolecule(String id, List<Atom> atoms, List<Bond> bonds, Li
     private static int color(String literal, String element, Function<String, Integer> colors) {
         return literal != null
             ? (int) (Long.parseLong(literal.substring(1), 16) | (literal.length() == 7 ? 0xFF000000L : 0))
-            : element == null ? 0xFFFFFFFF : colors.apply(element);
+            : colors.apply(element == null ? "" : element);
     }
 
     private static String superscript(String value) {

@@ -12,7 +12,7 @@ import org.lwjgl.input.Keyboard;
 
 import com.rubenverg.moldraw.component.ITooltipDrawable;
 import com.rubenverg.moldraw.component.TooltipRenderContext;
-import com.rubenverg.moldraw.util.FormulaParser;
+import com.rubenverg.moldraw.core.FormulaText;
 
 public final class TooltipPipeline {
 
@@ -40,9 +40,14 @@ public final class TooltipPipeline {
     }
 
     public static boolean apply(List<String> tip, DisplayPlan plan, FontRenderer font) {
-        if (!MolDraw.isClientThread() || font == null || tip == null || plan == null || !plan.isValid()) {
+        if (!MolDraw.isClientThread() || font == null || tip == null || plan == null) {
             return false;
         }
+
+        boolean formulaChanged = plan.hasFormulaOverride()
+            && FormulaText.applyOverride(tip, plan.getFormula(), plan.originalFormula());
+        tip.removeIf(NEITooltipHelper::isStaleOwnToken);
+        if (!plan.isValid()) return formulaChanged;
 
         if (hasMolDrawTokenOrHint(tip)) {
             return false;
@@ -104,10 +109,10 @@ public final class TooltipPipeline {
     private static void insertToken(List<String> tip, String token, String formula) {
         int targetIdx = -1;
         if (formula != null && !formula.isEmpty()) {
-            String cleanFormula = FormulaParser.normalizeFormula(formula)
+            String cleanFormula = FormulaText.normalizeFormula(formula)
                 .toLowerCase(Locale.ROOT);
             for (int i = 0; i < tip.size(); i++) {
-                String line = FormulaParser.normalizeFormula(tip.get(i))
+                String line = FormulaText.normalizeFormula(tip.get(i))
                     .toLowerCase(Locale.ROOT);
                 if (line.contains(cleanFormula)) {
                     targetIdx = i + 1;

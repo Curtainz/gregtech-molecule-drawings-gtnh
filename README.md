@@ -52,4 +52,4 @@ Original concept, molecular drawing code and resources: RubenVerg and upstream c
 0.5.0-test.1里程碑：不可变材料与几何数据、纯布局、受限缓存、精确组成及质量计算已接入 tooltip 和 audit。保留 CodeChickenCore 1.4.22 公开 tooltip API 与客户端绘制隔离。缺少质量时会停止对应质量饼图，可切换数量模式；最大显示项数为1时显示单项“其他”。该里程碑已由用户基本实测通过，历史测试清单见 [0.5.0测试说明](docs/TESTING-0.5.0.md)。
 
 
-当前 `develop` 为 **0.6.0-stage.3**：368份结构、317份组成及Java专用绑定已迁移为统一JSONC，交付1,039条定义、全量HTML/SVG图册及逐来源HTML/CSV报告。解压预览ZIP后打开 `preview/index.html`，无需阅读JSON。离线工具支持校验、片段组装、共享原子、格式化和重复迁移。游戏继续使用已验证的加载路径，外部挂载/热重载在下一阶段实施。使用和手动验收见 [第③阶段交付](docs/STAGE-3-TESTING.md)，格式见 [FORMAT-V1](docs/FORMAT-V1.md)。
+当前 `develop` 为 **0.6.0-stage.4**，已接入外部JSONC挂载与 `/gtmoldraw reload`。必须同时安装游戏JAR和官方数据包；推荐将安装ZIP解压到 `.minecraft` 根目录。后台校验成功后由客户端线程原子替换快照，失败保留上一有效版本；游戏JAR不再包含旧定义回退。安装、可选覆盖示例及实机验收见 [第④阶段交付](docs/STAGE-4-TESTING.md)，格式见 [FORMAT-V1](docs/FORMAT-V1.md)。全量图册、1,039条声明及HTML/CSV来源报告继续单独交付。

@@ -19,7 +19,7 @@ public final class PackTool {
     public static int run(String[] args, PrintStream output, PrintStream error) {
         try {
             List<String> arguments = new ArrayList<>(List.of(args));
-            String version = "0.6.0-stage.3", only = null;
+            String version = "0.6.0-stage.4", only = null;
             for (String flag : List.of("--mod-version", "--id")) {
                 int index = arguments.indexOf(flag);
                 if (index >= 0) {
@@ -122,6 +122,6 @@ public final class PackTool {
 
     private static void usage(PrintStream out) {
         out.println(
-            "GTMolDraw pack tool (Java25, offline, stage 3)\nvalidate <packs> [--mod-version VERSION]\nformat --check|--write <packs> [--mod-version VERSION]\npreview <packs> <output> [--id DEFINITION] [--mod-version VERSION]\nmigrate <legacy-assets> <legacy-bindings.json> <new-output> [--mod-version VERSION]\nExit: 0 success, 1 formatting differs, 2 invalid input/IO. External game loading/reload and MOL import are not enabled in this stage.");
+            "GTMolDraw pack tool (Java25, offline, stage 4)\nvalidate <packs> [--mod-version VERSION]\nformat --check|--write <packs> [--mod-version VERSION]\npreview <packs> <output> [--id DEFINITION] [--mod-version VERSION]\nmigrate <legacy-assets> <legacy-bindings.json> <new-output> [--mod-version VERSION]\nExit: 0 success, 1 formatting differs, 2 invalid input/IO. This offline tool does not publish game state. In-game loading/reload is available in stage 4; MOL import is deferred.");
     }
 }

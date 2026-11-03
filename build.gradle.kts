@@ -49,6 +49,8 @@ val verifyProductionJar by tasks.registering {
                 val forbiddenCore = listOf("net/minecraft/", "net/minecraftforge/", "gregtech/", "cpw/mods/fml/", "org/lwjgl/")
                 check(forbiddenCore.none { constants.contains(it) }) { "Client/runtime dependency leaked into core: ${entry.name}" }
             }
+            check(names.none { it.matches(Regex("assets/[^/]+/(molecules|alloys)/.*")) }) { "Bundled legacy definition fallback remains" }
+            check(names.none { it.startsWith("com/rubenverg/moldraw/molecule/") || it.startsWith("com/rubenverg/moldraw/MoleculeManager") || it.startsWith("com/rubenverg/moldraw/AlloyManager") || it.startsWith("com/rubenverg/moldraw/util/FormulaParser") }) { "Legacy hardcoded material adapters remain in game JAR" }
             check(names.contains("assets/gtmoldraw/lang/zh_CN.lang")) { "Missing GTMolDraw resources" }
             check(names.contains("com/rubenverg/moldraw/core/PixelBatch.class")) { "Missing raster core" }
             println("Production JAR boundary check passed")
@@ -66,14 +68,14 @@ val architectureRegression by tasks.registering(JavaExec::class) {
 tasks.named("check") { dependsOn(architectureRegression) }
 
 val reviewPackZip by tasks.registering(Zip::class) {
-    archiveFileName.set("gtmoldraw-data-pack-stage-3.zip")
+    archiveFileName.set("gtmoldraw-data-pack-stage-4.zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true
     from("schema") { into("schema") }
     from("data-packs/migrated") { into("packs") }
     from("docs/FORMAT-V1.md")
-    from("docs/STAGE-3-TESTING.md") { rename { "README.md" } }
+    from("docs/STAGE-4-TESTING.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(reviewPackZip) }
 
@@ -87,7 +89,7 @@ dependencies {
 }
 val packToolJar by tasks.registering(Jar::class) {
     dependsOn(tasks.named("classes"))
-    archiveFileName.set("gtmoldraw-pack-tool-stage-3.jar")
+    archiveFileName.set("gtmoldraw-pack-tool-stage-4.jar")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest { attributes("Main-Class" to "com.rubenverg.moldraw.tool.PackTool") }
@@ -131,7 +133,7 @@ val packRegression by tasks.registering(JavaExec::class) {
 }
 tasks.named("check") { dependsOn(packRegression) }
 
-val previewDirectory = layout.buildDirectory.dir("preview-stage-3")
+val previewDirectory = layout.buildDirectory.dir("preview-stage-4")
 val generatePackPreview by tasks.registering(JavaExec::class) {
     dependsOn(packToolJar)
     classpath = files(packToolJar.flatMap { it.archiveFile })
@@ -143,7 +145,7 @@ val generatePackPreview by tasks.registering(JavaExec::class) {
 }
 val previewZip by tasks.registering(Zip::class) {
     dependsOn(generatePackPreview)
-    archiveFileName.set("gtmoldraw-stage-3-preview.zip")
+    archiveFileName.set("gtmoldraw-stage-4-preview.zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true
@@ -162,7 +164,7 @@ val previewZip by tasks.registering(Zip::class) {
     from("data-packs/migrated") { into("packs") }
     from("schema") { into("schema") }
     from("docs/FORMAT-V1.md")
-    from("docs/STAGE-3-TESTING.md") { rename { "README.md" } }
+    from("docs/STAGE-4-TESTING.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(previewZip) }
 
@@ -174,3 +176,33 @@ val migrationRegression by tasks.registering(JavaExec::class) {
     javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
 }
 tasks.named("check") { dependsOn(migrationRegression) }
+
+// Legacy sources remain for reproducible migration/oracle tests; none can load in the game JAR.
+tasks.withType<Jar>().configureEach {
+    if (name == "jar" || name == "shadowJar") {
+    exclude("assets/*/molecules/**", "assets/*/alloys/**")
+    exclude("com/rubenverg/moldraw/molecule/**", "com/rubenverg/moldraw/MoleculeManager*", "com/rubenverg/moldraw/AlloyManager*", "com/rubenverg/moldraw/MoleculeSnapshots*", "com/rubenverg/moldraw/util/FormulaParser*")
+    }
+}
+val runtimePackRegression by tasks.registering(JavaExec::class) {
+    dependsOn(tasks.named("testClasses"))
+    classpath = sourceSets["test"].runtimeClasspath
+    mainClass.set("com.rubenverg.moldraw.core.RuntimePackRegression")
+    args(layout.projectDirectory.asFile.absolutePath)
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
+}
+tasks.named("check") { dependsOn(runtimePackRegression) }
+
+val installZip by tasks.registering(Zip::class) {
+    dependsOn(tasks.named("reobfJar"))
+    archiveFileName.set("gtmoldraw-stage-4-install.zip")
+    destinationDirectory.set(layout.buildDirectory.dir("distributions"))
+    isPreserveFileTimestamps = false
+    isReproducibleFileOrder = true
+    from(productionArtifact) { into("mods") }
+    from("data-packs/migrated/official") { into("config/gtmoldraw/packs/official") }
+    from("data-packs/migrated") { include("migration-report.*"); into("gtmoldraw-docs") }
+    from("data-packs/runtime-demo") { into("gtmoldraw-docs/optional-demo") }
+    from("docs/STAGE-4-TESTING.md") { rename { "README.md" } }
+}
+tasks.named("assemble") { dependsOn(installZip) }
