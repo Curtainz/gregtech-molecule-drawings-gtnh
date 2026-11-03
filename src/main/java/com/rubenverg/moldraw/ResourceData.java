@@ -12,6 +12,7 @@ public final class ResourceData {
     private ResourceData() {}
 
     public static InputStream open(String namespace, String path) throws IOException {
+        if (!MolDraw.isClientThread()) throw new IllegalStateException("Resources must be read on the client thread");
         try {
             return Minecraft.getMinecraft()
                 .getResourceManager()
@@ -23,11 +24,13 @@ public final class ResourceData {
     }
 
     public static void invalidate() {
+        if (!MolDraw.isClientThread())
+            throw new IllegalStateException("Caches must be invalidated on the client thread");
         MoleculeManager.clearCache();
         AlloyManager.clearCache();
         MoleculeColorize.invalidateColorCache();
         RendererCache.clear();
-        NEITooltipHelper.clear();
+        com.rubenverg.moldraw.component.TooltipDrawPass.clearFailures();
         com.rubenverg.moldraw.component.TooltipRenderContext.clear();
     }
 }

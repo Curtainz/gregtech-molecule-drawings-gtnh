@@ -1,154 +1,54 @@
 package com.rubenverg.moldraw;
 
 import java.awt.Dimension;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 
 import net.minecraft.client.gui.FontRenderer;
 
 import com.rubenverg.moldraw.component.ITooltipDrawable;
+import com.rubenverg.moldraw.component.TooltipDrawPass;
 
-public class NEITooltipHelper {
+import codechicken.lib.gui.GuiDraw;
 
-    private static boolean initialized = false;
-    private static boolean neiAvailable = false;
-    private static Method getTipLineIdMethod = null;
-    private static Field tipLineHandlersField = null;
-    private static Class<?> tooltipLineHandlerClass = null;
+/** Version-pinned CodeChicken public API adapter. No global handler-list ownership. */
+public final class NEITooltipHelper {
 
-    // 针对每个具体的 ITooltipDrawable 实例独立缓存其代理 Handler，
-    // 彻底解耦全局共享状态，杜绝由于帧交替清空与状态覆盖导致的闪烁与组件塌陷！
-    private static final Map<ITooltipDrawable, Object> handlerProxyCache = Collections
-        .synchronizedMap(new java.util.IdentityHashMap<>());
+    private static boolean available;
 
-    public static synchronized void init() {
-        if (initialized) return;
-        initialized = true;
+    private NEITooltipHelper() {}
 
-        try {
-            Class<?> guiDrawClass = Class.forName("codechicken.lib.gui.GuiDraw");
-
-            for (Class<?> inner : guiDrawClass.getDeclaredClasses()) {
-                if ("ITooltipLineHandler".equals(inner.getSimpleName())) {
-                    tooltipLineHandlerClass = inner;
-                    break;
-                }
-            }
-
-            if (tooltipLineHandlerClass == null) {
-                tooltipLineHandlerClass = Class.forName("codechicken.lib.gui.GuiDraw$ITooltipLineHandler");
-            }
-
-            if (tooltipLineHandlerClass != null) {
-                getTipLineIdMethod = guiDrawClass.getMethod("getTipLineId", tooltipLineHandlerClass);
-            }
-
-            try {
-                tipLineHandlersField = guiDrawClass.getDeclaredField("tipLineHandlers");
-                tipLineHandlersField.setAccessible(true);
-            } catch (Throwable ignored) {}
-
-            if (getTipLineIdMethod != null && tooltipLineHandlerClass != null) {
-                neiAvailable = true;
-                MolDraw.LOGGER.info("Initialized NEITooltipHelper with dynamic per-drawable line handler proxy.");
-            }
-        } catch (Throwable t) {
-            neiAvailable = false;
-            MolDraw.LOGGER.info("NEI ITooltipLineHandler not available: " + t.getMessage());
-        }
+    public static void init() {
+        if (!MolDraw.isClientThread()) return;
+        available = cpw.mods.fml.common.Loader.isModLoaded("NotEnoughItems");
     }
 
     public static boolean isNEIAvailable() {
-        if (!initialized) init();
-        return neiAvailable && tooltipLineHandlerClass != null;
+        return MolDraw.isClientThread() && available;
     }
 
-    private static Object createProxy(final ITooltipDrawable drawable, final FontRenderer font) {
-        return Proxy.newProxyInstance(
-            tooltipLineHandlerClass.getClassLoader(),
-            new Class<?>[] { tooltipLineHandlerClass },
-            new InvocationHandler() {
-
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    String mName = method.getName();
-                    if ("getSize".equals(mName)) {
-                        return new Dimension(drawable.getWidth(font), drawable.getHeight(font));
-                    } else if ("draw".equals(mName)) {
-                        int x = (Integer) args[0];
-                        int y = (Integer) args[1];
-                        renderWithGL(drawable, font, x, y);
-                        return null;
-                    } else if ("hashCode".equals(mName)) {
-                        return System.identityHashCode(proxy);
-                    } else if ("equals".equals(mName)) {
-                        return args != null && args.length > 0 && args[0] == proxy;
-                    } else if ("toString".equals(mName)) {
-                        return "MolDrawLineHandler[" + drawable.getClass()
-                            .getSimpleName() + "]";
-                    }
-                    return null;
-                }
-            });
-    }
-
-    @SuppressWarnings("unchecked")
-    public static synchronized String obtainLineToken(ITooltipDrawable drawable, FontRenderer font) {
+    public static String obtainLineToken(ITooltipDrawable drawable, FontRenderer font) {
         if (!isNEIAvailable() || drawable == null || font == null) return null;
-
-        Object proxy = handlerProxyCache.get(drawable);
-        if (proxy == null) {
-            proxy = createProxy(drawable, font);
-            handlerProxyCache.put(drawable, proxy);
-        }
-
-        // 优先直接同步到 tipLineHandlers 列表
-        if (tipLineHandlersField != null) {
-            try {
-                List<Object> list = (List<Object>) tipLineHandlersField.get(null);
-                if (list != null) {
-                    int existing = list.indexOf(proxy);
-                    if (existing >= 0) {
-                        return "\u00a7x" + existing;
-                    } else {
-                        list.add(proxy);
-                        return "\u00a7x" + (list.size() - 1);
-                    }
-                }
-            } catch (Throwable ignored) {}
-        }
-
-        // 回退逻辑：调用 GuiDraw.getTipLineId
-        try {
-            int id = (Integer) getTipLineIdMethod.invoke(null, proxy);
-            return "\u00a7x" + id;
-        } catch (Throwable t) {
-            return null;
-        }
+        return "\u00a7x" + GuiDraw.getTipLineId(new LineHandler(drawable, font));
     }
 
     public static boolean isOwnToken(String token) {
-        if (!token.startsWith("\u00a7x") || tipLineHandlersField == null) return false;
+        if (!isNEIAvailable() || token == null || !token.startsWith("\u00a7x")) return false;
         try {
-            List<?> handlers = (List<?>) tipLineHandlersField.get(null);
-            int index = Integer.parseInt(token.substring(2));
-            return index >= 0 && index < handlers.size() && handlerProxyCache.containsValue(handlers.get(index));
-        } catch (ReflectiveOperationException | RuntimeException ignored) {
+            return GuiDraw.getTipLine(token) instanceof LineHandler;
+        } catch (RuntimeException staleOrMalformedToken) {
             return false;
         }
     }
 
-    public static void clear() {
-        handlerProxyCache.clear();
-    }
+    private record LineHandler(ITooltipDrawable drawable, FontRenderer font) implements GuiDraw.ITooltipLineHandler {
 
-    private static void renderWithGL(ITooltipDrawable drawable, FontRenderer font, int x, int y) {
-        if (drawable == null || font == null) return;
-        com.rubenverg.moldraw.component.TooltipDrawPass.render(drawable, font, x, y);
+        @Override
+        public Dimension getSize() {
+            return new Dimension(drawable.getWidth(font), drawable.getHeight(font));
+        }
+
+        @Override
+        public void draw(int x, int y) {
+            TooltipDrawPass.render(drawable, font, x, y);
+        }
     }
 }

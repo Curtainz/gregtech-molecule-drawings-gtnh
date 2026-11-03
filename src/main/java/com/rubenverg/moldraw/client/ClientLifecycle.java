@@ -25,6 +25,7 @@ public final class ClientLifecycle extends CommonLifecycle {
 
     private volatile Thread clientThread;
     private boolean installed;
+    private final java.util.concurrent.atomic.AtomicBoolean configPending = new java.util.concurrent.atomic.AtomicBoolean();
     private final java.util.concurrent.atomic.AtomicBoolean reloadPending = new java.util.concurrent.atomic.AtomicBoolean();
 
     @Override
@@ -59,6 +60,10 @@ public final class ClientLifecycle extends CommonLifecycle {
             }
             MolDraw.LOGGER.info("[lifecycle] client integrations installed");
         }
+        if (configPending.getAndSet(false)) {
+            MolDrawConfig.syncConfig();
+            reloadPending.set(true);
+        }
         if (reloadPending.getAndSet(false)) {
             ResourceData.invalidate();
             MolDraw.LOGGER.info("[lifecycle] caches invalidated on client thread");
@@ -68,8 +73,7 @@ public final class ClientLifecycle extends CommonLifecycle {
     @SubscribeEvent
     public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
         if (MolDraw.MOD_ID.equals(event.modID)) {
-            MolDrawConfig.syncConfig();
-            reloadPending.set(true);
+            configPending.set(true);
         }
     }
 }

@@ -48,3 +48,5 @@ Original concept, molecular drawing code and resources: RubenVerg and upstream c
 ## Repository layout / 分支约定
 
 默认分支为 **main**，后续重构在 **develop**。保留 v0.3.0 和 v0.4.0 两个里程碑标签。历史引用备份及恢复方法见 [分支与版本约定](docs/REPOSITORY.md)。
+
+`develop` 的 0.4.1-dev 已将像素计算与 Tessellator 提交分离，并使用 CodeChickenCore 1.4.22 的公开 tooltip API。构建包含纯 Java 栅格回归与发布包边界检查。开发版仍需在库存、NEI、ChromaticTooltips 和资源重载场景中实测，详见 [重构进度与验收](docs/REFACTOR-PROGRESS.md)。
