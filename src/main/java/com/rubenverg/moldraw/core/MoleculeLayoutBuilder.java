@@ -451,42 +451,42 @@ public final class MoleculeLayoutBuilder {
                 xyMin.x + 2,
                 xyMin.y,
                 PixelRaster.PixelPredicate::always,
-                Objects.requireNonNullElse(overrideColor, (_x, _y) -> defaultColor));
+                Objects.requireNonNullElse(overrideColor, (_x, _y) -> pp.color() == null ? defaultColor : pp.color()));
             canvas.plotLine(
                 xyMin.x - 2,
                 xyMax.y,
                 xyMin.x + 2,
                 xyMax.y,
                 PixelRaster.PixelPredicate::always,
-                Objects.requireNonNullElse(overrideColor, (_x, _y) -> defaultColor));
+                Objects.requireNonNullElse(overrideColor, (_x, _y) -> pp.color() == null ? defaultColor : pp.color()));
             canvas.plotLine(
                 xyMax.x + 2,
                 xyMin.y,
                 xyMax.x - 2,
                 xyMin.y,
                 PixelRaster.PixelPredicate::always,
-                Objects.requireNonNullElse(overrideColor, (_x, _y) -> defaultColor));
+                Objects.requireNonNullElse(overrideColor, (_x, _y) -> pp.color() == null ? defaultColor : pp.color()));
             canvas.plotLine(
                 xyMax.x + 2,
                 xyMax.y,
                 xyMax.x - 2,
                 xyMax.y,
                 PixelRaster.PixelPredicate::always,
-                Objects.requireNonNullElse(overrideColor, (_x, _y) -> defaultColor));
+                Objects.requireNonNullElse(overrideColor, (_x, _y) -> pp.color() == null ? defaultColor : pp.color()));
             canvas.plotLine(
                 xyMin.x - 2,
                 xyMin.y,
                 xyMin.x - 2,
                 xyMax.y,
                 PixelRaster.PixelPredicate::always,
-                Objects.requireNonNullElse(overrideColor, (_x, _y) -> defaultColor));
+                Objects.requireNonNullElse(overrideColor, (_x, _y) -> pp.color() == null ? defaultColor : pp.color()));
             canvas.plotLine(
                 xyMax.x + 2,
                 xyMin.y,
                 xyMax.x + 2,
                 xyMax.y,
                 PixelRaster.PixelPredicate::always,
-                Objects.requireNonNullElse(overrideColor, (_x, _y) -> defaultColor));
+                Objects.requireNonNullElse(overrideColor, (_x, _y) -> pp.color() == null ? defaultColor : pp.color()));
         } else if (elem instanceof CircleTransformation ct) {
             final var centroid = Arrays.stream(ct.atoms())
                 .mapToObj(
@@ -504,7 +504,8 @@ public final class MoleculeLayoutBuilder {
                 canvas.screenPixel(
                     r.x,
                     r.y,
-                    Objects.isNull(overrideColor) ? defaultColor : overrideColor.applyAsInt(r.x, r.y));
+                    Objects.isNull(overrideColor) ? (ct.color() == null ? defaultColor : ct.color())
+                        : overrideColor.applyAsInt(r.x, r.y));
             }
         } else if (elem instanceof Group composite) {
             for (final var child : composite.children()) {
@@ -515,6 +516,15 @@ public final class MoleculeLayoutBuilder {
 
     private void renderOneText(Shape elem, TooltipLayout.Canvas font, int x, int y, UnaryOperator<Vector2f> toScaled,
         int defaultColor) {
+        if (elem instanceof TextAnnotation annotation) {
+            var position = toScaled.apply(new Vector2f(annotation.x(), annotation.y()));
+            font.drawStringWithShadow(
+                annotation.text(),
+                x + (int) Math.floor(position.x),
+                y + (int) Math.floor(position.y),
+                annotation.color() == null ? defaultColor : annotation.color());
+            return;
+        }
         if (elem instanceof Atom atom) {
             final var pos = toScaled.apply(project(atom.position()));
             final int px = (int) Math.floor(pos.x) + x;
@@ -633,10 +643,18 @@ public final class MoleculeLayoutBuilder {
                 .boundsWithSize(xyz -> toScaled.apply(project(xyz)), sizeOfAtomFactory(font.lineHeight()));
             final var xySub = new Vector2i((int) bounds.getSecond().x, (int) bounds.getSecond().y);
             xySub.add(7, -2);
-            font.drawStringWithShadow(pp.sub(), x + xySub.x, y + xySub.y, defaultColor);
+            font.drawStringWithShadow(
+                pp.sub(),
+                x + xySub.x,
+                y + xySub.y,
+                pp.color() == null ? defaultColor : pp.color());
             final var xySup = new Vector2i((int) bounds.getSecond().x, (int) bounds.getFirst().y);
             xySup.add(7, -4);
-            font.drawStringWithShadow(pp.sup(), x + xySup.x, y + xySup.y, defaultColor);
+            font.drawStringWithShadow(
+                pp.sup(),
+                x + xySup.x,
+                y + xySup.y,
+                pp.color() == null ? defaultColor : pp.color());
         } else if (elem instanceof Group composite) {
             for (final var child : composite.children()) {
                 renderOneText(child, font, x, y, toScaled, defaultColor);

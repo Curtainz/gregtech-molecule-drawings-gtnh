@@ -10,10 +10,10 @@
   ],
   "formula": "H2O",
   "structure": "official:water_structure",
-  "display": {
-    "mode": "auto"
-  },
   "composition": {
     "source": "formula"
   },
+  "display": {
+    "mode": "auto"
+  }
 }

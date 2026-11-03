@@ -26,8 +26,10 @@ public record MoleculeScene(List<Shape> contents) {
         return List.copyOf(flat);
     }
 
-    public sealed interface Shape permits Atom,Bond,Parens,CircleTransformation,Group {
+    public sealed interface Shape permits Atom,Bond,Parens,CircleTransformation,Group,TextAnnotation {
     }
+
+    public record TextAnnotation(String text, float x, float y, Integer color) implements Shape {}
 
     public record Label(String text, boolean invisible, int color) {
 
@@ -90,7 +92,11 @@ public record MoleculeScene(List<Shape> contents) {
         }
     }
 
-    public record Parens(String sub, String sup, List<Integer> indices) implements Shape {
+    public record Parens(String sub, String sup, List<Integer> indices, Integer color) implements Shape {
+
+        public Parens(String sub, String sup, List<Integer> indices) {
+            this(sub, sup, indices, null);
+        }
 
         public Parens {
             indices = List.copyOf(indices);
@@ -103,8 +109,12 @@ public record MoleculeScene(List<Shape> contents) {
         }
     }
 
-    public record CircleTransformation(float a00, float a01, float a10, float a11, List<Integer> indices)
+    public record CircleTransformation(float a00, float a01, float a10, float a11, List<Integer> indices, Integer color)
         implements Shape {
+
+        public CircleTransformation(float a00, float a01, float a10, float a11, List<Integer> indices) {
+            this(a00, a01, a10, a11, indices, null);
+        }
 
         public CircleTransformation {
             indices = List.copyOf(indices);

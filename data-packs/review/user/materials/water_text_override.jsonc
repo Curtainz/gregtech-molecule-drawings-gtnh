@@ -1,12 +1,12 @@
 // Full-record replacement: original canonical ID and bindings are explicit.
 {
   "schemaVersion": 1,
-  "type": "material",
   "id": "official:water",
   "overrides": {
     "pack": "official",
     "id": "official:water"
   },
+  "type": "material",
   "bindings": [
     "gt:Water",
     "fluid:water",
@@ -15,5 +15,5 @@
   "formula": "H2O",
   "display": {
     "mode": "text"
-  },
+  }
 }

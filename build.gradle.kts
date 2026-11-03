@@ -66,7 +66,7 @@ val architectureRegression by tasks.registering(JavaExec::class) {
 tasks.named("check") { dependsOn(architectureRegression) }
 
 val reviewPackZip by tasks.registering(Zip::class) {
-    archiveFileName.set("gtmoldraw-jsonc-v1-stage-1-review.zip")
+    archiveFileName.set("gtmoldraw-jsonc-v1-stage-2-review.zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true
@@ -76,3 +76,82 @@ val reviewPackZip by tasks.registering(Zip::class) {
     from("data-packs/REVIEW-README.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(reviewPackZip) }
+
+tasks.named<ProcessResources>("processResources") {
+    from("schema") { into("META-INF/gtmoldraw-schema") }
+}
+val toolLibraries = configurations.create("toolLibraries")
+dependencies {
+    add(toolLibraries.name, "com.google.code.gson:gson:2.2.4") { isTransitive = false }
+    add(toolLibraries.name, "org.joml:joml:1.10.8") { isTransitive = false }
+}
+val packToolJar by tasks.registering(Jar::class) {
+    dependsOn(tasks.named("classes"))
+    archiveFileName.set("gtmoldraw-pack-tool-stage-2.jar")
+    destinationDirectory.set(layout.buildDirectory.dir("distributions"))
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest { attributes("Main-Class" to "com.rubenverg.moldraw.tool.PackTool") }
+    from(sourceSets["main"].output) {
+        include("com/rubenverg/moldraw/core/**", "com/rubenverg/moldraw/tool/**", "com/rubenverg/moldraw/util/Pair.class", "META-INF/gtmoldraw-schema/**")
+    }
+    from({ toolLibraries.map { zipTree(it) } }) {
+        exclude("META-INF/MANIFEST.MF", "META-INF/*.SF", "META-INF/*.RSA", "META-INF/*.DSA")
+    }
+    from(listOf("LICENSE-UPSTREAM", "NOTICE.md")) { into("META-INF") }
+    isPreserveFileTimestamps = false
+    isReproducibleFileOrder = true
+}
+tasks.named("assemble") { dependsOn(packToolJar) }
+
+val verifyPackToolJar by tasks.registering {
+    dependsOn(packToolJar)
+    val artifact = packToolJar.flatMap { it.archiveFile }
+    inputs.file(artifact)
+    doLast {
+        ZipFile(artifact.get().asFile).use { jar ->
+            val forbidden = jar.entries().asSequence().map { it.name }.filter {
+                it.startsWith("net/minecraft/") || it.startsWith("net/minecraftforge/") ||
+                    it.startsWith("gregtech/") || it.startsWith("cpw/mods/fml/") ||
+                    it.startsWith("codechicken/") || it.startsWith("org/lwjgl/") ||
+                    it.endsWith(".dll") || it.endsWith(".so") || it.endsWith(".dylib")
+            }.toList()
+            check(forbidden.isEmpty()) { "Game/native dependency in offline tool: $forbidden" }
+            println("Offline tool JAR boundary check passed")
+        }
+    }
+}
+tasks.named("check") { dependsOn(verifyPackToolJar) }
+
+val packRegression by tasks.registering(JavaExec::class) {
+    dependsOn(tasks.named("testClasses"))
+    classpath = sourceSets["test"].runtimeClasspath
+    mainClass.set("com.rubenverg.moldraw.core.PackRegression")
+    args(layout.projectDirectory.asFile.absolutePath)
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
+}
+tasks.named("check") { dependsOn(packRegression) }
+
+val previewDirectory = layout.buildDirectory.dir("preview-stage-2")
+val generatePackPreview by tasks.registering(JavaExec::class) {
+    dependsOn(packToolJar)
+    classpath = files(packToolJar.flatMap { it.archiveFile })
+    mainClass.set("com.rubenverg.moldraw.tool.PackTool")
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
+    args("preview", layout.projectDirectory.dir("data-packs/review").asFile.absolutePath, previewDirectory.get().asFile.absolutePath)
+    inputs.dir("data-packs/review")
+    outputs.dir(previewDirectory)
+}
+val previewZip by tasks.registering(Zip::class) {
+    dependsOn(generatePackPreview)
+    archiveFileName.set("gtmoldraw-stage-2-preview.zip")
+    destinationDirectory.set(layout.buildDirectory.dir("distributions"))
+    isPreserveFileTimestamps = false
+    isReproducibleFileOrder = true
+    from(previewDirectory) { into("preview") }
+    from(packToolJar) { into("tools") }
+    from("data-packs/review") { into("packs") }
+    from("schema") { into("schema") }
+    from("docs/FORMAT-V1.md")
+    from("docs/STAGE-2-TESTING.md") { rename { "README.md" } }
+}
+tasks.named("assemble") { dependsOn(previewZip) }

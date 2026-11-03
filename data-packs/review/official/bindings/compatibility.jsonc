@@ -18,19 +18,19 @@
       "target": "structure"
     },
     {
-      "kind": "composition_candidate",
       "materials": [
         "gt:Bronze"
       ],
       "containsAny": [
         "alloy",
         "steel"
-      ]
+      ],
+      "kind": "composition_candidate"
     },
     {
       "kind": "element_binding",
       "symbol": "D",
       "material": "gt:Deuterium"
     }
-  ],
+  ]
 }

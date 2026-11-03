@@ -47,7 +47,7 @@ public final class MaterialAuditCommand extends CommandBase {
                     "Pack directory (future loader): " + com.rubenverg.moldraw.core.DataPackContract.PACK_DIRECTORY));
             sender.addChatMessage(
                 new ChatComponentText(
-                    "Stage 1: schema/examples only. External loading is NOT enabled; existing data loading remains active."));
+                    "Stage 2: offline validation/assembly/preview tools. External loading is NOT enabled; existing data loading remains active."));
             return;
         }
         if (args.length != 1 || !"audit".equals(args[0])) {

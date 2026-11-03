@@ -145,7 +145,7 @@ def validate_review():
         assert not pack_validator.is_valid(bad),'Reserved provider namespace accepted'
     bad=copy.deepcopy(packs['official']);bad['version']='1.0.0-01'
     assert not pack_validator.is_valid(bad),'Invalid numeric prerelease accepted'
-    print(f'Stage-1 contract checks passed: 2 schemas, {len(packs)} manifests, {len(records)} definitions, {len(negative)} schema rejection cases, JSONC lexical cases and fusion fixture.')
-    print('Scope: authoring contract checks only; runtime expansion/reload is not implemented in this stage.')
+    print(f'Authoring contract checks passed: 2 schemas, {len(packs)} manifests, {len(records)} definitions, {len(negative)} schema rejection cases, JSONC lexical cases and fusion fixture.')
+    print('Scope: Python authoring cross-check only. Java packRegression checks offline expansion; game loading/reload remains disabled.')
 
 if __name__=='__main__':validate_review()
