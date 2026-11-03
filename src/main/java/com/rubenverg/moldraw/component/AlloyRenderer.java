@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.function.IntBinaryOperator;
 
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.util.StatCollector;
 
 import org.joml.Vector2i;
 
@@ -16,7 +17,7 @@ import com.rubenverg.moldraw.util.Pair;
 import gregtech.api.enums.Materials;
 import gregtech.api.objects.MaterialStack;
 
-public class AlloyRenderer {
+public class AlloyRenderer implements ITooltipDrawable {
 
     public static final int BASE_WIDTH = 190;
     private final int baseHeight;
@@ -51,51 +52,92 @@ public class AlloyRenderer {
     public static List<Pair<Materials, Long>> deriveComponents(Materials material) {
         if (material == null || material == Materials._NULL) return Collections.emptyList();
 
-        List<Pair<Materials, Long>> override = AlloyManager.getAlloyComponents(material);
-        if (override != null && !override.isEmpty()) {
-            return override;
-        }
-
-        List<Pair<Materials, Long>> result = new ArrayList<>();
-        if (material.mMaterialList == null || material.mMaterialList.isEmpty()) {
-            // 没有材料配方列表时，尝试通过化学式解析
-            String formula = material.getChemicalFormula();
-            if (formula != null && !formula.isEmpty()) {
-                List<Pair<Materials, Long>> parsed = FormulaParser.parseToWeightedComponents(formula);
-                if (parsed.size() > 1) {
-                    return parsed;
-                }
-            }
-            result.add(new Pair<>(material, 1L));
-            return result;
-        }
-
-        for (MaterialStack ms : material.mMaterialList) {
-            if (ms.mMaterial != null && ms.mMaterial != Materials._NULL) {
-                if (MolDrawConfig.INSTANCE.alloy.recursive && ms.mMaterial.mMaterialList != null
-                    && !ms.mMaterial.mMaterialList.isEmpty()) {
-                    List<Pair<Materials, Long>> sub = deriveComponents(ms.mMaterial);
-                    for (Pair<Materials, Long> p : sub) {
-                        result.add(new Pair<>(p.getA(), p.getB() * ms.mAmount));
-                    }
-                } else {
-                    result.add(new Pair<>(ms.mMaterial, ms.mAmount));
-                }
-            }
+        List<Pair<Materials, Long>> raw = decomposeRecursive(material, new HashSet<>());
+        if (raw == null || raw.isEmpty()) {
+            return Collections.emptyList();
         }
 
         // 合并相同材料
         Map<Materials, Long> merged = new LinkedHashMap<>();
-        for (Pair<Materials, Long> p : result) {
-            merged.put(p.getA(), merged.getOrDefault(p.getA(), 0L) + p.getB());
+        for (Pair<Materials, Long> p : raw) {
+            if (p != null && p.getA() != null && p.getB() != null && p.getB() > 0) {
+                merged.put(p.getA(), merged.getOrDefault(p.getA(), 0L) + p.getB());
+            }
         }
+
         List<Pair<Materials, Long>> finalComponents = new ArrayList<>();
         for (Map.Entry<Materials, Long> entry : merged.entrySet()) {
             finalComponents.add(new Pair<>(entry.getKey(), entry.getValue()));
         }
+
         finalComponents.sort(
             (a, b) -> Long.compare(maybeMultiplyByMass(b.getA(), b.getB()), maybeMultiplyByMass(a.getA(), a.getB())));
         return finalComponents;
+    }
+
+    private static List<Pair<Materials, Long>> decomposeRecursive(Materials material, Set<Materials> visited) {
+        if (material == null || material == Materials._NULL) return Collections.emptyList();
+        if (visited.contains(material)) {
+            return Collections.singletonList(new Pair<>(material, 1L));
+        }
+        visited.add(material);
+
+        // 1. 优先检查外部覆写配置
+        List<Pair<Materials, Long>> override = AlloyManager.getAlloyComponents(material);
+        if (override != null && !override.isEmpty()) {
+            if (!MolDrawConfig.INSTANCE.alloy.recursive) {
+                return override;
+            }
+            List<Pair<Materials, Long>> result = new ArrayList<>();
+            for (Pair<Materials, Long> p : override) {
+                if (p.getA() != null && p.getA().mElement == null && p.getA() != material) {
+                    List<Pair<Materials, Long>> sub = decomposeRecursive(p.getA(), new HashSet<>(visited));
+                    for (Pair<Materials, Long> sp : sub) {
+                        result.add(new Pair<>(sp.getA(), sp.getB() * p.getB()));
+                    }
+                } else {
+                    result.add(p);
+                }
+            }
+            return result;
+        }
+
+        // 2. 如果本身就是不可再分的基础单质元素，直接返回
+        if (material.mElement != null) {
+            return Collections.singletonList(new Pair<>(material, 1L));
+        }
+
+        List<Pair<Materials, Long>> result = new ArrayList<>();
+
+        // 3. 检查是否有配方材料列表 mMaterialList
+        if (material.mMaterialList != null && !material.mMaterialList.isEmpty()) {
+            for (MaterialStack ms : material.mMaterialList) {
+                if (ms.mMaterial != null && ms.mMaterial != Materials._NULL) {
+                    if (MolDrawConfig.INSTANCE.alloy.recursive && ms.mMaterial != material) {
+                        List<Pair<Materials, Long>> sub = decomposeRecursive(ms.mMaterial, new HashSet<>(visited));
+                        for (Pair<Materials, Long> p : sub) {
+                            result.add(new Pair<>(p.getA(), p.getB() * ms.mAmount));
+                        }
+                    } else {
+                        result.add(new Pair<>(ms.mMaterial, ms.mAmount));
+                    }
+                }
+            }
+            if (!result.isEmpty()) {
+                return result;
+            }
+        }
+
+        // 4. 若无 mMaterialList 或为空，但存在复合化学式（如红石、二氧化硅、脉冲混合物等），通过化学式解析为基础元素
+        String formula = material.getChemicalFormula();
+        if (formula != null && !formula.isEmpty()) {
+            List<Pair<Materials, Long>> parsed = FormulaParser.parseToWeightedComponents(formula);
+            if (parsed != null && !parsed.isEmpty()) {
+                return parsed;
+            }
+        }
+
+        return Collections.singletonList(new Pair<>(material, 1L));
     }
 
     public AlloyRenderer(Materials material, FontRenderer font) {
@@ -127,7 +169,7 @@ public class AlloyRenderer {
             Pair<Materials, Long> p = weighted.get(i);
             double pct = p.getB() * 100.0 / safeTotal;
             // 如果超出最大显示数量，或者占比低于阈值（且后面还有更多微量元素），折叠进“其他”
-            if (i >= maxDisplayed - 1 || (pct < minPercent && weighted.size() - i > 1)) {
+            if ((weighted.size() > maxDisplayed && i >= maxDisplayed - 1) || pct < minPercent) {
                 otherTotal += p.getB();
             } else {
                 folded.add(p);
@@ -194,10 +236,10 @@ public class AlloyRenderer {
             String formula;
             int textColor;
             if (mat == null) {
-                formula = "其他";
+                formula = StatCollector.translateToLocal("tooltip.gtmoldraw.other");
                 textColor = 0xFFAAAAAA;
             } else if (mat == Materials._NULL) {
-                formula = "神秘/未知成分";
+                formula = StatCollector.translateToLocal("tooltip.gtmoldraw.unknown");
                 textColor = 0xFFBB66FF;
             } else {
                 formula = mat.getChemicalFormula();
@@ -248,6 +290,7 @@ public class AlloyRenderer {
         return MoleculeColorize.getColorForMaterial(mat);
     }
 
+    @Override
     public void render(FontRenderer font, int x, int y) {
         if (total <= 0 || components.isEmpty()) return;
 
@@ -255,12 +298,13 @@ public class AlloyRenderer {
         final int ym = baseHeight / 2 + addTop + y;
         final int radius = MolDrawConfig.INSTANCE.alloy.pieChartRadius;
 
+        // 1. 绘制各成分扇区（严格采用 upstream 的 plotCircle + 角度映射）
         final IntBinaryOperator sc = (xp, yp) -> {
             final int rx = xp - xm, ry = yp - ym;
             final double ng = Math.atan2(rx, -ry);
             final double angle = ng < 0 ? ng + 2 * Math.PI : ng;
-            for (int si = 1; si < stops.size(); si++) {
-                if (angle < stops.get(si)
+            for (int si = 1; si <= stops.size(); si++) {
+                if (angle <= stops.get(si % stops.size())
                     .getA()) {
                     return getColor(
                         stops.get(si - 1)
@@ -272,31 +316,31 @@ public class AlloyRenderer {
                     .getB());
         };
 
-        // 1. 绘制饼图圆盘
         GraphicalUtils.plotCircle(xm, ym, radius, GraphicalUtils::alwaysDraw, sc);
 
-        // 2. 绘制每个成分的引出线与文字
+        // 2. 引出折线与文字
+        final IntBinaryOperator white = (_xp, _yp) -> 0xFFFFFFFF;
+
         for (int i = 0; i < components.size(); i++) {
-            final var mat = components.get(i)
-                .getA();
-            final var center = centers.get(i)
+            final double center = centers.get(i)
                 .getA();
             final var textStart = textStarts.get(i)
                 .getFirst();
+            final int topY = ym + textStart.y;
+            final int centerY = topY + font.FONT_HEIGHT / 2;
+            final int startX = xm + textStart.x;
+
+            final int cx = xm + (int) (Math.sin(center) * 0.9 * radius);
+            final int cy = ym - (int) (Math.cos(center) * 0.9 * radius);
+            final boolean left = center > Math.PI;
+            final int ex = xm + (left ? -1 : 1) * (radius + 10);
+
+            GraphicalUtils.plotLine(cx, cy, cx, centerY, GraphicalUtils::alwaysDraw, white);
+            GraphicalUtils.plotLine(cx, centerY, ex, centerY, GraphicalUtils::alwaysDraw, white);
+
             final String text = textLines.get(i);
             final int color = textColors.get(i);
-            final boolean left = center > Math.PI;
-
-            // 引出线
-            final int lx0 = xm + (int) (Math.sin(center) * 0.9 * radius);
-            final int ly0 = ym - (int) (Math.cos(center) * 0.9 * radius);
-            final int lx1 = xm + textStart.x + (left ? font.getStringWidth(text) + 2 : -2);
-            final int ly1 = ym + textStart.y + font.FONT_HEIGHT / 2;
-
-            GraphicalUtils.plotLine(lx0, ly0, lx1, ly1, GraphicalUtils::alwaysDraw, (_x, _y) -> 0xFFAAAAAA);
-
-            // 文字
-            font.drawStringWithShadow(text, xm + textStart.x, ym + textStart.y, color);
+            font.drawStringWithShadow(text, startX, topY, color);
         }
     }
 }

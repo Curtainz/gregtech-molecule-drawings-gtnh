@@ -20,27 +20,22 @@ import org.joml.Vector3fc;
 import com.google.gson.*;
 import com.rubenverg.moldraw.util.Pair;
 
-import it.unimi.dsi.fastutil.floats.FloatArrayList;
-import it.unimi.dsi.fastutil.floats.FloatList;
-import it.unimi.dsi.fastutil.ints.Int2IntArrayMap;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-
 public class Molecule implements CompositeElement<Molecule> {
 
     private int atomIndex = -1;
     private final List<MoleculeElement<?>> contents = new ArrayList<>();
     private final Matrix3d transformation = new Matrix3d();
-    private FloatList spinGroups = new FloatArrayList();
+    private List<Float> spinGroups = new ArrayList<>();
 
     public Matrix3d transformation() {
         return this.transformation;
     }
 
-    public FloatList spinGroups() {
+    public List<Float> spinGroups() {
         return this.spinGroups;
     }
 
-    public Molecule spinGroups(FloatList spinGroups) {
+    public Molecule spinGroups(List<Float> spinGroups) {
         this.spinGroups = spinGroups;
         return this;
     }
@@ -245,7 +240,7 @@ public class Molecule implements CompositeElement<Molecule> {
     public Molecule subset(int... atomIndices) {
         final var result = new Molecule();
         AtomicInteger atomCount = new AtomicInteger(-1);
-        final Int2IntMap numbersMapping = new Int2IntArrayMap();
+        final Map<Integer, Integer> numbersMapping = new HashMap<>();
         for (final var elem : this.contents) {
             final var oldIndices = elem.coveredAtoms();
             if (Arrays.stream(oldIndices)
@@ -362,11 +357,11 @@ public class Molecule implements CompositeElement<Molecule> {
                         .isBoolean()
                         && obj.get("spin")
                             .getAsBoolean())
-                        molecule.spinGroups(FloatList.of(1 / 4f));
+                        molecule.spinGroups(List.of(1 / 4f));
                     else if (obj.getAsJsonPrimitive("spin")
                         .isNumber())
                         molecule.spinGroups(
-                            FloatList.of(
+                            List.of(
                                 obj.get("spin")
                                     .getAsFloat()));
                 } else if (obj.get("spin")
@@ -375,7 +370,7 @@ public class Molecule implements CompositeElement<Molecule> {
                             com.rubenverg.moldraw.util.JsonUtils.toList(obj.getAsJsonArray("spin"))
                                 .stream()
                                 .map(JsonElement::getAsFloat)
-                                .collect(Collectors.toCollection(FloatArrayList::new)));
+                                .collect(Collectors.toCollection(ArrayList::new)));
                     } else throw new JsonParseException("Invalid spin");
             }
             return molecule;
@@ -393,11 +388,11 @@ public class Molecule implements CompositeElement<Molecule> {
             }
             obj.add("contents", arr);
             if (!molecule.spinGroups.isEmpty()) {
-                if (molecule.spinGroups.size() == 1) obj.addProperty("spin", molecule.spinGroups.getFloat(0));
+                if (molecule.spinGroups.size() == 1) obj.addProperty("spin", molecule.spinGroups.get(0));
                 else {
                     final var spin = new JsonArray();
                     for (int i = 0; i < molecule.spinGroups.size(); i++) {
-                        spin.add(new JsonPrimitive(molecule.spinGroups.getFloat(i)));
+                        spin.add(new JsonPrimitive(molecule.spinGroups.get(i)));
                     }
                     obj.add("spin", spin);
                 }

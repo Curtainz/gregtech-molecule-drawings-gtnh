@@ -7,6 +7,7 @@ import net.minecraftforge.common.config.Configuration;
 public class MolDrawConfig {
 
     public static MolDrawConfig INSTANCE = new MolDrawConfig();
+    public static Configuration config;
 
     public boolean enabled = true;
     public boolean onlyShowOnShift = true;
@@ -26,16 +27,10 @@ public class MolDrawConfig {
 
     public static class MoleculeConfig {
 
-        public enum AromaticMode {
-            CIRCLE,
-            DOUBLE_BONDS
-        }
-
         public boolean showMolecules = true;
         public int moleculeScale = 20;
         public boolean spinMolecules = true;
         public float spinSpeedMultiplier = 1.0f;
-        public AromaticMode benzeneCircle = AromaticMode.CIRCLE;
     }
 
     public static class AlloyConfig {
@@ -50,9 +45,16 @@ public class MolDrawConfig {
     }
 
     public static void load(File configFile) {
-        Configuration config = new Configuration(configFile);
+        if (config == null) {
+            config = new Configuration(configFile);
+        }
+        config.load();
+        syncConfig();
+    }
+
+    public static void syncConfig() {
+        if (config == null) return;
         try {
-            config.load();
 
             INSTANCE.enabled = config
                 .getBoolean("enabled", Configuration.CATEGORY_GENERAL, true, "Whether MolDraw is enabled");
@@ -85,13 +87,8 @@ public class MolDrawConfig {
                 .get("molecule", "spinSpeedMultiplier", 1.0, "Rotation speed multiplier")
                 .getDouble();
 
-            String modeStr = config
-                .getString("benzeneCircle", "molecule", "CIRCLE", "Benzene display mode: CIRCLE or KEKULE");
-            try {
-                INSTANCE.molecule.benzeneCircle = MoleculeConfig.AromaticMode.valueOf(modeStr.toUpperCase());
-            } catch (Exception e) {
-                INSTANCE.molecule.benzeneCircle = MoleculeConfig.AromaticMode.CIRCLE;
-            }
+            config.getCategory("molecule")
+                .remove("benzeneCircle");
 
             // Alloy
             INSTANCE.alloy.showAlloys = config.getBoolean("showAlloys", "alloy", true, "Display alloy pie charts");
@@ -120,9 +117,8 @@ public class MolDrawConfig {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (config.hasChanged()) {
-                config.save();
-            }
+            // 无条件强制保存配置文件，确保首次运行即在 config 目录下生成实体 .cfg 文件
+            config.save();
         }
     }
 }

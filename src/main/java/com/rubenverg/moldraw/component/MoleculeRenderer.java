@@ -1,30 +1,29 @@
 package com.rubenverg.moldraw.component;
 
 import java.util.*;
+import java.util.function.BiFunction;
 import java.util.function.IntBinaryOperator;
 import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.util.MathHelper;
 
+import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix3f;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector2ic;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
+import org.lwjgl.opengl.GL11;
 
 import com.rubenverg.moldraw.MolDrawConfig;
 import com.rubenverg.moldraw.MoleculeColorize;
 import com.rubenverg.moldraw.molecule.*;
 import com.rubenverg.moldraw.util.Pair;
 
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-
-public class MoleculeRenderer {
+public class MoleculeRenderer implements ITooltipDrawable {
 
     private final Molecule molecule;
     private final Vector2i xySize;
@@ -34,7 +33,6 @@ public class MoleculeRenderer {
     private final boolean atomAtBotBot;
     private final boolean atomAtLefLef;
     private final boolean parenAtLef;
-    private final List<Vector3f> centers;
     private final Map<Element.Counted, Integer> elementWidths = new HashMap<>();
 
     public MoleculeRenderer(Molecule molecule) {
@@ -88,30 +86,6 @@ public class MoleculeRenderer {
                         el -> el instanceof Parens parens && Arrays.stream(parens.atoms())
                             .anyMatch(d -> d == atom.index()));
             });
-
-        centers = molecule.spinGroups()
-            .doubleStream()
-            .mapToObj(freq -> new Vector3f(0, 0, 0))
-            .toList();
-        final IntList counts = molecule.spinGroups()
-            .doubleStream()
-            .mapToObj(freq -> 0)
-            .collect(Collectors.toCollection(IntArrayList::new));
-        for (final var elem : this.molecule.contents()) {
-            if (elem instanceof Atom atom) {
-                if (atom.spinGroup() >= 0 && atom.spinGroup() < centers.size()) {
-                    centers.get(atom.spinGroup())
-                        .add(atom.position());
-                    counts.set(atom.spinGroup(), counts.getInt(atom.spinGroup()) + 1);
-                }
-            }
-        }
-        IntStream.range(0, centers.size())
-            .forEach(i -> {
-                int c = counts.getInt(i);
-                if (c > 0) centers.get(i)
-                    .div(c);
-            });
     }
 
     private UnaryOperator<Vector2f> toScaledFactory(int lineHeight) {
@@ -121,23 +95,12 @@ public class MoleculeRenderer {
             result.mul(MolDrawConfig.INSTANCE.molecule.moleculeScale);
             return new Vector2f(
                 result.x + 8 + (atomAtLefLef ? 12 : 0) + (parenAtLef ? 6 : 0),
-                -result.y + (atomAtTopTop ? lineHeight * 2 + 4 : atomAtTop ? lineHeight + 2 : 4));
+                -result.y + (atomAtTopTop ? lineHeight * 3 / 2f : atomAtTop ? lineHeight / 2f : 3));
         };
     }
 
-    private Vector2f project(Vector3fc xyz, int group) {
-        final var vec = new Vector3f(xyz);
-        if (MolDrawConfig.INSTANCE.molecule.spinMolecules && group >= 0
-            && group < molecule.spinGroups()
-                .size()) {
-            final var freq = 1000 / (molecule.spinGroups()
-                .getFloat(group) * MolDrawConfig.INSTANCE.molecule.spinSpeedMultiplier);
-            vec.sub(centers.get(group));
-            vec.mul(
-                new Matrix3f().rotationY((float) (System.currentTimeMillis() % (long) freq / freq * (Math.PI * 2))));
-            vec.add(centers.get(group));
-        }
-        return new Vector2f(vec.x, vec.y);
+    private Vector2f project(Vector3fc xyz) {
+        return new Vector2f(xyz.x(), xyz.y());
     }
 
     public int getWidth(FontRenderer font) {
@@ -145,9 +108,10 @@ public class MoleculeRenderer {
     }
 
     public int getHeight(FontRenderer font) {
-        return xySize.y + 24 + (atomAtBotBot ? 14 : 0) + (atomAtTopTop ? 18 : atomAtTop ? 8 : 0);
+        return xySize.y + 20 + (atomAtBotBot ? 10 : 0) + (atomAtTopTop ? 10 : 0);
     }
 
+    @Override
     public void render(FontRenderer font, int x, int y) {
         final var ts = toScaledFactory(font.FONT_HEIGHT);
         final int defaultColor = MoleculeColorize.configColor(null);
@@ -158,12 +122,19 @@ public class MoleculeRenderer {
             measureText(elem, font);
         }
 
-        // 阶段 2：绘制底层骨架结构（化学键、圆环、括号），依赖准确的 elementWidths 避让
+        // 阶段 2：绘制底层骨架结构（化学键、圆环、括号），严格在 OpenGL 状态守卫下绘制
+        GL11.glPushAttrib(GL11.GL_ENABLE_BIT | GL11.GL_COLOR_BUFFER_BIT);
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        GL11.glEnable(GL11.GL_BLEND);
+        OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
+
         for (final var elem : this.molecule.contents()) {
-            renderOneImage(elem, font, x, y, ts, defaultColor);
+            renderOneImage(elem, font, x, y, ts, defaultColor, null);
         }
 
-        // 阶段 3：绘制顶层文字（盖在连线之上），文字永不被黄线覆盖！
+        GL11.glPopAttrib();
+
+        // 阶段 3：绘制顶层文字（盖在连线之上），文字背景清晰
         for (final var elem : this.molecule.contents()) {
             renderOneText(elem, font, x, y, ts, defaultColor);
         }
@@ -285,7 +256,7 @@ public class MoleculeRenderer {
     }
 
     private void renderOneImage(MoleculeElement<?> elem, FontRenderer font, int x, int y,
-        UnaryOperator<Vector2f> toScaled, int defaultColor) {
+        UnaryOperator<Vector2f> toScaled, int defaultColor, @Nullable IntBinaryOperator overrideColor) {
         if (elem instanceof Bond bond) {
             if (this.molecule.getAtom(bond.a())
                 .isEmpty()
@@ -295,39 +266,79 @@ public class MoleculeRenderer {
 
             final var atomA = this.molecule.getAtom(bond.a())
                 .orElseThrow();
+            final var atomAWidth = elementWidths.getOrDefault(atomA.element(), 0);
+            final var atomAAbove = atomA.above()
+                .map(elementWidths::get);
+            final var atomARight = atomA.right()
+                .map(elementWidths::get);
+            final var atomABelow = atomA.below()
+                .map(elementWidths::get);
+            final var atomALeft = atomA.left()
+                .map(elementWidths::get);
+            final var atomAInvisible = atomA.isInvisible();
+
             final var atomB = this.molecule.getAtom(bond.b())
                 .orElseThrow();
+            final var atomBWidth = elementWidths.getOrDefault(atomB.element(), 0);
+            final var atomBAbove = atomB.above()
+                .map(elementWidths::get);
+            final var atomBRight = atomB.right()
+                .map(elementWidths::get);
+            final var atomBBelow = atomB.below()
+                .map(elementWidths::get);
+            final var atomBLeft = atomB.left()
+                .map(elementWidths::get);
+            final var atomBInvisible = atomB.isInvisible();
 
-            final int atomAWidth = elementWidths.getOrDefault(atomA.element(), 0);
-            final int atomBWidth = elementWidths.getOrDefault(atomB.element(), 0);
-            final boolean atomAInvisible = atomA.isInvisible();
-            final boolean atomBInvisible = atomB.isInvisible();
-
-            final var start = floored(toScaled.apply(project(atomA.position(), atomA.spinGroup())));
+            final var start = floored(toScaled.apply(project(atomA.position())));
             start.add(x, y);
             start.add(0, font.FONT_HEIGHT / 2);
 
-            final var end = floored(toScaled.apply(project(atomB.position(), atomB.spinGroup())));
+            final var end = floored(toScaled.apply(project(atomB.position())));
             end.add(x, y);
             end.add(0, font.FONT_HEIGHT / 2);
 
             final GraphicalUtils.PixelPredicate notCloseToAtom = (xt, yt, _c) -> {
                 if (atomAInvisible && atomBInvisible) return true;
                 Vector2ic t = new Vector2i(xt, yt);
-                var diffA = new Vector2i();
-                start.sub(t, diffA);
-                diffA.absolute();
-                if (diffA.x < atomAWidth * 2 / 3 && (!atomAInvisible && diffA.y < font.FONT_HEIGHT * 2 / 3))
-                    return false;
-
-                var diffB = new Vector2i();
-                end.sub(t, diffB);
-                diffB.absolute();
-                if (diffB.x < atomBWidth * 2 / 3 && (!atomBInvisible && diffB.y < font.FONT_HEIGHT * 2 / 3))
-                    return false;
-
+                var diff = new Vector2i();
+                start.sub(t, diff);
+                diff.absolute();
+                if (diff.x < atomAWidth * 2 / 3 && (!atomAInvisible && diff.y < font.FONT_HEIGHT * 2 / 3)) return false;
+                if (atomAAbove.isPresent() && diff.x < atomAAbove.get() * 2 / 3
+                    && Math.abs((start.y - font.FONT_HEIGHT - 1) - yt) < font.FONT_HEIGHT * 2 / 3) return false;
+                if (atomABelow.isPresent() && diff.x < atomABelow.get() * 2 / 3
+                    && Math.abs((start.y + font.FONT_HEIGHT + 1) - yt) < font.FONT_HEIGHT * 2 / 3) return false;
+                if (atomARight.isPresent()
+                    && Math.abs((start.x + (atomAWidth + atomARight.get()) / 2 + 1) - xt) < atomARight.get() * 2 / 3
+                    && diff.y < font.FONT_HEIGHT * 2 / 3) return false;
+                if (atomALeft.isPresent()
+                    && Math.abs((start.x - (atomAWidth + atomALeft.get()) / 2 - 1) - xt) < atomALeft.get() * 2 / 3
+                    && diff.y < font.FONT_HEIGHT * 2 / 3) return false;
+                end.sub(t, diff);
+                diff.absolute();
+                if (diff.x < atomBWidth * 2 / 3 && (!atomBInvisible && diff.y < font.FONT_HEIGHT * 2 / 3)) return false;
+                if (atomBAbove.isPresent() && diff.x < atomBAbove.get() * 2 / 3
+                    && Math.abs((end.y - font.FONT_HEIGHT - 1) - yt) < font.FONT_HEIGHT * 2 / 3) return false;
+                if (atomBBelow.isPresent() && diff.x < atomBBelow.get() * 2 / 3
+                    && Math.abs((end.y + font.FONT_HEIGHT + 1) - yt) < font.FONT_HEIGHT * 2 / 3) return false;
+                if (atomBRight.isPresent()
+                    && Math.abs((end.x + (atomBWidth + atomBRight.get()) / 2 + 1) - xt) < atomBRight.get() * 2 / 3
+                    && diff.y < font.FONT_HEIGHT * 2 / 3) return false;
+                if (atomBLeft.isPresent()
+                    && Math.abs((end.x - (atomBWidth + atomBLeft.get()) / 2 - 1) - xt) < atomBLeft.get() * 2 / 3
+                    && diff.y < font.FONT_HEIGHT * 2 / 3) return false;
                 return true;
             };
+
+            final var startEnd = new Vector2f(end).sub(new Vector2f(start));
+            final float dy = startEnd.y, dx = startEnd.x, length = startEnd.length();
+            if (length == 0) return;
+
+            final BiFunction<Integer, Integer, GraphicalUtils.PixelPredicate> notCloseToAtomAndDot = (m,
+                b) -> notCloseToAtom.and((xt, yt, count) -> count % m < b);
+            int addX = Math.round(dy / length * 2), addY = -Math.round(dx / length * 2);
+            int addHX = Math.round(dy / length), addHY = -Math.round(dx / length);
 
             int colorA = MoleculeColorize.getColorForElement(
                 atomA.element()
@@ -335,112 +346,174 @@ public class MoleculeRenderer {
             int colorB = MoleculeColorize.getColorForElement(
                 atomB.element()
                     .element());
-            IntBinaryOperator colorOp = (xp, yp) -> {
-                double d2a = Math.pow(xp - start.x, 2) + Math.pow(yp - start.y, 2);
-                double d2b = Math.pow(xp - end.x, 2) + Math.pow(yp - end.y, 2);
+            IntBinaryOperator color = Objects.requireNonNullElse(overrideColor, (xp, yp) -> {
+                final var d2a = Math.pow(xp - start.x, 2) + Math.pow(yp - start.y, 2);
+                final var d2b = Math.pow(xp - end.x, 2) + Math.pow(yp - end.y, 2);
                 return d2a < d2b ? colorA : colorB;
-            };
+            });
 
-            final float dy = end.y - start.y;
-            final float dx = end.x - start.x;
-            final float length = (float) Math.hypot(dx, dy);
-            if (length == 0) return;
+            List<Vector2i> allTargets = new ArrayList<>();
+            GraphicalUtils.plotLine(
+                addX * 3 / 2,
+                addY * 3 / 2,
+                -addX * 3 / 2,
+                -addY * 3 / 2,
+                GraphicalUtils::alwaysDraw,
+                (xp, yp) -> {
+                    allTargets.add(new Vector2i(xp / 2, yp / 2));
+                    allTargets.add(new Vector2i((xp + 1) / 2, yp / 2));
+                    allTargets.add(new Vector2i(xp / 2, (yp + 1) / 2));
+                    allTargets.add(new Vector2i((xp + 1) / 2, (yp + 1) / 2));
+                });
 
-            final float nx = -dy / length;
-            final float ny = dx / length;
-            final float ux = dx / length;
-            final float uy = dy / length;
+            final var aboveEnd = new Vector2f(end).sub(new Vector2f(start))
+                .perpendicular()
+                .normalize(2)
+                .add(new Vector2f(end));
+            List<Vector2i> above = new ArrayList<>();
+            GraphicalUtils.plotLine(
+                start.x,
+                start.y,
+                Math.round(aboveEnd.x),
+                Math.round(aboveEnd.y),
+                GraphicalUtils::alwaysDraw,
+                (GraphicalUtils.DrawPixel) (xp, yp) -> above.add(new Vector2i(xp, yp)));
 
-            final int lineCount = bond.lines().length;
-            final float separation = 2.4f;
-
-            for (int i = 0; i < lineCount; i++) {
-                float offset;
-                float shorten = 0.0f;
-                if (lineCount == 1) {
-                    offset = 0.0f;
-                } else if (lineCount == 2) {
-                    if (bond.centered()) {
-                        offset = (i == 0 ? -1.0f : 1.0f) * (separation / 2.0f);
-                    } else {
-                        // 环内双键或不对称双键：第一条为骨架主键(0偏移)，第二条为内侧副键(偏移+两端微缩进2px以防与拐角重叠)
-                        if (i == 0) {
-                            offset = 0.0f;
-                        } else {
-                            offset = separation;
-                            shorten = 2.0f;
+            final var thickness = bond.totalThickness();
+            final var starting = bond.centered() ? (thickness - 1) / 2f : (float) ((thickness - 1) / 2);
+            var done = bond.lines().length > 0 && bond.lines()[0].thick ? 1 : 0;
+            for (var i = 0; i < bond.lines().length; done += bond.lines()[i].thick ? 3 : 1, i++) {
+                final var delta = done - starting;
+                final var sX = (int) Math.floor(delta) * addX + (int) ((delta - Math.floor(delta)) * 2) * addHX;
+                final var sY = (int) Math.floor(delta) * addY + (int) ((delta - Math.floor(delta)) * 2) * addHY;
+                switch (bond.lines()[i]) {
+                    case SOLID -> GraphicalUtils
+                        .plotLine(start.x + sX, start.y + sY, end.x + sX, end.y + sY, notCloseToAtom, color);
+                    case DOTTED -> GraphicalUtils.plotLine(
+                        start.x + sX,
+                        start.y + sY,
+                        end.x + sX,
+                        end.y + sY,
+                        notCloseToAtomAndDot.apply(2, 1),
+                        color);
+                    case INWARD -> {
+                        for (int j = 0;; j++) {
+                            if (j >= above.size()) break;
+                            if (j % 3 != 0) continue;
+                            final var abovePoint = above.get(j);
+                            final var a = new Vector2f(abovePoint);
+                            final var startA = new Vector2f(a).sub(new Vector2f(start));
+                            final var b = new Vector2f(start)
+                                .add(new Vector2f(startEnd).mul(startEnd.dot(startA) / startEnd.dot(startEnd)))
+                                .mul(2)
+                                .sub(a);
+                            final var belowPoint = new Vector2i(Math.round(b.x), Math.round(b.y));
+                            GraphicalUtils.plotLine(
+                                abovePoint.x + sX,
+                                abovePoint.y + sY,
+                                belowPoint.x + sX,
+                                belowPoint.y + sY,
+                                notCloseToAtom,
+                                color);
                         }
                     }
-                } else if (lineCount == 3) {
-                    offset = (i - 1) * separation;
-                } else {
-                    offset = (i - (lineCount - 1) / 2.0f) * separation;
-                }
-
-                int sX = Math.round(nx * offset);
-                int sY = Math.round(ny * offset);
-                // 确保只要 offset != 0，至少有 1 个像素偏移，绝不与主键重叠合并
-                if (offset != 0 && sX == 0 && sY == 0) {
-                    if (Math.abs(nx) >= Math.abs(ny)) {
-                        sX = offset > 0 ? 1 : -1;
-                    } else {
-                        sY = offset > 0 ? 1 : -1;
+                    case OUTWARD -> {
+                        for (final var pair : allTargets) {
+                            GraphicalUtils.plotLine(
+                                start.x + sX,
+                                start.y + sY,
+                                end.x + pair.x + sX,
+                                end.y + pair.y + sY,
+                                notCloseToAtom,
+                                color);
+                        }
                     }
-                }
-
-                int lx0 = Math.round(start.x + sX + ux * shorten);
-                int ly0 = Math.round(start.y + sY + uy * shorten);
-                int lx1 = Math.round(end.x + sX - ux * shorten);
-                int ly1 = Math.round(end.y + sY - uy * shorten);
-
-                Bond.Line line = bond.lines()[i];
-                if (line == Bond.Line.SOLID) {
-                    GraphicalUtils.plotLine(lx0, ly0, lx1, ly1, notCloseToAtom, colorOp);
-                } else if (line == Bond.Line.DOTTED) {
-                    GraphicalUtils
-                        .plotLine(lx0, ly0, lx1, ly1, notCloseToAtom.and((_x, _y, count) -> count % 4 < 2), colorOp);
-                } else {
-                    GraphicalUtils.plotLine(lx0, ly0, lx1, ly1, notCloseToAtom, colorOp);
+                    case THICK -> {
+                        for (final var pair : allTargets) {
+                            GraphicalUtils.plotLine(
+                                start.x + pair.x + sX,
+                                start.y + pair.y + sY,
+                                end.x + pair.x + sX,
+                                end.y + pair.y + sY,
+                                notCloseToAtom,
+                                color);
+                        }
+                    }
                 }
             }
         } else if (elem instanceof Parens pp) {
-            // 使用静态无自转投影 project(xyz, -1)，确保外括号与原点严格锁定，不随旋转晃动！
             final var bounds = this.molecule.subset(pp.atoms())
-                .boundsWithSize(xyz -> toScaled.apply(project(xyz, -1)), sizeOfAtomFactory(font.FONT_HEIGHT));
-            final int minX = MathHelper.floor_float(bounds.getFirst().x) + x - 6;
-            final int minY = MathHelper.floor_float(bounds.getFirst().y) + y - 4;
-            final int maxX = MathHelper.floor_float(bounds.getSecond().x) + x + 6;
-            final int maxY = MathHelper.floor_float(bounds.getSecond().y) + y + 4;
-
-            // 左方括号 [
-            GraphicalUtils
-                .plotLine(minX - 2, minY, minX + 2, minY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
-            GraphicalUtils
-                .plotLine(minX - 2, maxY, minX + 2, maxY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
-            GraphicalUtils
-                .plotLine(minX - 2, minY, minX - 2, maxY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
-
-            // 右方括号 ]
-            GraphicalUtils
-                .plotLine(maxX - 2, minY, maxX + 2, minY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
-            GraphicalUtils
-                .plotLine(maxX - 2, maxY, maxX + 2, maxY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
-            GraphicalUtils
-                .plotLine(maxX + 2, minY, maxX + 2, maxY, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
+                .boundsWithSize(xyz -> toScaled.apply(project(xyz)), sizeOfAtomFactory(font.FONT_HEIGHT));
+            final var xyMin = floored(bounds.getFirst());
+            xyMin.add(x, y);
+            xyMin.add(-2, -1);
+            final var xyMax = floored(bounds.getSecond());
+            xyMax.add(x, y);
+            xyMax.add(2, 1);
+            GraphicalUtils.plotLine(
+                xyMin.x - 2,
+                xyMin.y,
+                xyMin.x + 2,
+                xyMin.y,
+                GraphicalUtils.PixelPredicate::always,
+                Objects.requireNonNullElse(overrideColor, (_x, _y) -> defaultColor));
+            GraphicalUtils.plotLine(
+                xyMin.x - 2,
+                xyMax.y,
+                xyMin.x + 2,
+                xyMax.y,
+                GraphicalUtils.PixelPredicate::always,
+                Objects.requireNonNullElse(overrideColor, (_x, _y) -> defaultColor));
+            GraphicalUtils.plotLine(
+                xyMax.x + 2,
+                xyMin.y,
+                xyMax.x - 2,
+                xyMin.y,
+                GraphicalUtils.PixelPredicate::always,
+                Objects.requireNonNullElse(overrideColor, (_x, _y) -> defaultColor));
+            GraphicalUtils.plotLine(
+                xyMax.x + 2,
+                xyMax.y,
+                xyMax.x - 2,
+                xyMax.y,
+                GraphicalUtils.PixelPredicate::always,
+                Objects.requireNonNullElse(overrideColor, (_x, _y) -> defaultColor));
+            GraphicalUtils.plotLine(
+                xyMin.x - 2,
+                xyMin.y,
+                xyMin.x - 2,
+                xyMax.y,
+                GraphicalUtils.PixelPredicate::always,
+                Objects.requireNonNullElse(overrideColor, (_x, _y) -> defaultColor));
+            GraphicalUtils.plotLine(
+                xyMax.x + 2,
+                xyMin.y,
+                xyMax.x + 2,
+                xyMax.y,
+                GraphicalUtils.PixelPredicate::always,
+                Objects.requireNonNullElse(overrideColor, (_x, _y) -> defaultColor));
         } else if (elem instanceof CircleTransformation ct) {
-            for (int atomIdx : ct.atoms()) {
-                final var atom = this.molecule.getAtom(atomIdx)
-                    .orElse(null);
-                if (atom != null) {
-                    final var pos = toScaled.apply(project(atom.position(), atom.spinGroup()));
-                    final int cx = MathHelper.floor_float(pos.x) + x;
-                    final int cy = MathHelper.floor_float(pos.y) + y + font.FONT_HEIGHT / 2;
-                    GraphicalUtils.plotCircle(cx, cy, 3, GraphicalUtils::alwaysDraw, (_x, _y) -> defaultColor);
-                }
+            final var centroid = Arrays.stream(ct.atoms())
+                .mapToObj(
+                    idx -> this.molecule.getAtom(idx)
+                        .orElseThrow()
+                        .position())
+                .reduce(new Vector3f(), (a, b) -> new Vector3f(a).add(new Vector3f(b)))
+                .div(ct.atoms().length);
+            for (int part = 0; part < 128; part++) {
+                final var angle = (float) part / 64 * (float) Math.PI;
+                final var u = new Vector3f((float) Math.cos(angle), (float) Math.sin(angle), 0);
+                final var p = u.mul(new Matrix3f(ct.A()))
+                    .add(centroid.x, centroid.y, centroid.z);
+                final var r = floored(toScaled.apply(project(p))).add(x, y + font.FONT_HEIGHT / 2);
+                GraphicalUtils.screenPixel(
+                    r.x,
+                    r.y,
+                    Objects.isNull(overrideColor) ? defaultColor : overrideColor.applyAsInt(r.x, r.y));
             }
         } else if (elem instanceof CompositeElement<?>composite) {
             for (final var child : composite.children()) {
-                renderOneImage(child, font, x, y, toScaled, defaultColor);
+                renderOneImage(child, font, x, y, toScaled, defaultColor, overrideColor);
             }
         }
     }
@@ -448,7 +521,7 @@ public class MoleculeRenderer {
     private void renderOneText(MoleculeElement<?> elem, FontRenderer font, int x, int y,
         UnaryOperator<Vector2f> toScaled, int defaultColor) {
         if (elem instanceof Atom atom) {
-            final var pos = toScaled.apply(project(atom.position(), atom.spinGroup()));
+            final var pos = toScaled.apply(project(atom.position()));
             final int px = MathHelper.floor_float(pos.x) + x;
             final int py = MathHelper.floor_float(pos.y) + y + font.FONT_HEIGHT / 2;
 
@@ -460,6 +533,12 @@ public class MoleculeRenderer {
                 int color = MoleculeColorize.getColorForElement(
                     atom.element()
                         .element());
+                GraphicalUtils.fill(
+                    px - width / 2 - 1,
+                    py - font.FONT_HEIGHT / 2,
+                    px + width / 2 + 1,
+                    py + font.FONT_HEIGHT / 2,
+                    0xDD100010);
                 font.drawStringWithShadow(symbol, px - width / 2, py - font.FONT_HEIGHT / 2, color);
             }
 
@@ -476,6 +555,13 @@ public class MoleculeRenderer {
                         .get()
                         .element());
                 int mainW = elementWidths.getOrDefault(atom.element(), 0);
+                int w = font.getStringWidth(str);
+                GraphicalUtils.fill(
+                    px + mainW / 2,
+                    py - font.FONT_HEIGHT / 2,
+                    px + mainW / 2 + w + 2,
+                    py + font.FONT_HEIGHT / 2,
+                    0xDD100010);
                 font.drawStringWithShadow(str, px + mainW / 2 + 1, py - font.FONT_HEIGHT / 2, color);
             }
             if (atom.left()
@@ -492,6 +578,12 @@ public class MoleculeRenderer {
                         .element());
                 int w = font.getStringWidth(str);
                 int mainW = elementWidths.getOrDefault(atom.element(), 0);
+                GraphicalUtils.fill(
+                    px - mainW / 2 - w - 2,
+                    py - font.FONT_HEIGHT / 2,
+                    px - mainW / 2,
+                    py + font.FONT_HEIGHT / 2,
+                    0xDD100010);
                 font.drawStringWithShadow(str, px - mainW / 2 - w - 1, py - font.FONT_HEIGHT / 2, color);
             }
             if (atom.above()
@@ -507,6 +599,12 @@ public class MoleculeRenderer {
                         .get()
                         .element());
                 int w = font.getStringWidth(str);
+                GraphicalUtils.fill(
+                    px - w / 2 - 1,
+                    py - font.FONT_HEIGHT * 3 / 2,
+                    px + w / 2 + 1,
+                    py - font.FONT_HEIGHT / 2,
+                    0xDD100010);
                 font.drawStringWithShadow(str, px - w / 2, py - font.FONT_HEIGHT * 3 / 2, color);
             }
             if (atom.below()
@@ -522,27 +620,23 @@ public class MoleculeRenderer {
                         .get()
                         .element());
                 int w = font.getStringWidth(str);
+                GraphicalUtils.fill(
+                    px - w / 2 - 1,
+                    py + font.FONT_HEIGHT / 2,
+                    px + w / 2 + 1,
+                    py + font.FONT_HEIGHT * 3 / 2,
+                    0xDD100010);
                 font.drawStringWithShadow(str, px - w / 2, py + font.FONT_HEIGHT / 2 + 1, color);
             }
         } else if (elem instanceof Parens pp) {
-            // 使用静态包围盒计算下标与上标位置，严格锁定在右方括号 ] 右侧，纹丝不动！
             final var bounds = this.molecule.subset(pp.atoms())
-                .boundsWithSize(xyz -> toScaled.apply(project(xyz, -1)), sizeOfAtomFactory(font.FONT_HEIGHT));
-            final int maxX = MathHelper.floor_float(bounds.getSecond().x) + x + 6;
-            final int maxY = MathHelper.floor_float(bounds.getSecond().y) + y + 4;
-            final int minY = MathHelper.floor_float(bounds.getFirst().y) + y - 4;
-            if (!pp.sub()
-                .isEmpty()) {
-                final int subX = maxX + 4;
-                final int subY = maxY - font.FONT_HEIGHT / 2;
-                font.drawStringWithShadow(pp.sub(), subX, subY, defaultColor);
-            }
-            if (!pp.sup()
-                .isEmpty()) {
-                final int supX = maxX + 4;
-                final int supY = minY - font.FONT_HEIGHT / 2;
-                font.drawStringWithShadow(pp.sup(), supX, supY, defaultColor);
-            }
+                .boundsWithSize(xyz -> toScaled.apply(project(xyz)), sizeOfAtomFactory(font.FONT_HEIGHT));
+            final var xySub = new Vector2i((int) bounds.getSecond().x, (int) bounds.getSecond().y);
+            xySub.add(7, -2);
+            font.drawStringWithShadow(pp.sub(), x + xySub.x, y + xySub.y, defaultColor);
+            final var xySup = new Vector2i((int) bounds.getSecond().x, (int) bounds.getFirst().y);
+            xySup.add(7, -4);
+            font.drawStringWithShadow(pp.sup(), x + xySup.x, y + xySup.y, defaultColor);
         } else if (elem instanceof CompositeElement<?>composite) {
             for (final var child : composite.children()) {
                 renderOneText(child, font, x, y, toScaled, defaultColor);

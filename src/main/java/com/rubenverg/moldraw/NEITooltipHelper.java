@@ -1,73 +1,131 @@
 package com.rubenverg.moldraw;
 
 import java.awt.Dimension;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 import net.minecraft.client.gui.FontRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import com.rubenverg.moldraw.component.AlloyRenderer;
-import com.rubenverg.moldraw.component.MoleculeRenderer;
+import com.rubenverg.moldraw.component.ITooltipDrawable;
 
 public class NEITooltipHelper {
 
-    private static boolean checked = false;
-    private static Class<?> guiDrawClass = null;
-    private static Class<?> tooltipLineHandlerClass = null;
+    private static boolean initialized = false;
+    private static boolean neiAvailable = false;
     private static Method getTipLineIdMethod = null;
+    private static Field tipLineHandlersField = null;
+    private static Class<?> tooltipLineHandlerClass = null;
+
+    // 针对每个具体的 ITooltipDrawable 实例独立缓存其代理 Handler，
+    // 彻底解耦全局共享状态，杜绝由于帧交替清空与状态覆盖导致的闪烁与组件塌陷！
+    private static final Map<ITooltipDrawable, Object> handlerProxyCache = Collections
+        .synchronizedMap(new java.util.IdentityHashMap<>());
+
+    public static synchronized void init() {
+        if (initialized) return;
+        initialized = true;
+
+        try {
+            Class<?> guiDrawClass = Class.forName("codechicken.lib.gui.GuiDraw");
+
+            for (Class<?> inner : guiDrawClass.getDeclaredClasses()) {
+                if ("ITooltipLineHandler".equals(inner.getSimpleName())) {
+                    tooltipLineHandlerClass = inner;
+                    break;
+                }
+            }
+
+            if (tooltipLineHandlerClass == null) {
+                tooltipLineHandlerClass = Class.forName("codechicken.lib.gui.GuiDraw$ITooltipLineHandler");
+            }
+
+            if (tooltipLineHandlerClass != null) {
+                getTipLineIdMethod = guiDrawClass.getMethod("getTipLineId", tooltipLineHandlerClass);
+            }
+
+            try {
+                tipLineHandlersField = guiDrawClass.getDeclaredField("tipLineHandlers");
+                tipLineHandlersField.setAccessible(true);
+            } catch (Throwable ignored) {}
+
+            if (getTipLineIdMethod != null && tooltipLineHandlerClass != null) {
+                neiAvailable = true;
+                MolDraw.LOGGER.info("Initialized NEITooltipHelper with dynamic per-drawable line handler proxy.");
+            }
+        } catch (Throwable t) {
+            neiAvailable = false;
+            MolDraw.LOGGER.info("NEI ITooltipLineHandler not available: " + t.getMessage());
+        }
+    }
 
     public static boolean isNEIAvailable() {
-        if (!checked) {
-            checked = true;
+        if (!initialized) init();
+        return neiAvailable && tooltipLineHandlerClass != null;
+    }
+
+    private static Object createProxy(final ITooltipDrawable drawable, final FontRenderer font) {
+        return Proxy.newProxyInstance(
+            tooltipLineHandlerClass.getClassLoader(),
+            new Class<?>[] { tooltipLineHandlerClass },
+            new InvocationHandler() {
+
+                @Override
+                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                    String mName = method.getName();
+                    if ("getSize".equals(mName)) {
+                        return new Dimension(drawable.getWidth(font), drawable.getHeight(font));
+                    } else if ("draw".equals(mName)) {
+                        int x = (Integer) args[0];
+                        int y = (Integer) args[1];
+                        renderWithGL(drawable, font, x, y);
+                        return null;
+                    } else if ("hashCode".equals(mName)) {
+                        return System.identityHashCode(proxy);
+                    } else if ("equals".equals(mName)) {
+                        return args != null && args.length > 0 && args[0] == proxy;
+                    } else if ("toString".equals(mName)) {
+                        return "MolDrawLineHandler[" + drawable.getClass()
+                            .getSimpleName() + "]";
+                    }
+                    return null;
+                }
+            });
+    }
+
+    @SuppressWarnings("unchecked")
+    public static synchronized String obtainLineToken(ITooltipDrawable drawable, FontRenderer font) {
+        if (!isNEIAvailable() || drawable == null || font == null) return null;
+
+        Object proxy = handlerProxyCache.get(drawable);
+        if (proxy == null) {
+            proxy = createProxy(drawable, font);
+            handlerProxyCache.put(drawable, proxy);
+        }
+
+        // 优先直接同步到 tipLineHandlers 列表
+        if (tipLineHandlersField != null) {
             try {
-                guiDrawClass = Class.forName("codechicken.lib.gui.GuiDraw");
-                for (Class<?> inner : guiDrawClass.getDeclaredClasses()) {
-                    if (inner.getSimpleName()
-                        .equals("ITooltipLineHandler")) {
-                        tooltipLineHandlerClass = inner;
-                        break;
+                List<Object> list = (List<Object>) tipLineHandlersField.get(null);
+                if (list != null) {
+                    int existing = list.indexOf(proxy);
+                    if (existing >= 0) {
+                        return "\u00a7x" + existing;
+                    } else {
+                        list.add(proxy);
+                        return "\u00a7x" + (list.size() - 1);
                     }
                 }
-                if (tooltipLineHandlerClass != null) {
-                    getTipLineIdMethod = guiDrawClass.getMethod("getTipLineId", tooltipLineHandlerClass);
-                }
-            } catch (Throwable t) {
-                guiDrawClass = null;
-                tooltipLineHandlerClass = null;
-                getTipLineIdMethod = null;
-            }
+            } catch (Throwable ignored) {}
         }
-        return getTipLineIdMethod != null;
-    }
 
-    public static String registerMoleculeHandler(MoleculeRenderer renderer, FontRenderer font) {
-        if (!isNEIAvailable()) return null;
-        final int w = renderer.getWidth(font);
-        final int h = renderer.getHeight(font);
-
-        Object proxy = Proxy.newProxyInstance(
-            tooltipLineHandlerClass.getClassLoader(),
-            new Class<?>[] { tooltipLineHandlerClass },
-            new InvocationHandler() {
-
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    String mName = method.getName();
-                    if (mName.equals("getSize")) {
-                        return new Dimension(w, h);
-                    } else if (mName.equals("draw")) {
-                        int x = (Integer) args[0];
-                        int y = (Integer) args[1];
-                        renderWithGL(renderer, null, font, x, y);
-                        return null;
-                    }
-                    return null;
-                }
-            });
-
+        // 回退逻辑：调用 GuiDraw.getTipLineId
         try {
             int id = (Integer) getTipLineIdMethod.invoke(null, proxy);
             return "\u00a7x" + id;
@@ -76,54 +134,37 @@ public class NEITooltipHelper {
         }
     }
 
-    public static String registerAlloyHandler(AlloyRenderer renderer, FontRenderer font) {
-        if (!isNEIAvailable()) return null;
-        final int w = renderer.getWidth(font);
-        final int h = renderer.getHeight(font);
-
-        Object proxy = Proxy.newProxyInstance(
-            tooltipLineHandlerClass.getClassLoader(),
-            new Class<?>[] { tooltipLineHandlerClass },
-            new InvocationHandler() {
-
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    String mName = method.getName();
-                    if (mName.equals("getSize")) {
-                        return new Dimension(w, h);
-                    } else if (mName.equals("draw")) {
-                        int x = (Integer) args[0];
-                        int y = (Integer) args[1];
-                        renderWithGL(null, renderer, font, x, y);
-                        return null;
-                    }
-                    return null;
-                }
-            });
-
+    public static boolean isOwnToken(String token) {
+        if (!token.startsWith("\u00a7x") || tipLineHandlersField == null) return false;
         try {
-            int id = (Integer) getTipLineIdMethod.invoke(null, proxy);
-            return "\u00a7x" + id;
-        } catch (Throwable t) {
-            return null;
+            List<?> handlers = (List<?>) tipLineHandlersField.get(null);
+            int index = Integer.parseInt(token.substring(2));
+            return index >= 0 && index < handlers.size() && handlerProxyCache.containsValue(handlers.get(index));
+        } catch (ReflectiveOperationException | RuntimeException ignored) {
+            return false;
         }
     }
 
-    private static void renderWithGL(MoleculeRenderer mol, AlloyRenderer alloy, FontRenderer font, int x, int y) {
+    public static void clear() {
+        handlerProxyCache.clear();
+    }
+
+    private static void renderWithGL(ITooltipDrawable drawable, FontRenderer font, int x, int y) {
+        if (drawable == null || font == null) return;
         GL11.glPushMatrix();
         GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
         GL11.glDisable(GL11.GL_LIGHTING);
         GL11.glDisable(GL11.GL_DEPTH_TEST);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 
-        if (mol != null) {
-            mol.render(font, x, y);
-        } else if (alloy != null) {
-            alloy.render(font, x, y);
+        try {
+            drawable.render(font, x, y);
+        } finally {
+            GL11.glPopAttrib();
+            GL11.glPopMatrix();
         }
 
-        GL11.glPopAttrib();
-        GL11.glPopMatrix();
     }
 }

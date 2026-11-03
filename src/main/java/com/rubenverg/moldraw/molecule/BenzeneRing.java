@@ -3,13 +3,11 @@ package com.rubenverg.moldraw.molecule;
 import java.lang.reflect.Type;
 import java.util.*;
 
-import org.joml.Matrix2f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
 
 import com.google.gson.*;
-import com.rubenverg.moldraw.MolDrawConfig;
 
 public record BenzeneRing(int[] indices, Vector3f first, Vector3f next, int spinGroup, float angle)
     implements CompositeElement<BenzeneRing> {
@@ -58,19 +56,8 @@ public record BenzeneRing(int[] indices, Vector3f first, Vector3f next, int spin
                     indices[idx],
                     indices[(idx + 1) % points.length],
                     false,
-                    switch (MolDrawConfig.INSTANCE.molecule.benzeneCircle) {
-                    case DOUBLE_BONDS -> idx % 2 == 0 ? Bond.SINGLE : Bond.DOUBLE;
-                    case CIRCLE -> Bond.SINGLE;
-                    }));
+                    idx % 2 == 0 ? Bond.SINGLE : Bond.DOUBLE));
         }
-        if (MolDrawConfig.INSTANCE.molecule.benzeneCircle == MolDrawConfig.MoleculeConfig.AromaticMode.CIRCLE)
-            result.add(
-                new CircleTransformation(
-                    new Matrix2f().identity()
-                        .scale(
-                            new Vector3f(next).sub(first)
-                                .length() * 2 / 3),
-                    indices));
         return result;
     }
 

@@ -13,8 +13,6 @@ import com.rubenverg.moldraw.molecule.Element;
 import com.rubenverg.moldraw.molecule.MathUtils;
 
 import gregtech.api.enums.Materials;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
 public class MoleculeColorize {
 
@@ -92,14 +90,14 @@ public class MoleculeColorize {
 
         float[] hsb = Color.RGBtoHSB(r, g, b, null);
         // 保证明度至少达到 0.40，且如果接近无彩色纯黑，赋予一定灰阶
-        float minBrightness = (float) Math.max(0.40, MolDrawConfig.INSTANCE.color.minimumBrightness);
+        float minBrightness = (float) Math.max(0.0, Math.min(1.0, MolDrawConfig.INSTANCE.color.minimumBrightness));
         if (hsb[2] < minBrightness) {
             hsb[2] = minBrightness;
         }
         return (0xFF << 24) | (Color.HSBtoRGB(hsb[0], hsb[1], hsb[2]) & 0x00FFFFFF);
     }
 
-    private static final Object2IntMap<Materials> COLOR_CACHE = new Object2IntOpenHashMap<>();
+    private static final Map<Materials, Integer> COLOR_CACHE = new HashMap<>();
 
     public static void invalidateColorCache() {
         COLOR_CACHE.clear();
@@ -137,7 +135,7 @@ public class MoleculeColorize {
         if (!COLOR_CACHE.containsKey(material)) {
             COLOR_CACHE.put(material, doGetColorForMaterial(material));
         }
-        return COLOR_CACHE.getInt(material);
+        return COLOR_CACHE.get(material);
     }
 
     public static int getColorForElement(Element element) {

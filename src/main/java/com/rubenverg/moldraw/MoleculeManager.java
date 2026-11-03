@@ -24,10 +24,11 @@ public final class MoleculeManager {
         .registerTypeAdapter(Bond.Line.class, Bond.Line.Json.INSTANCE)
         .registerTypeAdapter(Parens.class, Parens.Json.INSTANCE)
         .registerTypeAdapter(CircleTransformation.class, CircleTransformation.Json.INSTANCE)
+        .registerTypeAdapter(BenzeneRing.class, BenzeneRing.Json.INSTANCE)
         .create();
 
     private static final String[] NAMESPACES = new String[] { "gtceu", "gcyr", "gtca", "gtocore", "cosmiccore", "tfg",
-        "moldraw" };
+        "gtmoldraw" };
 
     private static final Map<String, String> ALIASES = new HashMap<>();
     private static final Map<String, String> FORMULA_MAP = new HashMap<>();
@@ -52,16 +53,63 @@ public final class MoleculeManager {
         ALIASES.put("pps", "polyphenylene_sulfide");
         ALIASES.put("pvb", "polyvinyl_butyral");
         ALIASES.put("pva", "polyvinyl_acetate");
+        ALIASES.put("aluminiumhydroxide", "aluminium_hydroxide");
+        ALIASES.put("aluminium_hydroxide", "aluminium_hydroxide");
+        ALIASES.put("aluminum_hydroxide", "aluminium_hydroxide");
+        ALIASES.put("sodium_hydroxide", "sodium_hydroxide");
+        ALIASES.put("sodiumhydroxide", "sodium_hydroxide");
+        ALIASES.put("potassium_hydroxide", "potassium_hydroxide");
+        ALIASES.put("potassiumhydroxide", "potassium_hydroxide");
+        ALIASES.put("sulfuric_acid", "sulfuric_acid");
+        ALIASES.put("sulfuricacid", "sulfuric_acid");
+        ALIASES.put("diluted_sulfuric_acid", "sulfuric_acid");
+        ALIASES.put("nitric_acid", "nitric_acid");
+        ALIASES.put("nitricacid", "nitric_acid");
+        ALIASES.put("phosphoric_acid", "phosphoric_acid");
+        ALIASES.put("phosphoricacid", "phosphoric_acid");
         ALIASES.put("silane", "silane");
         ALIASES.put("disilane", "disilane");
         ALIASES.put("silicon_tetrachloride", "silicon_tetrachloride");
         ALIASES.put("silicon_tetrafluoride", "silicon_tetrafluoride");
         ALIASES.put("trichlorosilane", "trichlorosilane");
+        ALIASES.put("aluminiumoxide", "aluminiumoxide");
+        ALIASES.put("aluminium_oxide", "aluminiumoxide");
+        ALIASES.put("aluminum_oxide", "aluminiumoxide");
+        ALIASES.put("alumina", "aluminiumoxide");
+        ALIASES.put("cryolite", "cryolite");
         ALIASES.put("silicon_dioxide", "silicon_dioxide");
+        ALIASES.put("silicondioxide", "silicon_dioxide");
         ALIASES.put("silica", "silicon_dioxide");
         ALIASES.put("quartz", "silicon_dioxide");
+        ALIASES.put("quartzite", "silicon_dioxide");
+        ALIASES.put("quartz_sand", "silicon_dioxide");
+        ALIASES.put("oxygen", "oxygen");
+        ALIASES.put("hydrogen", "hydrogen");
+        ALIASES.put("nitrogen", "nitrogen");
+        ALIASES.put("chlorine", "chlorine");
+        ALIASES.put("fluorine", "fluorine");
+        ALIASES.put("carbon_dioxide", "carbon_dioxide");
+        ALIASES.put("carbon_monoxide", "carbon_monoxide");
+        ALIASES.put("ammonia", "ammonia");
+        ALIASES.put("water", "water");
+        ALIASES.put("hydrogen_sulfide", "hydrogen_sulfide");
+        ALIASES.put("sulfur_dioxide", "sulfur_dioxide");
+        ALIASES.put("sulfur_trioxide", "sulfur_trioxide");
+        ALIASES.put("hydrogen_chloride", "hydrogen_chloride");
+        ALIASES.put("hydrogen_fluoride", "hydrogen_fluoride");
+        ALIASES.put("hydrochloric_acid", "hydrogen_chloride");
+        ALIASES.put("hydrofluoric_acid", "hydrogen_fluoride");
+        ALIASES.put("nitric_oxide", "nitric_oxide");
+        ALIASES.put("nitrogen_dioxide", "nitrogen_dioxide");
 
         // 化学式反查分子结构
+        FORMULA_MAP.put("aloh3", "aluminium_hydroxide");
+        FORMULA_MAP.put("alo3h3", "aluminium_hydroxide");
+        FORMULA_MAP.put("naoh", "sodium_hydroxide");
+        FORMULA_MAP.put("koh", "potassium_hydroxide");
+        FORMULA_MAP.put("h2so4", "sulfuric_acid");
+        FORMULA_MAP.put("hno3", "nitric_acid");
+        FORMULA_MAP.put("h3po4", "phosphoric_acid");
         FORMULA_MAP.put("h2o", "water");
         FORMULA_MAP.put("ch4", "methane");
         FORMULA_MAP.put("co2", "carbon_dioxide");
@@ -72,6 +120,16 @@ public final class MoleculeManager {
         FORMULA_MAP.put("h2", "hydrogen");
         FORMULA_MAP.put("cl2", "chlorine");
         FORMULA_MAP.put("f2", "fluorine");
+        FORMULA_MAP.put("h2s", "hydrogen_sulfide");
+        FORMULA_MAP.put("so2", "sulfur_dioxide");
+        FORMULA_MAP.put("so3", "sulfur_trioxide");
+        FORMULA_MAP.put("hcl", "hydrogen_chloride");
+        FORMULA_MAP.put("hf", "hydrogen_fluoride");
+        FORMULA_MAP.put("no", "nitric_oxide");
+        FORMULA_MAP.put("no2", "nitrogen_dioxide");
+        FORMULA_MAP.put("al2o3", "aluminiumoxide");
+        FORMULA_MAP.put("na3alf6", "cryolite");
+        FORMULA_MAP.put("sio2", "silicon_dioxide");
         FORMULA_MAP.put("c2h6osi", "polydimethylsiloxane");
         FORMULA_MAP.put("c20n4h12", "polybenzimidazole");
         FORMULA_MAP.put("c8h8c4h63", "styrene_butadiene_rubber");
@@ -100,7 +158,6 @@ public final class MoleculeManager {
         FORMULA_MAP.put("sicl4", "silicon_tetrachloride");
         FORMULA_MAP.put("sif4", "silicon_tetrafluoride");
         FORMULA_MAP.put("sihcl3", "trichlorosilane");
-        FORMULA_MAP.put("sio2", "silicon_dioxide");
     }
 
     public static Molecule getMolecule(Materials material) {
@@ -150,35 +207,25 @@ public final class MoleculeManager {
             }
         }
 
-        // 4. 化学式精确查找
-        if (loaded == null) {
-            String formula = material.getChemicalFormula();
-            if (formula != null && !formula.isEmpty()) {
-                String cleanFormula = formula.toLowerCase(Locale.ROOT)
-                    .replaceAll("[^a-z0-9]", "");
-                if (FORMULA_MAP.containsKey(cleanFormula)) {
-                    loaded = loadMoleculeFromJson(FORMULA_MAP.get(cleanFormula));
-                }
-            }
-        }
-
         MOLECULE_CACHE.put(material, loaded);
         return loaded;
     }
 
     private static String toSnakeCase(String str) {
-        if (str == null) return "";
-        return str.replaceAll("(?<!^)(?=[A-Z])", "_")
-            .replace(" ", "_")
-            .replace("-", "_")
-            .toLowerCase(Locale.ROOT)
-            .replaceAll("_+", "_");
+        return MaterialNames.normalize(str);
     }
 
+    private static final Map<String, Optional<Molecule>> RESOURCE_CACHE = new HashMap<>();
+
     private static Molecule loadMoleculeFromJson(String name) {
+        return RESOURCE_CACHE.computeIfAbsent(name, key -> Optional.ofNullable(readMolecule(key)))
+            .orElse(null);
+    }
+
+    private static Molecule readMolecule(String name) {
         for (String ns : NAMESPACES) {
             String path = "/assets/" + ns + "/molecules/" + name + ".json";
-            try (InputStream is = MoleculeManager.class.getResourceAsStream(path)) {
+            try (InputStream is = ResourceData.open(ns, "molecules/" + name + ".json")) {
                 if (is != null) {
                     return GSON.fromJson(new InputStreamReader(is, StandardCharsets.UTF_8), Molecule.class);
                 }
@@ -191,7 +238,28 @@ public final class MoleculeManager {
         return null;
     }
 
+    public static Molecule getMoleculeByFormula(String formula) {
+        // A formula does not identify an isomer. Name/explicit resource bindings only.
+        return null;
+    }
+
+    public static Molecule getMoleculeByName(String rawName) {
+        if (rawName == null || rawName.isEmpty()) return null;
+        String name = ALIASES.getOrDefault(toSnakeCase(rawName), toSnakeCase(rawName));
+        Molecule loaded = loadMoleculeFromJson(name);
+        if (loaded != null) return loaded;
+        for (String prefix : PREFIXES_TO_STRIP) {
+            if (name.startsWith(prefix)) {
+                String stripped = name.substring(prefix.length());
+                loaded = loadMoleculeFromJson(stripped);
+                if (loaded != null) return loaded;
+            }
+        }
+        return null;
+    }
+
     public static void clearCache() {
         MOLECULE_CACHE.clear();
+        RESOURCE_CACHE.clear();
     }
 }

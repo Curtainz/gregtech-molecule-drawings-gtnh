@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.stream.IntStream;
 
 public interface CompositeElement<This extends CompositeElement<?>> extends MoleculeElement<This> {
 
@@ -21,9 +20,10 @@ public interface CompositeElement<This extends CompositeElement<?>> extends Mole
 
     @Override
     default int[] coveredAtoms() {
-        final IntList covered = new IntArrayList();
+        final IntStream.Builder covered = IntStream.builder();
         for (final var child : children()) for (final var atom : child.coveredAtoms()) covered.add(atom);
-        return covered.toIntArray();
+        return covered.build()
+            .toArray();
     }
 
     @Override

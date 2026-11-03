@@ -112,9 +112,11 @@ public class FormulaParser {
         registerBaseElement("Pu", "Plutonium", 244.0);
         registerBaseElement("Am", "Americium", 243.0);
 
+        registerBaseElement("D", "Deuterium", 2.014);
+        registerBaseElement("T", "Tritium", 3.016);
+
         // 2. GTNH 幻想/虚构与魔法元素精确绑定
         bindFantasyMaterial("D*", "DraconiumAwakened", "AwakenedDraconium", 320.0);
-        bindFantasyMaterial("D", "Draconium", "Duranium", 180.0);
         bindFantasyMaterial("If*", "Infinity", "InfinityCatalyst", 500.0);
         bindFantasyMaterial("If", "Infinity", "Infinity", 500.0);
         bindFantasyMaterial("Nq*", "Naquadria", "Naquadria", 420.0);
@@ -129,7 +131,6 @@ public class FormulaParser {
         bindFantasyMaterial("Ma", "Magic", "Magnalium", 100.0);
         bindFantasyMaterial("Ms", "Manasteel", "Manasteel", 90.0);
         bindFantasyMaterial("Ts", "TranscendentMetal", "TranscendentMetal", 750.0);
-        bindFantasyMaterial("Co", "CosmicNeutronium", "CosmicNeutronium", 1200.0);
         bindFantasyMaterial("Un", "Universium", "Universium", 900.0);
         bindFantasyMaterial("Om", "Omnium", "Omnium", 1100.0);
         bindFantasyMaterial("Bd", "Bedrockium", "Bedrockium", 600.0);
@@ -139,24 +140,6 @@ public class FormulaParser {
         bindFantasyMaterial("El", "ElvenElementium", "ElvenElementium", 140.0);
         bindFantasyMaterial("Gs", "GaiaSpirit", "GaiaSpirit", 200.0);
         bindFantasyMaterial("Md", "ManaDiamond", "ManaDiamond", 120.0);
-
-        // 3. 全量动态扫描 GT5u 材料库：将所有带有 chemicalFormula 或唯一名称的单质/基础材料全部注册
-        try {
-            for (Materials m : Materials.values()) {
-                if (m == null || m == Materials._NULL) continue;
-                String f = m.getChemicalFormula();
-                if (f != null && !f.isEmpty() && f.length() <= 8) {
-                    if (!SYMBOL_TO_MATERIAL.containsKey(f)) {
-                        SYMBOL_TO_MATERIAL.put(f, m);
-                        double mass = m.getMass() > 0 ? (double) m.getMass() : 100.0;
-                        MATERIAL_WEIGHTS.put(m, mass);
-                    }
-                }
-                if (!SYMBOL_TO_MATERIAL.containsKey(m.name())) {
-                    SYMBOL_TO_MATERIAL.put(m.name(), m);
-                }
-            }
-        } catch (Throwable ignored) {}
 
         // 按符号长度严格降序排序，保证最长前缀贪婪匹配（例如 "D*" 优先于 "D"，"Nq*" 优先于 "Nq"）
         SORTED_SYMBOLS = new ArrayList<>(SYMBOL_TO_MATERIAL.keySet());
@@ -230,113 +213,17 @@ public class FormulaParser {
         ensureInitialized();
         if (rawFormula == null || rawFormula.isEmpty()) return Collections.emptyMap();
 
-        String formula = normalizeFormula(rawFormula);
-        return parseSubFormula(formula);
-    }
-
-    private static Map<Materials, Long> parseSubFormula(String str) {
-        Map<Materials, Long> counts = new LinkedHashMap<>();
-        int i = 0;
-        int n = str.length();
-
-        while (i < n) {
-            char c = str.charAt(i);
-            if (c == '(') {
-                int depth = 1;
-                int j = i + 1;
-                while (j < n && depth > 0) {
-                    if (str.charAt(j) == '(') depth++;
-                    else if (str.charAt(j) == ')') depth--;
-                    j++;
-                }
-                if (depth == 0) {
-                    String inside = str.substring(i + 1, j - 1);
-                    int k = j;
-                    while (k < n && Character.isDigit(str.charAt(k))) {
-                        k++;
-                    }
-                    long multiplier = 1L;
-                    if (k > j) {
-                        try {
-                            multiplier = Long.parseLong(str.substring(j, k));
-                        } catch (NumberFormatException ignored) {}
-                    }
-                    Map<Materials, Long> sub = parseSubFormula(inside);
-                    for (Map.Entry<Materials, Long> entry : sub.entrySet()) {
-                        counts.put(
-                            entry.getKey(),
-                            counts.getOrDefault(entry.getKey(), 0L) + entry.getValue() * multiplier);
-                    }
-                    i = k;
-                } else {
-                    i++;
-                }
-            } else {
-                // 贪婪匹配已知元素或材料符号
-                String matchedSymbol = null;
-                for (String sym : SORTED_SYMBOLS) {
-                    if (str.startsWith(sym, i)) {
-                        matchedSymbol = sym;
-                        break;
-                    }
-                }
-
-                if (matchedSymbol != null) {
-                    Materials mat = SYMBOL_TO_MATERIAL.get(matchedSymbol);
-                    int nextIdx = i + matchedSymbol.length();
-                    int k = nextIdx;
-                    while (k < n && Character.isDigit(str.charAt(k))) {
-                        k++;
-                    }
-                    long count = 1L;
-                    if (k > nextIdx) {
-                        try {
-                            count = Long.parseLong(str.substring(nextIdx, k));
-                        } catch (NumberFormatException ignored) {}
-                    }
-                    if (mat != null) {
-                        counts.put(mat, counts.getOrDefault(mat, 0L) + count);
-                    }
-                    i = k;
-                } else if (Character.isLetter(c)) {
-                    // 未在表中收录的单字母/双字母，尝试提取
-                    int j = i + 1;
-                    while (j < n && Character.isLowerCase(str.charAt(j))) {
-                        j++;
-                    }
-                    String fallbackSym = str.substring(i, j);
-                    int k = j;
-                    while (k < n && Character.isDigit(str.charAt(k))) {
-                        k++;
-                    }
-                    long count = 1L;
-                    if (k > j) {
-                        try {
-                            count = Long.parseLong(str.substring(j, k));
-                        } catch (NumberFormatException ignored) {}
-                    }
-                    Materials mat = Materials.get(fallbackSym);
-                    if (mat != null && mat != Materials._NULL) {
-                        counts.put(mat, counts.getOrDefault(mat, 0L) + count);
-                    } else {
-                        counts.put(UNKNOWN_COMPONENT, counts.getOrDefault(UNKNOWN_COMPONENT, 0L) + count);
-                    }
-                    i = k;
-                } else if (c == '?' || c == '*' || c == '+' || c == '\u00BF' || (c >= '\u0370' && c <= '\u03FF')) {
-                    // 问号、希腊字母或未知神秘标记
-                    int k = i + 1;
-                    while (k < n
-                        && (str.charAt(k) == '?' || str.charAt(k) == '*' || Character.isDigit(str.charAt(k)))) {
-                        k++;
-                    }
-                    counts.put(UNKNOWN_COMPONENT, counts.getOrDefault(UNKNOWN_COMPONENT, 0L) + 1L);
-                    i = k;
-                } else {
-                    i++;
-                }
+        try {
+            Map<Materials, Long> result = new LinkedHashMap<>();
+            for (Map.Entry<String, Long> entry : com.rubenverg.moldraw.core.ChemicalFormula.parse(rawFormula)
+                .entrySet()) {
+                Materials material = SYMBOL_TO_MATERIAL.getOrDefault(entry.getKey(), UNKNOWN_COMPONENT);
+                result.put(material, Math.addExact(result.getOrDefault(material, 0L), entry.getValue()));
             }
+            return result;
+        } catch (IllegalArgumentException | ArithmeticException invalid) {
+            return Collections.emptyMap();
         }
-        return counts;
     }
 
     public static List<Pair<Materials, Long>> parseToWeightedComponents(String formula) {
@@ -347,12 +234,7 @@ public class FormulaParser {
         for (Map.Entry<Materials, Long> entry : counts.entrySet()) {
             Materials mat = entry.getKey();
             long count = entry.getValue();
-            double weight = MATERIAL_WEIGHTS
-                .getOrDefault(mat, mat != null && mat.getMass() > 0 ? (double) mat.getMass() : 100.0);
-            long massWeight = Math.round(count * weight * 1000.0);
-            if (massWeight > 0) {
-                result.add(new Pair<>(mat, massWeight));
-            }
+            if (count > 0) result.add(new Pair<>(mat, count));
         }
         return result;
     }
