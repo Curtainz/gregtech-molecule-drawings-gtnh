@@ -24,7 +24,7 @@ public final class MaterialAuditCommand extends CommandBase {
 
     @Override
     public String getCommandUsage(ICommandSender sender) {
-        return "/gtmoldraw audit";
+        return "/gtmoldraw audit | format-info";
     }
 
     @Override
@@ -34,6 +34,22 @@ public final class MaterialAuditCommand extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
+        if (args.length == 1 && "format-info".equals(args[0])) {
+            sender.addChatMessage(
+                new ChatComponentText(
+                    "GTMolDraw " + MolDraw.VERSION
+                        + "; JSONC schema "
+                        + com.rubenverg.moldraw.core.DataPackContract.SCHEMA_VERSION
+                        + "; stage "
+                        + com.rubenverg.moldraw.core.DataPackContract.IMPLEMENTATION_STAGE));
+            sender.addChatMessage(
+                new ChatComponentText(
+                    "Pack directory (future loader): " + com.rubenverg.moldraw.core.DataPackContract.PACK_DIRECTORY));
+            sender.addChatMessage(
+                new ChatComponentText(
+                    "Stage 1: schema/examples only. External loading is NOT enabled; existing data loading remains active."));
+            return;
+        }
         if (args.length != 1 || !"audit".equals(args[0])) {
             sender.addChatMessage(new ChatComponentText(getCommandUsage(sender)));
             return;

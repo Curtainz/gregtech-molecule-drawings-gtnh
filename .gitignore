@@ -38,3 +38,7 @@ layout.json
 *.jar
 !gradle/wrapper/gradle-wrapper.jar
 
+
+# Python authoring-check caches
+__pycache__/
+*.pyc

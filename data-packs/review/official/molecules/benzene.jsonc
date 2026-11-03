@@ -1,0 +1,19 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "schemaVersion": 1,
+  "id": "official:benzene_structure",
+  "type": "molecule",
+  "instances": [
+    {
+      "id": "ring",
+      "module": "core:benzene",
+      "origin": [
+        0,
+        0
+      ],
+      "parameters": {
+        "doubleBondStart": 1
+      }
+    }
+  ],
+}

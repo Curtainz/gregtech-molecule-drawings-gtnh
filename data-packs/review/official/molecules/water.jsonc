@@ -1,0 +1,44 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "schemaVersion": 1,
+  "id": "official:water_structure",
+  "type": "molecule",
+  "atoms": [
+    {
+      "id": "oxygen",
+      "element": "O",
+      "position": [
+        0,
+        0.3
+      ]
+    },
+    {
+      "id": "left_h",
+      "element": "H",
+      "position": [
+        -0.8,
+        -0.3
+      ]
+    },
+    {
+      "id": "right_h",
+      "element": "H",
+      "position": [
+        0.8,
+        -0.3
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "oxygen",
+      "to": "left_h",
+      "order": 1
+    },
+    {
+      "from": "oxygen",
+      "to": "right_h",
+      "order": 1
+    }
+  ],
+}

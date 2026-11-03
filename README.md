@@ -49,4 +49,7 @@ Original concept, molecular drawing code and resources: RubenVerg and upstream c
 
 默认分支为 **main**，后续重构在 **develop**。保留 v0.3.0 和 v0.4.0 两个里程碑标签。历史引用备份及恢复方法见 [分支与版本约定](docs/REPOSITORY.md)。
 
-`develop` 当前为 **0.5.0-test.1**：不可变材料与几何数据、纯布局、受限缓存、精确组成及质量计算已接入 tooltip 和 audit。保留 CodeChickenCore 1.4.22 公开 tooltip API 与客户端绘制隔离。缺少质量时会停止对应质量饼图，可切换数量模式；最大显示项数为1时显示单项“其他”。本版尚待实机验收，安装与测试清单见 [0.5.0测试说明](docs/TESTING-0.5.0.md)。
+0.5.0-test.1里程碑：不可变材料与几何数据、纯布局、受限缓存、精确组成及质量计算已接入 tooltip 和 audit。保留 CodeChickenCore 1.4.22 公开 tooltip API 与客户端绘制隔离。缺少质量时会停止对应质量饼图，可切换数量模式；最大显示项数为1时显示单项“其他”。该里程碑已由用户基本实测通过，历史测试清单见 [0.5.0测试说明](docs/TESTING-0.5.0.md)。
+
+
+当前 `develop` 为 **0.6.0-stage.1**，仅完成外部 JSONC 的格式与样例阶段。游戏继续使用0.5加载行为，新增只读 `/gtmoldraw format-info`；新JSONC尚不能在游戏中加载。完整格式、样例审阅包和手动验收见 [第①阶段交付](docs/STAGE-1-TESTING.md)。后续阶段按用户验收结果逐步实施。

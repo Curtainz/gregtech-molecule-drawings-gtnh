@@ -1,0 +1,15 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "schemaVersion": 1,
+  "id": "official:polyethylene",
+  "type": "material",
+  "bindings": [
+    "gt:Polyethylene",
+    "name:polyethylene"
+  ],
+  "formula": "(C2H4)n",
+  "structure": "official:polyethylene_structure",
+  "display": {
+    "mode": "auto"
+  },
+}

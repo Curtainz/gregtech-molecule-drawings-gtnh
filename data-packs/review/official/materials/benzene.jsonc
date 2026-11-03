@@ -1,0 +1,15 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "schemaVersion": 1,
+  "id": "official:benzene",
+  "type": "material",
+  "bindings": [
+    "gt:Benzene",
+    "name:benzene"
+  ],
+  "formula": "C6H6",
+  "structure": "official:benzene_structure",
+  "display": {
+    "mode": "auto"
+  },
+}

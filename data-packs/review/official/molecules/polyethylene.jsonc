@@ -1,0 +1,72 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "schemaVersion": 1,
+  "id": "official:polyethylene_structure",
+  "type": "molecule",
+  "atoms": [
+    {
+      "id": "a0",
+      "element": "C",
+      "labelMode": "skeletal",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "a1",
+      "element": "C",
+      "labelMode": "skeletal",
+      "position": [
+        0.8660254,
+        0.5
+      ]
+    },
+    {
+      "id": "a2",
+      "element": "C",
+      "labelMode": "skeletal",
+      "position": [
+        1.7320508,
+        0
+      ]
+    },
+    {
+      "id": "a3",
+      "element": "C",
+      "labelMode": "skeletal",
+      "position": [
+        2.598076,
+        0.5
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "from": "a0",
+      "to": "a1",
+      "order": 1
+    },
+    {
+      "from": "a1",
+      "to": "a2",
+      "order": 1
+    },
+    {
+      "from": "a2",
+      "to": "a3",
+      "order": 1
+    }
+  ],
+  "annotations": [
+    {
+      "type": "bracket",
+      "atoms": [
+        "a1",
+        "a2"
+      ],
+      "sub": "n",
+      "sup": ""
+    }
+  ],
+}

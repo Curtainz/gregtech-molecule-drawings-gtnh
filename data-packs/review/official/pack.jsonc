@@ -1,0 +1,16 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "schemaVersion": 1,
+  "type": "pack",
+  "id": "official",
+  "version": "1.0.0-preview.1",
+  "description": "Format review samples only; not the migrated official catalog.",
+  "modVersion": {
+    "min": "0.6.0-0",
+    "maxExclusive": "0.7.0-0"
+  },
+  "dependencies": [],
+  "providers": [
+    "gregtech"
+  ],
+}

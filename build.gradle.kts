@@ -64,3 +64,15 @@ val architectureRegression by tasks.registering(JavaExec::class) {
     javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
 }
 tasks.named("check") { dependsOn(architectureRegression) }
+
+val reviewPackZip by tasks.registering(Zip::class) {
+    archiveFileName.set("gtmoldraw-jsonc-v1-stage-1-review.zip")
+    destinationDirectory.set(layout.buildDirectory.dir("distributions"))
+    isPreserveFileTimestamps = false
+    isReproducibleFileOrder = true
+    from("schema") { into("schema") }
+    from("data-packs/review") { into("packs") }
+    from("docs/FORMAT-V1.md")
+    from("data-packs/REVIEW-README.md") { rename { "README.md" } }
+}
+tasks.named("assemble") { dependsOn(reviewPackZip) }

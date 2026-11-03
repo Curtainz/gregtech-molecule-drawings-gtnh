@@ -1,0 +1,19 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "schemaVersion": 1,
+  "id": "official:water",
+  "type": "material",
+  "bindings": [
+    "gt:Water",
+    "fluid:water",
+    "name:water"
+  ],
+  "formula": "H2O",
+  "structure": "official:water_structure",
+  "display": {
+    "mode": "auto"
+  },
+  "composition": {
+    "source": "formula"
+  },
+}

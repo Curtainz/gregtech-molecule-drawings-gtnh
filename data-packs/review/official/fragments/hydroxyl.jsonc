@@ -1,0 +1,20 @@
+// Format v1 review fixture; NOT loaded by stage-1 game code.
+{
+  "schemaVersion": 1,
+  "id": "official:hydroxyl",
+  "type": "fragment",
+  "atoms": [
+    {
+      "id": "oxygen",
+      "element": "O",
+      "position": [
+        0,
+        0
+      ],
+      "hydrogens": 1
+    }
+  ],
+  "ports": {
+    "attach": "oxygen"
+  },
+}
