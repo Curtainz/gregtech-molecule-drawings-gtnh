@@ -1,6 +1,6 @@
 # 绘制隔离重构进度
 
-基线：v0.4.0（GitHub 归档预发布）；开发分支：refactor/render-isolation，版本 0.4.1-dev。
+基线：v0.4.0（GitHub 归档预发布）；开发分支：develop，版本 0.4.1-dev。
 
 已完成：NEI 行绘制和 fallback 提示框统一调用 TooltipDrawPass，统一客户端线程检查、混合设置以及 try/finally GL 状态恢复；分子骨架内部属性栈也补上 finally。构建及 19 个现有回归场景通过，GL 路径尚需游戏验证。
 
