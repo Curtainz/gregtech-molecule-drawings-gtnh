@@ -318,7 +318,10 @@ public final class LegacyMigrator {
                 HexFormat.of()
                     .formatHex(
                         MessageDigest.getInstance("SHA-256")
-                            .digest(Files.readAllBytes(s.path))));
+                            .digest(
+                                Files.readString(s.path, StandardCharsets.UTF_8)
+                                    .replace("\r\n", "\n")
+                                    .getBytes(StandardCharsets.UTF_8))));
         } catch (NoSuchAlgorithmException impossible) {
             throw new AssertionError(impossible);
         }
