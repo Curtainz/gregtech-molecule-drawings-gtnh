@@ -138,7 +138,22 @@ public final class RendererCache {
                             label,
                             other ? 0xFFAAAAAA : d == null ? 0xFFBB66FF : d.color()));
                 }
-                return new AlloyRenderer(PieLayout.build(slices, c.pieChartRadius, measure(font)));
+                var layout = PieLayout.build(slices, c.pieChartRadius, measure(font));
+                if (c.partsByMass && !MaterialRegistry.composition(
+                    entry.definition()
+                        .id(),
+                    true,
+                    c.recursive)
+                    .valid()) {
+                    var commands = new ArrayList<TooltipLayout.Command>(layout.commands());
+                    String caption = StatCollector.translateToLocal("tooltip.gtmoldraw.quantity_fallback");
+                    commands.add(new TooltipLayout.Text(caption, 0, layout.height() + 2, 0xFFFFCC66));
+                    layout = new TooltipLayout(
+                        Math.max(layout.width(), font.getStringWidth(caption) + 1),
+                        layout.height() + font.FONT_HEIGHT + 4,
+                        commands);
+                }
+                return new AlloyRenderer(layout);
             }));
     }
 

@@ -1,12 +1,12 @@
 # GTMolDraw — GTNH 材料结构与组成展示
 
-正式存档版本为 **0.6.0**，当前 develop 测试版为 **0.7.0-test.B**。目标环境：Minecraft 1.7.10 / GTNH 2.9.0 / Java25；modid 为 `gtmoldraw`。
+正式存档版本为 **0.6.0**，当前 develop 测试版为 **0.7.0-test.C**。目标环境：Minecraft 1.7.10 / GTNH 2.9.0 / Java25；modid 为 `gtmoldraw`。
 
 在物品及 NEI 提示框显示二维结构与组成饼图，支持数量／质量、递归及 Shift 显示。定义从外部 JSONC 数据包加载，`/gtmoldraw reload` 成功后原子替换，失败保留旧快照。游戏 JAR 不含旧定义回退，必须同时安装匹配的数据包。
 
 推荐使用安装 ZIP，移除旧版 JAR 后解压至 `.minecraft`。配置为 `config/gtmoldraw.cfg`，数据目录为 `config/gtmoldraw/packs`。F3+T 刷新资源及显示快照，编辑磁盘 JSONC 后使用 reload。
 
-本阶段新增材料／流体分表、中文名称快照及可搜索 HTML，离线 preview 支持 `--audit snapshot.json`。安装、命令与验收见 [0.7-A 测试说明](docs/TESTING-0.7-B.md)。本阶段增加外部终止物种包与 GT 下标规范化；直接流体 GUI 扩充继续在0.7-C推进。
+本阶段新增材料／流体分表、中文名称快照及可搜索 HTML，离线 preview 支持 `--audit snapshot.json`。安装、命令与验收见 [0.7-A 测试说明](docs/TESTING-0.7-C.md)。本阶段修复中文名称与可读公式导出，图册内置查询参考；增加NEI流体显示栈及ModularUI 1流体槽入口，并支持缺图饼图与明确标注的数量回退。其它流体GUI仍需逐项适配与实测。
 
 ## 构建
 

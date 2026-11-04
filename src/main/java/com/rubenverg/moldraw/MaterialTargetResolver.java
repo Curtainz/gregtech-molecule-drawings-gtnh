@@ -58,6 +58,11 @@ public final class MaterialTargetResolver {
         }
         if (entry.chartEligible() && MolDrawConfig.INSTANCE.alloy.showAlloys) {
             var result = RendererCache.composition(entry);
+            if (!result.valid() && MolDrawConfig.INSTANCE.alloy.partsByMass) result = MaterialRegistry.composition(
+                entry.definition()
+                    .id(),
+                false,
+                MolDrawConfig.INSTANCE.alloy.recursive);
             if (result.valid() && result.shares()
                 .size() > 1)
                 return new DisplayPlan(
@@ -91,10 +96,17 @@ public final class MaterialTargetResolver {
             return DisplayPlan.EMPTY;
         }
 
+        var hoveredFluid = com.rubenverg.moldraw.client.HoveredFluid.find(gui);
+        if (hoveredFluid != null && hoveredFluid.getFluid() != null)
+            return resolveFromFluid(hoveredFluid.getFluid(), font);
+
         // 如果鼠标当前悬停在某个真实的物品 Slot 上，跳过纯文本解析（物品由 ItemTooltipEvent 统一处理）
         if (gui != null) {
             try {
-                if (GuiContainerManager.getStackMouseOver(gui) != null) {
+                var hoveredStack = GuiContainerManager.getStackMouseOver(gui);
+                if (hoveredStack != null) {
+                    var fluid = gregtech.api.util.GTUtility.getFluidFromContainerOrFluidDisplay(hoveredStack);
+                    if (fluid != null && fluid.getFluid() != null) return resolveFromFluid(fluid.getFluid(), font);
                     return DisplayPlan.EMPTY;
                 }
             } catch (Throwable ignored) {}

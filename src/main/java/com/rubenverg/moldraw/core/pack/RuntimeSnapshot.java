@@ -454,7 +454,9 @@ public final class RuntimeSnapshot {
                     molecule,
                     !suppressed && geometry == null
                         && !d.mode.equals("molecule")
-                        && (d.candidate || d.mode.equals("composition") || d.source.startsWith("pack:"))));
+                        && (d.candidate || !d.parts.isEmpty()
+                            || d.mode.equals("composition")
+                            || d.source.startsWith("pack:"))));
         }
         return new RuntimeSnapshot(
             catalog,

@@ -19,7 +19,7 @@ public final class PackTool {
     public static int run(String[] args, PrintStream output, PrintStream error) {
         try {
             List<String> arguments = new ArrayList<>(List.of(args));
-            String version = "0.7.0-test.B", only = null, audit = null;
+            String version = "0.7.0-test.C", only = null, audit = null;
             for (String flag : List.of("--mod-version", "--id", "--audit")) {
                 int index = arguments.indexOf(flag);
                 if (index >= 0) {
@@ -37,6 +37,11 @@ public final class PackTool {
                 return 0;
             }
             String command = arguments.getFirst();
+            if (command.equals("review-audit") && arguments.size() == 3 && only == null && audit == null) {
+                AuditReview.write(Path.of(arguments.get(1)), Path.of(arguments.get(2)));
+                output.println("Portable audit review: " + arguments.get(2));
+                return 0;
+            }
             if (command.equals("migrate") && arguments.size() == 4 && only == null) {
                 LegacyMigrator
                     .migrate(Path.of(arguments.get(1)), Path.of(arguments.get(2)), Path.of(arguments.get(3)), version);
@@ -124,6 +129,6 @@ public final class PackTool {
 
     private static void usage(PrintStream out) {
         out.println(
-            "GTMolDraw pack tool (Java25, offline, stage 4)\nvalidate <packs> [--mod-version VERSION]\nformat --check|--write <packs> [--mod-version VERSION]\npreview <packs> <output> [--id DEFINITION] [--audit snapshot.json] [--mod-version VERSION]\nmigrate <legacy-assets> <legacy-bindings.json> <new-output> [--mod-version VERSION]\nExit: 0 success, 1 formatting differs, 2 invalid input/IO. This offline tool does not publish game state. In-game loading/reload is available in stage 4; MOL import is deferred.");
+            "GTMolDraw pack tool (Java25, offline, stage 4)\nvalidate <packs> [--mod-version VERSION]\nformat --check|--write <packs> [--mod-version VERSION]\nreview-audit <snapshot.json> <new-output>\npreview <packs> <output> [--id DEFINITION] [--audit snapshot.json] [--mod-version VERSION]\nmigrate <legacy-assets> <legacy-bindings.json> <new-output> [--mod-version VERSION]\nExit: 0 success, 1 formatting differs, 2 invalid input/IO. This offline tool does not publish game state. In-game loading/reload is available in stage 4; MOL import is deferred.");
     }
 }

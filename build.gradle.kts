@@ -76,7 +76,7 @@ val reviewPackZip by tasks.registering(Zip::class) {
     from("data-packs/migrated") { into("packs") }
     from("data-packs/runtime-species") { into("packs") }
     from("docs/FORMAT-V1.md")
-    from("docs/TESTING-0.7-A.md") { rename { "README.md" } }
+    from("docs/TESTING-0.7-C.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(reviewPackZip) }
 
@@ -95,7 +95,7 @@ val packToolJar by tasks.registering(Jar::class) {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest { attributes("Main-Class" to "com.rubenverg.moldraw.tool.PackTool") }
     from(sourceSets["main"].output) {
-        include("com/rubenverg/moldraw/core/**", "com/rubenverg/moldraw/tool/**", "com/rubenverg/moldraw/util/Pair.class", "META-INF/gtmoldraw-schema/**")
+        include("com/rubenverg/moldraw/core/**", "com/rubenverg/moldraw/tool/**", "com/rubenverg/moldraw/util/Pair.class", "META-INF/gtmoldraw-schema/**", "META-INF/gtmoldraw-names-zh.json")
     }
     from({ toolLibraries.map { zipTree(it) } }) {
         exclude("META-INF/MANIFEST.MF", "META-INF/*.SF", "META-INF/*.RSA", "META-INF/*.DSA")
@@ -168,7 +168,7 @@ val previewZip by tasks.registering(Zip::class) {
     from("data-packs/runtime-species") { into("packs") }
     from("schema") { into("schema") }
     from("docs/FORMAT-V1.md")
-    from("docs/TESTING-0.7-A.md") { rename { "README.md" } }
+    from("docs/TESTING-0.7-C.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(previewZip) }
 

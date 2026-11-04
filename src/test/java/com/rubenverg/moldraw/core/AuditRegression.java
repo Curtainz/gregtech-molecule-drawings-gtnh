@@ -44,6 +44,28 @@ public final class AuditRegression {
             ResourceJson.read(new ByteArrayInputStream(new byte[17]), 16);
             throw new AssertionError("Size guard");
         } catch (IOException expected) {}
+        if (DisplayNames.chinese("Steel") || !DisplayNames.chinese("钢"))
+            throw new AssertionError("English incorrectly labelled Chinese");
+        if (!DisplayNames.reference("Polybenzimidazole")
+            .equals("聚苯并咪唑")) throw new AssertionError("Reference normalization");
+        if (!FormulaGlyphs.display("C1\uE01A")
+            .equals("C1₀")) throw new AssertionError("GT export zero");
+        if (FormulaGlyphs.display("\uE000\uE020\uE030")
+            .matches(".*[\uE000-\uF8FF].*")) throw new AssertionError("Private glyph in portable output");
+        Path derived = output.resolve("derived");
+        com.rubenverg.moldraw.tool.AuditReview.write(output.resolve("snapshot.json"), derived);
+        if (!Files.readString(derived.resolve("index.html"))
+            .contains("水")) throw new AssertionError("Portable audit review");
+        try (var files = Files.list(root.resolve("data-packs/migrated/official/materials"))) {
+            for (Path file : files.toList()) if (file.toString()
+                .endsWith(".jsonc")
+                && DisplayNames.reference(
+                    file.getFileName()
+                        .toString()
+                        .replace(".jsonc", ""))
+                    .isEmpty())
+                throw new AssertionError("Missing reference translation: " + file);
+        }
         System.out.println(
             "Audit regression: fluid partition, Chinese roundtrip, HTML/CSV escaping, localized preview and size limits passed");
     }

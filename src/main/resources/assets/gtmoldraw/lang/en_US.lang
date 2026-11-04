@@ -53,3 +53,5 @@ moldraw.gui.config.title=MolDraw Configuration
 moldraw.gui.config.description=Configure MolDraw settings
 tooltip.gtmoldraw.other=Other
 tooltip.gtmoldraw.unknown=Unknown
+
+tooltip.gtmoldraw.quantity_fallback=Quantity shares (mass unavailable)

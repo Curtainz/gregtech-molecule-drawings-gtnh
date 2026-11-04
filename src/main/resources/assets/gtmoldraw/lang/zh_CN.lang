@@ -57,3 +57,5 @@ moldraw.gui.config.title=MolDraw配置
 moldraw.gui.config.description=配置MolDraw设置
 tooltip.gtmoldraw.other=其他
 tooltip.gtmoldraw.unknown=未知
+
+tooltip.gtmoldraw.quantity_fallback=数量占比（缺少质量数据）

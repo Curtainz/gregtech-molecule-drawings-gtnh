@@ -44,7 +44,7 @@ public final class AuditExport {
             for (Materials m : Materials.getAll()) if (GT5MaterialLookup.isMaterialValid(m)) {
                 String localized;
                 try {
-                    localized = m.getDefaultLocalizedNameForItem("%material");
+                    localized = m.getLocalizedNameForItem("%material");
                 } catch (RuntimeException failure) {
                     localized = m.mDefaultLocalName;
                 }
@@ -157,11 +157,17 @@ public final class AuditExport {
             r.addProperty("definitionId", d.id());
             r.addProperty("defaultName", t.defaultName);
             r.addProperty("localizedName", t.localized);
-            r.addProperty("nameZhCN", t.language.equalsIgnoreCase("zh_CN") ? t.localized : "");
+            String reference = DisplayNames.reference(t.id.startsWith("gt:") ? t.id.substring(3) : t.defaultName);
+            boolean translated = t.language.equalsIgnoreCase("zh_CN") && DisplayNames.chinese(t.localized);
+            r.addProperty("gameLocalizedNameRaw", t.localized);
+            r.addProperty("localizedName", translated || reference.isEmpty() ? t.localized : reference + " [参考译名]");
+            r.addProperty("nameZhCN", translated ? t.localized : reference);
             r.addProperty(
                 "translationState",
-                t.language.equalsIgnoreCase("zh_CN") ? "captured_zh_CN" : "missing_zh_CN_select_Chinese_and_export");
-            r.addProperty("formula", d.formula());
+                translated ? "game_zh_CN"
+                    : reference.isEmpty() ? "missing_translation" : "reference_zh_CN_not_game_translation");
+            r.addProperty("formula", FormulaGlyphs.display(d.formula()));
+            r.addProperty("formulaRawEscaped", FormulaGlyphs.escapedRaw(d.formula()));
             try {
                 ChemicalFormula.parseExact(d.formula());
                 r.addProperty("formulaStatus", "parsed");
