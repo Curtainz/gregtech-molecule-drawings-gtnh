@@ -105,6 +105,14 @@ public final class TooltipIntegrationRegression {
             "installation-regression-");
         jar(mods.resolve("renamed.jar"), true, "gtmoldraw");
         jar(mods.resolve("pack-tool.jar"), false, "other");
+        for (String metadata : List.of("{\"modList\":7}", "[".repeat(65) + "]".repeat(65), " ".repeat(2_097_153))) {
+            try (var zip = new ZipOutputStream(Files.newOutputStream(mods.resolve("unrelated.jar")))) {
+                zip.putNextEntry(new ZipEntry("mcmod.info"));
+                zip.write(metadata.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                zip.closeEntry();
+            }
+            InstallationScanner.requireSingle(mods);
+        }
         InstallationScanner.requireSingle(mods);
         Files.createDirectory(mods.resolve("backup"));
         jar(mods.resolve("backup/archived.jar"), true, "moldraw");

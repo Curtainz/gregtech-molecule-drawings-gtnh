@@ -78,7 +78,8 @@ val reviewPackZip by tasks.registering(Zip::class) {
     from("data-packs/migrated") { into("packs") }
     from("data-packs/runtime-species") { into("packs") }
     from("docs/FORMAT-V1.md")
-    from("docs/TESTING-0.7-D.md") { rename { "README.md" } }
+    from("docs/RELEASE-0.7.0.md") { rename { "README.md" } }
+    from("docs/test-results") { into("test-results") }
 }
 tasks.named("assemble") { dependsOn(reviewPackZip) }
 
@@ -170,7 +171,8 @@ val previewZip by tasks.registering(Zip::class) {
     from("data-packs/runtime-species") { into("packs") }
     from("schema") { into("schema") }
     from("docs/FORMAT-V1.md")
-    from("docs/TESTING-0.7-D.md") { rename { "README.md" } }
+    from("docs/RELEASE-0.7.0.md") { rename { "README.md" } }
+    from("docs/test-results") { into("test-results") }
 }
 tasks.named("assemble") { dependsOn(previewZip) }
 
@@ -211,6 +213,30 @@ val installZip by tasks.registering(Zip::class) {
     from("data-packs/migrated/official") { into("config/gtmoldraw/packs/official") }
 }
 tasks.named("assemble") { dependsOn(installZip) }
+
+val verifyInstallZip by tasks.registering {
+    dependsOn(installZip)
+    val archive = installZip.flatMap { it.archiveFile }
+    val gameJar = productionArtifact
+    inputs.file(archive)
+    inputs.file(gameJar)
+    doLast {
+        ZipFile(archive.get().asFile).use { zip ->
+            val files = zip.entries().asSequence().filter { !it.isDirectory }.toList()
+            check(files.all { it.name.startsWith("mods/") || it.name.startsWith("config/") }) { "Non-game files in install package" }
+            val jars = files.filter { it.name.startsWith("mods/") }
+            check(jars.size == 1 && jars.single().name == "mods/${gameJar.get().asFile.name}") { "Unexpected install JARs" }
+            val jar = jars.single()
+            check(jar.time > 946684800000L) { "Install JAR timestamp predates 2000" }
+            check(zip.getInputStream(jar).use { it.readBytes() }.contentEquals(gameJar.get().asFile.readBytes())) { "Install JAR differs from release artifact" }
+            check(files.none { it.name.endsWith("gtmoldraw-smoke-test.enabled") }) { "Developer smoke mode enabled in install package" }
+            check(files.any { it.name == "config/gtmoldraw/packs/official/pack.jsonc" }) { "Missing official pack" }
+            check(files.any { it.name == "config/gtmoldraw/packs/gtnh_species/pack.jsonc" }) { "Missing GTNH species pack" }
+            println("Install package boundary, timestamp, data packs and JAR identity checks passed")
+        }
+    }
+}
+tasks.named("check") { dependsOn(verifyInstallZip) }
 
 val auditRegression by tasks.registering(JavaExec::class) {
     dependsOn(tasks.named("testClasses"))

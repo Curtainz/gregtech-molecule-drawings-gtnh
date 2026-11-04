@@ -19,7 +19,7 @@ public final class PackTool {
     public static int run(String[] args, PrintStream output, PrintStream error) {
         try {
             List<String> arguments = new ArrayList<>(List.of(args));
-            String version = "0.7.0-test.D", only = null, audit = null;
+            String version = "0.7.0", only = null, audit = null;
             for (String flag : List.of("--mod-version", "--id", "--audit")) {
                 int index = arguments.indexOf(flag);
                 if (index >= 0) {

@@ -41,7 +41,7 @@ public final class InstallationScanner {
                                 if (id != null && Set.of("gtmoldraw", "moldraw")
                                     .contains(id.getAsString())) own = true;
                             }
-                        } catch (IllegalArgumentException | IllegalStateException
+                        } catch (IllegalArgumentException | IllegalStateException | ClassCastException | IOException
                             | com.google.gson.JsonParseException malformedMetadata) {
                             // FML handles unrelated malformed metadata.
                         }
