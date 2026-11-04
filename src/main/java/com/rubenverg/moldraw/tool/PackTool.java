@@ -19,8 +19,8 @@ public final class PackTool {
     public static int run(String[] args, PrintStream output, PrintStream error) {
         try {
             List<String> arguments = new ArrayList<>(List.of(args));
-            String version = "0.6.0", only = null;
-            for (String flag : List.of("--mod-version", "--id")) {
+            String version = "0.7.0-test.A", only = null, audit = null;
+            for (String flag : List.of("--mod-version", "--id", "--audit")) {
                 int index = arguments.indexOf(flag);
                 if (index >= 0) {
                     if (index + 1 >= arguments.size()) throw new PackException("Missing value for " + flag);
@@ -28,7 +28,8 @@ public final class PackTool {
                     arguments.remove(index);
                     if (arguments.contains(flag)) throw new PackException("Duplicate " + flag);
                     if (flag.equals("--mod-version")) version = value;
-                    else only = value;
+                    else if (flag.equals("--id")) only = value;
+                    else audit = value;
                 }
             }
             if (arguments.isEmpty() || arguments.equals(List.of("--help"))) {
@@ -52,7 +53,7 @@ public final class PackTool {
                 || command.equals("preview") && arguments.size() == 3
                 || check
                 || write)) throw new PackException("Invalid arguments; use --help");
-            if (only != null && !command.equals("preview"))
+            if ((only != null || audit != null) && !command.equals("preview"))
                 throw new PackException("--id is only available for preview");
             Path root = Path.of(arguments.get(check || write ? 2 : 1))
                 .toAbsolutePath()
@@ -111,6 +112,7 @@ public final class PackTool {
                 for (Path p = destination; p != null; p = p.getParent())
                     if (Files.isSymbolicLink(p)) throw new PackException("Symlink in preview output path " + p);
                 PreviewWriter.write(catalog, destination, only);
+                if (audit != null) PreviewWriter.localize(catalog, destination, Path.of(audit));
                 output.println("Preview: " + destination.resolve("index.html"));
             }
             return 0;
@@ -122,6 +124,6 @@ public final class PackTool {
 
     private static void usage(PrintStream out) {
         out.println(
-            "GTMolDraw pack tool (Java25, offline, stage 4)\nvalidate <packs> [--mod-version VERSION]\nformat --check|--write <packs> [--mod-version VERSION]\npreview <packs> <output> [--id DEFINITION] [--mod-version VERSION]\nmigrate <legacy-assets> <legacy-bindings.json> <new-output> [--mod-version VERSION]\nExit: 0 success, 1 formatting differs, 2 invalid input/IO. This offline tool does not publish game state. In-game loading/reload is available in stage 4; MOL import is deferred.");
+            "GTMolDraw pack tool (Java25, offline, stage 4)\nvalidate <packs> [--mod-version VERSION]\nformat --check|--write <packs> [--mod-version VERSION]\npreview <packs> <output> [--id DEFINITION] [--audit snapshot.json] [--mod-version VERSION]\nmigrate <legacy-assets> <legacy-bindings.json> <new-output> [--mod-version VERSION]\nExit: 0 success, 1 formatting differs, 2 invalid input/IO. This offline tool does not publish game state. In-game loading/reload is available in stage 4; MOL import is deferred.");
     }
 }

@@ -68,14 +68,14 @@ val architectureRegression by tasks.registering(JavaExec::class) {
 tasks.named("check") { dependsOn(architectureRegression) }
 
 val reviewPackZip by tasks.registering(Zip::class) {
-    archiveFileName.set("gtmoldraw-data-pack-0.6.0.zip")
+    archiveFileName.set("gtmoldraw-data-pack-${project.version}.zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true
     from("schema") { into("schema") }
     from("data-packs/migrated") { into("packs") }
     from("docs/FORMAT-V1.md")
-    from("docs/STAGE-4-TESTING.md") { rename { "README.md" } }
+    from("docs/TESTING-0.7-A.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(reviewPackZip) }
 
@@ -89,7 +89,7 @@ dependencies {
 }
 val packToolJar by tasks.registering(Jar::class) {
     dependsOn(tasks.named("classes"))
-    archiveFileName.set("gtmoldraw-pack-tool-0.6.0.jar")
+    archiveFileName.set("gtmoldraw-pack-tool-${project.version}.jar")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest { attributes("Main-Class" to "com.rubenverg.moldraw.tool.PackTool") }
@@ -145,7 +145,7 @@ val generatePackPreview by tasks.registering(JavaExec::class) {
 }
 val previewZip by tasks.registering(Zip::class) {
     dependsOn(generatePackPreview)
-    archiveFileName.set("gtmoldraw-0.6.0-preview.zip")
+    archiveFileName.set("gtmoldraw-${project.version}-preview.zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true
@@ -164,7 +164,7 @@ val previewZip by tasks.registering(Zip::class) {
     from("data-packs/migrated") { into("packs") }
     from("schema") { into("schema") }
     from("docs/FORMAT-V1.md")
-    from("docs/STAGE-4-TESTING.md") { rename { "README.md" } }
+    from("docs/TESTING-0.7-A.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(previewZip) }
 
@@ -195,7 +195,7 @@ tasks.named("check") { dependsOn(runtimePackRegression) }
 
 val installZip by tasks.registering(Zip::class) {
     dependsOn(tasks.named("reobfJar"))
-    archiveFileName.set("gtmoldraw-0.6.0-install.zip")
+    archiveFileName.set("gtmoldraw-${project.version}-install.zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true
@@ -203,6 +203,15 @@ val installZip by tasks.registering(Zip::class) {
     from("data-packs/migrated/official") { into("config/gtmoldraw/packs/official") }
     from("data-packs/migrated") { include("migration-report.*"); into("gtmoldraw-docs") }
     from("data-packs/runtime-demo") { into("gtmoldraw-docs/optional-demo") }
-    from("docs/STAGE-4-TESTING.md") { rename { "README.md" } }
+    from("docs/TESTING-0.7-A.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(installZip) }
+
+val auditRegression by tasks.registering(JavaExec::class) {
+    dependsOn(tasks.named("testClasses"))
+    classpath = sourceSets["test"].runtimeClasspath
+    mainClass.set("com.rubenverg.moldraw.core.AuditRegression")
+    args(layout.projectDirectory.asFile.absolutePath)
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
+}
+tasks.named("check") { dependsOn(auditRegression) }

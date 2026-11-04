@@ -65,6 +65,69 @@ public final class PreviewWriter {
         writeSelected(catalog, output, only == null ? null : Set.of(only));
     }
 
+    public static void localize(PackCatalog catalog, Path output, Path snapshot) throws IOException {
+        JsonObject audit = Jsonc.read(snapshot)
+            .object();
+        if (!audit.has("formatVersion") || audit.get("formatVersion")
+            .getAsInt() != 1 || !audit.has("rows")) throw new PackException("Unsupported audit snapshot");
+        Map<String, Set<String>> labels = new TreeMap<>();
+        for (var value : audit.getAsJsonArray("rows")) {
+            JsonObject row = value.getAsJsonObject();
+            String zh = row.get("nameZhCN")
+                .getAsString(),
+                name = row.get("localizedName")
+                    .getAsString();
+            String label = (zh.isEmpty() ? name + " [缺中文翻译]" : zh) + " / "
+                + row.get("defaultName")
+                    .getAsString()
+                + " / "
+                + row.get("id")
+                    .getAsString();
+            for (String key : List.of(
+                row.get("structure")
+                    .getAsString(),
+                row.get("definitionId")
+                    .getAsString()))
+                if (!key.isEmpty()) labels.computeIfAbsent(key, k -> new TreeSet<>())
+                    .add(label);
+            for (var definition : catalog.definitions()
+                .values())
+                if (definition.type()
+                    .equals("material")) {
+                        for (var binding : PackCompiler.array(definition.json(), "bindings")) if (binding.getAsString()
+                            .equals(
+                                row.get("id")
+                                    .getAsString())
+                            || binding.getAsString()
+                                .equals(
+                                    "name:" + row.get("defaultName")
+                                        .getAsString()))
+                            labels.computeIfAbsent(definition.id(), k -> new TreeSet<>())
+                                .add(label);
+                    }
+        }
+        List<Path> pages;
+        try (var stream = Files.walk(output)) {
+            pages = stream.filter(
+                p -> p.getFileName()
+                    .toString()
+                    .equals("index.html"))
+                .toList();
+        }
+        for (Path page : pages) {
+            String html = Files.readString(page);
+            for (var entry : labels.entrySet()) {
+                String id = escape(entry.getKey()), text = escape(String.join("；", entry.getValue()));
+                html = html.replace("<h3>" + id + "</h3>", "<h3>" + text + "</h3><p>" + id + "</p>")
+                    .replace(">" + id + "</a>", ">" + text + " / " + id + "</a>");
+            }
+            html = html.replace(
+                "</h1>",
+                "</h1><p>名称对照来自游戏 audit；缺失名称不会自动翻译。</p><input placeholder=\"搜索本页中文、英文、公式或ID\" oninput=\"for(const a of document.querySelectorAll('article'))a.hidden=!a.textContent.toLowerCase().includes(this.value.toLowerCase())\">");
+            atomic(page, html);
+        }
+    }
+
     private static void ownedDirectory(Path output) throws IOException {
         if (Files.isSymbolicLink(output)) throw new PackException("Preview output cannot be a symlink");
         if (Files.exists(output)) try (var files = Files.list(output)) {

@@ -11,8 +11,13 @@ public final class ResourceJson {
     private ResourceJson() {}
 
     public static JsonElement read(InputStream input) throws IOException {
-        byte[] data = input.readNBytes(2_097_153);
-        if (data.length > 2_097_152) throw new IOException("Resource exceeds 2 MiB");
+        return read(input, 2_097_152);
+    }
+
+    public static JsonElement read(InputStream input, int limit) throws IOException {
+        if (limit < 1 || limit > 67_108_864) throw new IllegalArgumentException("Invalid JSON size limit");
+        byte[] data = input.readNBytes(limit + 1);
+        if (data.length > limit) throw new IOException("JSON exceeds size limit " + limit);
         String text = new String(data, StandardCharsets.UTF_8);
         int depth = 0;
         boolean quoted = false, escaped = false;

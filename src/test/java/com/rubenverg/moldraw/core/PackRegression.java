@@ -489,6 +489,12 @@ public final class PackRegression {
     }
 
     private static int tool(String... args) {
+        var explicit = new ArrayList<>(List.of(args));
+        if (!explicit.contains("--mod-version")) {
+            explicit.add("--mod-version");
+            explicit.add("0.6.0-stage.2");
+        }
+        args = explicit.toArray(String[]::new);
         return PackTool
             .run(args, new PrintStream(new ByteArrayOutputStream()), new PrintStream(new ByteArrayOutputStream()));
     }
