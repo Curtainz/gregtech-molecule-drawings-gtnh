@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 
 import codechicken.nei.guihook.GuiContainerManager;
 import gregtech.api.enums.Materials;
@@ -26,7 +25,7 @@ public final class MaterialTargetResolver {
         }
 
         try {
-            var fluid = gregtech.api.util.GTUtility.getFluidFromContainerOrFluidDisplay(stack);
+            var fluid = com.rubenverg.moldraw.GT5MaterialLookup.fluidOf(stack);
             if (fluid != null && fluid.getFluid() != null) return resolveFromFluid(fluid.getFluid(), font);
         } catch (RuntimeException ignored) {}
         Materials mat = GT5MaterialLookup.getMaterial(stack);
@@ -58,6 +57,11 @@ public final class MaterialTargetResolver {
         }
         if (entry.chartEligible() && MolDrawConfig.INSTANCE.alloy.showAlloys) {
             var result = RendererCache.composition(entry);
+            if (!result.valid() && MolDrawConfig.INSTANCE.alloy.partsByMass) result = MaterialRegistry.composition(
+                entry.definition()
+                    .id(),
+                false,
+                MolDrawConfig.INSTANCE.alloy.recursive);
             if (result.valid() && result.shares()
                 .size() > 1)
                 return new DisplayPlan(
@@ -91,10 +95,17 @@ public final class MaterialTargetResolver {
             return DisplayPlan.EMPTY;
         }
 
+        var hoveredFluid = com.rubenverg.moldraw.client.HoveredFluid.find(gui);
+        if (hoveredFluid != null && hoveredFluid.getFluid() != null)
+            return resolveFromFluid(hoveredFluid.getFluid(), font);
+
         // 如果鼠标当前悬停在某个真实的物品 Slot 上，跳过纯文本解析（物品由 ItemTooltipEvent 统一处理）
         if (gui != null) {
             try {
-                if (GuiContainerManager.getStackMouseOver(gui) != null) {
+                var hoveredStack = GuiContainerManager.getStackMouseOver(gui);
+                if (hoveredStack != null) {
+                    var fluid = com.rubenverg.moldraw.GT5MaterialLookup.fluidOf(hoveredStack);
+                    if (fluid != null && fluid.getFluid() != null) return resolveFromFluid(fluid.getFluid(), font);
                     return DisplayPlan.EMPTY;
                 }
             } catch (Throwable ignored) {}
@@ -138,19 +149,7 @@ public final class MaterialTargetResolver {
             if (candidate.isEmpty()) continue;
             Fluid exact = FluidRegistry.getFluid(candidate);
             if (exact != null) return resolveFromFluid(exact, font);
-            java.util.Set<Fluid> matches = new java.util.HashSet<>();
-            for (Fluid fluid : FluidRegistry.getRegisteredFluids()
-                .values()) {
-                if (fluid == null) continue;
-                if (candidate.equalsIgnoreCase(fluid.getName())) matches.add(fluid);
-                try {
-                    String localized = fluid.getLocalizedName(new FluidStack(fluid, 1000));
-                    if (localized != null && candidate.equalsIgnoreCase(
-                        EnumChatFormatting.getTextWithoutFormattingCodes(localized)
-                            .trim()))
-                        matches.add(fluid);
-                } catch (RuntimeException ignored) {}
-            }
+            java.util.Set<Fluid> matches = com.rubenverg.moldraw.client.TooltipIdentityIndex.fluids(candidate);
             if (matches.size() > 1) {
                 MolDraw.LOGGER.debug("AMBIGUOUS_BINDING: fluid tooltip {}", candidate);
                 return DisplayPlan.EMPTY;
@@ -180,21 +179,13 @@ public final class MaterialTargetResolver {
                 return byName;
             }
 
-            for (Materials m : Materials.getAll()) {
-                if (!GT5MaterialLookup.isMaterialValid(m)) continue;
-                if (cand.equalsIgnoreCase(m.mName) || cand.equalsIgnoreCase(m.name())) {
-                    return m;
-                }
-                if (m.mDefaultLocalName != null && cand.equalsIgnoreCase(m.mDefaultLocalName)) {
-                    return m;
-                }
-                try {
-                    String loc = m.getDefaultLocalizedNameForItem("");
-                    if (loc != null && cand.equalsIgnoreCase(loc)) {
-                        return m;
-                    }
-                } catch (Throwable ignored) {}
+            var matches = com.rubenverg.moldraw.client.TooltipIdentityIndex.materials(cand);
+            if (matches.size() > 1) {
+                MolDraw.LOGGER.debug("AMBIGUOUS_BINDING: material tooltip {}", cand);
+                return null;
             }
+            if (matches.size() == 1) return matches.iterator()
+                .next();
         }
 
         return null;

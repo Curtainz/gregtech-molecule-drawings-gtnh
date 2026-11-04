@@ -40,6 +40,8 @@ public class TooltipEventHandler {
             return;
         }
 
+        com.rubenverg.moldraw.client.ClientSmokeTest.onDraw();
+
         // 当由 NEI / ChromaticTooltips 托管渲染时，绝不在后处理事件中重复渲染或干扰状态
         if (NEITooltipHelper.isNEIAvailable() && !TooltipRenderContext.hasPending()) {
             return;

@@ -31,8 +31,18 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
     @Override
     public List<String> handleItemTooltip(GuiContainer gui, ItemStack stack, int mousex, int mousey,
         List<String> currenttip) {
-        // 所有的 ItemStack 均由 Forge 的原生 ItemTooltipEvent (TooltipEventHandler) 统一处理。
-        // 此处绝不处理 ItemStack，彻底消除双重注册导致的重复两行 Shift 提示与分子图双重绘制！
+        if (MolDraw.isClientThread() && stack != null) {
+            try {
+                var fluid = com.rubenverg.moldraw.GT5MaterialLookup.fluidOf(stack);
+                if (fluid != null && fluid.getFluid() != null) {
+                    var font = Minecraft.getMinecraft().fontRenderer;
+                    TooltipPipeline
+                        .apply(currenttip, MaterialTargetResolver.resolveFromFluid(fluid.getFluid(), font), font);
+                }
+            } catch (RuntimeException failure) {
+                MolDraw.LOGGER.debug("NEI fluid display lookup failed", failure);
+            }
+        }
         return currenttip;
     }
 

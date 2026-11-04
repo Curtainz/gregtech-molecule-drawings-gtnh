@@ -15,6 +15,10 @@ public final class TooltipDrawPass {
         failed.clear();
     }
 
+    public static int failureCount() {
+        return failed.size();
+    }
+
     private TooltipDrawPass() {}
 
     public static void render(ITooltipDrawable drawable, FontRenderer font, int x, int y) {

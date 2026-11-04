@@ -69,14 +69,18 @@ public record CompiledMolecule(String id, List<Atom> atoms, List<Bond> bonds, Li
             String text = s.label != null ? s.label : s.element == null ? "" : s.element;
             if (s.label == null) {
                 if (s.isotope != null) text = superscript(s.isotope.toString()) + text;
-                if (s.mode.equals("symbol") && s.hydrogens != null && s.hydrogens > 0)
+                if (s.hydrogens != null && s.hydrogens > 0)
                     text += "H" + (s.hydrogens == 1 ? "" : subscript(s.hydrogens.toString()));
                 if (s.charge != 0)
                     text += superscript((Math.abs(s.charge) == 1 ? "" : String.valueOf(Math.abs(s.charge))))
                         + (s.charge < 0 ? "⁻" : "⁺");
             }
             boolean hidden = s.mode.equals("hidden")
-                || (s.mode.equals("skeletal") && "C".equals(s.element) && s.label == null)
+                || (s.mode.equals("skeletal") && "C".equals(s.element)
+                    && s.label == null
+                    && s.isotope == null
+                    && s.charge == 0
+                    && s.hydrogens == null)
                 || text.isEmpty();
             shapes.add(
                 new MoleculeScene.Atom(

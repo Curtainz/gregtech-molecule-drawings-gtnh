@@ -60,9 +60,165 @@ public final class PreviewWriter {
             .count();
         if (only == null && cards > 512) {
             paged(catalog, output);
-            return;
+        } else writeSelected(catalog, output, only == null ? null : Set.of(only));
+        JsonObject empty = new JsonObject();
+        empty.addProperty("formatVersion", 1);
+        empty.add("rows", new JsonArray());
+        localize(catalog, output, empty);
+    }
+
+    public static void localize(PackCatalog catalog, Path output, Path snapshot) throws IOException {
+        JsonObject audit;
+        try (var input = Files.newInputStream(snapshot)) {
+            audit = ResourceJson.read(input, 33_554_432)
+                .getAsJsonObject();
         }
-        writeSelected(catalog, output, only == null ? null : Set.of(only));
+        localize(catalog, output, audit);
+    }
+
+    private static void localize(PackCatalog catalog, Path output, JsonObject audit) throws IOException {
+        if (!audit.has("formatVersion") || audit.get("formatVersion")
+            .getAsInt() != 1 || !audit.has("rows")) throw new PackException("Unsupported audit snapshot");
+        Map<String, Set<String>> labels = new TreeMap<>();
+        Map<String, String> chinese = new HashMap<>();
+        for (var value : audit.getAsJsonArray("rows")) {
+            var row = value.getAsJsonObject();
+            String zh = row.get("nameZhCN")
+                .getAsString(),
+                provider = row.has("providerId") ? row.get("providerId")
+                    .getAsString() : "";
+            if (DisplayNames.chinese(zh) && !provider.isEmpty()) chinese.putIfAbsent(provider, zh);
+        }
+
+        for (var value : audit.getAsJsonArray("rows")) {
+            JsonObject row = value.getAsJsonObject();
+            String zh = row.get("nameZhCN")
+                .getAsString(),
+                name = row.get("localizedName")
+                    .getAsString();
+            if (!DisplayNames.chinese(zh) && row.has("providerId")) zh = chinese.getOrDefault(
+                row.get("providerId")
+                    .getAsString(),
+                "");
+            if (!DisplayNames.chinese(zh)) zh = DisplayNames.reference(
+                row.get("id")
+                    .getAsString()
+                    .replaceFirst("^[^:]+:", ""));
+            String label = (zh.isEmpty() ? name + " [缺中文翻译]" : zh) + " / "
+                + row.get("defaultName")
+                    .getAsString()
+                + " / "
+                + row.get("id")
+                    .getAsString();
+            for (String key : List.of(
+                row.get("structure")
+                    .getAsString(),
+                row.get("definitionId")
+                    .getAsString()))
+                if (!key.isEmpty()) labels.computeIfAbsent(key, k -> new TreeSet<>())
+                    .add(label);
+            for (var definition : catalog.definitions()
+                .values())
+                if (definition.type()
+                    .equals("material")) {
+                        for (var binding : PackCompiler.array(definition.json(), "bindings")) if (binding.getAsString()
+                            .equals(
+                                row.get("id")
+                                    .getAsString())
+                            || binding.getAsString()
+                                .startsWith("name:")
+                                && (DisplayNames.key(
+                                    binding.getAsString()
+                                        .substring(5))
+                                    .equals(
+                                        DisplayNames.key(
+                                            row.get("defaultName")
+                                                .getAsString()))
+                                    || row.has("providerId") && DisplayNames.key(
+                                        binding.getAsString()
+                                            .substring(5))
+                                        .equals(
+                                            DisplayNames.key(
+                                                row.get("providerId")
+                                                    .getAsString()
+                                                    .replaceFirst("^gt:", "")))))
+                            labels.computeIfAbsent(definition.id(), k -> new TreeSet<>())
+                                .add(label);
+                    }
+        }
+        for (var d : catalog.definitions()
+            .values()) {
+            if (labels.containsKey(d.id())) continue;
+            String name = d.id()
+                .substring(
+                    d.id()
+                        .lastIndexOf('/') + 1)
+                .replaceFirst("_structure$", "");
+            String zh = DisplayNames.reference(name);
+            if (zh.isEmpty()) zh = DisplayNames.reference(name.replaceFirst("_dust$", ""));
+            if (!zh.isEmpty()) labels.put(d.id(), new TreeSet<>(Set.of(zh + " [名称参考；非游戏身份核验]")));
+        }
+        JsonObject coverage = new JsonObject();
+        JsonArray missing = new JsonArray();
+        int named = 0;
+        for (var definition : catalog.definitions()
+            .values())
+            if (List.of("material", "molecule", "fragment")
+                .contains(definition.type())) {
+                    if (labels.containsKey(definition.id())) named++;
+                    else missing.add(new JsonPrimitive(definition.id()));
+                }
+        coverage.addProperty("namedDefinitions", named);
+        coverage.add("missingDefinitions", missing);
+        coverage.addProperty("note", "中文名称仅用于查询；参考译名不表示游戏已有翻译或化学结构已审核");
+        atomic(
+            output.resolve("names-report.json"),
+            new GsonBuilder().setPrettyPrinting()
+                .create()
+                .toJson(coverage));
+        Path activeGeneration = output;
+        var generatedReport = Jsonc.read(output.resolve("report.json"))
+            .object();
+        if (generatedReport.has("pages") && generatedReport.getAsJsonArray("pages")
+            .size() > 0) {
+            String first = generatedReport.getAsJsonArray("pages")
+                .get(0)
+                .getAsJsonObject()
+                .get("path")
+                .getAsString();
+            activeGeneration = output.resolve(first.substring(0, first.indexOf('/')));
+        }
+        final Path active = activeGeneration;
+        List<Path> pages;
+        try (var stream = Files.walk(output)) {
+            pages = stream.filter(
+                p -> p.getFileName()
+                    .toString()
+                    .equals("index.html") && (p.equals(output.resolve("index.html")) || p.startsWith(active)))
+                .toList();
+        }
+        for (Path page : pages) {
+            String html = Files.readString(page);
+            for (var entry : labels.entrySet()) {
+                String id = escape(entry.getKey()), text = escape(String.join("；", entry.getValue()));
+                String card = "(<article id=\"" + java.util.regex.Pattern.quote(id)
+                    + "\"><h3>)[^<]*(</h3>)(?:<p class=\"definition-id\">[^<]*</p>)?";
+                html = java.util.regex.Pattern.compile(card)
+                    .matcher(html)
+                    .replaceAll(
+                        m -> java.util.regex.Matcher.quoteReplacement(
+                            m.group(1) + text + m.group(2) + "<p class=\"definition-id\">" + id + "</p>"));
+                String link = "(href=\"[^\"]*#" + java.util.regex.Pattern.quote(id) + "\">)[^<]*(</a>)";
+                html = java.util.regex.Pattern.compile(link)
+                    .matcher(html)
+                    .replaceAll(
+                        m -> java.util.regex.Matcher.quoteReplacement(m.group(1) + text + " / " + id + m.group(2)));
+            }
+            if (!html.contains("搜索本页中文")) html = html.replace(
+                "</h1>",
+                "</h1><p>中文名称优先采用实机对照，缺失项使用标注的查询参考。</p><input placeholder=\"搜索本页中文、英文、公式或ID\" oninput=\"for(const a of document.querySelectorAll('article'))a.hidden=!a.textContent.toLowerCase().includes(this.value.toLowerCase())\">");
+            atomic(page, html);
+        }
     }
 
     private static void ownedDirectory(Path output) throws IOException {

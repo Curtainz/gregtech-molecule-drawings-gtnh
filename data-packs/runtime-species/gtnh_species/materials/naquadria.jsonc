@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "type": "material",
+  "id": "gtnh_species:materials/naquadria",
+  "bindings": [
+    "gt:Naquadria"
+  ],
+  "terminal": true
+}

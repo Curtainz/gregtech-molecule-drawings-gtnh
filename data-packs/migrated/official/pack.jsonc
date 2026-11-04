@@ -6,7 +6,7 @@
   "description": "Migrated legacy definitions; runtime external loading begins in stage 4.",
   "modVersion": {
     "min": "0.6.0-stage.3",
-    "maxExclusive": "0.7.0"
+    "maxExclusive": "0.8.0"
   },
   "dependencies": [],
   "providers": [

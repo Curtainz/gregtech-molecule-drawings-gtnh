@@ -93,7 +93,7 @@ public final class LegacyMigrator {
         manifest.addProperty("version", "1.0.0");
         JsonObject range = new JsonObject();
         range.addProperty("min", "0.6.0-stage.3");
-        range.addProperty("maxExclusive", "0.7.0");
+        range.addProperty("maxExclusive", "0.8.0");
         manifest.add("modVersion", range);
         manifest.add("dependencies", new JsonArray());
         manifest.add("providers", LegacyGeometry.array("gregtech"));

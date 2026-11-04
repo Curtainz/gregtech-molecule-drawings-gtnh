@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "type": "material",
+  "id": "gtnh_species:materials/draconiumawakened",
+  "bindings": [
+    "gt:DraconiumAwakened"
+  ],
+  "terminal": true
+}

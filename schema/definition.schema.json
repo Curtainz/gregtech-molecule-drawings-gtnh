@@ -950,6 +950,9 @@
           "maxItems": 4096,
           "uniqueItems": true
         },
+        "terminal": {
+          "type": "boolean"
+        },
         "formula": {
           "type": "string",
           "minLength": 1,
@@ -1269,10 +1272,17 @@
                     "maxLength": 32
                   },
                   "material": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 256,
-                    "pattern": "^gt:.+$"
+                    "anyOf": [
+                      {
+                        "$ref": "#/$defs/id"
+                      },
+                      {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 256,
+                        "pattern": "^gt:.+$"
+                      }
+                    ]
                   }
                 },
                 "required": [

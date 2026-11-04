@@ -1,58 +1,19 @@
-# GTMolDraw — GregTech Molecule Drawings for GTNH
+# GTMolDraw — GTNH 材料结构与组成展示
 
-Minecraft 1.7.10 / GTNH 2.9.0 / Java 25. Fork of [RubenVerg/gregtech-molecule-drawings](https://github.com/RubenVerg/gregtech-molecule-drawings).
+正式版本为 **0.7.0**。目标环境：Minecraft 1.7.10 / GTNH 2.9.0 / Java25；modid 为 `gtmoldraw`。下载 [0.7.0 Release](https://github.com/Curtainz/gregtech-molecule-drawings-gtnh/releases/tag/v0.7.0)。
 
-## 简体中文
+在物品及 NEI 提示框显示二维结构与组成饼图，支持数量／质量、递归及 Shift 显示。定义从外部 JSONC 数据包加载，`/gtmoldraw reload` 成功后原子替换，失败保留旧快照。游戏 JAR 不含旧定义回退，必须同时安装匹配的数据包。
 
-在物品及 NEI 提示框中显示材料的二维分子结构式、组成饼图。当前存档版本 **0.4.0**，modid 为 **`gtmoldraw`**。苯环统一采用凯库勒式（交替单双键）。
+推荐使用 `gtmoldraw-0.7.0-install.zip`，退出游戏，移除 `mods` 及 `mods/1.7.10` 中所有旧版 JAR 后解压至 `.minecraft`。安装包仅包含游戏 JAR 和匹配数据包。配置为 `config/gtmoldraw.cfg`，数据目录为 `config/gtmoldraw/packs`。F3+T 刷新资源及显示快照，编辑磁盘 JSONC 后使用 reload。
 
-### 安装与升级
+本版新增外部 GTNH 物种、材料／流体审核分表、中文名称快照及可搜索 HTML，离线 preview 支持 `--audit snapshot.json`。安装、命令与验证边界见 [0.7.0 说明](docs/RELEASE-0.7.0.md)。修复中文名称与可读公式导出，图册内置查询参考；增加 NEI 流体显示栈及 ModularUI 1 流体槽入口，并支持缺图饼图与明确标注的数量回退。ChromaticTooltips 使用原生组件；提供早期重复安装检测及离线 MOL V2000 导入。其它流体 GUI 仍需逐项适配与实测。缺少有效翻译或定义的材料仍会报告缺失；声明数量不代表实际材料覆盖率。
 
-- 将 Release 中的 `gtmoldraw-0.4.0.jar` 放入 `mods`，删除或禁用旧 MolDraw，避免同时加载。
-- 使用 GTNH 2.9.0 与 Java 25；开发依赖固定为 GT5-Unofficial 5.09.54.265、NEI 2.8.171-GTNH。
-- 配置文件为 `config/gtmoldraw.cfg`。旧 `config/moldraw.cfg` 不会自动迁移；可将旧设置手动复制到新文件，`benzeneCircle` 已移除。
-- 本模组的资源路径为 `assets/gtmoldraw/`，语言键为 `tooltip.gtmoldraw.*` / `config.gtmoldraw.*`。已有资源包须相应更新；继承的 gtceu 等数据命名空间继续保留。
-- 默认按住 Shift 显示。`/gtmoldraw audit` 导出 GT 材料覆盖情况至 `.minecraft/gtmoldraw-audit/materials.csv`。
-- F3+T 可重新读取资源包数据；配置界面修改后刷新缓存。
+## 构建
 
-### 当前能力与限制
+使用 JDK25 执行 `./gradlew build`，产物位于 build/libs 和 build/distributions。check 包含纯 Java 计算、迁移、数据包、审核、提示框接口、MOL 导入回归及游戏包／离线工具依赖边界、安装包内容／时间戳／JAR 一致性检查。隔离客户端测试验证实际 GL 上下文中的原生流体提示框，不代替真实储罐／NEI 鼠标悬停或图形美观验收。
 
-包含已有分子结构资源、苯环与聚合物括号绘制、材料及流体识别、递归组成饼图、颜色和显示配置。启动集成延迟到首次客户端 tick，缓存失效集中在客户端线程。已移除整包 FastUtil 依赖。
+## 文档与版本
 
-结构覆盖取决于材料身份与已有模型，并非每种材料都能显示。化学式解析不会据同分子式猜测异构体。外部脚本注册与热重载、更多材料桥接、结构推断和完整组成权重重构仍在计划中。测试源码中的化学式是回归样例，不是运行时白名单。
+[JSONC 格式](docs/FORMAT-V1.md)、[0.6 安装说明](docs/STAGE-4-TESTING.md)、[后续路线](docs/ROADMAP-0.7.md)。main 发布，develop 开发，历史 Release 和标签保留。
 
-test.2 的正常启动和显示已由用户确认；0.4.0 的苯环与 modid 改动经过自动构建检查，新增画面效果仍需游戏实测。完整重构顺序见 [重构说明](docs/STARTUP-REFACTOR-0.4.0-test.2.md)。
-
-### 构建
-
-安装 JDK 25，在项目根目录运行：
-
-```powershell
-.\gradlew.bat build
-```
-
-产物位于 `build/libs/`。`check` 包含公式、分子集合、栅格与架构回归及发布包/核心依赖边界检查。请安装版本名完全匹配的游戏 JAR，不要使用带额外 `-dev` 或 `-sources` classifier 的构建产物。
-
-## English
-
-GTMolDraw adds 2D molecular structures and composition pie charts to GTNH tooltips. Version 0.4.0 uses modid `gtmoldraw` and Kekulé benzene rings. Target: GTNH 2.9.0, Minecraft 1.7.10, Java 25.
-
-Install the release JAR in `mods`, disabling previous MolDraw versions. Configuration: `config/gtmoldraw.cfg`; resource namespace: `assets/gtmoldraw/`; audit command: `/gtmoldraw audit`. Old configuration and resource-pack paths require manual migration. The obsolete `benzeneCircle` setting is removed.
-
-Bundled models determine structure coverage. Formula parsing is general, but does not infer an isomer from its formula. External scripting, transactional hot reload and wider material integration remain planned. Build with JDK 25 using `./gradlew build`.
-
-## 致谢 / Attribution
-
-Original concept, molecular drawing code and resources: RubenVerg and upstream contributors. The GTNH port was initially developed with Google Antigravity / Gemini; subsequent analysis, stabilization and refactoring were performed with Codex in collaboration with the maintainer. See repository license files and upstream for licensing information.
-
-## Repository layout / 分支约定
-
-默认分支为 **main**，后续重构在 **develop**。保留 v0.3.0 和 v0.4.0 两个里程碑标签。历史引用备份及恢复方法见 [分支与版本约定](docs/REPOSITORY.md)。
-
-0.5.0-test.1里程碑：不可变材料与几何数据、纯布局、受限缓存、精确组成及质量计算已接入 tooltip 和 audit。保留 CodeChickenCore 1.4.22 公开 tooltip API 与客户端绘制隔离。缺少质量时会停止对应质量饼图，可切换数量模式；最大显示项数为1时显示单项“其他”。该里程碑已由用户基本实测通过，历史测试清单见 [0.5.0测试说明](docs/TESTING-0.5.0.md)。
-
-
-当前正式版本为 **0.6.0**（第④阶段已由用户实机基本验证），已接入外部JSONC挂载与 `/gtmoldraw reload`。必须同时安装游戏JAR和官方数据包；推荐将安装ZIP解压到 `.minecraft` 根目录。后台校验成功后由客户端线程原子替换快照，失败保留上一有效版本；游戏JAR不再包含旧定义回退。安装、可选覆盖示例及实机验收见 [第④阶段交付](docs/STAGE-4-TESTING.md)，格式见 [FORMAT-V1](docs/FORMAT-V1.md)。全量图册、1,039条声明及HTML/CSV来源报告继续单独交付。
-
-
-后续材料覆盖与结构重绘计划见 [开发路线](docs/ROADMAP-0.7.md)。
+原版：[RubenVerg/gregtech-molecule-drawings](https://github.com/RubenVerg/gregtech-molecule-drawings)。继承代码与资源遵循上游 LGPL-3.0；模板 MIT 不替代上游许可。参见 LICENSE-UPSTREAM 和 NOTICE.md。
