@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "type": "material",
+  "id": "gtnh_species:materials/magic_energized",
+  "bindings": [
+    "name:Ma*"
+  ],
+  "formula": "Ma*",
+  "terminal": true
+}

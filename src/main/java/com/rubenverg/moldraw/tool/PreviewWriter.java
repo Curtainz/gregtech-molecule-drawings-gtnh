@@ -66,17 +66,34 @@ public final class PreviewWriter {
     }
 
     public static void localize(PackCatalog catalog, Path output, Path snapshot) throws IOException {
-        JsonObject audit = Jsonc.read(snapshot)
-            .object();
+        JsonObject audit;
+        try (var input = Files.newInputStream(snapshot)) {
+            audit = ResourceJson.read(input, 33_554_432)
+                .getAsJsonObject();
+        }
         if (!audit.has("formatVersion") || audit.get("formatVersion")
             .getAsInt() != 1 || !audit.has("rows")) throw new PackException("Unsupported audit snapshot");
         Map<String, Set<String>> labels = new TreeMap<>();
+        Map<String, String> chinese = new HashMap<>();
+        for (var value : audit.getAsJsonArray("rows")) {
+            var row = value.getAsJsonObject();
+            String zh = row.get("nameZhCN")
+                .getAsString(),
+                provider = row.has("providerId") ? row.get("providerId")
+                    .getAsString() : "";
+            if (!zh.isEmpty() && !provider.isEmpty()) chinese.putIfAbsent(provider, zh);
+        }
+
         for (var value : audit.getAsJsonArray("rows")) {
             JsonObject row = value.getAsJsonObject();
             String zh = row.get("nameZhCN")
                 .getAsString(),
                 name = row.get("localizedName")
                     .getAsString();
+            if (zh.isEmpty() && row.has("providerId")) zh = chinese.getOrDefault(
+                row.get("providerId")
+                    .getAsString(),
+                "");
             String label = (zh.isEmpty() ? name + " [缺中文翻译]" : zh) + " / "
                 + row.get("defaultName")
                     .getAsString()

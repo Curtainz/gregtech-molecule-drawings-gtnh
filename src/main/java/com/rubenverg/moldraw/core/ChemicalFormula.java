@@ -9,6 +9,7 @@ public final class ChemicalFormula {
 
     private final String text;
     private int position;
+    private java.util.List<String> special = java.util.List.of();
 
     private ChemicalFormula(String text) {
         this.text = text;
@@ -21,13 +22,25 @@ public final class ChemicalFormula {
     }
 
     public static Map<String, BigInteger> parseExact(String formula) {
+        return parseExact(formula, java.util.Set.of());
+    }
+
+    public static Map<String, BigInteger> parseExact(String formula, java.util.Set<String> symbols) {
         if (formula == null || formula.length() > 4096) throw new IllegalArgumentException("Invalid formula length");
         StringBuilder normalized = new StringBuilder();
         for (char c : formula.toCharArray()) {
             if (Character.isWhitespace(c)) continue;
+            if (c == '\uE01A') c = '₀';
             normalized.append(c >= '\u2080' && c <= '\u2089' ? (char) ('0' + c - '\u2080') : c);
         }
         ChemicalFormula parser = new ChemicalFormula(normalized.toString());
+        parser.special = symbols.stream()
+            .filter(s -> !s.matches("[A-Z][a-z]*\\*?"))
+            .sorted(
+                java.util.Comparator.comparingInt(String::length)
+                    .reversed()
+                    .thenComparing(java.util.Comparator.naturalOrder()))
+            .toList();
         Map<String, BigInteger> result = parser.group('\0', 0);
         if (result.isEmpty()) throw new IllegalArgumentException("Empty formula");
         return result;
@@ -43,7 +56,14 @@ public final class ChemicalFormula {
                 return result;
             }
             Map<String, BigInteger> part;
-            if (c == '(' || c == '[' || c == '{') {
+            String token = special.stream()
+                .filter(s -> text.startsWith(s, position))
+                .findFirst()
+                .orElse(null);
+            if (token != null) {
+                position += token.length();
+                part = Map.of(token, BigInteger.ONE);
+            } else if (c == '(' || c == '[' || c == '{') {
                 position++;
                 part = group(c == '(' ? ')' : c == '[' ? ']' : '}', depth + 1);
                 if (part.isEmpty()) throw new IllegalArgumentException("Empty group");

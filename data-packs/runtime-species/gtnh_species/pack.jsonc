@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "type": "pack",
+  "id": "gtnh_species",
+  "version": "1.0.0",
+  "description": "GTNH terminal species; masses only from provider metadata",
+  "modVersion": {
+    "min": "0.7.0-test.B",
+    "maxExclusive": "0.8.0"
+  },
+  "dependencies": [
+    {
+      "id": "official",
+      "version": "1.0.0"
+    }
+  ],
+  "providers": [
+    "gregtech"
+  ]
+}

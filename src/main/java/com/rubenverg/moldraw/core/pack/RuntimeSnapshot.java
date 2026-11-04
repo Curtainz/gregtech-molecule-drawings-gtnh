@@ -254,7 +254,7 @@ public final class RuntimeSnapshot {
                             r.get("symbol")
                                 .getAsString(),
                             id);
-                        if (!provider.containsKey(id)) diagnostics.add(
+                        if (id.startsWith("gt:") && !provider.containsKey(id)) diagnostics.add(
                             "UNRESOLVED_ELEMENT:" + r.get("symbol")
                                 .getAsString() + ":" + id);
                     }
@@ -540,7 +540,11 @@ public final class RuntimeSnapshot {
         String sourceType = composition == null ? "gregtech"
             : composition.get("source")
                 .getAsString();
-        if (sourceType.equals("explicit")) {
+        if (override != null && override.has("terminal")
+            && override.get("terminal")
+                .getAsBoolean()) {
+            errors.add("TERMINAL_SPECIES:" + id);
+        } else if (sourceType.equals("explicit")) {
             basis = composition.get("basis")
                 .getAsString()
                 .equals("stoichiometric") ? Basis.STOICHIOMETRIC : Basis.MIXTURE_PARTS;
@@ -572,12 +576,13 @@ public final class RuntimeSnapshot {
             || gt != null && !gt.elemental && gt.components.isEmpty() && !formula.isEmpty()) {
                 basis = Basis.STOICHIOMETRIC;
                 try {
-                    for (var atom : ChemicalFormula.parseExact(formula)
+                    for (var atom : ChemicalFormula.parseExact(formula, elements.keySet())
                         .entrySet()) {
                         String target = elements.get(atom.getKey());
                         parts.add(
                             new Component(
-                                target != null && provider.containsKey(target) ? target : "symbol:" + atom.getKey(),
+                                target != null && (!target.startsWith("gt:") || provider.containsKey(target)) ? target
+                                    : "symbol:" + atom.getKey(),
                                 atom.getValue()));
                     }
                 } catch (IllegalArgumentException failure) {

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "type": "material",
+  "id": "gtnh_species:materials/terrasteel",
+  "bindings": [
+    "gt:Terrasteel"
+  ],
+  "terminal": true
+}

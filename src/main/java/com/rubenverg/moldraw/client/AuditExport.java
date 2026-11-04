@@ -44,7 +44,7 @@ public final class AuditExport {
             for (Materials m : Materials.getAll()) if (GT5MaterialLookup.isMaterialValid(m)) {
                 String localized;
                 try {
-                    localized = m.getDefaultLocalizedNameForItem("");
+                    localized = m.getDefaultLocalizedNameForItem("%material");
                 } catch (RuntimeException failure) {
                     localized = m.mDefaultLocalName;
                 }

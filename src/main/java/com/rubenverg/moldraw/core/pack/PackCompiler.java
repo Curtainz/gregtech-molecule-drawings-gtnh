@@ -295,6 +295,9 @@ public final class PackCompiler {
             Set<String> gt = new HashSet<>();
             for (var binding : json.getAsJsonArray("bindings")) if (binding.getAsString()
                 .startsWith("gt:")) gt.add(binding.getAsString());
+            if (json.has("terminal") && json.get("terminal")
+                .getAsBoolean() && json.has("composition"))
+                throw definition.error("/terminal", "Terminal species cannot declare composition");
             var composition = json.has("composition") ? json.getAsJsonObject("composition") : null;
             if (composition != null) {
                 String source = composition.get("source")
@@ -379,6 +382,14 @@ public final class PackCompiler {
                             .getAsString()),
                     definition,
                     "/rules");
+                if (kind.equals("element_binding") && !r.get("material")
+                    .getAsString()
+                    .startsWith("gt:")) reference(
+                        definition,
+                        r.get("material")
+                            .getAsString(),
+                        "material",
+                        "/rules");
                 if (kind.equals("element_binding")) unique(
                     elements,
                     r.get("symbol")

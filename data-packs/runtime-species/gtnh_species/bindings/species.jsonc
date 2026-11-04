@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "type": "bindings",
+  "id": "gtnh_species:bindings/species",
+  "rules": [
+    {
+      "kind": "element_binding",
+      "symbol": "D*",
+      "material": "gt:DraconiumAwakened"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Nq*",
+      "material": "gt:Naquadria"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Nq+",
+      "material": "gt:NaquadahEnriched"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "If*",
+      "material": "gt:Infinity"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "If",
+      "material": "gt:InfinityCatalyst"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ad",
+      "material": "gt:Adamantium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Gs",
+      "material": "gt:GaiaSpirit"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ms",
+      "material": "gt:Manasteel"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Qt",
+      "material": "gt:Quantium"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Ma*",
+      "material": "gtnh_species:materials/magic_energized"
+    },
+    {
+      "kind": "element_binding",
+      "symbol": "Nq⁺",
+      "material": "gt:NaquadahEnriched"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "type": "material",
+  "id": "gtnh_species:materials/infinitycatalyst",
+  "bindings": [
+    "gt:InfinityCatalyst"
+  ],
+  "terminal": true
+}

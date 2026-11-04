@@ -96,3 +96,7 @@ MOL首版严格为单个V2000二维结构，支持普通原子、1/2/3键及可�
 审阅重点：GT身份与定义ID分离、整条覆盖、实例/端口/atomMap写法及显式二维坐标。format-info/status只展示版本和状态，不触发加载；reload异步校验和发布。离线工具可独立校验/预览，不修改游戏状态。
 
 来源报告的SHA-256使用UTF-8源文件字节，并在计算前将CRLF统一为LF；不改变其他字符或JSON值。此规则用于让Windows与Linux检出得到一致的迁移校验结果。
+
+## 0.7-B additive terminal species extension
+
+Materials may declare `terminal: true`; composition is forbidden on a terminal material. Element bindings may target a validated pack material ID as well as a GT ID. This permits independently named fictional species with unknown masses. The dedicated gtnh_species pack requires 0.7.0-test.B; core migrated definitions remain compatible. Display formula normalization converts GT U+E01A to subscript zero; explicitly registered special symbols are matched longest-first. Unregistered question marks remain unsupported.

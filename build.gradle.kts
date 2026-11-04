@@ -74,6 +74,7 @@ val reviewPackZip by tasks.registering(Zip::class) {
     isReproducibleFileOrder = true
     from("schema") { into("schema") }
     from("data-packs/migrated") { into("packs") }
+    from("data-packs/runtime-species") { into("packs") }
     from("docs/FORMAT-V1.md")
     from("docs/TESTING-0.7-A.md") { rename { "README.md" } }
 }
@@ -140,6 +141,8 @@ val generatePackPreview by tasks.registering(JavaExec::class) {
     mainClass.set("com.rubenverg.moldraw.tool.PackTool")
     javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
     args("preview", layout.projectDirectory.dir("data-packs/migrated").asFile.absolutePath, previewDirectory.get().asFile.absolutePath)
+    val auditSnapshot = providers.gradleProperty("auditSnapshot")
+    if (auditSnapshot.isPresent) { args("--audit", auditSnapshot.get()); inputs.file(auditSnapshot.get()) }
     inputs.dir("data-packs/migrated")
     outputs.dir(previewDirectory)
 }
@@ -162,6 +165,7 @@ val previewZip by tasks.registering(Zip::class) {
     from(packToolJar) { into("tools") }
     from("tools/migration/legacy-bindings.json") { into("tools") }
     from("data-packs/migrated") { into("packs") }
+    from("data-packs/runtime-species") { into("packs") }
     from("schema") { into("schema") }
     from("docs/FORMAT-V1.md")
     from("docs/TESTING-0.7-A.md") { rename { "README.md" } }
@@ -197,13 +201,11 @@ val installZip by tasks.registering(Zip::class) {
     dependsOn(tasks.named("reobfJar"))
     archiveFileName.set("gtmoldraw-${project.version}-install.zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions"))
-    isPreserveFileTimestamps = false
+    isPreserveFileTimestamps = true
     isReproducibleFileOrder = true
+    from("data-packs/runtime-species") { into("config/gtmoldraw/packs") }
     from(productionArtifact) { into("mods") }
     from("data-packs/migrated/official") { into("config/gtmoldraw/packs/official") }
-    from("data-packs/migrated") { include("migration-report.*"); into("gtmoldraw-docs") }
-    from("data-packs/runtime-demo") { into("gtmoldraw-docs/optional-demo") }
-    from("docs/TESTING-0.7-A.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(installZip) }
 
@@ -215,3 +217,11 @@ val auditRegression by tasks.registering(JavaExec::class) {
     javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
 }
 tasks.named("check") { dependsOn(auditRegression) }
+
+val speciesRegression by tasks.registering(JavaExec::class) {
+ dependsOn(tasks.named("testClasses")); classpath = sourceSets["test"].runtimeClasspath
+ mainClass.set("com.rubenverg.moldraw.core.SpeciesRegression")
+ args(layout.projectDirectory.asFile.absolutePath)
+ javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
+}
+tasks.named("check") { dependsOn(speciesRegression) }
