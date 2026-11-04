@@ -83,6 +83,7 @@ public final class AuditExport {
             metadata.addProperty("language", language);
             metadata.addProperty("snapshotVersion", MaterialRegistry.version());
             metadata.addProperty("status", ExternalPackService.status());
+            metadata.addProperty("tooltipAdapter", ChromaticIntegration.status());
             metadata.addProperty("recursive", MolDrawConfig.INSTANCE.alloy.recursive);
             metadata.addProperty("partsByMass", MolDrawConfig.INSTANCE.alloy.partsByMass);
             metadata.addProperty("showMolecules", MolDrawConfig.INSTANCE.molecule.showMolecules);

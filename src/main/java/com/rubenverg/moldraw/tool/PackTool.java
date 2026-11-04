@@ -19,7 +19,7 @@ public final class PackTool {
     public static int run(String[] args, PrintStream output, PrintStream error) {
         try {
             List<String> arguments = new ArrayList<>(List.of(args));
-            String version = "0.7.0-test.C", only = null, audit = null;
+            String version = "0.7.0-test.D", only = null, audit = null;
             for (String flag : List.of("--mod-version", "--id", "--audit")) {
                 int index = arguments.indexOf(flag);
                 if (index >= 0) {
@@ -37,6 +37,45 @@ public final class PackTool {
                 return 0;
             }
             String command = arguments.getFirst();
+            if (command.equals("install-check") && arguments.size() == 2 && only == null && audit == null) {
+                var mods = Path.of(arguments.get(1));
+                com.rubenverg.moldraw.core.InstallationScanner.requireSingle(mods);
+                output.println(
+                    "GTMolDraw installation candidates: " + com.rubenverg.moldraw.core.InstallationScanner.find(mods));
+                return 0;
+            }
+            if (command.equals("import-mol") && arguments.size() == 3 && only != null && audit == null) {
+                Path input = Path.of(arguments.get(1)), target = Path.of(arguments.get(2))
+                    .toAbsolutePath()
+                    .normalize();
+                if (!target.getFileName()
+                    .toString()
+                    .endsWith(".jsonc")) throw new PackException("Import output must end in .jsonc");
+                if (Files.exists(target)) throw new PackException("Import output already exists: " + target);
+                byte[] bytes;
+                try (var stream = Files.newInputStream(input)) {
+                    bytes = stream.readNBytes(2_097_153);
+                }
+                if (bytes.length > 2_097_152) throw new PackException("MOL exceeds 2 MiB");
+                String source = java.nio.charset.StandardCharsets.UTF_8.newDecoder()
+                    .decode(java.nio.ByteBuffer.wrap(bytes))
+                    .toString();
+                var molecule = com.rubenverg.moldraw.core.MolV2000.parse(input.toString(), source, only);
+                String json = new com.google.gson.GsonBuilder().setPrettyPrinting()
+                    .create()
+                    .toJson(molecule);
+                String formatted = JsoncFormatter
+                    .format(Jsonc.parse(target.toString(), json), ContractSchema.bundled("definition"));
+                Files.createDirectories(target.getParent());
+                String hash = sourceHash(bytes);
+                Files.writeString(
+                    target,
+                    "// MOL V2000 import; no material binding.\n// source SHA-256: " + hash + "\n" + formatted,
+                    java.nio.charset.StandardCharsets.UTF_8,
+                    StandardOpenOption.CREATE_NEW);
+                output.println("Imported unbound molecule: " + target);
+                return 0;
+            }
             if (command.equals("review-audit") && arguments.size() == 3 && only == null && audit == null) {
                 AuditReview.write(Path.of(arguments.get(1)), Path.of(arguments.get(2)));
                 output.println("Portable audit review: " + arguments.get(2));
@@ -127,8 +166,19 @@ public final class PackTool {
         }
     }
 
+    private static String sourceHash(byte[] bytes) {
+        try {
+            return java.util.HexFormat.of()
+                .formatHex(
+                    java.security.MessageDigest.getInstance("SHA-256")
+                        .digest(bytes));
+        } catch (java.security.NoSuchAlgorithmException unavailable) {
+            throw new IllegalStateException("SHA-256 unavailable", unavailable);
+        }
+    }
+
     private static void usage(PrintStream out) {
         out.println(
-            "GTMolDraw pack tool (Java25, offline, stage 4)\nvalidate <packs> [--mod-version VERSION]\nformat --check|--write <packs> [--mod-version VERSION]\nreview-audit <snapshot.json> <new-output>\npreview <packs> <output> [--id DEFINITION] [--audit snapshot.json] [--mod-version VERSION]\nmigrate <legacy-assets> <legacy-bindings.json> <new-output> [--mod-version VERSION]\nExit: 0 success, 1 formatting differs, 2 invalid input/IO. This offline tool does not publish game state. In-game loading/reload is available in stage 4; MOL import is deferred.");
+            "GTMolDraw pack tool (Java25, offline)\ninstall-check <mods>\nimport-mol <source.mol> <new-output.jsonc> --id PACK:MOLECULE\nvalidate <packs> [--mod-version VERSION]\nformat --check|--write <packs> [--mod-version VERSION]\nreview-audit <snapshot.json> <new-output>\npreview <packs> <output> [--id DEFINITION] [--audit snapshot.json] [--mod-version VERSION]\nmigrate <legacy-assets> <legacy-bindings.json> <new-output> [--mod-version VERSION]\nExit: 0 success, 1 formatting differs, 2 invalid input/IO. This offline tool does not publish game state. In-game loading/reload is available in stage 4; MOL V2000 2D import is available; unsupported chemistry is rejected.");
     }
 }

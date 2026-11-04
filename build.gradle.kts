@@ -51,6 +51,8 @@ val verifyProductionJar by tasks.registering {
             }
             check(names.none { it.matches(Regex("assets/[^/]+/(molecules|alloys)/.*")) }) { "Bundled legacy definition fallback remains" }
             check(names.none { it.startsWith("com/rubenverg/moldraw/molecule/") || it.startsWith("com/rubenverg/moldraw/MoleculeManager") || it.startsWith("com/rubenverg/moldraw/AlloyManager") || it.startsWith("com/rubenverg/moldraw/util/FormulaParser") }) { "Legacy hardcoded material adapters remain in game JAR" }
+            val metadata = jar.getInputStream(jar.getEntry("mcmod.info")).use { String(it.readBytes(), Charsets.UTF_8) }
+            check(metadata.replace(Regex("\\s"), "").contains("\"modid\":\"gtmoldraw\"")) { "Unexpected release modid" }
             check(names.contains("assets/gtmoldraw/lang/zh_CN.lang")) { "Missing GTMolDraw resources" }
             check(names.contains("com/rubenverg/moldraw/core/PixelBatch.class")) { "Missing raster core" }
             println("Production JAR boundary check passed")
@@ -76,7 +78,7 @@ val reviewPackZip by tasks.registering(Zip::class) {
     from("data-packs/migrated") { into("packs") }
     from("data-packs/runtime-species") { into("packs") }
     from("docs/FORMAT-V1.md")
-    from("docs/TESTING-0.7-C.md") { rename { "README.md" } }
+    from("docs/TESTING-0.7-D.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(reviewPackZip) }
 
@@ -168,7 +170,7 @@ val previewZip by tasks.registering(Zip::class) {
     from("data-packs/runtime-species") { into("packs") }
     from("schema") { into("schema") }
     from("docs/FORMAT-V1.md")
-    from("docs/TESTING-0.7-C.md") { rename { "README.md" } }
+    from("docs/TESTING-0.7-D.md") { rename { "README.md" } }
 }
 tasks.named("assemble") { dependsOn(previewZip) }
 
@@ -184,6 +186,7 @@ tasks.named("check") { dependsOn(migrationRegression) }
 // Legacy sources remain for reproducible migration/oracle tests; none can load in the game JAR.
 tasks.withType<Jar>().configureEach {
     if (name == "jar" || name == "shadowJar") {
+    manifest { attributes("FMLCorePlugin" to "com.rubenverg.gtmoldrawbootstrap.DuplicateGuard", "FMLCorePluginContainsFMLMod" to "true", "ForceLoadAsMod" to "true") }
     exclude("assets/*/molecules/**", "assets/*/alloys/**")
     exclude("com/rubenverg/moldraw/molecule/**", "com/rubenverg/moldraw/MoleculeManager*", "com/rubenverg/moldraw/AlloyManager*", "com/rubenverg/moldraw/MoleculeSnapshots*", "com/rubenverg/moldraw/util/FormulaParser*")
     }
@@ -225,3 +228,20 @@ val speciesRegression by tasks.registering(JavaExec::class) {
  javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
 }
 tasks.named("check") { dependsOn(speciesRegression) }
+
+val tooltipIntegrationRegression by tasks.registering(JavaExec::class) {
+ dependsOn(tasks.named("testClasses")); classpath = sourceSets["test"].runtimeClasspath
+ mainClass.set("com.rubenverg.moldraw.core.TooltipIntegrationRegression")
+ args(layout.projectDirectory.asFile.absolutePath)
+ val chromaticApiJar = providers.gradleProperty("chromaticApiJar")
+ if(chromaticApiJar.isPresent) args(chromaticApiJar.get())
+ javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
+}
+tasks.named("check") { dependsOn(tooltipIntegrationRegression) }
+
+val molImportRegression by tasks.registering(JavaExec::class) {
+ dependsOn(tasks.named("testClasses")); classpath = sourceSets["test"].runtimeClasspath
+ mainClass.set("com.rubenverg.moldraw.core.MolImportRegression"); args(layout.projectDirectory.asFile.absolutePath)
+ javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
+}
+tasks.named("check") { dependsOn(molImportRegression) }

@@ -59,7 +59,9 @@ public final class ClientLifecycle extends CommonLifecycle {
                 NEITooltipHelper.init();
             }
             MolDraw.LOGGER.info("[lifecycle] client integrations installed");
+            ChromaticIntegration.initialize();
             ExternalPackService.initialize();
+            ClientSmokeTest.prepare();
         }
         if (configPending.getAndSet(false)) {
             MolDrawConfig.syncConfig();

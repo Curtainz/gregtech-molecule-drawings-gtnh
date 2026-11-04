@@ -39,6 +39,12 @@ public final class TooltipPipeline {
         return false;
     }
 
+    private static boolean isHint(String line) {
+        return line != null
+            && (line.equals("§8[" + StatCollector.translateToLocal("tooltip.gtmoldraw.shift_view_molecule") + "]")
+                || line.equals("§8[" + StatCollector.translateToLocal("tooltip.gtmoldraw.shift_view_alloy") + "]"));
+    }
+
     public static boolean apply(List<String> tip, DisplayPlan plan, FontRenderer font) {
         if (!MolDraw.isClientThread() || font == null || tip == null || plan == null) {
             return false;
@@ -46,14 +52,25 @@ public final class TooltipPipeline {
 
         boolean formulaChanged = plan.hasFormulaOverride()
             && FormulaText.applyOverride(tip, plan.getFormula(), plan.originalFormula());
-        tip.removeIf(NEITooltipHelper::isStaleOwnToken);
-        if (!plan.isValid()) return formulaChanged;
-
-        if (hasMolDrawTokenOrHint(tip)) {
-            return false;
+        boolean cleaned = tip.removeIf(NEITooltipHelper::isStaleOwnToken);
+        if (com.rubenverg.moldraw.client.ChromaticIntegration.available()) {
+            cleaned |= tip.removeIf(
+                line -> NEITooltipHelper.isOwnToken(line) || isHint(line)
+                    || line != null && line.contains(PLACEHOLDER_PREFIX));
+            TooltipRenderContext.clear();
+            return formulaChanged || cleaned;
         }
-
         boolean shiftDown = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
+        boolean visible = !MolDrawConfig.INSTANCE.onlyShowOnShift || shiftDown;
+        cleaned |= tip.removeIf(
+            line -> isHint(line) || NEITooltipHelper.isOwnToken(line)
+                && (!plan.isValid() || !visible || !NEITooltipHelper.matchesDrawable(line, plan.getDrawable())));
+        if (tip.removeIf(line -> line != null && line.contains(PLACEHOLDER_PREFIX))) {
+            cleaned = true;
+            TooltipRenderContext.clear();
+        }
+        if (!plan.isValid()) return formulaChanged || cleaned;
+        if (hasMolDrawTokenOrHint(tip)) return formulaChanged || cleaned;
 
         if (MolDrawConfig.INSTANCE.onlyShowOnShift && !shiftDown) {
             String hintKey = plan.getType() == DisplayPlan.Type.MOLECULE ? "tooltip.gtmoldraw.shift_view_molecule"

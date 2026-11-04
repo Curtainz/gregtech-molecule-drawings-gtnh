@@ -39,6 +39,16 @@ public final class NEITooltipHelper {
         }
     }
 
+    public static boolean matchesDrawable(String token, ITooltipDrawable drawable) {
+        if (!isNEIAvailable() || token == null || !token.startsWith("\u00a7x")) return false;
+        try {
+            return GuiDraw.getTipLine(token) instanceof LineHandler line && line.drawable() == drawable
+                && line.version() == MaterialRegistry.version();
+        } catch (RuntimeException stale) {
+            return false;
+        }
+    }
+
     public static boolean isStaleOwnToken(String token) {
         if (!isNEIAvailable() || token == null || !token.startsWith("\u00a7x")) return false;
         try {

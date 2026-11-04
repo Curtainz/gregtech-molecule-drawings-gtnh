@@ -1,0 +1,330 @@
+{
+  "modVersion": "0.7.0-test.D",
+  "test": "real client native fluid render smoke; not mouse-hover GUI automation",
+  "passed": true,
+  "scenarios": [
+    {
+      "fluid": "water",
+      "textOnly": false,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "water",
+      "textOnly": false,
+      "modifier": "SHIFT",
+      "width": 38,
+      "height": 22,
+      "graph": true
+    },
+    {
+      "fluid": "water",
+      "textOnly": false,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "water",
+      "textOnly": false,
+      "modifier": "SHIFT",
+      "width": 38,
+      "height": 22,
+      "graph": true
+    },
+    {
+      "fluid": "water",
+      "textOnly": true,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "water",
+      "textOnly": true,
+      "modifier": "SHIFT",
+      "width": 38,
+      "height": 22,
+      "graph": true
+    },
+    {
+      "fluid": "water",
+      "textOnly": true,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "water",
+      "textOnly": true,
+      "modifier": "SHIFT",
+      "width": 38,
+      "height": 22,
+      "graph": true
+    },
+    {
+      "fluid": "molten.steel",
+      "textOnly": false,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "molten.steel",
+      "textOnly": false,
+      "modifier": "SHIFT",
+      "width": 101,
+      "height": 46,
+      "graph": true
+    },
+    {
+      "fluid": "molten.steel",
+      "textOnly": false,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "molten.steel",
+      "textOnly": false,
+      "modifier": "SHIFT",
+      "width": 101,
+      "height": 46,
+      "graph": true
+    },
+    {
+      "fluid": "molten.steel",
+      "textOnly": true,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "molten.steel",
+      "textOnly": true,
+      "modifier": "SHIFT",
+      "width": 101,
+      "height": 46,
+      "graph": true
+    },
+    {
+      "fluid": "molten.steel",
+      "textOnly": true,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "molten.steel",
+      "textOnly": true,
+      "modifier": "SHIFT",
+      "width": 101,
+      "height": 46,
+      "graph": true
+    },
+    {
+      "fluid": "molten.bisphenol_a",
+      "textOnly": false,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "molten.bisphenol_a",
+      "textOnly": false,
+      "modifier": "SHIFT",
+      "width": 98,
+      "height": 41,
+      "graph": true
+    },
+    {
+      "fluid": "molten.bisphenol_a",
+      "textOnly": false,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "molten.bisphenol_a",
+      "textOnly": false,
+      "modifier": "SHIFT",
+      "width": 98,
+      "height": 41,
+      "graph": true
+    },
+    {
+      "fluid": "molten.bisphenol_a",
+      "textOnly": true,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "molten.bisphenol_a",
+      "textOnly": true,
+      "modifier": "SHIFT",
+      "width": 98,
+      "height": 41,
+      "graph": true
+    },
+    {
+      "fluid": "molten.bisphenol_a",
+      "textOnly": true,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "molten.bisphenol_a",
+      "textOnly": true,
+      "modifier": "SHIFT",
+      "width": 98,
+      "height": 41,
+      "graph": true
+    },
+    {
+      "fluid": "molten.polybenzimidazole",
+      "textOnly": false,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "molten.polybenzimidazole",
+      "textOnly": false,
+      "modifier": "SHIFT",
+      "width": 145,
+      "height": 45,
+      "graph": true
+    },
+    {
+      "fluid": "molten.polybenzimidazole",
+      "textOnly": false,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "molten.polybenzimidazole",
+      "textOnly": false,
+      "modifier": "SHIFT",
+      "width": 145,
+      "height": 45,
+      "graph": true
+    },
+    {
+      "fluid": "molten.polybenzimidazole",
+      "textOnly": true,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "molten.polybenzimidazole",
+      "textOnly": true,
+      "modifier": "SHIFT",
+      "width": 145,
+      "height": 45,
+      "graph": true
+    },
+    {
+      "fluid": "molten.polybenzimidazole",
+      "textOnly": true,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "molten.polybenzimidazole",
+      "textOnly": true,
+      "modifier": "SHIFT",
+      "width": 145,
+      "height": 45,
+      "graph": true
+    },
+    {
+      "fluid": "1,3dimethylbenzene",
+      "textOnly": false,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "1,3dimethylbenzene",
+      "textOnly": false,
+      "modifier": "SHIFT",
+      "width": 101,
+      "height": 46,
+      "graph": true
+    },
+    {
+      "fluid": "1,3dimethylbenzene",
+      "textOnly": false,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "1,3dimethylbenzene",
+      "textOnly": false,
+      "modifier": "SHIFT",
+      "width": 101,
+      "height": 46,
+      "graph": true
+    },
+    {
+      "fluid": "1,3dimethylbenzene",
+      "textOnly": true,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "1,3dimethylbenzene",
+      "textOnly": true,
+      "modifier": "SHIFT",
+      "width": 101,
+      "height": 46,
+      "graph": true
+    },
+    {
+      "fluid": "1,3dimethylbenzene",
+      "textOnly": true,
+      "modifier": "NONE",
+      "width": 58,
+      "height": 10,
+      "graph": false
+    },
+    {
+      "fluid": "1,3dimethylbenzene",
+      "textOnly": true,
+      "modifier": "SHIFT",
+      "width": 101,
+      "height": 46,
+      "graph": true
+    }
+  ],
+  "adapter": "chromaticNative=true, builds=40, draws=20, subject=text:§71000 mB 1,3-Dimethylbenzene -> gt:1,3Dimethylbenzene, error=none",
+  "gameJarSha256": "e25b06ba79668b2c1b5d9936de5fcc76e49e7fa708e5e1ead6f74fbce8a4d95e",
+  "environment": "Minecraft 1.7.10 / GTNH 2.9.0 / ChromaticTooltips 1.0.36-GTNH; isolated instance without player saves"
+}

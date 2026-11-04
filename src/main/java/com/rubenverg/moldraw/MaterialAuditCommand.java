@@ -33,6 +33,7 @@ public final class MaterialAuditCommand extends CommandBase {
         if (args.length == 1 && "status".equals(args[0])) {
             sender.addChatMessage(
                 new ChatComponentText("GTMolDraw: " + com.rubenverg.moldraw.client.ExternalPackService.status()));
+            sender.addChatMessage(new ChatComponentText(com.rubenverg.moldraw.client.ChromaticIntegration.status()));
             sender.addChatMessage(
                 new ChatComponentText("Directory: " + com.rubenverg.moldraw.client.ExternalPackService.directory()));
             return;

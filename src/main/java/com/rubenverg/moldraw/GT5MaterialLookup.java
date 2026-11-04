@@ -48,7 +48,7 @@ public final class GT5MaterialLookup {
 
         // 2. 检查 GT 流体槽/流体物品 (单元、流体显示物品、储罐等)
         try {
-            FluidStack fluid = GTUtility.getFluidFromContainerOrFluidDisplay(stack);
+            FluidStack fluid = fluidOf(stack);
             if (fluid != null && fluid.getFluid() != null) {
                 Materials mat = getMaterialFromFluid(fluid.getFluid());
                 if (isMaterialValid(mat)) {
@@ -151,6 +151,23 @@ public final class GT5MaterialLookup {
         } catch (Throwable ignored) {}
 
         return false;
+    }
+
+    /** Includes NEI's IFluidContainerItem display stacks, GT displays and filled containers. */
+    public static FluidStack fluidOf(ItemStack stack) {
+        if (stack == null || stack.getItem() == null) return null;
+        try {
+            if (stack.getItem() instanceof net.minecraftforge.fluids.IFluidContainerItem container) {
+                FluidStack fluid = container.getFluid(stack);
+                if (fluid != null && fluid.getFluid() != null) return fluid;
+            }
+            FluidStack fluid = GTUtility.getFluidFromContainerOrFluidDisplay(stack);
+            if (fluid != null && fluid.getFluid() != null) return fluid;
+            return FluidContainerRegistry.getFluidForFilledItem(stack);
+        } catch (RuntimeException failure) {
+            com.rubenverg.moldraw.MolDraw.LOGGER.debug("Fluid identity lookup failed", failure);
+            return null;
+        }
     }
 
     public static Materials getMaterialFromFluid(Fluid fluid) {

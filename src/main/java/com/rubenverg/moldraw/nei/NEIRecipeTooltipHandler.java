@@ -33,7 +33,7 @@ public class NEIRecipeTooltipHandler implements IContainerTooltipHandler {
         List<String> currenttip) {
         if (MolDraw.isClientThread() && stack != null) {
             try {
-                var fluid = gregtech.api.util.GTUtility.getFluidFromContainerOrFluidDisplay(stack);
+                var fluid = com.rubenverg.moldraw.GT5MaterialLookup.fluidOf(stack);
                 if (fluid != null && fluid.getFluid() != null) {
                     var font = Minecraft.getMinecraft().fontRenderer;
                     TooltipPipeline

@@ -36,6 +36,15 @@ public class MolDraw {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        try {
+            com.rubenverg.moldraw.core.InstallationScanner.requireSingle(
+                event.getModConfigurationDirectory()
+                    .toPath()
+                    .getParent()
+                    .resolve("mods"));
+        } catch (java.io.IOException failure) {
+            throw new IllegalStateException("Cannot verify GTMolDraw installations", failure);
+        }
         LOGGER.info("[lifecycle] preInit: loading configuration");
         MolDrawConfig.load(event.getSuggestedConfigurationFile());
     }
